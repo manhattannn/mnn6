@@ -15,7 +15,10 @@ class Acquia_Search_Service extends Drupal_Apache_Solr_Service {
     if (!stristr($url,'?')) {
       $url .= "?";
     }
-    $url .= '&request_id=' . $id;
+    else {
+      $url .= "&";
+    }
+    $url .= 'request_id=' . $id;
     return $id;
   }
   /**

@@ -1,5 +1,4 @@
 <?php
-// $Id: webform.components.inc,v 1.25.2.27 2010/10/20 03:05:15 quicksketch Exp $
 
 /**
  * @file
@@ -133,6 +132,7 @@ function webform_components_form($form_state, $node) {
     '#type' => 'submit',
     '#value' => t('Submit'),
     '#weight' => 45,
+    '#access' => count($node->webform['components']) > 0,
   );
 
   return $form;
@@ -366,7 +366,7 @@ function webform_component_edit_form(&$form_state, $node, $component, $clone = F
     '#type' => 'textfield',
     '#default_value' => empty($component['form_key']) ? _webform_safe_name($component['name']) : $component['form_key'],
     '#title' => t('Field Key'),
-    '#description' => t('Enter a machine readable key for this form element. May contain only lowercase alphanumeric characters and underscores. This key will be used as the name attribute of the form element. This value has no effect on the way data is saved, but may be helpful if doing custom form processing.'),
+    '#description' => t('Enter a machine readable key for this form element. May contain only alphanumeric characters and underscores. This key will be used as the name attribute of the form element. This value has no effect on the way data is saved, but may be helpful if doing custom form processing.'),
     '#required' => TRUE,
     '#weight' => -9,
   );
@@ -558,7 +558,7 @@ function webform_component_edit_form(&$form_state, $node, $component, $clone = F
 function webform_component_edit_form_validate($form, &$form_state) {
   $node = node_load($form_state['values']['nid']);
 
-  if (!preg_match('!^[a-z0-9_]+$!', $form_state['values']['form_key'])) {
+  if (!preg_match('/^[a-z0-9_]+$/i', $form_state['values']['form_key'])) {
     form_set_error('form_key', t('The field key %field_key is invalid. Please include only lowercase alphanumeric characters and underscores.', array('%field_key' => $form_state['values']['form_key'])));
   }
 
@@ -570,7 +570,9 @@ function webform_component_edit_form_validate($form, &$form_state) {
 }
 
 function webform_component_edit_form_submit($form, &$form_state) {
+  // Ensure a webform record exists.
   $node = node_load($form_state['values']['nid']);
+  webform_ensure_record($node);
 
   // Remove empty extra values.
   if (isset($form_state['values']['extra'])) {
@@ -591,16 +593,16 @@ function webform_component_edit_form_submit($form, &$form_state) {
   }
 
   if ($form_state['values']['clone']) {
-    drupal_set_message(t('Component %name cloned.', array('%name' => $form_state['values']['name'])));
     webform_component_clone($node, $form_state['values']);
+    drupal_set_message(t('Component %name cloned.', array('%name' => $form_state['values']['name'])));
   }
   elseif (!empty($form_state['values']['cid'])) {
-    drupal_set_message(t('Component %name updated.', array('%name' => $form_state['values']['name'])));
     webform_component_update($form_state['values']);
+    drupal_set_message(t('Component %name updated.', array('%name' => $form_state['values']['name'])));
   }
   else {
-    drupal_set_message(t('New component %name added.', array('%name' => $form_state['values']['name'])));
     $cid = webform_component_insert($form_state['values']);
+    drupal_set_message(t('New component %name added.', array('%name' => $form_state['values']['name'])));
   }
 
   // Since Webform components have been updated but the node itself has not
@@ -637,8 +639,16 @@ function webform_component_delete_form($form_state, $node, $component) {
 }
 
 function webform_component_delete_form_submit($form, &$form_state) {
-  drupal_set_message(t('Component %name deleted.', array('%name' => $form_state['values']['component']['name'])));
-  webform_component_delete($form_state['values']['node'], $form_state['values']['component']);
+  // Delete the component.
+  $node = $form_state['values']['node'];
+  $component = $form_state['values']['component'];
+  webform_component_delete($node, $component);
+  drupal_set_message(t('Component %name deleted.', array('%name' => $component['name'])));
+
+  // Check if this webform still contains any information.
+  unset($node->webform['components'][$component['cid']]);
+  webform_check_record($node);
+
   $form_state['redirect'] = 'node/' . $form_state['values']['node']->nid . '/webform/components';
 }
 
@@ -806,6 +816,7 @@ function webform_component_list($node, $component_filter = NULL, $indent = TRUE,
   }
 
   // Remove groups that do not have any children.
+  $cid = 0;
   $previous_cid = 0;
   foreach ($options as $cid => $label) {
     if (isset($node->webform['components'][$previous_cid]['type']) && webform_component_feature($node->webform['components'][$previous_cid]['type'], 'group') && webform_component_feature($node->webform['components'][$cid]['type'], 'group')) {
@@ -814,7 +825,7 @@ function webform_component_list($node, $component_filter = NULL, $indent = TRUE,
   }
 
   // Remove the last item from the list if it's a group.
-  if (webform_component_feature($node->webform['components'][$cid]['type'], 'group')) {
+  if ($cid && webform_component_feature($node->webform['components'][$cid]['type'], 'group')) {
     unset($options[$cid]);
   }
 

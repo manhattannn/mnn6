@@ -1,5 +1,4 @@
 <?php
-// $Id: textfield.inc,v 1.21.2.8 2010/10/18 07:20:54 quicksketch Exp $
 
 /**
  * @file
@@ -53,7 +52,7 @@ function _webform_edit_textfield($component) {
     '#default_value' => $component['value'],
     '#description' => t('The default value of the field.') . theme('webform_token_help'),
     '#size' => 60,
-    '#maxlength' => 127,
+    '#maxlength' => 1024,
     '#weight' => 0,
   );
   $form['display']['width'] = array(
@@ -129,7 +128,7 @@ function _webform_render_textfield($component, $value = NULL, $filter = TRUE) {
     '#required' => $component['mandatory'],
     '#weight' => $component['weight'],
     '#field_prefix' => empty($component['extra']['field_prefix']) ? NULL : ($filter ? _webform_filter_xss($component['extra']['field_prefix']) : $component['extra']['field_prefix']),
-    '#field_suffix' => empty($component['extra']['field_suffix']) ? NULL : ($filter ? _webform_filter_xss($component['extra']['field_suffix']) : $component['extra']['field_prefix']),
+    '#field_suffix' => empty($component['extra']['field_suffix']) ? NULL : ($filter ? _webform_filter_xss($component['extra']['field_suffix']) : $component['extra']['field_suffix']),
     '#description' => $filter ? _webform_filter_descriptions($component['extra']['description']) : $component['extra']['description'],
     '#attributes' => $component['extra']['attributes'],
     '#theme_wrappers' => array('webform_element_wrapper'),

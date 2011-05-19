@@ -1,5 +1,4 @@
 <?php
-// $Id: webform.emails.inc,v 1.9.2.10 2010/08/30 20:22:15 quicksketch Exp $
 
 /**
  * @file
@@ -262,6 +261,7 @@ function webform_email_edit_form($form_state, $node, $email = array()) {
       'default' => t('Default template'),
       'custom' => t('Custom template'),
     ),
+    '#default_value' => $email['template'] == 'default' ? 'default' : 'custom',
   );
 
   $default_template = theme(array('webform_mail_' . $node->nid, 'webform_mail', 'webform_mail_message'), $node, NULL, $email);
@@ -399,6 +399,10 @@ function webform_email_edit_form_validate($form, &$form_state) {
  * Submit handler for webform_email_edit_form().
  */
 function webform_email_edit_form_submit($form, &$form_state) {
+  // Ensure a webform record exists.
+  $node = $form_state['values']['node'];
+  webform_ensure_record($node);
+
   // Merge the e-mail, name, address, and subject options into single values.
   $email = array(
     'eid' => $form_state['values']['eid'],
@@ -441,7 +445,7 @@ function webform_email_edit_form_submit($form, &$form_state) {
 
   if (empty($form_state['values']['eid'])) {
     drupal_set_message(t('Email settings added.'));
-    $cid = webform_email_insert($email);
+    $form_state['values']['eid'] = webform_email_insert($email);
   }
   else {
     drupal_set_message(t('Email settings updated.'));
@@ -482,8 +486,16 @@ function webform_email_delete_form($form_state, $node, $email) {
  * Submit handler for webform_component_delete_form().
  */
 function webform_email_delete_form_submit($form, &$form_state) {
+  // Delete the e-mail settings.
+  $node = $form_state['values']['node'];
+  $email = $form_state['values']['email'];
+  webform_email_delete($node, $email);
   drupal_set_message(t('E-mail settings deleted.'));
-  webform_email_delete($form_state['values']['node'], $form_state['values']['email']);
+
+  // Check if this webform still contains any information.
+  unset($node->webform['emails'][$email['eid']]);
+  webform_check_record($node);
+
   $form_state['redirect'] = 'node/' . $form_state['values']['node']->nid . '/webform/emails';
 }
 
