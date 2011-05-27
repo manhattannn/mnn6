@@ -4,9 +4,13 @@ description = Uses PHP's built-in GD2 image processing support.
 package = ImageCache
 core = 6.x
 
-; Information added by Acquia.com packaging script
+; Information added by drupal.org packaging script on 2010-10-17
 version = "6.x-1.9"
 core = "6.x"
 project = "imageapi"
+datestamp = "1287340884"
+
+
+; Information added by Acquia.com packaging script
 acquia = "1"
 

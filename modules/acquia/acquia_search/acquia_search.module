@@ -6,7 +6,7 @@
  *   Integration between Acquia Drupal and Acquia's hosted solr search service.
  */
 
-define('ACQUIA_SEARCH_VERSION', "6.x-1.5508");
+define('ACQUIA_SEARCH_VERSION', "1.x-6.x-1.5553");
 
 /**
  * Implementation of hook_enable().
