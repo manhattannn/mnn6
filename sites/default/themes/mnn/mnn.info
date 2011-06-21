@@ -1,0 +1,26 @@
+name        = MNN
+description = A theme built specifically for MNN.
+screenshot  = images/screenshot.png
+core        = 6.x
+engine      = phptemplate
+base theme  = html5_base
+
+
+; REGIONS
+; ------------------------------
+regions[main_menu] = Main Menu
+regions[header] = Header
+regions[sub_header] = Sub Header
+regions[content_top] = Content top
+regions[content_bottom] = Content bottom
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[footer] = Footer
+
+
+; CSS
+; ------------------------------
+stylesheets[all][] = css/layout.css
+stylesheets[all][] = css/default.css
+stylesheets[all][] = css/style.css
+
