@@ -1,4 +1,3 @@
-// $Id: img_assist_tinymce.js,v 1.3.4.4 2009/02/01 09:59:57 sun Exp $
 /**
  * This javascript file allows img_assist to work with TinyMCE via the
  * drupalimage plugin for TinyMCE.
@@ -106,7 +105,7 @@ function getFilterTag(formObj) {
   var content = '<img src="' + Drupal.settings.basePath + 'index.php?q=image/view/' + nid + '"'
               + ' width="' + width + '" height="' + height + '" align="' + align + '"'
               + ' alt="' + miscAttribs + '" title="' + miscAttribs + '"'
-              + ' name="mceItemDrupalImage" class="mceItemDrupalImage" />';
+              + ' name="mceItemDrupalImage" class="img-assist" />';
   
   return content;
 }

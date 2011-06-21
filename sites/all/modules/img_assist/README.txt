@@ -1,4 +1,3 @@
-/* $Id: README.txt,v 1.15.2.5 2009/01/18 04:04:19 sun Exp $ */
 
 -- SUMMARY --
 
@@ -86,16 +85,8 @@ Bug reports, feature suggestions and latest developments:
   controlled by the Wysiwyg API module.  
 
   Users with the 'create images' permission will be able to upload images using
-  img_assist. All users will be able to see and insert their own pictures, even
-  if the image nodes are unpublished. Users with the 'access all images'
-  permission will also be able to use other images, but only if they are
-  published.
-
-  One possible workflow would be to set images to be UNPUBLISHED by default.
-  That way users can upload, categorize, and use images in img_assist without
-  the images showing up anyway else on the site. Images that should  also be
-  shown elsewhere on the site can manually be published by going to
-  administer > content.
+  img_assist. Users with the 'access all images' permission will also be able to
+  use other images, but only if they are published.
 
 * Image presentation
 

@@ -1,4 +1,3 @@
-/* $Id: img_assist.js,v 1.6.4.2 2008/07/22 23:08:13 sun Exp $ */
 
 Drupal.behaviors.img_assist = function(context) {
   $('textarea.img_assist:not(.img_assist-processed)', context).each(function() {

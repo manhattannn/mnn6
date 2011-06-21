@@ -1,4 +1,3 @@
-/* $Id: img_assist_popup.css,v 1.1.2.3 2009/01/16 19:46:54 sun Exp $ */
 
 body#img_assist_popup {
   margin: 0;
@@ -13,7 +12,7 @@ body.img_assist {
   color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: .8em;
-  background-color: #efefef;
+  background: #efefef none;
 }
 /* Thin line between header and main frame */
 body#img_assist_thumbs, body#img_assist_upload, body#img_assist_properties {
@@ -72,7 +71,7 @@ body#img_assist_header {
 .img_assist #caption {
   display: block;
 }
-.img_assist #header-browse div.form-item,
+.img_assist #header-browse div,
 .img_assist #link-group div.form-item,
 .img_assist #edit-size div.form-item,
 .img_assist #size-other div.form-item {
@@ -107,6 +106,9 @@ body#img_assist_header {
   float: right;
   width: 19%;
   text-align: right;
+}
+#header-startover div, #header-cancel div {
+  margin: 0;
 }
 
 #header-uploading input, #header-properties input, #header-browse input, #header-startover input, #header-cancel input, #header-uploading select, #header-properties select, #header-browse select {

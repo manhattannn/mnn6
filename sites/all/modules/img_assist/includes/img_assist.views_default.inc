@@ -1,5 +1,4 @@
 <?php
-// $Id: img_assist.views_default.inc,v 1.1.2.1 2008/09/12 21:10:55 sun Exp $
 
 /**
  * @file
