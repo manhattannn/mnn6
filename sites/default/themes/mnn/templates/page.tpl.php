@@ -16,11 +16,11 @@
 
   <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 
-  <!--[if lt IE 7 ]> <body class="ie6 <?php print $body_classes; ?>"> <![endif]-->
-  <!--[if IE 7 ]>    <body class="ie7 <?php print $body_classes; ?>"> <![endif]-->
-  <!--[if IE 8 ]>    <body class="ie8 <?php print $body_classes; ?>"> <![endif]-->
-  <!--[if IE 9 ]>    <body class="ie9 <?php print $body_classes; ?>"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> <body class="<?php print $body_classes; ?>"> <!--<![endif]-->
+  <!--[if lt IE 7 ]> <body id="<?php print $body_id ?>" class="ie6 <?php print $body_classes; ?>"> <![endif]-->
+  <!--[if IE 7 ]>    <body id="<?php print $body_id ?>" class="ie7 <?php print $body_classes; ?>"> <![endif]-->
+  <!--[if IE 8 ]>    <body id="<?php print $body_id ?>" class="ie8 <?php print $body_classes; ?>"> <![endif]-->
+  <!--[if IE 9 ]>    <body id="<?php print $body_id ?>" class="ie9 <?php print $body_classes; ?>"> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> <body id="<?php print $body_id ?>" class="<?php print $body_classes; ?>"> <!--<![endif]-->
   
     <div id="skip"><a href="#content"><?php print t('Skip to Content'); ?></a> <a href="#navigation"><?php print t('Skip to Navigation'); ?></a></div>  
     <div id="page">
@@ -33,6 +33,12 @@
 					<?php print $main_menu ?>
 				</div>
 			</nav>
+
+	    <?php if ($header): ?>
+	      <div id="header">
+	        <?php print $header; ?>
+	      </div>
+	    <?php endif; ?>
 
       <hgroup id="logo-title">
 	      <div class="pinch">
@@ -49,12 +55,6 @@
 			    <?php print $search_box; ?>
 	      </div>
       </hgroup>
-
-      <?php if ($header): ?>
-        <div id="header">
-          <?php print $header; ?>
-        </div>
-      <?php endif; ?>
 
       <?php if ($sub_header): ?>
         <div id="sub-header">

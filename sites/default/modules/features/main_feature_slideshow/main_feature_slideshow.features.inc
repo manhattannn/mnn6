@@ -1,6 +1,30 @@
 <?php
 
 /**
+ * Implementation of hook_imagecache_default_presets().
+ */
+function main_feature_slideshow_imagecache_default_presets() {
+  $items = array(
+    'main-feature-slideshow' => array(
+      'presetname' => 'main-feature-slideshow',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '',
+            'height' => '516',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function main_feature_slideshow_node_info() {
@@ -18,4 +42,13 @@ function main_feature_slideshow_node_info() {
     ),
   );
   return $items;
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function main_feature_slideshow_views_api() {
+  return array(
+    'api' => '2',
+  );
 }

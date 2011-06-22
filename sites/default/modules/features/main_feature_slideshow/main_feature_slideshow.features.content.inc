@@ -66,7 +66,7 @@ function main_feature_slideshow_content_default_fields() {
       'use_default_image' => 0,
       'label' => 'Image',
       'weight' => '-1',
-      'description' => '',
+      'description' => 'Use images at least 1200x516',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
     ),
