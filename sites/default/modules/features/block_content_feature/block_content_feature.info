@@ -1,0 +1,7 @@
+core = "6.x"
+description = "Block Content"
+features[node][] = "block_content"
+name = "Block Content Feature"
+package = "Features"
+project = "block_content_feature"
+version = "6.x-1.0"
