@@ -34,12 +34,6 @@
 				</div>
 			</nav>
 
-	    <?php if ($header): ?>
-	      <div id="header">
-	        <?php print $header; ?>
-	      </div>
-	    <?php endif; ?>
-
       <hgroup id="logo-title">
 	      <div class="pinch">
 		      <?php if (!empty($logo)): ?>
@@ -65,6 +59,12 @@
       <?php endif; ?>
 
     </header>
+
+    <?php if ($header): ?>
+      <div id="header">
+        <?php print $header; ?>
+      </div>
+    <?php endif; ?>
 
 
     <section id="main" class="clearfix">

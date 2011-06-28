@@ -217,10 +217,15 @@ text-transform:uppercase;
 font-size:12px;
 font-family:arial narrow;
 padding:5px 15px;
+border:none;
 }
 
 footer input[type="submit"], header input[type="submit"] {
 	border:5px solid black;
+}
+
+footer .webform-client-form input[type="submit"] {
+	margin-left:0px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -367,12 +372,29 @@ Header Search Styles
 }
 
 #search-theme-form {
-	float:right;
-	width:500px;
+ float: right;
+    width: 300px;
+margin-top: 6px;
 }
 
 #search input[type="text"] {
-	padding:4px;
+    -moz-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+    -webkit-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+    -o-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+    box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+	background: url("../images/icon_search.png") no-repeat scroll 5px 8px white;
+	    border: medium none;
+	    height: 19px;
+		padding: 4px 4px 4px 20px;
+		    width: 190px;
+}
+
+#search input[type="submit"] {
+	border:none;
+}
+
+#search {
+	width:400px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -441,9 +463,26 @@ Body Content Styles
 	border-top: 1px solid white;
 }
 
+#block-block-get-involved h5 a {
+	font-family:arial;
+	color:#25292b;
+	font-size:18px;
+}
+
+#block-block-get-involved p {
+	font-size:14px;
+	line-height:18px;
+}
+
+#block-block-get-involved h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 #page-homepage .content .col {
-	width:300px;
-	float:left;
+	float: left;
+	    padding-right: 0;
+	    width: 300px;
 }
 
 #page-homepage .col1, #page-homepage .col2 {
@@ -570,8 +609,9 @@ h3.title {
 	width:270px;
 }
 
-.read-more {
+.view-content .read-more {
 	margin-top:10px;
+	 color: #005B25;
 }
 
 /*--------------------------------------------------------------------------------
@@ -635,6 +675,10 @@ list-style-image: none;
 	margin-bottom:20px;
 }
 
+#block-block-footer-contact-us p span {
+	margin-right:16px;
+}
+
 #block-webform-webform-send-us-a-message label {
 	display:none;
 }
@@ -644,6 +688,10 @@ list-style-image: none;
 	font-size:14px;
 	color:#666666;
 	box-shadow:inset 0px 0px 10px 0px black;
+	-moz-box-shadow:inset 0px 0px 10px 0px black;
+	-webkit-box-shadow:inset 0px 0px 10px 0px black;
+	-o-box-shadow:inset 0px 0px 10px 0px black;
+	width:227px;
 }
 
 #block-webform-webform-send-us-a-message .form-item {
@@ -658,6 +706,10 @@ Not-Front Page Styles
 #content-header .breadcrumb a {
 	font-size:12px;
  color: #005B25;
+}
+
+.breadcrumb {
+	font-size:12px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -743,25 +795,27 @@ Producer Styles
 	padding:10px 20px;
 }
 
-.available-tracks {
+#node-2 .available-tracks, .available-tracks {
 	padding-top:50px;
 }
 
-.available-tracks h4 {
+#node-2 .available-tracks h4, .available-tracks h4 {
 	font-size:18px;
 	font-weight:normal;
 }
 
-.available-tracks ul {
+#node-2 .available-tracks ul, .available-tracks ul {
 	list-style-type:none;
 	list-style-image:none;
 	margin-left:0;
 }
 
-.available-tracks ul li {
-	margin-left:0;
-	width:100%;
-	margin-bottom:20px;
+#node-2 .available-tracks ul li, .available-tracks ul li {
+    height: auto;
+    margin-bottom: 20px;
+    margin-left: 0;
+    padding-bottom: 0;
+    width: 100%;
 }
 
 .copy-column {
@@ -782,23 +836,41 @@ Sidebar Styles
 --------------------------------------------------------------------------------*/
 
 .sidebar {
-	width:220px;
-	float:left;
-	padding-left:50px;
+    float: left;
+    padding-left: 49px;
+    width: 220px;
+  padding-top: 20px;
 }
 
 .sidebar .top h3 {
 	font-size:18px;
+	font-weight:bold;
 }
 
 .sidebar .top {
-	padding:0px 0px 20px 20px;
+padding: 10px 0 10px 24px;
 	border-bottom:1px solid #b2bbc0;
 	margin-bottom:20px;
 }
 
+.sidebar .outer {
+	font-size:14px;
+}
+
+.sidebar .block {
+	margin-bottom:50px;
+}
+
 .block-views-forms-producers-block, .block-views-faq-sidebar-producers-block {
 	margin-bottom:60px;
+}
+
+#block-views-forms-producers-block .top {
+	background:url('../images/icon_forms.png') no-repeat 0 11px;
+}
+
+#block-views-faq-sidebar-producers-block .top {
+background:url('../images/icon_faq.png') no-repeat 0 11px;
 }
 
 .view-content a {
@@ -808,7 +880,12 @@ Sidebar Styles
 }
 
 .view-footer a {
-	font-weight:bold;
+	font-weight:normal;
+}
+
+.sidebar .views-row {
+	margin-bottom:16px;
+	line-height:18px;
 }
 
 
@@ -817,49 +894,110 @@ Numbers
 --------------------------------------------------------------------------------*/
 
 
-#node-2 ul li {
+#node-2 ul li, #node-3 ul li {
 	height:60px;
-	padding-bottom:20px;
+	padding-bottom: 28px;
 	width:100%;
 }
 
 
-#node-2 ul li span {
-	border-radius:30px;
-	-webkit-border-radius:30px;
-	-moz-border-radius:30px;
-	-o-border-radius:30px;
-	background-color:#5a6970;
-	padding:20px;
-	color:white;
-	font-family:"Droid Serif", georgia;
-	float:left;
-	font-size:24px;
-	margin-right:20px;
+#node-2 ul li span, #node-3 ul li span {
+	border-radius:45px;
+	-webkit-border-radius:45px;
+	-moz-border-radius:45px;
+	-o-border-radius:45px;
+ background-color: #5A6970;
+    border-radius: 45px 45px 45px 45px;
+    color: white;
+    float: left;
+    font-family: "Droid Serif",georgia;
+    font-size: 24px;
+    margin-right: 20px;
+       padding: 22px 24px;
 }
 
-#node-2 ul li h5 {
+#node-2 ul li h5, #node-3 ul li h5 {
 	font-size:18px;
 	font-family:arial;
 	font-weight:normal;
-	padding-top:16px;
 }
 
 
-#node-2 ul li p, #node-2 ul li p a {
-	font-size:14px;
+#node-2 ul li p, #node-2 ul li p a,
+#node-3 ul li p, #node-3 ul li p a {
+	font-size: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+margin-bottom: 0;
+}
+
+#node-2 ul, #node-3 ul {
+	margin-left:0;
+	list-style-type:none;
+	list-style-image:none;
 }
 
 
+#node-3 .col, .col {
+    float: left;
+    padding-right: 10px;
+    width: 300px;
+}
 
+#node-2 .available-tracks ul li span, .available-tracks ul li span {
+	background:none;
+	border-radius:none;
+	    float: left;
+	    margin-right: 20px;
+	    padding: 0px;
+}
 
 /*--------------------------------------------------------------------------------
 FAQS
 --------------------------------------------------------------------------------*/
 
 .qa {
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.question {
+	padding-bottom:10px;
 	font-weight:bold;
 }
+
+.answer {
+	padding-bottom:20px;
+}
+
+.question p, .answer p {
+	margin-bottom:10px;
+}
+
+
+/*--------------------------------------------------------------------------------
+Web Forms
+--------------------------------------------------------------------------------*/
+
+.webform-client-form label {
+	float: left;
+	    font-weight: normal;
+	    margin-right: 10px;
+	    text-align: right;
+	    width: 120px;
+	  padding-top: 5px;
+	}
+
+.webform-client-form input[type="text"] {
+	padding:4px;
+	width:300px;
+}
+
+.webform-client-form input[type="submit"] {
+margin-left:130px;
+}
+
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }

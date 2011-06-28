@@ -33,5 +33,5 @@ drupal_set_title('Shows');
 </article>
 
 <pre>
-	<?php print_r($node); ?>
+	<?php //print_r($node); ?>
 </pre>
