@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_ctools_plugin_api().
  */
-function block_content_feature_ctools_plugin_api() {
+function webform_feature_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
@@ -13,12 +13,12 @@ function block_content_feature_ctools_plugin_api() {
 /**
  * Implementation of hook_node_info().
  */
-function block_content_feature_node_info() {
+function webform_feature_node_info() {
   $items = array(
-    'block_content' => array(
-      'name' => t('Block Content'),
+    'webform' => array(
+      'name' => t('Webform'),
       'module' => 'features',
-      'description' => t('Content that is only used in a block.'),
+      'description' => t('Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'has_body' => '1',

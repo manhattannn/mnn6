@@ -1,0 +1,3 @@
+<?php
+
+include_once('channel_info_feature.features.inc');

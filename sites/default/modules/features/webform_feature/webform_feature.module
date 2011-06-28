@@ -1,0 +1,3 @@
+<?php
+
+include_once('webform_feature.features.inc');

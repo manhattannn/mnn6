@@ -11,9 +11,10 @@ function news_feature_content_default_fields() {
     'field_name' => 'field_image',
     'type_name' => 'news',
     'display_settings' => array(
+      'weight' => '-3',
+      'parent' => '',
       'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
+        'format' => 'hidden',
       ),
       'teaser' => array(
         'format' => 'image_plain',
