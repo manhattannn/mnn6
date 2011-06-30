@@ -402,14 +402,14 @@ Homepage Hero Styles
 --------------------------------------------------------------------------------*/
 
 #header {
- background: none repeat scroll 0 0 blue;
-    height: 400px;
-    margin-top: -80px;
-    width: 100%;
-    z-index: 0;
+	height: 516px;
+	margin-top: -80px;
+	width: 100%;
+	z-index: 0;
+	position: relative;
 }
 
-.views-field-field-primary-headline-value p {
+#block-views-homepage-slideshow .primary-headline {
 	font-size:46px;
 	font-family:'Droid Serif', Georgia, serif;
 	color:#000000;
@@ -417,32 +417,80 @@ Homepage Hero Styles
 	background:rgba(255, 234, 0, 0.85);
 	float:left;
 	clear:both;
-	 padding: 20px 16px;
+	 padding: 24px 16px;
+	position: absolute;
+	top: 210px;
+	left: 210px;
 }
 
-.views-field-field-secondary-headline-value {
+#block-views-homepage-slideshow .secondary-headline {
 	clear:left;
 	font-family:'Droid Serif', Georgia, serif;
 	color:#000000;
 	text-shadow: -1px 1px 0 #D4D4D4;
 	float:left;
-	padding: 10px 18px;
+	padding: 3px 18px;
 	background:rgba(255, 255, 255, 0.80);
+	position: absolute;
+	left: 210px;
+	top: 283px;
 	}
 
+#block-views-homepage-slideshow .image {
+	text-align: center;
+	width: 1600px;
+	height: 516px;
+	margin: 0 auto;
+
+}
 #block-views-homepage-slideshow img {
 	border:none;
 	box-shadow:none;
-	position:absolute;
+	display: block;
+	/*position:absolute;
 	top:-50px;
 	width:100%;
 	max-width:1600px;
 	left:50%;
-	margin-left:-800px;
+	margin-left:-800px;*/
 }
 
 #block-views-homepage-slideshow {
 	width:100%;
+	height: 516px;
+	background: none repeat scroll 0 0 blue;
+}
+#block-views-homepage-slideshow .view{
+	position: relative;
+	height: 516px;
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#block-views-homepage-slideshow .views-row{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 1200px;
+}
+#block-views-homepage-slideshow .views-row-first{
+	left: 0;
+}
+#slideshow-buttons a{
+	position: absolute;
+	top: 225px;
+	width: 34px;
+	height: 72px;
+	display: block;
+	background: transparent url(../images/hero-buttons.png) no-repeat;
+}
+#slideshow-buttons a.left{
+	background-position: left top;
+	left: 0;
+}
+#slideshow-buttons a.right{
+	background-position: right top;
+	right: 0;
 }
 
 

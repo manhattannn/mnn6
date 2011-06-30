@@ -24,3 +24,7 @@ stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/default.css
 stylesheets[all][] = css/style.css
 
+; JavaScript
+; ------------------------------
+scripts[] = js/script.js
+
