@@ -66,6 +66,13 @@
       </div>
     <?php endif; ?>
 
+		<?php if ($watch_now): ?>
+	    <section id="watch-now">
+		    <div class="pinch">
+			    <?php print $watch_now ?>
+		    </div>
+	    </section>
+		<?php endif; ?>
 
     <section id="main" class="clearfix">
       <div class="pinch">
@@ -135,12 +142,20 @@
 
 
       <?php if(!empty($footer_message) || !empty($footer)): ?>
-        <footer>
+        <footer id="footer">
 	        <div class="pinch">
 		        <?php print $footer_message; ?>
 		        <?php print $footer; ?>
 	        </div>
         </footer>
+      <?php endif; ?>
+
+      <?php if(!empty($sub_footer)): ?>
+        <footer id="sub-footer">
+			<div class="pinch">
+					<?php print $sub_footer; ?>
+        	</div>
+</footer>
       <?php endif; ?>
 
     </div>
