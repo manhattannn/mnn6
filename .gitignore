@@ -1,0 +1,14 @@
+# Ignore configuration files that may contain sensitive information.
+sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
+files/*
+
+# Drush backup directory
+backup/*
+
+# Other
+_server_info.php
+.DS_Store
