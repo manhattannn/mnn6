@@ -1,0 +1,13 @@
+; $Id: sbp_nodes.info,v 1.1.2.2 2010/08/17 19:10:31 jhodgdon Exp $
+name = Search by Page Nodes
+description = Sub-Module for Search by Page: Allows you to choose node types for search indexing in Search by Page.
+core = 6.x
+dependencies[] = search_by_page
+package = "Search"
+
+; Information added by drupal.org packaging script on 2011-01-01
+version = "6.x-1.14"
+core = "6.x"
+project = "search_by_page"
+datestamp = "1293841004"
+

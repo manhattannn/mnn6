@@ -42,7 +42,18 @@ function ctools_term_context($arg = NULL, $conf = NULL, $empty = FALSE) {
       break;
 
     case 'term':
-      $terms = taxonomy_get_term_by_name($arg);
+    case 'term_dashed':
+      if ($conf['input_form'] == 'term_dashed') {
+        // Find terms with term name spaces transformed to dashes.
+        $db_result = db_query(db_rewrite_sql("SELECT t.tid, t.* FROM {term_data} t WHERE REPLACE(LOWER(t.name), ' ', '-') = LOWER('%s')", 't', 'tid'), trim($arg));
+        $terms = array();
+        while ($term = db_fetch_object($db_result)) {
+          $terms[] = $term;
+        }
+      }
+      else {
+        $terms = taxonomy_get_term_by_name($arg);
+      }
 
       $conf['vids'] = is_array($conf['vids']) ? array_filter($conf['vids']) : NULL;
       if ((count($terms) > 1) && isset($conf['vids'])) {
@@ -81,7 +92,11 @@ function ctools_term_settings_form(&$form, &$form_state, $conf) {
   $form['settings']['input_form'] = array(
     '#title' => t('Argument type'),
     '#type' => 'radios',
-    '#options' => array('tid' => t('Term ID'), 'term' => t('Term name')),
+    '#options' => array(
+      'tid' => t('Term ID'),
+      'term' => t('Term name'),
+      'term_dashed' => t('Term name (dashed)'),
+    ),
     '#default_value' => $conf['input_form'],
     '#prefix' => '<div class="clear-block">',
     '#suffix' => '</div>',
@@ -123,6 +138,11 @@ function ctools_term_ctools_argument_placeholder($conf) {
       return array(
         '#type' => 'textfield',
         '#description' => t('Enter a taxonomy term name.'),
+      );
+    case 'term_dashed':
+      return array(
+        '#type' => 'textfield',
+        '#description' => t('Enter a taxonomy term name (lowercased and spaces converted to dashes).'),
       );
   }
 }

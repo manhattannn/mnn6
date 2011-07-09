@@ -1,0 +1,18 @@
+see http://drupal.org/node/398400#comment-4636812
+
+line 160 in emfield.cck.inc
+Original code:
+    case 'save':
+      $columns = array('providers');
+      foreach (module_implements('emfield_widget_settings_extra') as $module) {
+        $columns = array_merge($columns, module_invoke($module, 'emfield_widget_settings_extra', 'save', $widget));
+      }
+
+Modified code:
+    case 'save':
+      $columns = array('providers');
+      foreach (module_implements('emfield_widget_settings_extra') as $module) {
+        $check = module_invoke($module, 'emfield_widget_settings_extra', 'save', $widget);
+        $invoked = (is_array($check) ? $check : array());
+        $columns = array_merge($columns, $invoked);
+      }

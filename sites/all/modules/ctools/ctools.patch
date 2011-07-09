@@ -1,0 +1,52 @@
+Index: plugins/arguments/term.inc
+===================================================================
+RCS file: /cvs/drupal-contrib/contributions/modules/ctools/plugins/arguments/term.inc,v
+retrieving revision 1.6.2.4
+diff -u -p -r1.6.2.4 term.inc
+--- plugins/arguments/term.inc	5 Jul 2010 19:22:35 -0000	1.6.2.4
++++ plugins/arguments/term.inc	22 Feb 2011 16:56:43 -0000
+@@ -42,7 +42,18 @@ function ctools_term_context($arg = NULL
+       break;
+ 
+     case 'term':
+-      $terms = taxonomy_get_term_by_name($arg);
++    case 'term_dashed':
++      if ($conf['input_form'] == 'term_dashed') {
++        // Find terms with term name spaces transformed to dashes.
++        $db_result = db_query(db_rewrite_sql("SELECT t.tid, t.* FROM {term_data} t WHERE REPLACE(LOWER(t.name), ' ', '-') = LOWER('%s')", 't', 'tid'), trim($arg));
++        $terms = array();
++        while ($term = db_fetch_object($db_result)) {
++          $terms[] = $term;
++        }
++      }
++      else {
++        $terms = taxonomy_get_term_by_name($arg);
++      }
+ 
+       $conf['vids'] = is_array($conf['vids']) ? array_filter($conf['vids']) : NULL;
+       if ((count($terms) > 1) && isset($conf['vids'])) {
+@@ -81,7 +92,11 @@ function ctools_term_settings_form(&$for
+   $form['settings']['input_form'] = array(
+     '#title' => t('Argument type'),
+     '#type' => 'radios',
+-    '#options' => array('tid' => t('Term ID'), 'term' => t('Term name')),
++    '#options' => array(
++      'tid' => t('Term ID'),
++      'term' => t('Term name'),
++      'term_dashed' => t('Term name (dashed)'),
++    ),
+     '#default_value' => $conf['input_form'],
+     '#prefix' => '<div class="clear-block">',
+     '#suffix' => '</div>',
+@@ -124,6 +139,11 @@ function ctools_term_ctools_argument_pla
+         '#type' => 'textfield',
+         '#description' => t('Enter a taxonomy term name.'),
+       );
++    case 'term_dashed':
++      return array(
++        '#type' => 'textfield',
++        '#description' => t('Enter a taxonomy term name (lowercased and spaces converted to dashes).'),
++      );
+   }
+ }
+ 

@@ -1,0 +1,3 @@
+<?php
+
+include_once('certification_class_feature.features.inc');
