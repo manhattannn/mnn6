@@ -1,0 +1,113 @@
+<?php
+// $Id$
+
+	/******************************************************************************
+	 * Hooks
+	 *****************************************************************************/
+
+	/**
+	 * Implementation of hook_init().
+	 */
+	function mnnshow_init() {
+		//module_load_include('inc', 'mnnshow');
+	}
+
+	/*
+	 * Implementation of hook_help().
+	 */
+	function mnnshow_help($path, $arg) {
+		if ($path == 'admin/help#mnnshow') {
+			$output = '<p>' . t('') . '</p>';
+			return $output;
+		}
+	}
+
+	/**
+	 * Implementation of hook_menu().
+	 */
+	function mnnshow_menu() {
+		$items['shows/%'] = array(
+			'title' => 'Show Info',
+			'page callback' => 'mnnshow_show_info',
+			'page arguments' => array(1),
+			'access arguments' => array('access content')
+		);
+
+		return $items;
+	}
+
+	/**
+	 * Page callback.
+	 */
+	function mnnshow_show_info($id) {
+		if (!is_numeric($id)) {
+			return null;
+		}
+
+		$sql = 'SELECT DISTINCT s.project_id, s.title, s.narrative AS description, s.topic, ar.start_time, ar.channel ';
+		$sql .= 'FROM {ac_report_project_cache} s ';
+		$sql .= 'LEFT JOIN {ac_report_episode_cache} ep ON s.project_id = ep.project_id ';
+		$sql .= 'LEFT JOIN {ac_report_airing_cache} ar ON ep.episode_id = ar.episode_id ';
+		$sql .= 'WHERE s.project_id = "' . $id . '" ';
+		$sql .= 'LIMIT 1';
+		watchdog('mnnshow', 'sql:' . $sql);
+		$sql = db_rewrite_sql($sql);
+
+		$result = db_query($sql);
+		while ($row = db_fetch_object($result)) {
+			$title = ucwords(strtolower($row->title));
+			drupal_set_title($title);
+			$content = '<div class="meta"><span class="channel">'. $row->channel .'</span>';
+			$content .= '<span class="next-airing">'. $row->start_time .'</span></div>';
+			$content .= '<div class="content">' . $row->description . '</div>';
+
+			return $content;
+			//return var_export($row, true);
+		}
+	}
+
+	/**
+	 * Implementation of hook_block().
+	 */
+	function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
+		//watchdog('mnnshow', 'op:' . $op . ' delta:' . $delta . ' edit:' . $edit);
+		$block['subject'] = t('About the Producer');
+		switch ($op) {
+			case 'list':
+				$blocks[0]['info'] = t('Show Producer Info');
+				$blocks[0]['cache'] = BLOCK_NO_CACHE;
+				return $blocks;
+
+			case 'view':
+				$path = drupal_get_path_alias($_GET['q']);
+				$path = explode('/', $path);
+				if ($path[0] == 'shows' && is_numeric($path[1])) {
+					$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+					$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+					$sql .= 'ON s.exec_producer_id = p.producer_id ';
+					$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+					$sql = db_rewrite_sql($sql);
+
+					$result = db_query($sql);
+					while ($row = db_fetch_object($result)) {
+						if ($row->display_name)
+							$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
+						if ($row->website)
+							$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
+						if ($row->email)
+							$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
+						if ($row->phone_primary)
+							$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
+					}
+
+					$block['content'] = $content;
+				}
+				else {
+					$block['content'] = t('Producer info not found');
+
+				}
+
+				return $block;
+		}
+
+	}

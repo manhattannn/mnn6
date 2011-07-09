@@ -182,6 +182,24 @@ function main_feature_slideshow_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('items_per_page', 0);
+  $handler->override_option('row_plugin', 'semanticviews_fields');
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'field_image_fid' => array(
+        'element_type' => 'div',
+        'class' => 'image',
+      ),
+      'field_primary_headline_value' => array(
+        'element_type' => 'div',
+        'class' => 'primary-headline',
+      ),
+      'field_secondary_headline_value' => array(
+        'element_type' => 'div',
+        'class' => 'secondary-headline',
+      ),
+    ),
+    'skip_blank' => 0,
+  ));
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->override_option('block_description', 'Homepage slideshow');
   $handler->override_option('block_caching', -1);
