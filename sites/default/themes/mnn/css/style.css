@@ -447,7 +447,12 @@ Homepage Hero Styles
 	position: relative;
 }
 
-#block-views-homepage-slideshow .primary-headline p {
+#block-views-homepage-slideshow .primary-headline {
+	position: absolute;
+	top: 210px;
+	left: 90px;
+}
+#block-views-homepage-slideshow .primary-headline p{
 	font-size:46px;
 	font-family:'Droid Serif', Georgia, serif;
 	color:#000000;
@@ -457,9 +462,6 @@ Homepage Hero Styles
 	float:left;
 	clear:both;
 	 padding: 24px 16px;
-	position: absolute;
-	top: 210px;
-	left: 210px;
 }
 
 #block-views-homepage-slideshow .secondary-headline {
@@ -472,29 +474,33 @@ Homepage Hero Styles
 	background:white;
 	background:rgba(255, 255, 255, 0.80);
 	position: absolute;
-	left: 210px;
+	left: 90px;
 	 top: 287px;
 	max-width:600px;
 	}
 
 #block-views-homepage-slideshow .image {
 	text-align: center;
-	width: 1600px;
+	width: 100%;
 	height: 516px;
 	margin: 0 auto;
-
 }
-#block-views-homepage-slideshow img {
+#block-views-homepage-slideshow .image .pinch{
+	height: 516px;
+	position: relative;
+	display: none;
+}
+/*#block-views-homepage-slideshow img {
 	border:none;
 	box-shadow:none;
 	display: block;
-	/*position:absolute;
+	position:absolute;
 	top:-50px;
 	width:100%;
 	max-width:1600px;
 	left:50%;
-	margin-left:-800px;*/
-}
+	margin-left:-800px;
+}*/
 
 #block-views-homepage-slideshow {
 	width:100%;
@@ -504,7 +510,7 @@ Homepage Hero Styles
 #block-views-homepage-slideshow .view{
 	position: relative;
 	height: 516px;
-	width: 1200px;
+	width: 100%;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -512,10 +518,12 @@ Homepage Hero Styles
 	width: 100%;
 	position: absolute;
 	top: 0;
-	left: 1200px;
-}
-#block-views-homepage-slideshow .views-row-first{
 	left: 0;
+	display: none;
+}
+#block-views-homepage-slideshow .views-row-first,
+#block-views-homepage-slideshow .views-row-first .pinch{
+	display: block;
 }
 #slideshow-buttons a{
 	position: absolute;
