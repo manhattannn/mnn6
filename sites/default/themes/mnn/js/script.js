@@ -1,3 +1,22 @@
+/************************************************* site ****************************************************/
+var site = (function(){
+
+	function init(){
+		setupWatermark();
+	}
+
+	function setupWatermark(){
+		$('#edit-submitted-name').watermark('Your Name');
+		$('#edit-submitted-email-address').watermark('Your Email');
+		$('#edit-submitted-message').watermark('Your message goes here');
+	}
+
+	return {
+		init: init
+	}
+})();
+
+
 /******************************************** homeSlideshow ************************************************/
 var homeSlideshow = (function(){
 	var slideSpeed = 1500;            // speed of transition from one slide to the next
@@ -89,4 +108,5 @@ var homeSlideshow = (function(){
 
 $(document).ready(function(){
 	homeSlideshow.init();
+	site.init();
 });

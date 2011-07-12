@@ -28,5 +28,6 @@ stylesheets[all][] = css/style.css
 
 ; JavaScript
 ; ------------------------------
+scripts[] = js/watermark.js
 scripts[] = js/script.js
 

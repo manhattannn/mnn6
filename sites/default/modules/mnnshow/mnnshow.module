@@ -26,7 +26,31 @@
 	 * Implementation of hook_menu().
 	 */
 	function mnnshow_menu() {
-		$items['shows/%'] = array(
+		$items['shows/past-shows/category'] = array(
+			'title' => 'Shows',
+			'page callback' => 'mnnshow_show_list_past_by_category',
+			'page arguments' => array(3),
+			'access arguments' => array('access content')
+		);
+		$items['shows/past-shows'] = array(
+			'title' => 'Shows',
+			'page callback' => 'mnnshow_show_list_past_by_alpha',
+			'page arguments' => array(2),
+			'access arguments' => array('access content')
+		);
+		$items['shows/category'] = array(
+			'title' => 'Shows',
+			'page callback' => 'mnnshow_show_list_current_by_category',
+			'page arguments' => array(2),
+			'access arguments' => array('access content')
+		);
+		$items['shows'] = array(
+			'title' => 'Shows',
+			'page callback' => 'mnnshow_show_list_current_by_alpha',
+			'page arguments' => array(1),
+			'access arguments' => array('access content')
+		);
+		$items['show-info/%'] = array(
 			'title' => 'Show Info',
 			'page callback' => 'mnnshow_show_info',
 			'page arguments' => array(1),
@@ -39,75 +63,428 @@
 	/**
 	 * Page callback.
 	 */
+	function mnnshow_show_list_past_by_category($category) {
+		if (!$category) {
+			$category = "all";
+			$display_category = 'All';
+		}
+		else {
+			$categories = _mnnshow_get_categories();
+			if (array_key_exists($category, $categories)) {
+				$display_category = $categories[$category];
+			}
+			else {
+				$category = "all";
+				$display_category = 'All';
+			}
+		}
+
+		if ($category == 'all'){
+			$topic = '';
+		}
+		else {
+			$topic = ' AND s.topic = "'. $display_category .'"';
+		}
+
+		$project_status = 's.project_status = "Archival" OR s.project_status = "Completed" OR s.project_status = "Cancelled" OR s.project_status = "Withdrawn"';
+
+		$query = 'SELECT s.project_id, s.title ';
+		$query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' )'.$topic.' ORDER BY s.title ASC';
+
+		$count_query = 'SELECT COUNT(*) ';
+		$count_query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' )'.$topic.' ORDER BY s.title ASC';
+
+		return _mnnshow_show_past_list($query, $count_query, $display_category);
+	}
+
+	/**
+	 * Page callback.
+	 */
+	function mnnshow_show_list_past_by_alpha($char) {
+		if (!$char)
+			$char = "a";
+		else {
+			$char = substr(strtolower($char), 0, 1); // first lowercase character
+			if (!ctype_alpha($char))
+				$char = 'a';
+		}
+
+		$project_status = 's.project_status = "Archival" OR s.project_status = "Completed" OR s.project_status = "Cancelled" OR s.project_status = "Withdrawn"';
+		
+		$query = 'SELECT s.project_id, s.title ';
+		$query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' ) ';
+		$query .= 'AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+
+		$count_query = 'SELECT COUNT(*) ';
+		$count_query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' ) ';
+		$count_query .= 'AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+
+		return _mnnshow_show_past_list($query, $count_query, strtoupper($char));
+	}
+
+	/**
+	 * Page callback.
+	 */
+	function mnnshow_show_list_current_by_category($category) {
+		if (!$category) {
+			$category = "all";
+			$display_category = 'All';
+		}
+		else {
+			$categories = _mnnshow_get_categories();
+			if (array_key_exists($category, $categories)) {
+				$display_category = $categories[$category];
+			}
+			else {
+				$category = "all";
+				$display_category = 'All';
+			}
+		}
+
+		if ($category == 'all'){
+			$where = '';
+		}
+		else {
+			$where = ' AND s.topic = "'. $display_category .'"';
+		}
+
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
+		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
+		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
+		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active"'.$where.' ORDER BY s.title ASC';
+
+		$count_query = 'SELECT COUNT(*), ';
+		$count_query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
+		$count_query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
+		$count_query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active"'.$where.' ORDER BY s.title ASC';
+
+		return _mnnshow_show_current_list($query, $count_query, $display_category);
+	}
+
+	/**
+	 * Page callback.
+	 */
+	function mnnshow_show_list_current_by_alpha($char) {
+		if (!$char)
+			$char = "a";
+		else {
+			$char = substr(strtolower($char), 0, 1); // first lowercase character
+			if (!ctype_alpha($char))
+				$char = 'a';
+		}
+
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
+		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
+		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
+		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active" AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+
+		$count_query = 'SELECT COUNT(*), ';
+		$count_query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
+		$count_query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
+		$count_query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active" AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+
+		return _mnnshow_show_current_list($query, $count_query, NULL);
+	}
+
+	function _mnnshow_show_current_list($query, $count_query, $category) {
+		$pager_num = 0;
+		$result = pager_query(db_rewrite_sql($query), 15, $pager_num, $count_query);
+		$content = '';
+		if (!is_null($category))
+			$content .= '<h2>'.$category.'</h2>';
+		while ($row = db_fetch_object($result)) {
+			$title = $row->title; //ucwords(strtolower($row->title));
+			$url_title = trim(preg_replace("/[^A-Za-z0-9 ]/", '', strtolower($title))); // remove all non-alphanumeric characters, then remove leading/trailing spaces
+			$url_title = preg_replace("/[ ]/", '-', $url_title); // replace spaces with dashes
+
+			$content .= '<div class="row">';
+			$content .= '<h3 class="title"><a href="/show-info/'. $row->project_id .'/'. $url_title .'">'. $title .'</a></h3>';
+			$content .= '<div class="category">'. $row->topic .'</div>';
+			$content .= '<div class="meta"><span class="channel">'. $row->channel .'</span>';
+			if ($row->start_time){
+				$content .= '<span class="next-airing">Next Airing: '. date("D, M j, Y \a\\t g:ia T", strtotime($row->start_time)) .'</span></div>';
+			}
+			else {
+				$content .= '<span class="next-airing">Next Airing: There are no scheduled airings for this show.</span></div>';
+			}
+			$content .= '<div class="content">' . $row->description . '</div>';
+			$content .= '</div>';
+		}
+		return $content . theme('pager', NULL, 15, $pager_num);
+	}
+
+	function _mnnshow_show_past_list($query, $count_query, $category) {
+		$pager_num = 0;
+		$result = pager_query(db_rewrite_sql($query), 45, $pager_num, $count_query);
+		$content = '';
+		if (!is_null($category))
+			$content .= '<h2>'.$category.'</h2>';
+		$items = array();
+		while ($row = db_fetch_object($result)) {
+			$title = $row->title; //ucwords(strtolower($row->title));
+			$url_title = trim(preg_replace("/[^A-Za-z0-9 ]/", '', strtolower($title))); // remove all non-alphanumeric characters, then remove leading/trailing spaces
+			$url_title = preg_replace("/[ ]/", '-', $url_title); // replace spaces with dashes
+
+			$items[] = '<a href="/show-info/'. $row->project_id .'/'. $url_title .'">'. $title .'</a>';
+		}
+
+		$col1 = $col2 = $col3 = floor(count($items) / 3);
+		if (count($items) % 3 == 2)
+			$col2++;
+		if (count($items) % 3 == 1)
+			$col1++;
+		$content .= '<div class="col1">';
+		for ($i = 0; $i < $col1; $i++){
+			$content .= '<div class="item-'.$i.'">'.$items[$i].'</div>';
+		}
+		$content .= '</div>';
+		$content .= '<div class="col2">';
+		for ($i = $col1; $i < $col1 + $col2; $i++){
+			$content .= '<div class="item-'.$i.'">'.$items[$i].'</div>';
+		}
+		$content .= '</div>';
+		$content .= '<div class="col3">';
+		for ($i = $col1 + $col2; $i < $col1 + $col2 + $col3; $i++){
+			$content .= '<div class="item-'.$i.'">'.$items[$i].'</div>';
+		}
+		$content .= '</div>';
+
+		return $content . theme('pager', NULL, 45, $pager_num);
+	}
+
+	/**
+	 * Page callback.
+	 */
 	function mnnshow_show_info($id) {
 		if (!is_numeric($id)) {
 			return null;
 		}
 
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
+		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
+		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
+		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_id = "'.$id.'"';
+
 		$sql = 'SELECT DISTINCT s.project_id, s.title, s.narrative AS description, s.topic, ar.start_time, ar.channel ';
 		$sql .= 'FROM {ac_report_project_cache} s ';
 		$sql .= 'LEFT JOIN {ac_report_episode_cache} ep ON s.project_id = ep.project_id ';
 		$sql .= 'LEFT JOIN {ac_report_airing_cache} ar ON ep.episode_id = ar.episode_id ';
-		$sql .= 'WHERE s.project_id = "' . $id . '" ';
+		$sql .= 'WHERE s.project_id = "' . $id . '" AND ar.start_time > NOW() ';
+		$sql .= 'ORDER BY ar.start_time ASC ';
 		$sql .= 'LIMIT 1';
-		watchdog('mnnshow', 'sql:' . $sql);
-		$sql = db_rewrite_sql($sql);
+		$sql = db_rewrite_sql($query);
 
-		$result = db_query($sql);
+		$result = db_query($query);
+		//$count = 0;
+		$content = '';
 		while ($row = db_fetch_object($result)) {
-			$title = ucwords(strtolower($row->title));
+			$title = $row->title; // ucwords(strtolower($row->title));
 			drupal_set_title($title);
-			$content = '<div class="meta"><span class="channel">'. $row->channel .'</span>';
-			$content .= '<span class="next-airing">'. $row->start_time .'</span></div>';
+			$content .= '<div class="category">'. $row->topic .'</div>';
+			$content .= '<div class="meta"><span class="channel">'. $row->channel .'</span>';
+			if ($row->start_time){
+				$content .= '<span class="next-airing">Next Airing: '. date("D, M j, Y \a\\t g:ia T", strtotime($row->start_time)) .'</span></div>';
+			}
+			else {
+				$content .= '<span class="next-airing">Next Airing: There are no scheduled airings for this show.</span></div>';
+			}
 			$content .= '<div class="content">' . $row->description . '</div>';
-
-			return $content;
+			//$count++;
 			//return var_export($row, true);
 		}
+		return $content;
 	}
 
 	/**
 	 * Implementation of hook_block().
 	 */
 	function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
-		//watchdog('mnnshow', 'op:' . $op . ' delta:' . $delta . ' edit:' . $edit);
-		$block['subject'] = t('About the Producer');
 		switch ($op) {
 			case 'list':
 				$blocks[0]['info'] = t('Show Producer Info');
 				$blocks[0]['cache'] = BLOCK_NO_CACHE;
+
+				$blocks[1]['info'] = t('Shows Filters Heading');
+				$blocks[1]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
-				$path = drupal_get_path_alias($_GET['q']);
-				$path = explode('/', $path);
-				if ($path[0] == 'shows' && is_numeric($path[1])) {
-					$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
-					$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
-					$sql .= 'ON s.exec_producer_id = p.producer_id ';
-					$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
-					$sql = db_rewrite_sql($sql);
+				if ($delta == 0) {
+					$block['subject'] = t('About the Producer');
+					$path = drupal_get_path_alias($_GET['q']);
+					$path = explode('/', $path);
+					if ($path[0] == 'show-info' && is_numeric($path[1])) {
+						$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+						$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+						$sql .= 'ON s.exec_producer_id = p.producer_id ';
+						$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+						$sql = db_rewrite_sql($sql);
 
-					$result = db_query($sql);
-					while ($row = db_fetch_object($result)) {
-						if ($row->display_name)
-							$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
-						if ($row->website)
-							$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
-						if ($row->email)
-							$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
-						if ($row->phone_primary)
-							$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
+						$result = db_query($sql);
+						while ($row = db_fetch_object($result)) {
+							if ($row->display_name)
+								$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
+							if ($row->website)
+								$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
+							if ($row->email)
+								$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
+							if ($row->phone_primary)
+								$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
+						}
+
+						$block['content'] = $content;
+					}
+					else {
+						$block['content'] = t('Producer info not found');
+					}
+				}
+				elseif ($delta == 1){
+					$path = drupal_get_path_alias($_GET['q']);
+					$path = explode('/', $path);
+					if ($path[0] == 'shows' && $path[1] == 'past-shows' && $path[2] == 'category') { // past shows with category
+						$is_current_shows = false;
+						$is_alphabetical = false;
+						if ($path[3])
+							$current_category = $path[3];
+						else
+							$current_category = '';
+					}
+					elseif ($path[0] == 'shows' && $path[1] == 'past-shows') { // past shows alphabetical
+						$is_current_shows = false;
+						$is_alphabetical = true;
+						if ($path[2])
+							$current_category = $path[2];
+						else
+							$current_category = 'a';
+					}
+					elseif ($path[0] == 'shows' && $path[1] == 'category') { // current shows with category
+						$is_current_shows = true;
+						$is_alphabetical = false;
+						if ($path[2])
+							$current_category = $path[2];
+						else
+							$current_category = '';
+					}
+					else { // current shows alphabetical
+						$is_current_shows = true;
+						$is_alphabetical = true;
+						if ($path[1])
+							$current_category = $path[1];
+						else
+							$current_category = 'a';
 					}
 
-					$block['content'] = $content;
-				}
-				else {
-					$block['content'] = t('Producer info not found');
+					// build the 'viewing' section
+					$content = '<div class="viewing">Viewing:';
+					if ($is_current_shows){
+						$content .= '<span class="current">Current Shows</span>';
+						if ($is_alphabetical)
+							$content .= '<span class="past"><a href="/shows/past-shows">Past Shows</a></span>';
+						else
+							$content .= '<span class="past"><a href="/shows/past-shows/category/'.$current_category.'">Past Shows</a></span>';
+					}
+					else{
+						if ($is_alphabetical)
+							$content .= '<span class="current"><a href="/shows">Current Shows</a></span>';
+						else
+							$content .= '<span class="current"><a href="/shows/category/'.$current_category.'">Current Shows</a></span>';
+						$content .= '<span class="past">Past Shows</span>';
+					}
+					$content .= '</div>';
 
+					// build the 'sort by' section
+					$content .= '<div class="sort-by">Sort By:';
+					if ($is_alphabetical){
+						$content .= '<span class="alphabetical">Alphabetical</span>';
+						if ($is_current_shows)
+							$content .= '<span class="category"><a href="/shows/category">Category</a></span>';
+						else
+							$content .= '<span class="category"><a href="/shows/past-shows/category">Category</a></span>';
+					}
+					else{
+						if ($is_current_shows)
+							$content .= '<span class="alphabetical"><a href="/shows">Alphabetical</a></span>';
+						else
+							$content .= '<span class="alphabetical"><a href="/shows/past-shows">Alphabetical</a></span>';
+						$content .= '<span class="category">Category</span>';
+						$content .= _mnnshow_block_category_dropdown($is_current_shows, $current_category);
+					}
+					$content .= '</div>';
+
+					// build the alphabet links (if necessary)
+					if ($is_alphabetical){
+						$content .= _mnnshow_block_alphabet_links($is_current_shows, $current_category);
+					}
 				}
 
+				$block['content'] = $content;
 				return $block;
 		}
 
+	}
+
+	function _mnnshow_block_alphabet_links($is_current_shows, $current_category) {
+		$links = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+		$content = '<div class="alphabet">';
+		foreach ($links as $link) {
+			$content .= '<span>';
+			if (strtolower($current_category) == $link){
+				$content .= strtoupper($link);
+			}
+			else {
+				if ($is_current_shows)
+					$l = '/shows/';
+				else
+					$l = '/shows/past-shows/';
+				$content .= '<a href="'.$l.$link.'">'.strtoupper($link).'</a>';
+			}
+			$content .= '</span>';
+		}
+		$content .= '</div>';
+
+		return $content;
+	}
+
+	function _mnnshow_block_category_dropdown($is_current_shows, $current_category) {
+		global $base_root;
+		if (!$is_current_shows)
+			$past_url = 'past-shows/';
+		$categories = _mnnshow_get_categories();
+		$js = 'location.href=\''. $base_root .'/shows/'. $past_url . 'category/\' + this.options[this.selectedIndex].value;';
+		$select = '<select name="category" size="1" onchange="'.$js.'" onmouseup="this.focus()">';
+		$select .= '<option value="">All</option>';
+		foreach ($categories as $cat => $cat_value){
+			if ($cat == $current_category) { $selected = ' selected="selected"'; } else { $selected = ''; }
+			$select .= '<option value="'. $cat .'"'. $selected .'>'. $cat_value .'</option>';
+		}
+		$select .= '</select>';
+		return $select;
+	}
+
+	function _mnnshow_get_categories(){
+		$sql = 'SELECT DISTINCT s.topic ';
+		$sql .= 'FROM {ac_report_project_cache} s ';
+		$sql .= 'ORDER BY s.topic ASC ';
+		$result = db_query(db_rewrite_sql($sql));
+		$ret = array();
+		while ($row = db_fetch_object($result)){
+			if (!is_null($row->topic)){
+				$url_cat = trim(preg_replace("/[^A-Za-z0-9\/ ]/", '', strtolower($row->topic))); // remove all non-alphanumeric characters, then remove leading/trailing spaces
+				$url_cat = preg_replace("/[\/ ]/", '-', $url_cat); // replace spaces with dashes
+
+				$ret[$url_cat] = $row->topic;
+			}
+		}
+		return $ret;
 	}

@@ -77,14 +77,8 @@
     <section id="main" class="clearfix">
       <div class="pinch">
 
-				<section id="content">
+				<div id="content">
 					<div id="content-inner" class="inner column center">
-
-						<?php if ($content_top): ?>
-							<section id="content-top">
-								<?php print $content_top; ?>
-							</section>
-						<?php endif; ?>
 
 						<?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
 							<header id="content-header">
@@ -110,20 +104,26 @@
 							</header>
 						<?php endif; ?>
 
-						<section id="content-area">
+						<?php if ($content_top): ?>
+							<section id="content-top">
+								<?php print $content_top; ?>
+							</section>
+						<?php endif; ?>
+
+						<div id="content-area">
 							<?php print $content; ?>
-						</section> <!-- /#content-area -->
+						</div> <!-- /#content-area -->
 
 						<?php print $feed_icons; ?>
 
 						<?php if ($content_bottom): ?>
-							<section id="content-bottom">
+							<div id="content-bottom">
 								<?php print $content_bottom; ?>
-							</section>
+							</div>
 						<?php endif; ?>
 
 						</div>
-					</section>
+					</div>
 
 				<?php if ($sidebar_first): ?>
 					<aside id="sidebar-first" class="column sidebar first">

@@ -1,5 +1,5 @@
 name = "MNN Show"
-description = "Webform content type"
+description = "Show info and schedule."
 version = "6.x-1.0"
 core = "6.x"
 package = "MNN"
