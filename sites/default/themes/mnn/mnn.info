@@ -24,10 +24,12 @@ regions[sub_footer] = Sub Footer
 ; ------------------------------
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/default.css
+stylesheets[all][] = css/custom-theme/jquery-ui-1.8.14.custom.css
 stylesheets[all][] = css/style.css
 
 ; JavaScript
 ; ------------------------------
 scripts[] = js/watermark.js
+scripts[] = js/jquery-ui-1.8.14.custom.min.js
 scripts[] = js/script.js
 

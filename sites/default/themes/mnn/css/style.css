@@ -74,6 +74,17 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
+.item-list ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
 
 /**
  * Primary styles
@@ -86,7 +97,7 @@ Global Styles
 --------------------------------------------------------------------------------*/
 
 body {
-	background:url('../images/texture.png') #d5dbdb;
+	background:white;
 	font-family:Helvetica, Arial, sans serif;
 	color:#25292b;
 	line-height:18px;
@@ -105,19 +116,19 @@ text-decoration:none;
 }
 
 a:hover {
-	color:purple;
+	color:#003b18;
 }
 
 header .pinch {
 	padding:10px;
 }
 
-header a:hover, footer a:hover {
-	color:purple;
+#footer a:hover {
+	color:#eeff9e;
 }
 
 h3.title a:hover, a:hover h5 {
-	color:purple;
+	color:#005b25;
 }
 
 header a, header a:link, header a:visited,
@@ -138,6 +149,10 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
 	font-weight:normal;
 	margin-top: 30px;
 	margin-bottom:20px;
+}
+
+#page-homepage h3 a {
+	color:#25292b;
 }
 
 img, #page article .available-tracks img {
@@ -253,7 +268,7 @@ Header Styles
 --------------------------------------------------------------------------------*/
 
 #page-homepage #page > header {
-	background:rgba(0, 0, 0, 0.4);
+	background:rgba(0, 0, 0, 0.6);
 	height:140px;
     position: relative;
     z-index: 9;
@@ -288,10 +303,34 @@ Header Styles
 	height:40px;
 }
 
+#main-menu li.home {
+    text-indent: -100000px;
+ margin-right: 36px;
+}
+
+#main-menu li.home a {
+    background: url("../images/icon_home.png") no-repeat scroll 0 -15px transparent;
+    float: left;
+    height: 16px;
+    width: 20px;
+}
+
+#main-menu li.home a:hover {
+	background: url("../images/icon_home.png") no-repeat scroll 0 0px transparent;
+}
+
 #main-menu a {
 	text-decoration:none;
 	color:white;
 }
+
+#main-menu a:hover {
+		color:#b9de0f;
+}
+
+/*#main-menu a.active {
+	color:#999999;
+}*/
 
 #main-menu ul {
 	list-style-type:none;
@@ -462,6 +501,7 @@ Homepage Hero Styles
 	float:left;
 	clear:both;
 	 padding: 24px 16px;
+	text-align: left;
 }
 
 #block-views-homepage-slideshow .secondary-headline {
@@ -478,7 +518,9 @@ Homepage Hero Styles
 	 top: 287px;
 	max-width:600px;
 	}
-
+#block-views-homepage-slideshow .secondary-headline p{
+	text-align: left;
+}
 #block-views-homepage-slideshow .image {
 	text-align: center;
 	width: 100%;
@@ -563,7 +605,8 @@ Body Content Styles
 	padding-top:30px;
 }
 
-#block-block-get-involved h5 a, .content .col h5 a {
+#block-block-get-involved h5 a, .content .col h5 a,
+.node-type-cert-class .content h5 {
 	font-family:arial;
 	color:#25292b;
 	font-size:18px;
@@ -577,6 +620,11 @@ Body Content Styles
 .content .col h5, .content h5 {
     margin-bottom: 10px;
     margin-top: 10px;
+font-family:arial;
+}
+
+.content .col h5 a, .content h5 a {
+	color: #25292B;
 }
 
 .content .col {
@@ -619,7 +667,7 @@ url("../images/icon_group.png") no-repeat scroll 12px 11px;
 #block-block-resources-for-links .youth-channel a, .page-get-involved .youth-channel a {
 background:url("../images/right-arrow.png") no-repeat scroll 215px 18px,
 url("../images/icon_youth.png") no-repeat 13px 10px;	
-padding:16px 45px 16px 60px;
+padding: 16px 122px 16px 60px;
 }
 
 .page-get-involved .youth-channel a {
@@ -705,7 +753,7 @@ h3.title {
 }
 
 #block-views-video-grid---homepage .button, #page-get-involved #node-62 .button, #page-get-involved #node-63 .button,
-#page-get-involved #node-64 .button {
+#page-get-involved #node-64 .button, #node-170 .button {
 	float:right;
 	width:140px;
 	height:25px;
@@ -897,7 +945,7 @@ list-style-image: none;
 
 #block-block-footer .first {
 	padding-right:10px;
-	border-right:1px solid white;
+	border-right:1px solid #5e6264;
 }
 
 #block-block-footer .second, #block-block-footer .third {
@@ -906,7 +954,7 @@ list-style-image: none;
 
 #block-block-footer .left .second {
 	padding-right:10px;
-	border-right:1px solid white;
+	border-right:1px solid #5e6264;
 }
 
 #block-block-footer .right {
@@ -933,9 +981,18 @@ list-style-image: none;
 	);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#1C1C1C',GradientType=0 ); /* ie */
 	background: -o-linear-gradient(top, #000000 0%,#1C1C1C 100%); /* opera */
-	height:45px;
+	height:35px;
 	padding:10px 0px;
 	margin-top:0;
+}
+
+#sub-footer #block-block-footer {
+	clear:none;
+	padding-top:10px;
+}
+
+footer textarea#edit-submitted-message {
+	padding:5px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -955,13 +1012,13 @@ Not-Front Page Styles
 Individual News Post Styles
 --------------------------------------------------------------------------------*/
 
-#content h1.title {
+#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
 	font-size:36px;
 	color:#25292b;
 	font-weight:normal;
     line-height: 40px;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    margin-bottom: 20px;
+ margin-top: 30px;
 }
 
 article header .submitted {
@@ -990,21 +1047,34 @@ article {
 	width:620px;
 }
 
-article p, .node-type-news article p, .node-type-news article p:first-child {
+article p, .node-type-news article p, .node-type-news article p:first-child,
+.node-type-cert-class article p:first-child {
 	font-size:14px;
 	line-height:20px;
 	margin-bottom:10px;
 }
 
-.not-front .column {
+.sidebar-second .column {
 	float:left;
 }
 
-.one-sidebar #content-inner {
+.sidebar-first .column {
+	float:right;
+}
+
+.sidebar-second #content-inner {
  border-right: 1px dotted #B2BBC0;
     padding-right: 45px;
     width: 620px;
+ padding-bottom: 100px;
 }
+
+.sidebar-first #content-inner {
+ border-left: 1px dotted #B2BBC0;
+    padding-left: 45px;
+    width: 620px;
+}
+
 
 /*--------------------------------------------------------------------------------
 Producer Styles
@@ -1014,16 +1084,22 @@ Producer Styles
 	padding-bottom:20px;
 }
 
-.producer-info p, .organization-info p:first-child, .content p:first-child, .youth-channel p {
+.section-producers h4 {
+	margin-top:30px;
+	margin-bottom:10px;
+}
+
+.producer-info p, .organization-info p:first-child, .youth-channel p,
+.about-info p:first-child {
 	font-size:18px;
 	line-height:24px;
 }
 
 .producer-info div a {
     color: white;
-	padding:16px 20px;
 	font-size:14px;
 	float:left;
+	padding: 16px 44px 0 20px;
 }
 
 .producer-info div.submit-show a {
@@ -1062,6 +1138,10 @@ Producer Styles
 	height: 50px;
 	    margin-bottom: 10px;
 	    width: 239px;
+}
+
+.producer-info .become-producer {
+margin-top:40px;	
 }
 
 .producer-info .submit-show:hover, .producer-info .become-producer:hover {
@@ -1112,11 +1192,11 @@ Producer Styles
 	clear:left;
 }
 
-.copy-column {
+#block-views-certification-class-list-block-producers .description {
     width: 450px;
 }
 
-.copy-column h5, #node-3 ul li .copy-column h5, #node-5 ul li .copy-column h5 {
+.views-row h5.title, #node-3 ul li .copy-column h5, #node-5 ul li .copy-column h5 {
 	font-family:arial;
 	font-size:16px;
 	    margin-top: 0;
@@ -1135,13 +1215,36 @@ Producer Styles
 	margin-left:0;
 }
 
+.thumb {
+	float:left;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.item-list .views-row {
+	margin-bottom:30px;
+}
+
+.item-list ul li h5.title a {
+    color: #1d1d1d;
+    font-weight: bold;
+    padding: 0;
+}
+
 /*--------------------------------------------------------------------------------
 Sidebar Styles
 --------------------------------------------------------------------------------*/
 
-.sidebar {
+.sidebar-second .sidebar {
     float: left;
     padding-left: 45px;
+    width: 220px;
+  padding-top: 63px;
+}
+
+.sidebar-first .sidebar {
+    float: left;
+    padding-right: 45px;
     width: 220px;
   padding-top: 20px;
 }
@@ -1152,9 +1255,15 @@ Sidebar Styles
 }
 
 .sidebar .top {
-padding: 10px 0 10px 24px;
+padding: 10px 0 8px 0px;
 	border-bottom:1px solid #b2bbc0;
 	margin-bottom:20px;
+}
+
+#page-producers .sidebar .top,
+#page-organizations .sidebar .top, #page-producers-submit-show .sidebar .top,
+#page-producers-become-producer .sidebar .top {
+padding: 10px 0 10px 24px;
 }
 
 .sidebar .outer {
@@ -1192,6 +1301,15 @@ background:url('../images/icon_faq.png') no-repeat 0 11px;
 	line-height:18px;
 }
 
+.sidebar .content h5 {
+    font-family: arial;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.sidebar {
+padding-top: 63px;
+}
 
 /*--------------------------------------------------------------------------------
 Numbers
@@ -1199,9 +1317,11 @@ Numbers
 
 
 #node-2 ul li, #node-3 ul li {
-	height:60px;
-	padding-bottom: 28px;
-	width:100%;
+   clear: left;
+    float: left;
+    height: 60px;
+    margin-bottom: 40px;
+    width: 100%;
 }
 
 
@@ -1218,13 +1338,19 @@ Numbers
     font-size: 24px;
     margin-right: 20px;
        padding: 22px 24px;
+ margin-bottom: 20px;
+}
+
+#block-block-get-involved p, .content .col p {
+    font-size: 14px;
+    line-height: 20px;
 }
 
 #node-2 ul li h5, #node-3 ul li h5 {
 	font-size:18px;
 	font-family:arial;
 	font-weight:normal;
-margin-top: -5px;
+margin-top: 0px;
 }
 
 
@@ -1240,6 +1366,7 @@ margin-bottom: 0;
 	margin-left:0;
 	list-style-type:none;
 	list-style-image:none;
+	margin-top: 40px;
 }
 
 
@@ -1255,6 +1382,10 @@ margin-bottom: 0;
 	    float: left;
 	    margin-right: 20px;
 	    padding: 0px;
+}
+
+#node-3 .col {
+	margin-top:40px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -1290,8 +1421,8 @@ Web Forms
 	    font-weight: normal;
 	    margin-right: 10px;
 	    text-align: right;
-	    width: 120px;
 	  padding-top: 5px;
+	  width: 250px;
 	}
 
 .webform-client-form input[type="text"] {
@@ -1299,12 +1430,73 @@ Web Forms
 	width:300px;
 }
 
-.webform-client-form input[type="submit"] {
-margin-left:130px;
+.webform-component {
+ width:100%;
+padding:5px 0px;
+clear:left;	
+}
+
+.form-item .description {
+    clear: left;
+    font-style: italic;
+    margin-left: 260px;
+}
+
+.form-item .description p {
+	font-size:12px;
+}
+
+.field-field-weight {
+	display:none;
+}
+
+.form-item label.option {
+    display: inline;
+    font-weight: normal;
+    text-align: left;
 }
 
 
+html.js .resizable-textarea textarea {
+    display: block;
+    margin-bottom: 0;
+    width: 300px;
+	padding:4px;
+}
 
+.resizable-textarea span {
+	width:308px;
+}
+
+.resizable-textarea .grippie {
+display:none;
+}
+
+legend {
+	font-weight:bold;
+	margin-left:160px;
+}
+
+.form-checkboxes, .form-radios {
+    float: left;
+    margin:0;
+    width: 308px;
+}
+
+.form-item label.option {
+    display: inline;
+    font-weight: normal;
+    text-align: left;
+    width: 300px;
+}
+
+input:valid, textarea:valid {
+    vertical-align: baseline;
+}
+
+.webform-client-form input[type="submit"] {
+    margin-left: 260px;
+}
 
 /*--------------------------------------------------------------------------------
 News
@@ -1556,9 +1748,11 @@ Get Involved Styles
 	}
 
 .page-get-involved .content p:first-child {
-	float:none;
-	font-size:18px;
-	margin-bottom:20px;
+ float: none;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 20px;
+    margin-right: 10px;
 }
 
 .page-get-involved .panels-flexible-row {
@@ -1573,7 +1767,7 @@ Get Involved Styles
 	padding-top:0px;
 }
 
-#node-62 h3, #node-63 h3, #node-64 h3 {
+#node-62 h3, #node-63 h3, #node-170 h3 {
 	font-size:18px;
 	margin-top:10px;
 	float:left;
@@ -1589,7 +1783,7 @@ Get Involved Styles
 }
 
 #page-get-involved #node-62 .button a, #page-get-involved #node-63 .button a,
-#page-get-involved #node-64 .button a {
+#page-get-involved #node-64 .button a, #node-170 .button a {
 	background: url("../images/right-arrow-sm.png") no-repeat scroll 76px 8px transparent;
     color: #B9DE0F;
     float: left;
@@ -1599,9 +1793,10 @@ Get Involved Styles
 }
 
 #page-get-involved #node-62 .button, #page-get-involved #node-63 .button,
-#page-get-involved #node-64 .button {
+#page-get-involved #node-64 .button, #node-170 .button {
 	width:90px;
 	margin-top: 7px;
+	margin-right:0px;
 }
 
 #page-get-involved .panel-pane {
@@ -1736,7 +1931,7 @@ Youth Channel Styles
 --------------------------------------------------------------------------------*/
 
 #page-youthchannel h1.title {
-	background:url('images/coming_soon.png') no-repeat;
+background: url("../images/coming_soon.png") no-repeat scroll 270px 7px transparent;
 }
 
 
@@ -1745,41 +1940,70 @@ Watch Now Styles
 --------------------------------------------------------------------------------*/
 
 #watch-now {
-	width:100%;
-	padding:5px;
-	height:58px;
+	padding:0px;
+	height:68px;
 	position:relative;
-	background:#2b3033;
+	background:#3c4144;
 	background-image: -webkit-gradient(
 	    linear,
 	    left bottom,
 	    left top,
-	    color-stop(0, #25292b),
-	    color-stop(1, #333a3d)
+	    color-stop(0, #373b3d),
+	    color-stop(1, #42494c)
 	);
 	background-image: -moz-linear-gradient(
 	    center bottom,
-	    #25292b 0%,
-	    #333a3d 100%
+	    #373b3d 0%,
+	    #42494c 100%
 	);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#25292b', endColorstr='#333a3d',GradientType=0 ); /* ie */
-	background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373b3d', endColorstr='#42494c',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #373b3d 0%,#42494c 100%); /* opera */
+	}
+}
+
+.front #watch-now {
+margin-top: -67px;
+background:#2b3033;
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #25292b),
+    color-stop(1, #333a3d)
+);
+background-image: -moz-linear-gradient(
+    center bottom,
+    #25292b 0%,
+    #333a3d 100%
+);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#25292b', endColorstr='#333a3d',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
 }
 
 .whats-on-now {
-	width:140px;
-	color:white;
-	float:left;
+  border-right: 1px solid #1D2022;
+    color: white;
+    float: left;
+    height: 68px;
+    width: 139px;
 }
 
 #watch-now a {
-	
+	color: #B9DE0F;
+}
+
+#watch-now .channel-info {
+	margin:0;
+	border-top:0;
+	 padding: 1px 0 0;
 }
 
 .whats-on-now h3 {
-	font-family:arial narrow, arial;
-	text-transform:uppercase;
-	font-size:16px;
+ color: white;
+    font-family: arial narrow,arial;
+    font-size: 16px;
+    margin: 7px 0 2px;
+    text-transform: uppercase;
 }
 
 .whats-on-now time, .whats-on-now .view-sched {
@@ -1787,21 +2011,374 @@ Watch Now Styles
 	font-family:arial;
 }
 
-.channel-about {
-	display:none;
-	width:100%;
-	position:absolute;
+.view-sched a {
+	background: url("../images/icon_sched_sm.png") no-repeat scroll 0 2px transparent;
+	    padding-left: 15px;
 }
 
-.channel-info:hover > .channel-about {
-	display:normal;
+#watch-now .channel-about {
+	background: none repeat scroll 0 0 white;
+  color: #222222;
+    display: none;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: -47px;
+    margin-top: 6px;
+    padding: 20px;
+    position: absolute;
+    width: 159px;
+	box-shadow: 0 1px 5px -2px black;
+	-webkit-box-shadow:0 1px 5px -2px black;
+	-ms-box-shadow: 0 1px 5px -2px black;
+	-o-box-shadow:0 1px 5px -2px black;
+	-moz-box-shadow:0 1px 5px -2px black;
+	z-index:9;
+}
+
+#watch-now .channel-about p {
+	font-size: 13px;
+	    line-height: 16px;
+	    margin-bottom: 10px;
+}
+
+#watch-now .channel-about ul.cable-channel-list {
+	width:160px;
+	margin:5px 0px 0px;
+	padding: 0 0 20px;
+	float:none;
+}
+
+#watch-now .channel-about ul.cable-channel-list li {
+   border-left: medium none;
+    border-right: medium none;
+    border-top: 1px solid #D4D4D4;
+    float: none;
+    font-size: 14px;
+    height: 15px;
+    margin: 0;
+    padding: 6px 5px;
+    text-align: left;
+    width: 150px;
+}
+
+#watch-now .channel-about ul.cable-channel-list li:hover {
+	background:none;
+}
+
+#watch-now .channel-about ul.cable-channel-list li:last-child {
+	border-bottom: 1px solid #D4D4D4;
+}
+
+#channel-one:hover .channel-about {
+	display:block;
 }
 
 #watch-now ul, #watch-now ul li {
 	float:left;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	list-style-image:none;
+}
+
+#watch-now ul {
+	height:58px;
+}
+
+#watch-now ul li {
+   border-left: 1px solid #454B4E;
+    border-right: 1px solid #1D2022;
+    height: 62px;
+    padding-left: 46px;
+    padding-top: 6px;
+    width: 152px;
+}
+
+#watch-now ul li:hover .channel-about {
+	display:block;
+}
+
+#watch-now ul li h4 {
+	font-size:11px;
+	font-family:arial;
+	color:white;
+	text-transform:uppercase;
+	margin:0px;
+}
+
+#watch-now ul li h5 {
+  font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 1px 0 0;
+}
+
+#watch-now ul li p {
+	font-size:11px;
+}
+
+#channel-one {
+	background:url('../images/icon_ch1.png') no-repeat 7px 16px;
+}
+
+#channel-one:hover {
+	background:url('../images/icon_ch1.png') no-repeat 7px 16px #464c4f;
+}
+
+#channel-two {
+	background:url('../images/icon_ch2.png') no-repeat 7px 16px;
+}
+
+#channel-two:hover {
+	background:url('../images/icon_ch2.png') no-repeat 7px 16px #464c4f;
+}
+
+#channel-three {
+	background:url('../images/icon_ch3.png') no-repeat 7px 16px;
+}
+
+#channel-three:hover {
+	background:url('../images/icon_ch3.png') no-repeat 7px 16px #464c4f;
+}
+
+#channel-four {
+	background:url('../images/icon_ch4.png') no-repeat 7px 16px;
+}
+
+#channel-four:hover {
+	background:url('../images/icon_ch4.png') no-repeat 7px 16px #464c4f;
+}
+
+.cable-number {
+	float:right;
+}
+
+.watch-now-link a {
+	padding-left:17px;
+	background:url('../images/icon_play_sm.png') no-repeat 0px 1px;
 }
 
 
+/*--------------------------------------------------------------------------------
+Classes Styles
+--------------------------------------------------------------------------------*/
+
+
+.class-part {
+	font-size:12px;
+	color:#666666;
+}
+
+.node-type-cert-class .sidebar .top {
+	border-bottom:none;
+}
+
+.node-type-cert-class #content h1.title {
+	font-size:24px;
+	color:#25292b;
+	font-weight:normal;
+    line-height: 40px;
+    margin-bottom: 10px;
+margin-top: 110px;
+}
+
+.node-type-cert-class .sidebar .views-row {
+    border-bottom: 1px solid #B2BBC0;
+    line-height: 18px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.node-type-cert-class .content img {
+	display:none;
+}
+
+/*--------------------------------------------------------------------------------
+Show Styles
+--------------------------------------------------------------------------------*/
+
+.block-mnnshow .email span, .block-mnnshow .name span {
+	font-weight:bold;
+}
+
+.block-mnnshow .email, .block-mnnshow .name {
+	margin-bottom:20px;
+}
+
+.section-shows #content h1.title {
+	font-size:24px;
+	margin-bottom: 10px;
+}
+
+.section-shows .category {
+	text-transform:uppercase;
+	padding-bottom:4px;
+}
+
+.section-shows .meta, .section-shows .category, .meta {
+	color:#666666;
+	font-size:12px;
+}
+
+.section-shows .meta .channel {
+	float:left;
+	padding-right:10px;
+	border-right:1px solid #666666;
+}
+
+.section-shows .meta .next-airing {
+	padding-left:10px;
+}
+
+.section-shows #main .content {
+margin-top:20px;	
+}
+
+.row {
+	margin:0px;
+	padding:36px 0px;
+	border-bottom:1px solid #b2bbc0;
+}
+
+.row h3.title {
+    margin-bottom: 16px;
+    margin-top: 0;
+	color:#005b25;
+	font-size:24px;
+	font-family:'Droid Serif', georgia;
+}
+
+.row h3.title a {
+	color:#005b25;
+	font-size:24px;
+	font-family:'Droid Serif', georgia;
+	font-weight:normal;
+}
+
+.section-shows .row .meta .channel {
+    border-right: 1px solid #666666;
+    float: left;
+    padding-right: 10px;
+margin-right:10px;
+}
+
+.section-shows .row  .meta .next-airing {
+    padding-left: 0px;
+}
+
+.section-shows #main .row .content {
+    margin-top: 20px;
+font-size:14px;
+line-height:18px;
+width:700px;
+}
+
+.section-shows .item-list .pager {
+	clear: left;
+    float: left;
+    margin-top: 30px;
+}
+
+.item-list .pager li.first {
+    padding: 0 14px 0px 0px;
+}
+
+.alphabet {
+	width:100%;
+	border-top:1px solid #b2bbc0;
+	border-bottom:1px solid #b2bbc0;
+	padding:4px 0px;
+	font-weight:bold;
+	margin-top:30px;
+}
+
+.alphabet span {
+	border-right:1px solid #c7cdd1;
+	padding:0px 10px;
+	margin:10px 0px;
+}
+
+.alphabet span:first-child {
+padding-left:0px;
+}
+
+.viewing {
+    color: #666666;
+    float: left;
+    margin-right: 30px;
+    margin-top: 2px;
+}
+
+.viewing .current, .sort-by .alphabetical {
+	padding:0px 10px 0px 10px;
+	border-right:1px solid #c7cdd1;
+	margin-right:10px;
+}
+
+.viewing span, .sort-by span {
+	color:#1d1d1d;
+}
+
+.sort-by .category {
+	text-transform:none;
+	font-size:14px;
+	margin-right: 10px;
+}
+
+.section-shows #content-area h2 {
+	font-family:arial;
+	font-size:20px;
+	margin-top:36px;
+	font-weight:normal;
+}
+
+select {
+    color: #444444;
+    padding: 2px;
+}
+
+.section-shows .col1, .section-shows .col2, .section-shows .col3 {
+	margin-top:36px;
+	float:left;
+	width:200px;
+	padding-right:100px;
+	word-wrap:break-word;
+}
+
+.section-shows #content-area > div > div {
+	margin-bottom:16px;
+}
+
+.section-show-info .content {
+	margin-top:30px;
+}
+
+/*--------------------------------------------------------------------------------
+Schedule Styles
+--------------------------------------------------------------------------------*/
+#schedule .col{
+	float: left;
+	width: 190px;
+}
+#schedule .col-time{
+	width: 130px;
+}
+#schedule .cell{
+	padding: 5px;
+	border: 1px #666 solid;
+}
+#schedule .cell.t30{
+	height: 70px;
+}
+#schedule .cell.t60{
+	height: 152px;
+}
+#schedule .cell.heading{
+	height: 35px;
+}
+#schedule .cell.current{
+	background-color: yellow;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
@@ -1843,4 +2420,3 @@ Watch Now Styles
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
-

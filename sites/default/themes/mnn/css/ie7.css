@@ -14,3 +14,52 @@ ul .secondary li a:hover {
   color: #555555;
   text-decoration: none;
 }
+
+
+#main-menu a {
+    color: white;
+    font-family: arial;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+#main-menu ul li {
+    float: left;
+    list-style-type: none;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+input[type="submit"] {
+    border: medium none;
+    font-family: arial;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 78px;
+	padding:0;
+	height:20px;
+	text-align:center;
+}
+
+#watch-now ul li {
+    border-left: 1px solid #454B4E;
+    border-right: 1px solid #1D2022;
+    height: 62px;
+    padding-left: 46px;
+    padding-top: 6px;
+    width: 146px;
+}
+
+#block-block-resources-for-links .producers a, .page-get-involved .producers a {
+    background: url("../images/right-arrow.png") no-repeat scroll 215px 18px;
+}
+
+#block-block-resources-for-links .organizations a, .page-get-involved .organizations a {
+    background: url("../images/right-arrow.png") no-repeat scroll 215px 18px;
+}
+
+#block-block-resources-for-links .youth-channel a, .page-get-involved .youth-channel a {
+    background: url("../images/right-arrow.png") no-repeat scroll 215px 18px;
+    padding: 16px 122px 16px 60px;
+}
