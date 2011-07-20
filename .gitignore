@@ -4,7 +4,8 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
-files/*
+files/*/backup_migrate
+files/*/imagecache
 
 # Drush backup directory
 backup/*
