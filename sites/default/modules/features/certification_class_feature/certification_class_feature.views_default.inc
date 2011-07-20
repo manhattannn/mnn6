@@ -18,36 +18,6 @@ function certification_class_feature_views_default_views() {
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
-    'title' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'exclude' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-    ),
     'field_image_fid' => array(
       'label' => '',
       'alter' => array(
@@ -73,7 +43,7 @@ function certification_class_feature_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'certification_class_thumb_linked',
+      'format' => 'certification-class-tracks_linked',
       'multiple' => array(
         'group' => TRUE,
         'multiple_number' => '',
@@ -84,6 +54,39 @@ function certification_class_feature_views_default_views() {
       'id' => 'field_image_fid',
       'table' => 'node_data_field_image',
       'field' => 'field_image_fid',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
       'relationship' => 'none',
     ),
     'field_description_value' => array(
@@ -235,13 +238,13 @@ function certification_class_feature_views_default_views() {
   $handler->override_option('row_plugin', 'semanticviews_fields');
   $handler->override_option('row_options', array(
     'semantic_html' => array(
-      'title' => array(
-        'element_type' => 'h4',
-        'class' => 'title',
-      ),
       'field_image_fid' => array(
         'element_type' => 'div',
         'class' => 'thumb',
+      ),
+      'title' => array(
+        'element_type' => 'h5',
+        'class' => 'title',
       ),
       'field_description_value' => array(
         'element_type' => 'div',
@@ -252,7 +255,7 @@ function certification_class_feature_views_default_views() {
         'class' => 'read-more',
       ),
     ),
-    'skip_blank' => 0,
+    'skip_blank' => 1,
   ));
   $handler = $view->new_display('block', 'Block: producers', 'block_1');
   $handler->override_option('filters', array(

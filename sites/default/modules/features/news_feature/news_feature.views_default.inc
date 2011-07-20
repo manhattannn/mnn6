@@ -411,6 +411,9 @@ function news_feature_views_default_views() {
       'table' => 'node_revisions',
       'field' => 'body',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'body_1' => array(
       'label' => '',
@@ -426,7 +429,7 @@ function news_feature_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '300',
+        'max_length' => '400',
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 0,
@@ -1750,7 +1753,7 @@ function news_feature_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Archive');
-  $handler->override_option('items_per_page', 3);
+  $handler->override_option('items_per_page', 15);
   $handler->override_option('use_pager', '1');
   $handler->override_option('row_plugin', 'node');
   $handler->override_option('row_options', array(
@@ -1842,6 +1845,8 @@ function news_feature_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('use_ajax', TRUE);
+  $handler->override_option('use_pager', 'mini');
   $handler->override_option('block_description', 'Archive list');
   $handler->override_option('block_caching', -1);
 
