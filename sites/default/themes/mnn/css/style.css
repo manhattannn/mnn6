@@ -1689,8 +1689,9 @@ Video Viewing Styles
 }
 
 div.video {
-	width:100%;
-	text-align:center;
+    margin: auto;
+    text-align: center;
+    width: 808px;
 }
 
 article.video, article.watch-live{
@@ -2498,6 +2499,16 @@ Schedule Styles
 	text-align: right;
 }
 
+
+#schedule-header .nav .prev span {
+background: url("../images/right-arrow-sm.png") no-repeat scroll 8px 9px transparent;
+}
+
+#schedule-header .nav .next span {
+background: url("../images/right-arrow-sm.png") no-repeat scroll 68px 9px transparent;
+}
+
+
 #schedule-header .nav .next {
 	float:right;
 	
@@ -2545,9 +2556,9 @@ Schedule Styles
 	background:url("../images/icon_ch4.png") no-repeat scroll 7px 10px transparent;	
 }
 
-
-
-
+#schedule .cell.current {
+    background-color: #F9FBDF;
+}
 
 #schedule .col {
 	text-align:left;
