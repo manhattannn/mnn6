@@ -2524,6 +2524,10 @@ Schedule Styles
 	width:940px;
 }
 
+#schedule .col div:first-child {
+	border-top:none;
+}
+
 #schedule-header .channels .ch1 {
 	background:url("../images/icon_ch1.png") no-repeat scroll 7px 10px transparent;
 }
