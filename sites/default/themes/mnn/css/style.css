@@ -337,9 +337,22 @@ Header Styles
 	display:none;
 	z-index:9;
 	width:100px;
-	background:;
-	color:;
+	background:#25292a;
+	color:white;
 	padding:5px;
+	text-transform:none;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #34393B),
+	    color-stop(1, #181A1B)
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    #34393B 0%,
+	    #181A1B 100%
+	);
 }
 
 #main-menu .get_involved:hover {
@@ -348,6 +361,7 @@ Header Styles
 
 #main-menu .get_involved:hover ul.menu {
 	display:block;
+	
 }
 
 li.expanded {
@@ -355,6 +369,20 @@ li.expanded {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+#main-menu .get_involved ul.menu li {
+	padding:10px 5px;
+	border-top:1px solid #3c4143;
+	border-bottom:1px solid #0d0e0f;
+}
+
+#main-menu .get_involved ul.menu li:first-child {
+	border-top:none;
+}
+
+#main-menu .get_involved ul.menu li:last-child {
+	border-bottom:none;
 }
 
 
