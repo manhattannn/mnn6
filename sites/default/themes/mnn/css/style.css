@@ -2358,7 +2358,7 @@ Schedule Styles
 --------------------------------------------------------------------------------*/
 #schedule .col{
 	float: left;
-	width: 190px;
+	width: 200px;
 }
 
 #schedule .col-time {
@@ -2366,7 +2366,7 @@ Schedule Styles
     -moz-border-radius: 0 0 0 5px;
     -webkit-border-radius: 0 0 0 5px;
     -o-border-radius: 0 0 0 5px;
-    width: 130px;
+    width: 140px;
 }
 
 
@@ -2380,13 +2380,13 @@ Schedule Styles
 }
 
 #schedule .cell.t30 {
-    height: 55px;
+    height: 51px;
     margin-top: 0;
     text-align: left;
 }
 
 #schedule .cell.t60{
- height: 132px;
+ height: 124px;
 }
 
 #schedule .category {
@@ -2396,6 +2396,10 @@ Schedule Styles
 }
 
 #schedule .cell.heading {
+    background: none repeat scroll 0 0 transparent;
+    border-left: 1px solid #1D2022;
+    border-right: 1px solid #454B4E;
+    border-top: medium none;
     color: white;
     font-size: 11px;
     height: 17px;
@@ -2408,10 +2412,15 @@ Schedule Styles
 }
 
 #schedule {
-	box-shadow:0px -3px 5px #cccccc;
-	-moz-box-shadow:0px -3px 5px #cccccc;
-	-webkit-box-shadow:0px -3px 5px #cccccc;
-	-o-box-shadow:0px -3px 5px #cccccc;
+	box-shadow:0 0 3px 2px #DDDDDD;
+	-moz-box-shadow:0 0 3px 2px #DDDDDD;
+	-webkit-box-shadow:0 0 3px 2px #DDDDDD;
+	-o-box-shadow:0 0 3px 2px #DDDDDD;
+	    border-radius: 5px 5px 0 0;
+	    -moz-border-radius: 5px 5px 0 0;
+	    -webkit-border-radius: 5px 5px 0 0;
+	    -o-border-radius: 5px 5px 0 0;
+	    float: left;
 }
 
 
@@ -2435,15 +2444,20 @@ Schedule Styles
 	/* For Internet Explorer 8 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A2B0B0, endColorstr=#B4C2C2)";
 	padding:5px;
+	border-radius: 5px 5px 0 0;
+    float: left;
+    padding: 5px;
+    width: 930px;
 }
 
 #schedule-header .nav .schedule-date {
-	float:left;
-	text-align:center;
-	width:300px;
-	color:#25292b;
-	font-size:16px;
-	font-family:'Droid Serif';
+    color: #25292B;
+    float: left;
+    font-family: 'Droid Serif';
+    font-size: 16px;
+    margin-left: 340px;
+    margin-top: 4px;
+    text-align: center;
 }
 
 #schedule-header .nav .prev, #schedule-header .nav .next {
@@ -2456,10 +2470,32 @@ Schedule Styles
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	-o-border-radius:3px;
+	border: 1px solid #919C9C;
+	    border-radius: 3px 3px 3px 3px;
+	    color: #25292B;
+	    font-family: arial;
+	    font-size: 13px;
+	    height: 15px;
+	    padding: 4px 10px 8px;
+	    width: 60px;
+	background:#e6e6e6;
+		background-image: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0, #CBCBCB),
+		    color-stop(1, #FFFFFF)
+		);
+		background-image: -moz-linear-gradient(
+		    center bottom,
+		    #CBCBCB 0%,
+		    #FFFFFF 100%
+		);
 }
 
 #schedule-header .nav .prev {
 	float:left;
+	text-align: right;
 }
 
 #schedule-header .nav .next {
@@ -2473,30 +2509,38 @@ Schedule Styles
 	    linear,
 	    left bottom,
 	    left top,
-	    color-stop(0, #333a3d),
-	    color-stop(1, #25292b)
+	    color-stop(0, #25292B),
+	    color-stop(1, #333A3D)
 	);
-	background-image: -moz-linear-gradient(
-	    center bottom,
-	    #333a3d 0%,
-	    #25292b 100%
-	);
+	background-image: -moz-linear-gradient(center bottom , #25292B 0%, #333A3D 100%);
 	/* For Internet Explorer 5.5 - 7 */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#333a3d, endColorstr=#25292b);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#25292B, endColorstr=#333A3D);
 	/* For Internet Explorer 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#333a3d, endColorstr=#25292b)";
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#25292B, endColorstr=#333A3D)";
 	font-size:11px;
 	text-transform:uppercase;
 	color:white;
+	float:left;
+	width:940px;
 }
 
 #schedule-header .channels .ch1 {
-	
+	background:url("../images/icon_ch1.png") no-repeat scroll 7px 10px transparent;
 }
 
 #schedule-header .channels .ch2 {
-	
+	background:url("../images/icon_ch2.png") no-repeat scroll 7px 10px transparent;	
 }
+
+#schedule-header .channels .ch3 {
+	background:url("../images/icon_ch3.png") no-repeat scroll 7px 10px transparent;	
+}
+
+
+#schedule-header .channels .ch4 {
+	background:url("../images/icon_ch4.png") no-repeat scroll 7px 10px transparent;	
+}
+
 
 
 
@@ -2514,15 +2558,15 @@ Schedule Styles
 }
 
 #schedule .col-time .cell.t30 {
+    color: #25292B;
     font-weight: bold;
-    height: 15px;
+    height: 11px;
     margin-top: 0;
-    padding: 30px 0px;
+    padding: 28px 0 32px;
     text-align: center;
-	color:#25292b;
 }
 
-#schedule .cell.t30 {
+#schedule .cell {
 	border-top:1px solid #ffffff;
 	border-right:1px solid #ffffff;
 	border-bottom:1px solid #cfcfcf;
