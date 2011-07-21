@@ -2360,25 +2360,178 @@ Schedule Styles
 	float: left;
 	width: 190px;
 }
-#schedule .col-time{
-	width: 130px;
+
+#schedule .col-time {
+    border-radius: 0 0 0 5px;
+    -moz-border-radius: 0 0 0 5px;
+    -webkit-border-radius: 0 0 0 5px;
+    -o-border-radius: 0 0 0 5px;
+    width: 130px;
 }
+
+
 #schedule .cell{
-	padding: 5px;
+	padding: 10px;
 	border: 1px #666 solid;
 }
-#schedule .cell.t30{
-	height: 70px;
+
+#schedule .cell a {
+	color:#25292b;
 }
+
+#schedule .cell.t30 {
+    height: 55px;
+    margin-top: 0;
+    text-align: left;
+}
+
 #schedule .cell.t60{
-	height: 152px;
+ height: 132px;
 }
-#schedule .cell.heading{
-	height: 35px;
+
+#schedule .category {
+	color:#666666;
+	text-transform:uppercase;
+	font-size:11px;
 }
+
+#schedule .cell.heading {
+    color: white;
+    font-size: 11px;
+    height: 17px;
+    padding: 17px 0 17px 50px;
+    text-transform: uppercase;
+}
+
 #schedule .cell.current{
 	background-color: yellow;
 }
+
+#schedule {
+	box-shadow:0px -3px 5px #cccccc;
+	-moz-box-shadow:0px -3px 5px #cccccc;
+	-webkit-box-shadow:0px -3px 5px #cccccc;
+	-o-box-shadow:0px -3px 5px #cccccc;
+}
+
+
+#schedule-header .nav {
+	border-radius:5px 5px 0px 0px;
+	background-color:#acbaba;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #A2B0B0),
+	    color-stop(1, #B4C2C2)
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    #A2B0B0 0%,
+	    #B4C2C2 100%
+	);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#A2B0B0, endColorstr=#B4C2C2);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A2B0B0, endColorstr=#B4C2C2)";
+	padding:5px;
+}
+
+#schedule-header .nav .schedule-date {
+	float:left;
+	text-align:center;
+	width:300px;
+	color:#25292b;
+	font-size:16px;
+	font-family:'Droid Serif';
+}
+
+#schedule-header .nav .prev, #schedule-header .nav .next {
+	padding:5px 10px;
+	border:1px solid #919c9c;
+	color:#25292b;
+	font-family:arial;
+	font-size:13px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+}
+
+#schedule-header .nav .prev {
+	float:left;
+}
+
+#schedule-header .nav .next {
+	float:right;
+	
+}
+
+#schedule-header .channels {
+	background:#3e4346;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #333a3d),
+	    color-stop(1, #25292b)
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    #333a3d 0%,
+	    #25292b 100%
+	);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#333a3d, endColorstr=#25292b);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#333a3d, endColorstr=#25292b)";
+	font-size:11px;
+	text-transform:uppercase;
+	color:white;
+}
+
+#schedule-header .channels .ch1 {
+	
+}
+
+#schedule-header .channels .ch2 {
+	
+}
+
+
+
+
+#schedule .col {
+	text-align:left;
+}
+
+
+
+#schedule .col-time {
+	color:#25292b;
+	font-weight:bold;
+	text-align:center;
+}
+
+#schedule .col-time .cell.t30 {
+    font-weight: bold;
+    height: 15px;
+    margin-top: 0;
+    padding: 30px 0px;
+    text-align: center;
+	color:#25292b;
+}
+
+#schedule .cell.t30 {
+	border-top:1px solid #ffffff;
+	border-right:1px solid #ffffff;
+	border-bottom:1px solid #cfcfcf;
+	border-left:1px solid #cfcfcf;
+	background:#f1f1f1;
+	color:#25292b;
+	font-size:14px;
+}
+
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
