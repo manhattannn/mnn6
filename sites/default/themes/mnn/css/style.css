@@ -357,7 +357,7 @@ Header Styles
 	    #181A1B 100%
 	);
 	color: white;
-    display: block;
+    display: none;
     margin-top: 12px;
     position: absolute;
     text-transform: none;
@@ -371,7 +371,6 @@ Header Styles
 
 #main-menu .get_involved:hover ul.menu {
 	display:block;
-	
 }
 
 li.expanded {
