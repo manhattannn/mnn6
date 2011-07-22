@@ -332,8 +332,8 @@ Header Styles
 }
 
 #main-menu .get_involved {
-	width:100px;
 	overflow:hidden;
+	width: 84px;
 }
 
 #main-menu .get_involved ul.menu {
