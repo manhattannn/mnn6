@@ -333,7 +333,7 @@ Header Styles
 
 #main-menu .get_involved {
 	overflow:hidden;
-	width: 84px;
+	width: 86px;
 }
 
 #main-menu .get_involved ul.menu {
@@ -342,7 +342,7 @@ Header Styles
 	width:100px;
 	background:#25292a;
 	color:white;
-	padding:5px;
+	padding:0px;
 	text-transform:none;
 	background-image: -webkit-gradient(
 	    linear,
@@ -361,7 +361,7 @@ Header Styles
     margin-top: 12px;
     position: absolute;
     text-transform: none;
-    width: 100px;
+    width: 80px;
     z-index: 9;
 }
 
@@ -385,7 +385,7 @@ li.expanded {
 	border-bottom:1px solid #0d0e0f;
 	float: none;
     margin: 0;
-    padding: 10px 7px;
+    padding: 8px 7px;
 }
 
 #main-menu .get_involved ul.menu li:first-child {
@@ -2554,7 +2554,6 @@ Schedule Styles
 }
 
 #schedule-header .nav .prev, #schedule-header .nav .next {
-	padding:5px 10px;
 	border:1px solid #919c9c;
 	color:#25292b;
 	font-family:arial;
@@ -2568,9 +2567,6 @@ Schedule Styles
 	    color: #25292B;
 	    font-family: arial;
 	    font-size: 13px;
-	    height: 15px;
-	    padding: 4px 10px 8px;
-	    width: 60px;
 	background:#e6e6e6;
 		background-image: -webkit-gradient(
 		    linear,
@@ -2593,11 +2589,21 @@ Schedule Styles
 
 
 #schedule-header .nav .prev span {
-background: url("../images/right-arrow-sm.png") no-repeat scroll 8px 9px transparent;
+background: url("../images/left-arrow-sm.png") no-repeat scroll 8px 9px transparent;
+ clear: left;
+    float: left;
+    height: 14px;
+    padding: 4px 10px 8px;
+    width: 60px;
 }
 
 #schedule-header .nav .next span {
 background: url("../images/right-arrow-sm.png") no-repeat scroll 68px 9px transparent;
+clear: left;
+   float: left;
+   height: 14px;
+   padding: 4px 10px 8px;
+   width: 60px;
 }
 
 
