@@ -2209,35 +2209,35 @@ background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
 	font-size:11px;
 }
 
-#channel-one {
+#channel1 {
 	background:url('../images/icon_ch1.png') no-repeat 7px 16px;
 }
 
-#channel-one:hover {
+#channel1:hover {
 	background:url('../images/icon_ch1.png') no-repeat 7px 16px #464c4f;
 }
 
-#channel-two {
+#channel2 {
 	background:url('../images/icon_ch2.png') no-repeat 7px 16px;
 }
 
-#channel-two:hover {
+#channel2:hover {
 	background:url('../images/icon_ch2.png') no-repeat 7px 16px #464c4f;
 }
 
-#channel-three {
+#channel3 {
 	background:url('../images/icon_ch3.png') no-repeat 7px 16px;
 }
 
-#channel-three:hover {
+#channel3:hover {
 	background:url('../images/icon_ch3.png') no-repeat 7px 16px #464c4f;
 }
 
-#channel-four {
+#channel4 {
 	background:url('../images/icon_ch4.png') no-repeat 7px 16px;
 }
 
-#channel-four:hover {
+#channel4:hover {
 	background:url('../images/icon_ch4.png') no-repeat 7px 16px #464c4f;
 }
 

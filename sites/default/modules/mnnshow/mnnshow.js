@@ -13,7 +13,7 @@ var schedule = (function(){
 	}
 
 	function generateHtml(){
-		var nav = '<a href="#" class="prev">Previous</a><a href="#" class="next">Next</a>';
+		var nav = '<a href="#" class="prev"><span>Previous</span></a><a href="#" class="next"><span>Next</span></a>';
 		nav += '<div class="schedule-date"></div> ';
 		$('#schedule-header .nav').html(nav);
 	}

@@ -22,7 +22,7 @@ function watch_live_feature_node_info() {
       'has_title' => '1',
       'title_label' => t('Title'),
       'has_body' => '1',
-      'body_label' => t('Body'),
+      'body_label' => t('JW Player Video Tag'),
       'min_word_count' => '0',
       'help' => '',
     ),

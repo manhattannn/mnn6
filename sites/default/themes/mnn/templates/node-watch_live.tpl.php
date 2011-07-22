@@ -1,7 +1,7 @@
 <article class="watch-live node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
 
 	<div class="video">
-		<?php print $node->field_video_feed[0]['view']; ?>
+		<?php print $node->content['body']['#value']; ?>
 	</div>
 
 	<header>
@@ -9,7 +9,7 @@
   </header>
   
     <div class="content">
-      <?php print $node->content['body']['#value']; ?>
+	    <?php print $node->field_description[0]['view']; ?>
       <?php print $node->links['addthis']['title']; ?>
     </div>
  

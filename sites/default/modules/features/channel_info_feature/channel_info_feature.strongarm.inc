@@ -201,13 +201,14 @@ function channel_info_feature_strongarm() {
   $strongarm->value = array(
     'title' => '-5',
     'body_field' => '-3',
-    'revision_information' => '1',
-    'author' => '0',
-    'options' => '2',
-    'comment_settings' => '4',
-    'menu' => '-1',
-    'path' => '5',
-    'path_redirect' => '3',
+    'revision_information' => '2',
+    'author' => '1',
+    'options' => '3',
+    'comment_settings' => '5',
+    'menu' => '0',
+    'path' => '6',
+    'custom_breadcrumbs' => '7',
+    'path_redirect' => '4',
   );
 
   $export['content_extra_weights_channel_info'] = $strongarm;

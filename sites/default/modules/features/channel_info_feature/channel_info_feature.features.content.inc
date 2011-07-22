@@ -135,6 +135,82 @@ function channel_info_feature_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Television Channel',
+      'weight' => '-1',
+      'description' => '',
+      'type' => 'nodereference_select',
+      'module' => 'nodereference',
+    ),
+  );
+
+  // Exported field: field_watch_live_link
+  $fields['channel_info-field_watch_live_link'] = array(
+    'field_name' => 'field_watch_live_link',
+    'type_name' => 'channel_info',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'nodereference',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'nodereference',
+    'active' => '1',
+    'referenceable_types' => array(
+      'watch_live' => 'watch_live',
+      'block_content' => 0,
+      'cert_class' => 0,
+      'channel_info' => 0,
+      'faq' => 0,
+      'feed' => 0,
+      'feed_item' => 0,
+      'image' => 0,
+      'main_feature_slideshow' => 0,
+      'news' => 0,
+      'page' => 0,
+      'television_channel' => 0,
+      'television_station' => 0,
+      'video' => 0,
+      'webform' => 0,
+    ),
+    'advanced_view' => '--',
+    'advanced_view_args' => '',
+    'widget' => array(
+      'autocomplete_match' => 'contains',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'nid' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Watch Live Link',
       'weight' => '-2',
       'description' => '',
       'type' => 'nodereference_select',
@@ -284,6 +360,7 @@ function channel_info_feature_content_default_fields() {
   t('Number');
   t('Television Channel');
   t('Television Station');
+  t('Watch Live Link');
 
   return $fields;
 }

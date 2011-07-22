@@ -75,14 +75,14 @@ function watch_live_feature_strongarm() {
   $strongarm->value = array(
     'title' => '-5',
     'body_field' => '-3',
-    'revision_information' => '0',
-    'author' => '-1',
-    'options' => '1',
-    'comment_settings' => '4',
+    'revision_information' => '1',
+    'author' => '0',
+    'options' => '2',
+    'comment_settings' => '5',
     'menu' => '-4',
-    'path' => '5',
-    'custom_breadcrumbs' => '2',
-    'path_redirect' => '3',
+    'path' => '6',
+    'custom_breadcrumbs' => '3',
+    'path_redirect' => '4',
   );
 
   $export['content_extra_weights_watch_live'] = $strongarm;
@@ -145,13 +145,6 @@ function watch_live_feature_strongarm() {
   $strongarm->value = 0;
 
   $export['page_title_type_watch_live_showfield'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_watch_live_pattern';
-  $strongarm->value = 'live/[title-raw]';
-
-  $export['pathauto_node_watch_live_pattern'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
