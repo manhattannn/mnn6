@@ -391,118 +391,23 @@
 				$blocks[1]['info'] = t('Shows Filters Heading');
 				$blocks[1]['cache'] = BLOCK_NO_CACHE;
 
+				$blocks[2]['info'] = t('Watch Now');
+				$blocks[2]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
 				if ($delta == 0) {
 					$block['subject'] = t('About the Producer');
-					$path = drupal_get_path_alias($_GET['q']);
-					$path = explode('/', $path);
-					if ($path[0] == 'show-info' && is_numeric($path[1])) {
-						$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
-						$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
-						$sql .= 'ON s.exec_producer_id = p.producer_id ';
-						$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
-						$sql = db_rewrite_sql($sql);
-
-						$result = db_query($sql);
-						while ($row = db_fetch_object($result)) {
-							if ($row->display_name)
-								$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
-							if ($row->website)
-								$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
-							if ($row->email)
-								$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
-							if ($row->phone_primary)
-								$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
-						}
-
-						$block['content'] = $content;
-					}
-					else {
-						$block['content'] = t('Producer info not found');
-					}
+					$block['content'] = _mnnshow_block_publisher_info();
 				}
 				elseif ($delta == 1){
-					$path = drupal_get_path_alias($_GET['q']);
-					$path = explode('/', $path);
-					if ($path[0] == 'shows' && $path[1] == 'past-shows' && $path[2] == 'category') { // past shows with category
-						$is_current_shows = false;
-						$is_alphabetical = false;
-						if ($path[3])
-							$current_category = $path[3];
-						else
-							$current_category = '';
-					}
-					elseif ($path[0] == 'shows' && $path[1] == 'past-shows') { // past shows alphabetical
-						$is_current_shows = false;
-						$is_alphabetical = true;
-						if ($path[2])
-							$current_category = $path[2];
-						else
-							$current_category = 'a';
-					}
-					elseif ($path[0] == 'shows' && $path[1] == 'category') { // current shows with category
-						$is_current_shows = true;
-						$is_alphabetical = false;
-						if ($path[2])
-							$current_category = $path[2];
-						else
-							$current_category = '';
-					}
-					else { // current shows alphabetical
-						$is_current_shows = true;
-						$is_alphabetical = true;
-						if ($path[1])
-							$current_category = $path[1];
-						else
-							$current_category = 'a';
-					}
-
-					// build the 'viewing' section
-					$content = '<div class="viewing">Viewing:';
-					if ($is_current_shows){
-						$content .= '<span class="current">Current Shows</span>';
-						if ($is_alphabetical)
-							$content .= '<span class="past"><a href="/shows/past-shows">Past Shows</a></span>';
-						else
-							$content .= '<span class="past"><a href="/shows/past-shows/category/'.$current_category.'">Past Shows</a></span>';
-					}
-					else{
-						if ($is_alphabetical)
-							$content .= '<span class="current"><a href="/shows">Current Shows</a></span>';
-						else
-							$content .= '<span class="current"><a href="/shows/category/'.$current_category.'">Current Shows</a></span>';
-						$content .= '<span class="past">Past Shows</span>';
-					}
-					$content .= '</div>';
-
-					// build the 'sort by' section
-					$content .= '<div class="sort-by">Sort By:';
-					if ($is_alphabetical){
-						$content .= '<span class="alphabetical">Alphabetical</span>';
-						if ($is_current_shows)
-							$content .= '<span class="category"><a href="/shows/category">Category</a></span>';
-						else
-							$content .= '<span class="category"><a href="/shows/past-shows/category">Category</a></span>';
-					}
-					else{
-						if ($is_current_shows)
-							$content .= '<span class="alphabetical"><a href="/shows">Alphabetical</a></span>';
-						else
-							$content .= '<span class="alphabetical"><a href="/shows/past-shows">Alphabetical</a></span>';
-						$content .= '<span class="category">Category</span>';
-						$content .= _mnnshow_block_category_dropdown($is_current_shows, $current_category);
-					}
-					$content .= '</div>';
-
-					// build the alphabet links (if necessary)
-					if ($is_alphabetical){
-						$content .= _mnnshow_block_alphabet_links($is_current_shows, $current_category);
-					}
+					$block['content'] = _mnnshow_block_shows_filter();
+				}
+				elseif ($delta == 2){
+					$block['content'] = _mnnshow_block_watch_now();
 				}
 
-				$block['content'] = $content;
 				return $block;
 		}
 
@@ -580,11 +485,15 @@
 	 *****************************************************************************/
 
 	function mnnshow_get_channels(){
+		// check for cached channels
+		if ($cached = cache_get('mnnshow:channels', 'cache')) {
+			return $cached->data;
+		}
+
 		$channels = array();
 
 		$result = db_query("SELECT nid FROM {node} WHERE type = 'channel_info'");
-		while($row = db_fetch_object($result))
-		{
+		while($row = db_fetch_object($result)) {
 			$channel_info = node_load($row->nid); // drupal content type
 			$tv_ch = array();
 			foreach ($channel_info->field_television_channel as $tv_ch_nid){
@@ -598,10 +507,13 @@
 			$channels[$channel_info->field_number[0]['value']] = array(
 				'name' => $channel_info->title,
 				'description' => $channel_info->body,
+				'watchLiveUrl' => drupal_get_path_alias('node/'.$channel_info->field_watch_live_link[0]['nid']),
 				'tvChannels' => $tv_ch
 			);
 		}
 
+		// store in cache with a minimum expiration time of 1 day
+		cache_set('mnnshow:channels', $channels, 'cache', time() + (60 * 60 * 24));
 		return $channels;
 	}
 
@@ -619,6 +531,184 @@
 	/******************************************************************************
 	 * Helper Functions
 	 *****************************************************************************/
+
+	function _mnnshow_block_watch_now(){
+		$channel_info = mnnshow_get_channels();
+		$channels = array();
+
+		$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
+		//$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		$query = 'SELECT s.project_id, s.title, a.channel ';
+		$query .= 'FROM {ac_report_project_cache} s ';
+		$query .= 'LEFT JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'LEFT JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE (a.start_time <= "'.$now->format('Y-m-d G:i:s').'" AND a.end_time >= "'.$now->format('Y-m-d G:i:s').'") ';
+		$query .= 'ORDER BY a.channel ASC';
+
+		$result = db_query(db_rewrite_sql($query));
+		while ($data = db_fetch_object($result)) {
+			$show = array(
+				'id' => $data->project_id,
+				'title' => $data->title,
+				'url' => _mnnshow_get_show_href($data->title, $data->project_id)
+			);
+			switch ($data->channel){
+				case 'Channel 1':
+					if (!isset($channels[1]))
+						$channels[1] = $show;
+					break;
+				case 'Channel 2':
+					if (!isset($channels[2]))
+						$channels[2] = $show;
+					break;
+				case 'Channel 3':
+					if (!isset($channels[3]))
+						$channels[3] = $show;
+					break;
+				case 'Channel 4':
+					if (!isset($channels[4]))
+						$channels[4] = $show;
+					break;
+			}
+		}
+
+		$content = "<div class='whats-on-now'>";
+		$content .= "<h3>What's on Now</h3>";
+		$content .= "<time>".$now->format('M j, Y g:i a')."</time>";
+		$content .= "<p class='view-sched'><a href='/schedule'>View Schedule</a></p>";
+		$content .= "</div>";
+		
+		$content .= "<ul>";
+		for ($i = 1; $i <= 4; $i++){
+			$content .= '<li id="channel'.$i.'"><div class="channel-info">';
+			$content .= '<h4>'.$channel_info[$i]['name'].'</h4>';
+			$content .= '<h5><a href="/'.$channels[$i]['url'].'">'.$channels[$i]['title'].'</h5>';
+			$content .= '<p class="watch-now-link"><a href="/'.$channel_info[$i]['watchLiveUrl'].'">Watch Now</a></p>';
+			$content .= "<div class='channel-about'>";
+			$content .= "<p class='channel-description'>".$channel_info[$i]['description']."</p>";
+			$content .= "<ul class='cable-channel-list'>";
+			foreach ($channel_info[$i]['tvChannels'] as $tvStation){
+				$content .= '<li>'.$tvStation['tvStationName'].'<span class="cable-number"">'.$tvStation['tvStationChannel'].'</span></li>';
+			}
+			$content .= "</ul>";
+			$content .= "</div>";
+			$content .= "</div>";
+			$content .= "</li>";
+		}
+		$content .= "</ul>";
+
+		return $content;
+	}
+
+	function _mnnshow_block_shows_filter(){
+		$path = drupal_get_path_alias($_GET['q']);
+		$path = explode('/', $path);
+		if ($path[0] == 'shows' && $path[1] == 'past-shows' && $path[2] == 'category') { // past shows with category
+			$is_current_shows = false;
+			$is_alphabetical = false;
+			if ($path[3])
+				$current_category = $path[3];
+			else
+				$current_category = '';
+		}
+		elseif ($path[0] == 'shows' && $path[1] == 'past-shows') { // past shows alphabetical
+			$is_current_shows = false;
+			$is_alphabetical = true;
+			if ($path[2])
+				$current_category = $path[2];
+			else
+				$current_category = 'a';
+		}
+		elseif ($path[0] == 'shows' && $path[1] == 'category') { // current shows with category
+			$is_current_shows = true;
+			$is_alphabetical = false;
+			if ($path[2])
+				$current_category = $path[2];
+			else
+				$current_category = '';
+		}
+		else { // current shows alphabetical
+			$is_current_shows = true;
+			$is_alphabetical = true;
+			if ($path[1])
+				$current_category = $path[1];
+			else
+				$current_category = 'a';
+		}
+
+		// build the 'viewing' section
+		$content = '<div class="viewing">Viewing:';
+		if ($is_current_shows){
+			$content .= '<span class="current">Current Shows</span>';
+			if ($is_alphabetical)
+				$content .= '<span class="past"><a href="/shows/past-shows">Past Shows</a></span>';
+			else
+				$content .= '<span class="past"><a href="/shows/past-shows/category/'.$current_category.'">Past Shows</a></span>';
+		}
+		else{
+			if ($is_alphabetical)
+				$content .= '<span class="current"><a href="/shows">Current Shows</a></span>';
+			else
+				$content .= '<span class="current"><a href="/shows/category/'.$current_category.'">Current Shows</a></span>';
+			$content .= '<span class="past">Past Shows</span>';
+		}
+		$content .= '</div>';
+
+		// build the 'sort by' section
+		$content .= '<div class="sort-by">Sort By:';
+		if ($is_alphabetical){
+			$content .= '<span class="alphabetical">Alphabetical</span>';
+			if ($is_current_shows)
+				$content .= '<span class="category"><a href="/shows/category">Category</a></span>';
+			else
+				$content .= '<span class="category"><a href="/shows/past-shows/category">Category</a></span>';
+		}
+		else{
+			if ($is_current_shows)
+				$content .= '<span class="alphabetical"><a href="/shows">Alphabetical</a></span>';
+			else
+				$content .= '<span class="alphabetical"><a href="/shows/past-shows">Alphabetical</a></span>';
+			$content .= '<span class="category">Category</span>';
+			$content .= _mnnshow_block_category_dropdown($is_current_shows, $current_category);
+		}
+		$content .= '</div>';
+
+		// build the alphabet links (if necessary)
+		if ($is_alphabetical){
+			$content .= _mnnshow_block_alphabet_links($is_current_shows, $current_category);
+		}
+
+		return $content;
+	}
+
+	function _mnnshow_block_publisher_info(){
+		$path = drupal_get_path_alias($_GET['q']);
+		$path = explode('/', $path);
+		if ($path[0] == 'show-info' && is_numeric($path[1])) {
+			$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+			$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+			$sql .= 'ON s.exec_producer_id = p.producer_id ';
+			$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+			$sql = db_rewrite_sql($sql);
+
+			$result = db_query($sql);
+			while ($row = db_fetch_object($result)) {
+				if ($row->display_name)
+					$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
+				if ($row->website)
+					$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
+				if ($row->email)
+					$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
+				if ($row->phone_primary)
+					$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
+			}
+
+			return $content;
+		}
+		else {
+			return t('Producer info not found');
+		}
+	}
 
 	function _mnnshow_show_current_list($query, $count_query, $category) {
 		$pager_num = 0;
