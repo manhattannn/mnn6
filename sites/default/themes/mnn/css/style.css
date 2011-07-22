@@ -39,7 +39,10 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 html { overflow-y: scroll; }
 a:hover, a:active { outline: none; }
-ul, ol { margin-left: 2em; }
+ul, ol {
+    margin-bottom: 10px;
+    margin-left: 2em;
+}
 ol { list-style-type: decimal; }
 nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
 small { font-size: 85%; }
@@ -316,7 +319,7 @@ Header Styles
 }
 
 #main-menu li.home a:hover {
-	background: url("../images/icon_home.png") no-repeat scroll 0 0px transparent;
+	background: url("../images/icon_home.png") no-repeat scroll 0 1px transparent;
 }
 
 #main-menu a {
@@ -353,6 +356,13 @@ Header Styles
 	    #34393B 0%,
 	    #181A1B 100%
 	);
+	color: white;
+    display: block;
+    margin-top: 12px;
+    position: absolute;
+    text-transform: none;
+    width: 100px;
+    z-index: 9;
 }
 
 #main-menu .get_involved:hover {
@@ -372,9 +382,11 @@ li.expanded {
 }
 
 #main-menu .get_involved ul.menu li {
-	padding:10px 5px;
 	border-top:1px solid #3c4143;
 	border-bottom:1px solid #0d0e0f;
+	float: none;
+    margin: 0;
+    padding: 10px 7px;
 }
 
 #main-menu .get_involved ul.menu li:first-child {
@@ -643,7 +655,7 @@ Homepage Hero Styles
     -o-border-radius: 0 5px 5px 0;
     left: 0;
 }
-style.css?k (line 578)
+
 #slideshow-buttons a {
 	background:#dddddd;
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.4);
@@ -653,6 +665,10 @@ style.css?k (line 578)
     position: absolute;
     top: 225px;
     width: 34px;
+}
+
+#block-views-homepage-slideshow .view-content a {
+	color:#005B25;
 }
 
 /*--------------------------------------------------------------------------------
@@ -986,6 +1002,11 @@ list-style-image: none;
 	-webkit-box-shadow:inset 0px 0px 10px 0px black;
 	-o-box-shadow:inset 0px 0px 10px 0px black;
 	width:227px;
+}
+
+footer textarea#edit-submitted-message {
+    color: #666666;
+    padding: 5px;
 }
 
 #block-webform-webform-send-us-a-message .form-item {
@@ -2269,11 +2290,11 @@ margin-top: 110px;
 Show Styles
 --------------------------------------------------------------------------------*/
 
-.block-mnnshow .email span, .block-mnnshow .name span {
+.block-mnnshow .email span, .block-mnnshow .name span, .block-mnnshow .phone span {
 	font-weight:bold;
 }
 
-.block-mnnshow .email, .block-mnnshow .name {
+.block-mnnshow .email, .block-mnnshow .name, .block-mnnshow .phone {
 	margin-bottom:20px;
 }
 
@@ -2326,6 +2347,7 @@ margin-top:20px;
 	font-family:'Droid Serif', georgia;
 	font-weight:normal;
 }
+
 
 .section-shows .row .meta .channel {
     border-right: 1px solid #666666;
@@ -2421,7 +2443,7 @@ select {
 	margin-bottom:16px;
 }
 
-.section-show-info .content {
+.section-show-info #content-area .content {
 	margin-top:30px;
 }
 
