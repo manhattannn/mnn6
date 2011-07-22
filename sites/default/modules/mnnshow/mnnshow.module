@@ -216,21 +216,12 @@
 			return null;
 		}
 
-		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, s.public_url, ';
 		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
 		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
 		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
 		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
 		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_id = "'.$id.'"';
-
-		$sql = 'SELECT DISTINCT s.project_id, s.title, s.narrative AS description, s.topic, ar.start_time, ar.channel ';
-		$sql .= 'FROM {ac_report_project_cache} s ';
-		$sql .= 'LEFT JOIN {ac_report_episode_cache} ep ON s.project_id = ep.project_id ';
-		$sql .= 'LEFT JOIN {ac_report_airing_cache} ar ON ep.episode_id = ar.episode_id ';
-		$sql .= 'WHERE s.project_id = "' . $id . '" AND ar.start_time > NOW() ';
-		$sql .= 'ORDER BY ar.start_time ASC ';
-		$sql .= 'LIMIT 1';
-		$sql = db_rewrite_sql($query);
 
 		$result = db_query($query);
 		//$count = 0;
@@ -247,8 +238,9 @@
 				$content .= '<span class="next-airing">Next Airing: There are no scheduled airings for this show.</span></div>';
 			}
 			$content .= '<div class="content">' . $row->description . '</div>';
-			//$count++;
-			//return var_export($row, true);
+			if ($row->public_url){
+				$content .= '<div class="website"><span class="label">Website: </span><a href="'. $row->public_url .'">'. $row->public_url .'</a></div>';
+			}
 		}
 		return $content;
 	}
@@ -698,7 +690,7 @@
 				if ($row->website)
 					$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
 				if ($row->email)
-					$content .= '<div class="email"><span>'. t('Email by') .'</span><br />'. $row->email .'</div>';
+					$content .= '<div class="email"><span>'. t('Email by') .'</span><br /><a href="mailto:'. $row->email .'">'. $row->email .'</a></div>';
 				if ($row->phone_primary)
 					$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
 			}
