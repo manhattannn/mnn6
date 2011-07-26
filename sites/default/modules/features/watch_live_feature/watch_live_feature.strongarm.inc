@@ -75,14 +75,14 @@ function watch_live_feature_strongarm() {
   $strongarm->value = array(
     'title' => '-5',
     'body_field' => '-3',
-    'revision_information' => '1',
-    'author' => '0',
-    'options' => '2',
-    'comment_settings' => '5',
+    'revision_information' => '2',
+    'author' => '1',
+    'options' => '3',
+    'comment_settings' => '6',
     'menu' => '-4',
-    'path' => '6',
-    'custom_breadcrumbs' => '3',
-    'path_redirect' => '4',
+    'path' => '7',
+    'custom_breadcrumbs' => '4',
+    'path_redirect' => '5',
   );
 
   $export['content_extra_weights_watch_live'] = $strongarm;

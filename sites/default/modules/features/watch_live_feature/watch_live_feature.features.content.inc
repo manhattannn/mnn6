@@ -6,9 +6,9 @@
 function watch_live_feature_content_default_fields() {
   $fields = array();
 
-  // Exported field: field_description
-  $fields['watch_live-field_description'] = array(
-    'field_name' => 'field_description',
+  // Exported field: field_channel
+  $fields['watch_live-field_channel'] = array(
+    'field_name' => 'field_channel',
     'type_name' => 'watch_live',
     'display_settings' => array(
       'label' => array(
@@ -41,100 +41,50 @@ function watch_live_feature_content_default_fields() {
       ),
     ),
     'widget_active' => '1',
-    'type' => 'text',
-    'required' => '0',
+    'type' => 'nodereference',
+    'required' => '1',
     'multiple' => '0',
-    'module' => 'text',
+    'module' => 'nodereference',
     'active' => '1',
-    'text_processing' => '1',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
+    'referenceable_types' => array(
+      'channel_info' => 'channel_info',
+      'block_content' => 0,
+      'cert_class' => 0,
+      'faq' => 0,
+      'feed' => 0,
+      'feed_item' => 0,
+      'image' => 0,
+      'main_feature_slideshow' => 0,
+      'news' => 0,
+      'page' => 0,
+      'television_channel' => 0,
+      'television_station' => 0,
+      'video' => 0,
+      'watch_live' => 0,
+      'webform' => 0,
+    ),
+    'advanced_view' => '--',
+    'advanced_view_args' => '',
     'widget' => array(
-      'rows' => '3',
+      'autocomplete_match' => 'contains',
       'size' => 60,
       'default_value' => array(
         '0' => array(
-          'value' => '',
-          'format' => '1',
-          '_error_element' => 'default_value_widget][field_description][0][value',
+          'nid' => '',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Channel Description',
+      'label' => 'MNN Channel',
       'weight' => '-2',
       'description' => '',
-      'type' => 'text_textarea',
-      'module' => 'text',
-    ),
-  );
-
-  // Exported field: field_video_feed
-  $fields['watch_live-field_video_feed'] = array(
-    'field_name' => 'field_video_feed',
-    'type_name' => 'watch_live',
-    'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '1',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => '5',
-      'size' => 60,
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_video_feed][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Video Feed',
-      'weight' => '-1',
-      'description' => '',
-      'type' => 'text_textarea',
-      'module' => 'text',
+      'type' => 'nodereference_select',
+      'module' => 'nodereference',
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channel Description');
-  t('Video Feed');
+  t('MNN Channel');
 
   return $fields;
 }
