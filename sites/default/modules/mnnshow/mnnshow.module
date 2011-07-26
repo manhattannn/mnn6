@@ -318,8 +318,8 @@
 		// time column
 		$time_col = array();
 		$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
-		$hour = date('H');
-		$minute = date('i') >= 30 ? '30' : '00';
+		$hour = $now->format('H');
+		$minute = $now->format('i') >= 30 ? '30' : '00';
 		$now->setTime($hour, $minute, 0); // round down to nearest half hour
 
 		$time_increment = clone $requested_date;
