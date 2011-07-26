@@ -8,8 +8,8 @@ var schedule = (function(){
 		generateHtml();
 		setupEvents();
 		loadTableHeader()
-		loadSchedule('2011-05-15');
-		//loadSchedule(schedDate);
+		//loadSchedule('2011-05-15');
+		loadSchedule(schedDate);
 	}
 
 	function generateHtml(){

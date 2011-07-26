@@ -525,7 +525,8 @@
 			return null;
 		}
 
-		$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
+		$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		//$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
 		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, s.public_url, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
 		$query .= 'LEFT JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
@@ -554,8 +555,8 @@
 		$channel_info = mnnshow_get_channels();
 		$channels = array();
 
-		$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
-		//$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		//$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
 		$query = 'SELECT s.project_id, s.title, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
 		$query .= 'LEFT JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
