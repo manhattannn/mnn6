@@ -18,6 +18,7 @@
   
     <div class="content">
       <?php print $node->content['body']['#value']; ?>
+	    <?php print $node->links['addthis']['title']; ?>
     </div>
  
 

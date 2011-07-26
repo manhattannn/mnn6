@@ -30,5 +30,5 @@ $channel = node_load($node->field_channel[0]['nid']);
 </article>
 
 <pre><?php //print_r($node) ?></pre>
-<pre><?php print_r($channel) ?></pre>
+<pre><?php //print_r($channel) ?></pre>
 
