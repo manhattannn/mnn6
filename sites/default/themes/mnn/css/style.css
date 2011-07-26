@@ -1084,6 +1084,7 @@ footer textarea#edit-submitted-message {
 
 footer textarea#edit-submitted-message {
 	padding:5px;
+	    width: 228px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -2199,10 +2200,14 @@ background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
 }
 
 #watch-now ul li h5 {
-  font-family: arial;
+    font-family: arial;
     font-size: 14px;
     font-weight: bold;
+    height: 18px;
     margin: 1px 0 0;
+    overflow: hidden;
+    width: 140px;
+word-wrap:break-word;
 }
 
 #watch-now ul li p {
