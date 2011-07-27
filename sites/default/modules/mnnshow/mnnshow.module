@@ -259,12 +259,12 @@
 	 * Page callback.
 	 */
 	function mnnshow_schedule_get(){
-		$requested_date = new DateTime('6/1/2011', new DateTimeZone('America/New_York'));
-/*		try {
+//		$requested_date = new DateTime('6/1/2011', new DateTimeZone('America/New_York'));
+		try {
 			$requested_date = new DateTime($_POST['date'], new DateTimeZone('America/New_York'));
 		} catch (Exception $e) {
 			$requested_date = new DateTime(NULL, new DateTimeZone('America/New_York'));
-		}*/
+		}
 
 		$query = 'SELECT s.project_id, s.title, s.topic, a.start_time, a.duration, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
