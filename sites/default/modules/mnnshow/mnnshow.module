@@ -232,7 +232,8 @@
 			$content .= '<div class="category">'. $row->topic .'</div>';
 			$content .= '<div class="meta"><span class="channel">'. $row->channel .'</span>';
 			if ($row->start_time){
-				$content .= '<span class="next-airing">Next Airing: '. date("D, M j, Y \a\\t g:ia T", strtotime($row->start_time)) .'</span></div>';
+				$start_time = new DateTime($row->start_time, new DateTimeZone('America/New_York'));
+				$content .= '<span class="next-airing">Next Airing: '. $start_time->format("D, M j, Y \a\\t g:ia T") .'</span></div>';
 			}
 			else {
 				$content .= '<span class="next-airing">Next Airing: There are no scheduled airings for this show.</span></div>';
@@ -561,7 +562,7 @@
 		$query .= 'FROM {ac_report_project_cache} s ';
 		$query .= 'LEFT JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
 		$query .= 'LEFT JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
-		$query .= 'WHERE (a.start_time <= "'.$now->format('Y-m-d G:i:s').'" AND a.end_time >= "'.$now->format('Y-m-d G:i:s').'") ';
+		$query .= 'WHERE (a.start_time <= "'.$now->format('Y-m-d G:i:s').'" AND DATE_ADD(a.end_time, INTERVAL 2 MINUTE) >= "'.$now->format('Y-m-d G:i:s').'") ';
 		$query .= 'ORDER BY a.channel ASC';
 
 		$result = db_query(db_rewrite_sql($query));
