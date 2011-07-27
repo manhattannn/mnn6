@@ -2558,6 +2558,17 @@ Schedule Styles
     text-align: center;
 }
 
+#schedule-header .nav .schedule-date input{
+	display: none;
+}
+
+#schedule-header .nav .schedule-date img{
+	border: 0 none;
+	box-shadow: 0 0 0 0;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
 #schedule-header .nav .prev, #schedule-header .nav .next {
 	border:1px solid #919c9c;
 	color:#25292b;
@@ -2636,6 +2647,11 @@ clear: left;
 	color:white;
 	float:left;
 	width:940px;
+}
+
+#schedule-header .inner{
+	position: relative;
+	top: 0;
 }
 
 #schedule .col div:first-child {

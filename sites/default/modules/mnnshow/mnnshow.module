@@ -251,7 +251,7 @@
 	 */
 	function mnnshow_schedule(){
 		drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow.js');
-		$content = '<div id="schedule"><header id="schedule-header"><div class="nav"></div><div class="channels"></div></header><div id="cols"></div></div> ';
+		$content = '<div id="schedule"><header id="schedule-header"><div class="inner"><div class="nav"></div><div class="channels"></div></div></header><div id="cols"></div></div> ';
 		return $content;
 	}
 	
@@ -259,11 +259,12 @@
 	 * Page callback.
 	 */
 	function mnnshow_schedule_get(){
-		try {
+		$requested_date = new DateTime('6/1/2011', new DateTimeZone('America/New_York'));
+/*		try {
 			$requested_date = new DateTime($_POST['date'], new DateTimeZone('America/New_York'));
 		} catch (Exception $e) {
 			$requested_date = new DateTime(NULL, new DateTimeZone('America/New_York'));
-		}
+		}*/
 
 		$query = 'SELECT s.project_id, s.title, s.topic, a.start_time, a.duration, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
@@ -284,9 +285,12 @@
 			$start = new DateTime($data->start_time, new DateTimeZone('America/New_York'));
 			$end = new DateTime($data->start_time, new DateTimeZone('America/New_York'));
 			$end->add(new DateInterval('PT'.$duration.'M'));
-//			print $start->format('m/d/Y H:i:s  ');
-//			print $end->format('m/d/Y H:i:s  ');
 			$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+			$midnight = new DateTime($requested_date->format('m/d/Y 0:0:0'), new DateTimeZone('America/New_York'));
+			if ($start < $midnight){
+				$interval = $start->diff($midnight);
+				$duration -= intval($interval->format('%i'));
+			}
 			if ($now >= $start && $now <= $end)
 				$current = 'true';
 			else

@@ -3,9 +3,11 @@ var schedule = (function(){
 	var schedDate = '';
 	var prevDate = '';
 	var nextDate = '';
+	var offset;
 
 	function init(){
 		generateHtml();
+		offset = $('#schedule-header').offset().top;
 		setupEvents();
 		loadTableHeader()
 		//loadSchedule('2011-05-15');
@@ -14,7 +16,7 @@ var schedule = (function(){
 
 	function generateHtml(){
 		var nav = '<a href="#" class="prev"><span>Previous</span></a><a href="#" class="next"><span>Next</span></a>';
-		nav += '<div class="schedule-date"></div> ';
+		nav += '<div class="schedule-date"><time></time><input type="text" id="date-picker" name="date-picker"></div> ';
 		$('#schedule-header .nav').html(nav);
 	}
 
@@ -26,6 +28,33 @@ var schedule = (function(){
 		$('#schedule-header .nav a.next').click(function(){
 			loadSchedule(nextDate);
 			return false;
+		});
+
+		$(window).scroll(function(){
+		/*	var cols = $('#cols').offset().top + $('#cols').outerHeight();
+			var header = $('#schedule-header .inner').offset().top + $('#schedule-header .inner').outerHeight();
+			console.log('cols: '+cols);
+			console.log('header: '+header);
+			if (cols < header) {
+				$('#schedule-header .inner').css('position', 'relative').removeClass('floating');
+			}
+			else */
+			if ($(window).scrollTop() >= offset){
+				$('#schedule-header .inner').css('position', 'fixed').addClass('floating');
+			}
+			else {
+				$('#schedule-header .inner').css('position', 'relative').removeClass('floating');
+			}
+		});
+		$('#date-picker').datepicker({
+			onClose: function(dateText, inst){
+				if (dateText != schedDate){
+					loadSchedule(dateText);
+				}
+			},
+			showOn: 'button',
+			buttonImageOnly: true,
+			buttonImage: '/sites/default/themes/mnn/images/icon_calendar.png'
 		});
 	}
 
@@ -50,6 +79,7 @@ var schedule = (function(){
 				}
 
 				$('#schedule-header .channels').html(cols);
+				$('#schedule-header').height($('#schedule-header .nav').outerHeight() + $('#schedule-header .channels').outerHeight()); // fix the height
 			}
 		});
 	}
@@ -64,7 +94,7 @@ var schedule = (function(){
 				schedDate = data.schedDate;
 				prevDate = data.prevDate;
 				nextDate = data.nextDate;
-				$('#schedule-header .schedule-date').html(data.displayDate);
+				$('#schedule-header .schedule-date time').html(data.displayDate);
 
 				var cols = '';
 
@@ -85,7 +115,7 @@ var schedule = (function(){
 						var link = '<a href="'+channel[j].link+'">'+content+'</a>';
 						var category = '<div class="category">'+channel[j].category+'</div>';
 						channel[j].isCurrent == 'true' ? current = ' current' : current = '';
-						var cls = 'cell cell-' + j + ' t' + channel[j].duration + current;
+						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current;
 						col += '<div class="'+ cls +'">'+link+category+'</div>';
 					}
 					col += '</div>';
