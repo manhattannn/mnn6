@@ -1600,6 +1600,9 @@ News
 	padding-top:20px;
 }
 
+.view-content h2.title a:hover {
+    color: #005B25;
+}
 
 .post-date, .author, .taxonomy {
 	font-size:12px;
@@ -2054,6 +2057,10 @@ Watch Now Styles
 	}
 }
 
+#block-mnnshow-watch-now a:hover {
+	color:#EEFF9E;
+}
+
 .front #watch-now {
 margin-top: -67px;
 background:#2b3033;
@@ -2306,6 +2313,16 @@ Show Styles
 	font-size:24px;
 	margin-bottom: 10px;
 }
+
+#content-area .meta .channel {
+	padding-right:10px;
+	border:1px solid #666666;
+}
+
+#content-area .meta .next-airing {
+	padding-left:10px;
+}
+
 
 .section-shows .category {
 	text-transform:uppercase;
@@ -2694,6 +2711,20 @@ clear: left;
 	font-size:14px;
 }
 
+
+/*--------------------------------------------------------------------------------
+Schedule Styles
+--------------------------------------------------------------------------------*/
+
+
+
+.search-results h3.title {
+    color: #005B25;
+    font-family: 'Droid Serif',georgia;
+    font-size: 24px;
+    margin-bottom: 16px;
+    margin-top: 0;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
