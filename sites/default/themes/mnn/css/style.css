@@ -2576,13 +2576,14 @@ Schedule Styles
 }
 
 #schedule-header .nav .schedule-date input{
-	display: none;
+	/*display: none;*/
+	visibility: hidden;
+	width: 10px;
 }
 
 #schedule-header .nav .schedule-date img{
 	border: 0 none;
 	box-shadow: 0 0 0 0;
-	margin-left: 10px;
 	cursor: pointer;
 }
 
