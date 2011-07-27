@@ -520,6 +520,32 @@
 		}
 	}
 
+	function mnnshow_current_show_info($channelNum){
+		if (!is_numeric($channelNum)) {
+			return null;
+		}
+
+		$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, s.public_url, a.channel ';
+		$query .= 'FROM {ac_report_project_cache} s ';
+		$query .= 'LEFT JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'LEFT JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE a.start_time <= "'.$now->format('Y-m-d G:i:s').'" ';
+		$query .= 'AND a.end_time >= "'.$now->format('Y-m-d G:i:s').'" ';
+		$query .= 'AND a.channel ="Channel '.$channelNum.'" ';
+
+		$result = db_query($query);
+			//$count = 0;
+		while ($row = db_fetch_object($result)) {
+			return array(
+				'title' => $row->title,
+				'category' => $row->topic,
+				'description' => $row->description,
+				'url' => $row->public_url
+			);
+		}
+	}
+
 	/******************************************************************************
 	 * Helper Functions
 	 *****************************************************************************/
