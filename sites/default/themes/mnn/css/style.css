@@ -1600,6 +1600,9 @@ News
 	padding-top:20px;
 }
 
+.view-content h2.title a:hover {
+    color: #005B25;
+}
 
 .post-date, .author, .taxonomy {
 	font-size:12px;
@@ -2054,6 +2057,10 @@ Watch Now Styles
 	}
 }
 
+#block-mnnshow-watch-now a:hover {
+	color:#EEFF9E;
+}
+
 .front #watch-now {
 margin-top: -67px;
 background:#2b3033;
@@ -2306,6 +2313,16 @@ Show Styles
 	font-size:24px;
 	margin-bottom: 10px;
 }
+
+#content-area .meta .channel {
+	padding-right:10px;
+	border:1px solid #666666;
+}
+
+#content-area .meta .next-airing {
+	padding-left:10px;
+}
+
 
 .section-shows .category {
 	text-transform:uppercase;
@@ -2710,6 +2727,79 @@ clear: left;
 	font-size:14px;
 }
 
+
+/*--------------------------------------------------------------------------------
+Schedule Styles
+--------------------------------------------------------------------------------*/
+
+.search-result {
+	padding:20px 0px;
+	border-top:1px solid #b2bbc0;
+}
+
+.search-result:last-child {
+	border-bottom:1px solid #b2bbc0;
+}
+
+.search-result h3.title {
+    color: #005B25;
+    font-family: 'Droid Serif', georgia;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 0;
+	font-weight:normal;
+}
+
+.search-snippet {
+	width:670px;
+	color:#25292b;
+	line-height:18px;
+	font-size:14px;
+}
+
+.type {
+	text-transform:uppercase;
+	color:#666666;
+	font-size:12px;
+	padding-bottom:5px;
+}
+
+.section-search ul.primary {
+	background:none;
+	border:none;
+	list-style-type:none;
+	float:left;
+}
+
+.section-search .tabs .label {
+	float:left;
+	padding-right:2px;
+	color:#666666;
+}
+
+.section-search ul.primary li.active a {
+	font-weight:normal;
+	color:#25292b;
+	background:none;
+	border:none;
+}
+
+.section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, 
+.section-search ul.primary li.active a:focus .tab {
+	background:none;
+}
+
+ul.primary li a .tab {
+	background:none;
+}
+
+.section-search #search-form .form-item > label {
+	display:none;
+}
+
+.section-search .box > h2 {
+	display:none;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
