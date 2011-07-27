@@ -2716,14 +2716,73 @@ clear: left;
 Schedule Styles
 --------------------------------------------------------------------------------*/
 
+.search-result {
+	padding:20px 0px;
+	border-top:1px solid #b2bbc0;
+}
 
+.search-result:last-child {
+	border-bottom:1px solid #b2bbc0;
+}
 
-.search-results h3.title {
+.search-result h3.title {
     color: #005B25;
-    font-family: 'Droid Serif',georgia;
-    font-size: 24px;
-    margin-bottom: 16px;
+    font-family: 'Droid Serif', georgia;
+    font-size: 18px;
+    margin-bottom: 10px;
     margin-top: 0;
+	font-weight:normal;
+}
+
+.search-snippet {
+	width:670px;
+	color:#25292b;
+	line-height:18px;
+	font-size:14px;
+}
+
+.type {
+	text-transform:uppercase;
+	color:#666666;
+	font-size:12px;
+	padding-bottom:5px;
+}
+
+.section-search ul.primary {
+	background:none;
+	border:none;
+	list-style-type:none;
+	float:left;
+}
+
+.section-search .tabs .label {
+	float:left;
+	padding-right:2px;
+	color:#666666;
+}
+
+.section-search ul.primary li.active a {
+	font-weight:normal;
+	color:#25292b;
+	background:none;
+	border:none;
+}
+
+.section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, 
+.section-search ul.primary li.active a:focus .tab {
+	background:none;
+}
+
+ul.primary li a .tab {
+	background:none;
+}
+
+.section-search #search-form .form-item > label {
+	display:none;
+}
+
+.section-search .box > h2 {
+	display:none;
 }
 
 
