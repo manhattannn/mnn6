@@ -333,7 +333,6 @@ Header Styles
 
 #main-menu .get_involved {
 	overflow:hidden;
-	width: 86px;
 }
 
 #main-menu .get_involved ul.menu {
@@ -520,10 +519,10 @@ Header Search Styles
 }
 
 #search-theme-form {
-  background: none repeat scroll 0 0 #1C1C1C;
+    background: none repeat scroll 0 0 #1C1C1C;
+    margin-left: 625px;
     margin-top: 10px;
     padding: 5px;
-margin-left: 634px;
 }
 
 #search input[type="text"], .search-form input[type="text"] {
@@ -2742,14 +2741,15 @@ Schedule Styles
 	border-bottom:1px solid #b2bbc0;
 }
 
-.search-result h3.title {
+.search-result h3.title a {
     color: #005B25;
-    font-family: 'Droid Serif', georgia;
+    font-family: 'Droid Serif',georgia;
     font-size: 18px;
+    font-weight: normal;
     margin-bottom: 10px;
     margin-top: 0;
-	font-weight:normal;
 }
+
 
 .search-snippet {
 	width:670px;
@@ -2800,6 +2800,68 @@ ul.primary li a .tab {
 
 .section-search .box > h2 {
 	display:none;
+}
+
+
+.section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, .section-search ul.primary li.active a:focus .tab {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+ul.primary li {
+    background: none repeat scroll 0 0 transparent;
+    float: left;
+    height: 17px;
+    margin: 0 0 10px;
+    padding: 0 10px;
+}
+
+ul.primary li a {
+    background: none repeat scroll 0 0 white;
+    border: medium none;
+    display: block;
+    font-weight: normal;
+    height: 24px;
+    margin: 0;
+    padding: 0 4px;
+    text-decoration: none;
+}
+
+ul.primary li a .tab {
+    background: none repeat scroll 0 0 transparent;
+    border-width: 0;
+    display: block;
+    height: 10px;
+    line-height: 19px;
+    margin: 0;
+    padding: 0;
+}
+
+ul.primary li a:hover {
+border:none
+}
+
+.section-search #content-area .search-form {
+    clear: left;
+    margin: 30px 0;
+}
+
+.section-search #search input[type="text"], .section-search .search-form input[type="text"] {
+    background: url("../images/icon_search.png") no-repeat scroll 5px 8px white;
+    border: 1px solid #DDDDDD;
+    box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+    height: 17px;
+    margin-top: 10px;
+    padding: 4px 4px 4px 20px;
+    width: 190px;
+}
+
+ul.primary li:last-child {
+    background: none repeat scroll 0 0 transparent;
+    border-left: 1px solid #B2BBC0;
+    float: left;
 }
 
 
