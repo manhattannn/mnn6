@@ -75,7 +75,7 @@ button {  width: auto; overflow: visible; }
 body, select, input, textarea { color: #444; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a:hover { color: #173122; }
 
 .item-list ul li {
     list-style: none;
@@ -156,6 +156,10 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
 
 #page-homepage h3 a {
 	color:#25292b;
+}
+
+#page-homepage h3 a:hover {
+	color:#005B25;
 }
 
 img, #page article .available-tracks img {
@@ -1681,6 +1685,7 @@ News
 
 .item-list .pager {
     clear: both;
+    margin-top: 20px;
     text-align: left;
 }
 
@@ -2334,13 +2339,14 @@ Show Styles
 }
 
 .section-shows .meta .channel {
-	float:left;
-	padding-right:10px;
-	border-right:1px solid #666666;
+    border-right: 1px solid #666666;
+    float: left;
+    margin-right: 10px;
+    padding-right: 10px;
 }
 
 .section-shows .meta .next-airing {
-	padding-left:10px;
+	padding-left:0px;
 }
 
 .section-shows #main .content {
@@ -2368,6 +2374,9 @@ margin-top:20px;
 	font-weight:normal;
 }
 
+.row h3.title a:hover {
+color:#003b18;
+}
 
 .section-shows .row .meta .channel {
     border-right: 1px solid #666666;
@@ -2519,6 +2528,7 @@ Schedule Styles
     height: 17px;
     padding: 17px 0 17px 50px;
     text-transform: uppercase;
+border:1px solid #1D2022;
 }
 
 #schedule .cell.current{
