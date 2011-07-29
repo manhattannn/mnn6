@@ -56,7 +56,7 @@ var homeSlideshow = (function(){
 	}
 
 	function setupEvents(){
-		$('#slideshow-buttons a.right').click(function(){
+		$('#slideshow-buttons a.right').click(function(event){
 			var outgoing = $('#block-views-homepage-slideshow .views-row.current').removeClass('current');
 			var incoming = outgoing.next('#block-views-homepage-slideshow .views-row');
 			if (incoming.length <= 0)
@@ -64,9 +64,9 @@ var homeSlideshow = (function(){
 			incoming.addClass('current');
 			showItem(outgoing, incoming, 'right');
 			shouldRun = false; // stop slideshow from running
-			return false;
+			event.preventDefault();
 		});
-			$('#slideshow-buttons a.left').click(function(){
+			$('#slideshow-buttons a.left').click(function(event){
 			var outgoing = $('#block-views-homepage-slideshow .views-row.current').removeClass('current');
 			var incoming = outgoing.prev('#block-views-homepage-slideshow .views-row');
 			if (incoming.length <= 0)
@@ -74,7 +74,7 @@ var homeSlideshow = (function(){
 			incoming.addClass('current');
 			showItem(outgoing, incoming, 'left');
 			shouldRun = false; // stop slideshow from running
-			return false;
+			event.preventDefault();
 		});
 	}
 
@@ -133,9 +133,10 @@ var faq = (function(){
 	}
 
 	function setupEvents(){
-		$('.view-faq-pages .question').click(function(){
+		$('.view-faq-pages .question').click(function(event){
 			$(this).next('.answer').slideToggle();
-		})
+			event.preventDefault();
+		});
 	}
 
 	return {
