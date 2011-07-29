@@ -155,8 +155,8 @@
 
 		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, MIN(a.start_time) AS start_time, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
-		$query .= 'STRAIGHT_JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
-		$query .= 'STRAIGHT_JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
 		$query .= 'WHERE (s.project_status = "Active" OR s.project_status = "Completed") ';
 		$query .= 'AND a.start_time > NOW() ';
 		if ($category != 'all'){
@@ -184,8 +184,8 @@
 
 		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, MIN(a.start_time) AS start_time, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
-		$query .= 'STRAIGHT_JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
-		$query .= 'STRAIGHT_JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
 		$query .= 'WHERE (s.project_status = "Active" OR s.project_status = "Completed") ';
 		$query .= 'AND a.start_time > NOW() ';
 		$query .= 'AND s.title LIKE "'.$char.'%" ';
