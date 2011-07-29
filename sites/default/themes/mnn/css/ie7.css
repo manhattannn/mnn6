@@ -58,6 +58,25 @@ div.video {
     width: 808px;
 }
 
+#search-theme-form {
+    background: none repeat scroll 0 0 #1C1C1C;
+    margin-left: 590px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.page-search #content-area #edit-submit {
+	margin-top:4px;
+}
+
+#block-views-homepage-slideshow .primary-headline p {
+	background:#ffea00;
+}
+
+#block-views-homepage-slideshow .secondary-headline {
+	background:white;
+}
+
 #block-block-resources-for-links .producers a, .page-get-involved .producers a {
 background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;	
 }
