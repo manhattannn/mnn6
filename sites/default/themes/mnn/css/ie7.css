@@ -51,6 +51,29 @@ input[type="submit"] {
     width: 146px;
 }
 
+div.video {
+    height: 450px;
+    margin: auto;
+    text-align: center;
+    width: 808px;
+}
+
+#block-block-resources-for-links .producers a, .page-get-involved .producers a {
+background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;	
+}
+
+#block-block-resources-for-links .organizations a, .page-get-involved .organizations a {
+background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;	
+}
+
+#block-block-resources-for-links .youth-channel a, .page-get-involved .youth-channel a {
+background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;	
+}
+
+#watch-now ul li:hover .channel-about {
+	display:none;
+}
+
 #block-block-resources-for-links .producers a, .page-get-involved .producers a {
     background: url("../images/right-arrow.png") no-repeat scroll 215px 18px;
 }
