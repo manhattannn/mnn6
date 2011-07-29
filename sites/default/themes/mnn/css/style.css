@@ -2741,6 +2741,48 @@ clear: left;
 	font-size:14px;
 }
 
+/*--------------------------------------------------------------------------------
+Schedule Channel Styles
+--------------------------------------------------------------------------------*/
+
+.page-schedule #block-mnnshow-schedule-channel-listing {
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	background:#e3e8eb;
+	padding:16px 30px 16px 30px;
+	margin-bottom:20px;
+}
+
+#block-mnnshow-schedule-channel-listing h2 {
+	font-size:24px;
+	font-weight:normal;
+}
+
+#block-mnnshow-schedule-channel-listing  .locator {
+	font-size:14px;
+	line-height:18px;
+	width:200px;
+	margin-top:20px;
+}
+
+#block-mnnshow-schedule-channel-listing .col {
+	width:400px;
+	font-family:arial;
+}
+
+.channel-grid {
+	width:400px;
+	color:#25292b;
+	font-size:12px;
+}
+
+.channel-grid tr {
+	border-top:1px solid #d8dee2;
+	border-bottom:1px solid #f3f6f8;
+}
+
 
 /*--------------------------------------------------------------------------------
 Schedule Styles
