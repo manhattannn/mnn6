@@ -3,12 +3,23 @@ var site = (function(){
 
 	function init(){
 		setupWatermark();
+		inPageScroll();
 	}
 
 	function setupWatermark(){
 		$('#edit-submitted-name').watermark('Your Name');
 		$('#edit-submitted-email-address').watermark('Your Email');
 		$('#edit-submitted-message').watermark('Your message goes here');
+	}
+
+	function inPageScroll(){
+		// contact us link
+		$('#main-menu a.contact-us').attr('href', '#').click(function(event){
+			$('html, body').stop().animate({
+				scrollTop: $('#block-webform-webform-send-us-a-message').offset().top
+			}, 1500);
+			event.preventDefault();
+		});
 	}
 
 	return {
@@ -113,10 +124,29 @@ var homeSlideshow = (function(){
 	}
 })();
 
+/************************************************* faq *****************************************************/
+var faq = (function(){
+
+	function init(){
+		if ($('.view-faq-pages').length)
+			setupEvents();
+	}
+
+	function setupEvents(){
+		$('.view-faq-pages .question').click(function(){
+			$(this).next('.answer').slideToggle();
+		})
+	}
+
+	return {
+		init: init
+	}
+})();
 
 
 
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
+	faq.init();
 });
