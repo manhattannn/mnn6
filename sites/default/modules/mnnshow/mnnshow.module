@@ -105,8 +105,7 @@
 		$query = 'SELECT s.project_id, s.title ';
 		$query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' )'.$topic.' ORDER BY s.title ASC';
 
-		$count_query = 'SELECT COUNT(*) ';
-		$count_query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' )'.$topic.' ORDER BY s.title ASC';
+		$count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
 		return _mnnshow_show_past_list($query, $count_query, $display_category);
 	}
@@ -129,9 +128,7 @@
 		$query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' ) ';
 		$query .= 'AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
 
-		$count_query = 'SELECT COUNT(*) ';
-		$count_query .= 'FROM {ac_report_project_cache} s WHERE ( '.$project_status.' ) ';
-		$count_query .= 'AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+		$count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
 		return _mnnshow_show_past_list($query, $count_query, strtoupper($char));
 	}
@@ -155,26 +152,20 @@
 			}
 		}
 
-		if ($category == 'all'){
-			$where = '';
-		}
-		else {
-			$where = ' AND s.topic = "'. $display_category .'"';
-		}
 
-		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
-		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
-		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
-		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active"'.$where.' ORDER BY s.title ASC';
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, MIN(a.start_time) AS start_time, a.channel ';
+		$query .= 'FROM {ac_report_project_cache} s ';
+		$query .= 'JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE (s.project_status = "Active" OR s.project_status = "Completed") ';
+		$query .= 'AND a.start_time > NOW() ';
+		if ($category != 'all'){
+			$query .= ' AND s.topic = "'. $display_category .'"';
+		}
+		$query .= 'GROUP BY s.title ';
+		$query .= 'ORDER BY s.title ASC ';
 
-		$count_query = 'SELECT COUNT(*), ';
-		$count_query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
-		$count_query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
-		$count_query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active"'.$where.' ORDER BY s.title ASC';
+		$count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
 		return _mnnshow_show_current_list($query, $count_query, $display_category);
 	}
@@ -191,19 +182,17 @@
 				$char = 'a';
 		}
 
-		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, ';
-		$query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
-		$query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
-		$query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active" AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+		$query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, MIN(a.start_time) AS start_time, a.channel ';
+		$query .= 'FROM {ac_report_project_cache} s ';
+		$query .= 'JOIN {ac_report_episode_cache} e ON s.project_id = e.project_id ';
+		$query .= 'JOIN {ac_report_airing_cache} a ON e.episode_id = a.episode_id ';
+		$query .= 'WHERE (s.project_status = "Active" OR s.project_status = "Completed") ';
+		$query .= 'AND a.start_time > NOW() ';
+		$query .= 'AND s.title LIKE "'.$char.'%" ';
+		$query .= 'GROUP BY s.title ';
+		$query .= 'ORDER BY s.title ASC ';
 
-		$count_query = 'SELECT COUNT(*), ';
-		$count_query .= '( SELECT a.start_time FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS start_time, ';
-		$count_query .= '( SELECT a.channel FROM {ac_report_airing_cache} AS a JOIN {ac_report_episode_cache} AS e ON e.episode_id = a.episode_id ';
-		$count_query .= 'WHERE s.project_id = e.project_id AND a.start_time > NOW() ORDER BY a.start_time LIMIT 1 ) AS channel ';
-		$count_query .= 'FROM {ac_report_project_cache} s WHERE s.project_status = "Active" AND s.title LIKE "'.$char.'%" ORDER BY s.title ASC';
+		$count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
 		return _mnnshow_show_current_list($query, $count_query, NULL);
 	}
@@ -607,7 +596,7 @@
 		for ($i = 1; $i <= 4; $i++){
 			$content .= '<li id="channel'.$i.'"><div class="channel-info">';
 			$content .= '<h4>'.$channel_info[$i]['name'].'</h4>';
-			$content .= '<h5><a href="/'.$channels[$i]['url'].'">'.$channels[$i]['title'].'</h5>';
+			$content .= '<h5><a href="/'.$channel_info[$i]['watchLiveUrl'].'">'.$channels[$i]['title'].'</h5>';
 			$content .= '<p class="watch-now-link"><a href="/'.$channel_info[$i]['watchLiveUrl'].'">Watch Now</a></p>';
 			$content .= "<div class='channel-about'>";
 			$content .= "<p class='channel-description'>".$channel_info[$i]['description']."</p>";

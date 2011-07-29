@@ -1498,10 +1498,12 @@ FAQS
 .question {
 	padding-bottom:10px;
 	font-weight:bold;
+	cursor: pointer;
 }
 
 .answer {
 	padding-bottom:20px;
+	display: none;
 }
 
 .question p, .answer p {

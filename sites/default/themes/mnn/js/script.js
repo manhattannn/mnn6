@@ -3,12 +3,23 @@ var site = (function(){
 
 	function init(){
 		setupWatermark();
+		inPageScroll();
 	}
 
 	function setupWatermark(){
 		$('#edit-submitted-name').watermark('Your Name');
 		$('#edit-submitted-email-address').watermark('Your Email');
 		$('#edit-submitted-message').watermark('Your message goes here');
+	}
+
+	function inPageScroll(){
+		// contact us link
+		$('#main-menu a.contact-us').attr('href', '#').click(function(event){
+			$('html, body').stop().animate({
+				scrollTop: $('#block-webform-webform-send-us-a-message').offset().top
+			}, 1500);
+			event.preventDefault();
+		});
 	}
 
 	return {
@@ -45,7 +56,7 @@ var homeSlideshow = (function(){
 	}
 
 	function setupEvents(){
-		$('#slideshow-buttons a.right').click(function(){
+		$('#slideshow-buttons a.right').click(function(event){
 			var outgoing = $('#block-views-homepage-slideshow .views-row.current').removeClass('current');
 			var incoming = outgoing.next('#block-views-homepage-slideshow .views-row');
 			if (incoming.length <= 0)
@@ -53,9 +64,9 @@ var homeSlideshow = (function(){
 			incoming.addClass('current');
 			showItem(outgoing, incoming, 'right');
 			shouldRun = false; // stop slideshow from running
-			return false;
+			event.preventDefault();
 		});
-			$('#slideshow-buttons a.left').click(function(){
+			$('#slideshow-buttons a.left').click(function(event){
 			var outgoing = $('#block-views-homepage-slideshow .views-row.current').removeClass('current');
 			var incoming = outgoing.prev('#block-views-homepage-slideshow .views-row');
 			if (incoming.length <= 0)
@@ -63,7 +74,7 @@ var homeSlideshow = (function(){
 			incoming.addClass('current');
 			showItem(outgoing, incoming, 'left');
 			shouldRun = false; // stop slideshow from running
-			return false;
+			event.preventDefault();
 		});
 	}
 
@@ -113,10 +124,30 @@ var homeSlideshow = (function(){
 	}
 })();
 
+/************************************************* faq *****************************************************/
+var faq = (function(){
+
+	function init(){
+		if ($('.view-faq-pages').length)
+			setupEvents();
+	}
+
+	function setupEvents(){
+		$('.view-faq-pages .question').click(function(event){
+			$(this).next('.answer').slideToggle();
+			event.preventDefault();
+		});
+	}
+
+	return {
+		init: init
+	}
+})();
 
 
 
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
+	faq.init();
 });
