@@ -290,6 +290,8 @@ var geolocator = (function() {
 })();
 
 $(document).ready(function(){
-	if ($('#schedule').length)
+	if ($('#schedule').length){
 		schedule.init();
+		geolocator.init();
+	}
 });
