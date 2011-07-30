@@ -246,8 +246,8 @@ background-image: -moz-linear-gradient(
     #515151 0%,
     #373737 100%
 );
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#373737',GradientType=0 ); /* ie */
-background: -o-linear-gradient(top, #515151 0%,#373737 100%); /* opera */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#515151',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #373737 0%,#515151 100%); /* opera */
 }
 
 .button a:hover, .button:hover a {
@@ -257,7 +257,7 @@ background: -o-linear-gradient(top, #515151 0%,#373737 100%); /* opera */
 input[type="submit"] {
 text-transform:uppercase;
 font-size:12px;
-font-family:arial narrow;
+font-family:arial;
 padding:5px 15px;
 border:none;
 }
@@ -290,7 +290,7 @@ Header Styles
 
 #main-menu {
 	background:black;
-	font-family:arial narrow, arial;
+	font-family: arial;
 	text-transform:uppercase;
 	font-size:14px;
 	background-image: -webkit-gradient(
@@ -565,6 +565,7 @@ Homepage Hero Styles
 }
 
 #block-views-homepage-slideshow .primary-headline p {
+	background:#ffea00;
     background: none repeat scroll 0 0 rgba(255, 234, 0, 0.85);
     clear: both;
     color: #000000;
@@ -578,6 +579,7 @@ Homepage Hero Styles
 }
 
 #block-views-homepage-slideshow .secondary-headline {
+	background:white;
  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
     clear: left;
     color: #000000;
@@ -1357,7 +1359,9 @@ padding: 10px 0 8px 0px;
 
 #page-producers .sidebar .top,
 #page-organizations .sidebar .top, #page-producers-submit-show .sidebar .top,
-#page-producers-become-producer .sidebar .top {
+#page-producers-become-producer .sidebar .top,
+#page-organizations-faq .sidebar .top
+{
 padding: 10px 0 10px 24px;
 }
 
@@ -1508,6 +1512,13 @@ FAQS
 	margin-bottom:10px;
 }
 
+.question:hover {
+	color: #005B25;
+}
+
+.view-faq-pages {
+margin-top:40px;	
+}
 
 /*--------------------------------------------------------------------------------
 Web Forms
@@ -1654,6 +1665,15 @@ News
 	-o-box-shadow:none;
 	border:none;
 	max-width:619px;
+}
+
+.collapsed ul {
+	display:hidden;
+}
+
+.view-news-page-categories {
+	width:200px;
+	overflow:hidden;
 }
 
 .read-more a {
@@ -1873,6 +1893,7 @@ Get Involved Styles
 	font-size:18px;
 	margin-top:10px;
 	float:left;
+	    padding-right: 300px;
 }
 
 #page-get-involved .content .col {
@@ -2320,14 +2341,14 @@ Show Styles
 	margin-bottom: 10px;
 }
 
-#content-area .meta .channel {
+/*#content-area .meta .channel {
 	padding-right:10px;
 	border:1px solid #666666;
 }
 
 #content-area .meta .next-airing {
 	padding-left:10px;
-}
+}*/
 
 
 .section-shows .category {
@@ -2737,6 +2758,48 @@ clear: left;
 	background:#f1f1f1;
 	color:#25292b;
 	font-size:14px;
+}
+
+/*--------------------------------------------------------------------------------
+Schedule Channel Styles
+--------------------------------------------------------------------------------*/
+
+.page-schedule #block-mnnshow-schedule-channel-listing {
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	background:#e3e8eb;
+	padding:16px 30px 16px 30px;
+	margin-bottom:20px;
+}
+
+#block-mnnshow-schedule-channel-listing h2 {
+	font-size:24px;
+	font-weight:normal;
+}
+
+#block-mnnshow-schedule-channel-listing  .locator {
+	font-size:14px;
+	line-height:18px;
+	width:200px;
+	margin-top:20px;
+}
+
+#block-mnnshow-schedule-channel-listing .col {
+	width:400px;
+	font-family:arial;
+}
+
+.channel-grid {
+	width:400px;
+	color:#25292b;
+	font-size:12px;
+}
+
+.channel-grid tr {
+	border-top:1px solid #d8dee2;
+	border-bottom:1px solid #f3f6f8;
 }
 
 
