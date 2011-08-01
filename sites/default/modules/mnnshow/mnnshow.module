@@ -387,8 +387,8 @@
 				$blocks[3]['info'] = t('Schedule Geolocator and Channel Listing');
 				$blocks[3]['cache'] = BLOCK_NO_CACHE;
 
-				$blocks[3]['info'] = t('Channel Listing');
-				$blocks[3]['cache'] = BLOCK_NO_CACHE;
+				$blocks[4]['info'] = t('Channel Listing');
+				$blocks[4]['cache'] = BLOCK_NO_CACHE;
 
 				return $blocks;
 
