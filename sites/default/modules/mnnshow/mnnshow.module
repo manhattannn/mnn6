@@ -252,12 +252,15 @@
 	 * Page callback.
 	 */
 	function mnnshow_schedule_get(){
-//		$requested_date = new DateTime('6/1/2011', new DateTimeZone('America/New_York'));
 		try {
 			$requested_date = new DateTime($_POST['date'], new DateTimeZone('America/New_York'));
 		} catch (Exception $e) {
 			$requested_date = new DateTime(NULL, new DateTimeZone('America/New_York'));
 		}
+
+		// primetime is 7pm to midnight
+		$primetime_start = new DateTime($requested_date->format('m/d/Y 19:0:0'), new DateTimeZone('America/New_York'));
+		$primetime_end = new DateTime($requested_date->format('m/d/Y 23:59:59'), new DateTimeZone('America/New_York'));
 
 		$query = 'SELECT s.project_id, s.title, s.topic, a.start_time, a.duration, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
@@ -288,12 +291,17 @@
 				$current = 'true';
 			else
 				$current = 'false';
+			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $end))
+				$primetime = 'true';
+			else
+				$primetime = 'false';
 			$row = array(
 				'link' => '/show-info/'.$data->project_id.'/'._mnnshow_url_feiendly_title($data->title),
 				'title' => $data->title,
 				'category' => isset($data->topic) ? $data->topic : '',
 				'start' => $start->format("H-i"),
 				'isCurrent' => $current,
+				'isPrimetime' => $primetime,
 				'duration' => $duration
 			);
 			switch ($data->channel){
@@ -909,4 +917,9 @@
 		$url_title = preg_replace("/[\/ ]/", '-', $url_title);
 
 		return $url_title;
+	}
+
+	function _mnnshow_is_date_in_range($start_date, $end_date, $date) {
+		// assume DateTime object
+		return (($date >= $start_date) && ($date <= $end_date));
 	}
