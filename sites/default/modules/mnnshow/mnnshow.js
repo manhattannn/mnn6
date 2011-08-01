@@ -102,7 +102,8 @@ var schedule = (function(){
 				var current, primetime;
 				for (var i = 0; i < 48; i++){
 					data.time[i].isCurrent == 'true' ? current = ' current' : current = '';
-					colTime += '<div class="cell cell-'+i+' t30'+current+'">'+ data.time[i].display + '</div>';
+					data.time[i].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+					colTime += '<div class="cell cell-'+i+' t30'+current+primetime+'">'+ data.time[i].display + '</div>';
 				}
 				colTime += '</div>';
 				cols += colTime;

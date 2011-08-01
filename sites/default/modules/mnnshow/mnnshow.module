@@ -291,7 +291,7 @@
 				$current = 'true';
 			else
 				$current = 'false';
-			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $end))
+			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $end->sub(new DateInterval('PT1M'))))
 				$primetime = 'true';
 			else
 				$primetime = 'false';
