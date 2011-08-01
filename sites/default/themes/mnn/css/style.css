@@ -3171,10 +3171,110 @@ article.video .content, article.video .content p:first-child, article.watch-live
     width: 100%;
 }
 
+.item-list ul li a:hover {
+    color: #003f1a;
+}
+
+.item-list ul li a.active {
+	color:black;
+}
 
 
+.page-organizations-forms ul.menu li, .page-producers-forms ul.menu li {
+    list-style: none outside none;
+    margin: 0;
+    padding-bottom: 16px;
+}
+
+.page-organizations-forms .views-field-title,
+.page-producers-forms .views-field-title {
+    margin-top: 10px;
+    width: 400px;
+}
+
+.page-organizations-forms .views-field-title a,
+.page-producers-forms .views-field-title a {
+	color:#005b25;
+}
+
+.page-organizations-forms .views-field-title a:hover,
+.page-producers-forms .views-field-title a:hover {
+	color:#003f1a;
+}
+
+.page-organizations-forms .view-content > div,
+.page-producers-forms .view-content > div {
+    margin-bottom: 28px;
+}
 
 
+#page-producers-forms #content h1.title, 
+#page-organizations-forms #content h1.title {
+	margin-bottom:40px;
+}
+
+.answer {
+	padding-bottom:0px;
+}
+
+.page-organizations-faq .view-content > div,
+.page-producers-faq .view-content > div {
+    margin-bottom: 20px;
+}
+
+.view-content a:hover {
+    color: #005b25;
+}
+
+
+.news-archive li.collapsed ul {
+display:none;
+}
+
+.page-news .body-content p {
+	margin-bottom:10px;
+	line-height: 21px;
+}
+
+.page-news .addthis_toolbox {
+	margin-top:0px;
+}
+
+.addthis {
+    border-bottom: 1px solid #B2BBC0;
+    border-top: 1px solid #B2BBC0;
+    clear: both;
+    padding: 12px 0;
+    width: 100%;
+}
+
+.page-news .view-content .read-more {
+    color: #005B25;
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.pane-title {
+	display:none;
+}
+
+
+#page-youthchannel #content-inner {
+	background:url("../youthchannel.png") no-repeat 300px 0px;
+}
+
+.channel-info {
+    border-top: 1px solid #B4C2C2;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.page-news #content-area h2.title {
+    font-size: 24px;
+    padding-bottom: 12px;
+    padding-top: 20px;
+}
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
