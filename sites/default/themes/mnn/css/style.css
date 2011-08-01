@@ -414,8 +414,13 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 24px;
+	margin-right: 30px;
 }
+
+#main-menu ul li.about_us {
+margin-right:0;
+}
+
 
 #main-menu li.leaf {
 	padding:0;
@@ -818,7 +823,10 @@ h3.title {
 	display:none;
 }
 
-#block-views-homepage-news-grid .button a, #block-views-video-grid---homepage .button a {
+#block-views-homepage-news-grid .button a, 
+#block-views-video-grid---homepage .button a, 
+#block-block-schedule-buttons .button a
+ {
 	font-size:12px;
 	color:#b9de0f;
 	font-weight:normal;
@@ -827,8 +835,12 @@ h3.title {
 	background:url("../images/right-arrow-sm.png") no-repeat scroll 95px 8px;
 }
 
-#block-views-video-grid---homepage .button a, #page-get-involved #node-62 .button a, #page-get-involved #node-62 .button a,
-#page-get-involved #node-63 .button a, #page-get-involved #node-64 .button a {
+#block-views-video-grid---homepage .button a, 
+#page-get-involved #node-62 .button a, 
+#page-get-involved #node-62 .button a,
+#page-get-involved #node-63 .button a, 
+#page-get-involved #node-64 .button a
+ {
 	font-size:12px;
 	color:#b9de0f;
 	font-weight:normal;
@@ -2760,6 +2772,20 @@ clear: left;
 	font-size:14px;
 }
 
+#block-block-schedule-buttons .button {
+	margin-right:10px;
+}
+
+#block-block-schedule-buttons {
+	margin-bottom:10px;
+	margin-left:20px;
+	clear:right;
+}
+
+#page-schedule #content-header {
+	float:left;
+}
+
 /*--------------------------------------------------------------------------------
 Schedule Channel Styles
 --------------------------------------------------------------------------------*/
@@ -2798,10 +2824,13 @@ Schedule Channel Styles
 }
 
 .channel-grid tr {
-	border-top:1px solid #d8dee2;
 	border-bottom:1px solid #f3f6f8;
+	height: 20px;
 }
 
+tbody th {
+    border-bottom: none;
+}
 
 /*--------------------------------------------------------------------------------
 Schedule Styles
@@ -2937,6 +2966,19 @@ ul.primary li:last-child {
     background: none repeat scroll 0 0 transparent;
     border-left: 1px solid #B2BBC0;
     float: left;
+}
+
+.page-search ul.primary li a .tab {
+    background: none repeat scroll 0 0 transparent;
+    border-right: 1px solid #B2BBC0;
+    border-width: 0 1px 0 0;
+    color: black;
+    display: block;
+    height: 18px;
+    line-height: 19px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0 10px;
 }
 
 
