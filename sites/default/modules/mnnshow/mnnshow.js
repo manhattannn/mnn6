@@ -16,7 +16,7 @@ var schedule = (function(){
 
 	function generateHtml(){
 		var nav = '<a href="#" class="prev"><span>Previous</span></a><a href="#" class="next"><span>Next</span></a>';
-		nav += '<div class="schedule-date"><time></time><input type="text" id="date-picker" name="date-picker"></div> ';
+		nav += '<div class="schedule-date"><span class="time"></span><input type="text" id="date-picker" name="date-picker"></div> ';
 		$('#schedule-header .nav').html(nav);
 	}
 
@@ -94,7 +94,7 @@ var schedule = (function(){
 				schedDate = data.schedDate;
 				prevDate = data.prevDate;
 				nextDate = data.nextDate;
-				$('#schedule-header .schedule-date time').html(data.displayDate);
+				$('#schedule-header .schedule-date .time').html(data.displayDate);
 
 				var cols = '';
 

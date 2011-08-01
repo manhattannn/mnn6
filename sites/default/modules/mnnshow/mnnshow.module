@@ -384,7 +384,10 @@
 				$blocks[2]['info'] = t('Watch Now');
 				$blocks[2]['cache'] = BLOCK_NO_CACHE;
 
-				$blocks[3]['info'] = t('Schedule Channel Listing');
+				$blocks[3]['info'] = t('Schedule Geolocator and Channel Listing');
+				$blocks[3]['cache'] = BLOCK_NO_CACHE;
+
+				$blocks[3]['info'] = t('Channel Listing');
 				$blocks[3]['cache'] = BLOCK_NO_CACHE;
 
 				return $blocks;
@@ -401,6 +404,11 @@
 					$block['content'] = _mnnshow_block_watch_now();
 				}
 				elseif ($delta == 3){
+					$block['subject'] = t('Channel Listing');
+					$block['content'] = _mnnshow_block_geolocator_and_channel_listing();
+				}
+				elseif ($delta == 4){
+					$block['subject'] = t('Channel Listing');
 					$block['content'] = _mnnshow_block_channel_listing();
 				}
 
@@ -629,12 +637,18 @@
 		return $content;
 	}
 
+	function _mnnshow_block_geolocator_and_channel_listing(){
+		$content = '<div class="col"><div class="locator"></div></div>';
+		$content .= '<div class="col">';
+		$content .= _mnnshow_block_channel_listing();
+		$content .= '</div>';
+		return $content;
+	}
+
 	function _mnnshow_block_channel_listing(){
 		$channel_info = mnnshow_get_channels();
 
-		$content = '<div class="col"><h2>Channel Listing</h2><div class="locator"></div></div>';
-		$content .= '<div class="col">';
-		$content .= '<table class="channel-grid">';
+		$content = '<table class="channel-grid">';
 		// heading row
 		$content .= '<tr><th></th>'; // first col is blank
 		for ($i = 0; $i < count($channel_info[1]['tvChannels']); $i++){
@@ -644,7 +658,7 @@
 		// channels
 		for ($i = 1; $i <= count($channel_info); $i++){
 			$content .= '<tr>';
-			$content .= '<th>'.$channel_info[$i]['name'].'</th>';
+			$content .= '<th>'.$i.' '.$channel_info[$i]['name'].'</th>';
 			for ($j = 0; $j < count($channel_info[1]['tvChannels']); $j++){
 				$content .= '<td>'.$channel_info[$i]['tvChannels'][$j]['tvStationChannel'].'</td>';
 			}
@@ -652,7 +666,6 @@
 		}
 
 		$content .= '</table>';
-		$content .= '</div>';
 		return $content;
 	}
 
