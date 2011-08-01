@@ -2981,6 +2981,200 @@ ul.primary li:last-child {
     padding: 0 10px;
 }
 
+.page-search ul.primary li a {
+    background: none;
+    border-width: 0;
+    color: #777777;
+    display: block;
+    font-weight: bold;
+    height: 24px;
+    margin: 0;
+    padding: 0 0 0 5px;
+    text-decoration: none;
+}
+
+
+/* Link Hover States */
+
+#block-block-get-involved h5 a:hover, .content .col h5 a:hover {
+color:#005B25;
+}
+
+#block-views-video-grid---homepage .views-field-title a:hover, .view-video-thumbnail-grid .views-field-title a:hover {
+	color:#003F1A;
+}
+
+
+/* Style fixes */
+
+.whats-on-now h3 {
+    color: white;
+    font-family: arial,arial;
+    font-size: 15px;
+    margin: 7px 0 2px;
+    text-transform: uppercase;
+}
+
+#block-views-homepage-slideshow .view-content a {
+    color: #007416;
+    font-weight: bold;
+}
+
+.view-content .read-more {
+    color: #005B25;
+    float: left;
+    margin-top: 5px;
+}
+
+.view-content .read-more a:hover {
+	color:#003f1a;
+}
+
+footer h3 {
+    color: white;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+footer {
+    background-color: #25292B;
+    background-image: -moz-linear-gradient(center bottom , #25292B 0%, #333A3D 100%);
+    bottom: 0;
+    color: white;
+    height: 370px;
+    margin-top: 100px;
+    padding-top: 40px;
+    position: relative;
+    width: 100%;
+}
+
+.addthis_toolbox {
+    height: 20px;
+    margin-top: 20px;
+}
+
+#block-menu-footer-resources ul li {
+    list-style-image: none;
+    padding-bottom: 20px;
+}
+
+article.video .content, article.video .content p:first-child, article.watch-live .content p:first-child {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#content article.video header h1.title {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    text-align: left;
+    text-transform: capitalize;
+    width: 720px;
+}
+
+#content article.video header {
+    padding-bottom: 0px;
+    width: 100%;
+}
+
+.section-shows #content-area > div > div {
+    margin-bottom: 0;
+}
+
+.row h3.title {
+    color: #005B25;
+    font-family: 'Droid Serif',georgia;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.page-show-info .meta .channel {
+	padding-right:10px;
+	margin-right:10px;
+	border-right:1px solid #cccccc;
+}
+
+
+#content-header .breadcrumb a:hover {
+	color:#003f1a;
+}
+
+#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
+    color: #25292B;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 40px;
+    margin-bottom: 12px;
+    margin-top: 30px;
+}
+
+.item-list ul li h5.title a:hover {
+    color: #005b25;
+}
+
+.item-list ul li a:hover {
+    color: #003f1a;
+}
+
+#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
+    color: #25292B;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 40px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+.item-list .views-row {
+    clear: left;
+    margin-bottom: 30px;
+}
+
+#block-views-certification-class-list-block-producers .description {
+    width: 540px;
+}
+
+.channel-info, .available-tracks {
+    border-top: 1px solid #B4C2C2;
+	margin-top:0;
+    padding-top: 20px;
+}
+
+#node-2 .available-tracks, .available-tracks {
+    clear: both;
+    padding-top: 0px;
+}
+
+#node-2 ul li span, #node-3 ul li span {
+    background-color: #5A6970;
+    border-radius: 45px 45px 45px 45px;
+-moz-border-radius: 45px 45px 45px 45px;
+-webkit-border-radius: 45px 45px 45px 45px;
+    color: white;
+    float: left;
+    font-family: "Droid Serif",georgia;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    padding: 14px 18px;
+}
+
+#node-2 ul li, #node-3 ul li {
+    clear: left;
+    float: left;
+    height: 60px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+
+
+
+
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
