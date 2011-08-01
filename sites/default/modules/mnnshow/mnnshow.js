@@ -99,7 +99,7 @@ var schedule = (function(){
 				var cols = '';
 
 				var colTime = '<div class="col col-time">';
-				var current;
+				var current, primetime;
 				for (var i = 0; i < 48; i++){
 					data.time[i].isCurrent == 'true' ? current = ' current' : current = '';
 					colTime += '<div class="cell cell-'+i+' t30'+current+'">'+ data.time[i].display + '</div>';
@@ -115,7 +115,8 @@ var schedule = (function(){
 						var link = '<a href="'+channel[j].link+'">'+content+'</a>';
 						var category = '<div class="category">'+channel[j].category+'</div>';
 						channel[j].isCurrent == 'true' ? current = ' current' : current = '';
-						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current;
+						channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
 						col += '<div class="'+ cls +'">'+link+category+'</div>';
 					}
 					col += '</div>';
