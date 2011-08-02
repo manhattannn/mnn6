@@ -52,7 +52,7 @@ var homeSlideshow = (function(){
 
 	function alterHtml(){
 		$('<div id="slideshow-buttons"/>').appendTo($('#block-views-homepage-slideshow .view'));
-		$('<a href="#" class="left"></a><a href="#" class="right"></a>').appendTo($('#slideshow-buttons'));
+		$('<a href="#" class="left"><span></span></a><a href="#" class="right"><span></span></a>').appendTo($('#slideshow-buttons'));
 	}
 
 	function setupEvents(){

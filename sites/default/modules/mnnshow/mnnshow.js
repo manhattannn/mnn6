@@ -16,7 +16,7 @@ var schedule = (function(){
 
 	function generateHtml(){
 		var nav = '<a href="#" class="prev"><span>Previous</span></a><a href="#" class="next"><span>Next</span></a>';
-		nav += '<div class="schedule-date"><time></time><input type="text" id="date-picker" name="date-picker"></div> ';
+		nav += '<div class="schedule-date"><span class="time"></span><input type="text" id="date-picker" name="date-picker"></div> ';
 		$('#schedule-header .nav').html(nav);
 	}
 
@@ -94,15 +94,16 @@ var schedule = (function(){
 				schedDate = data.schedDate;
 				prevDate = data.prevDate;
 				nextDate = data.nextDate;
-				$('#schedule-header .schedule-date time').html(data.displayDate);
+				$('#schedule-header .schedule-date .time').html(data.displayDate);
 
 				var cols = '';
 
 				var colTime = '<div class="col col-time">';
-				var current;
+				var current, primetime;
 				for (var i = 0; i < 48; i++){
 					data.time[i].isCurrent == 'true' ? current = ' current' : current = '';
-					colTime += '<div class="cell cell-'+i+' t30'+current+'">'+ data.time[i].display + '</div>';
+					data.time[i].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+					colTime += '<div class="cell cell-'+i+' t30'+current+primetime+'">'+ data.time[i].display + '</div>';
 				}
 				colTime += '</div>';
 				cols += colTime;
@@ -115,7 +116,8 @@ var schedule = (function(){
 						var link = '<a href="'+channel[j].link+'">'+content+'</a>';
 						var category = '<div class="category">'+channel[j].category+'</div>';
 						channel[j].isCurrent == 'true' ? current = ' current' : current = '';
-						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current;
+						channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
 						col += '<div class="'+ cls +'">'+link+category+'</div>';
 					}
 					col += '</div>';
@@ -290,6 +292,8 @@ var geolocator = (function() {
 })();
 
 $(document).ready(function(){
-	if ($('#schedule').length)
+	if ($('#schedule').length){
 		schedule.init();
+		geolocator.init();
+	}
 });

@@ -252,12 +252,15 @@
 	 * Page callback.
 	 */
 	function mnnshow_schedule_get(){
-//		$requested_date = new DateTime('6/1/2011', new DateTimeZone('America/New_York'));
 		try {
 			$requested_date = new DateTime($_POST['date'], new DateTimeZone('America/New_York'));
 		} catch (Exception $e) {
 			$requested_date = new DateTime(NULL, new DateTimeZone('America/New_York'));
 		}
+
+		// primetime is 7pm to midnight
+		$primetime_start = new DateTime($requested_date->format('m/d/Y 19:0:0'), new DateTimeZone('America/New_York'));
+		$primetime_end = new DateTime($requested_date->format('m/d/Y 23:59:59'), new DateTimeZone('America/New_York'));
 
 		$query = 'SELECT s.project_id, s.title, s.topic, a.start_time, a.duration, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
@@ -288,12 +291,17 @@
 				$current = 'true';
 			else
 				$current = 'false';
+			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $end->sub(new DateInterval('PT1M'))))
+				$primetime = 'true';
+			else
+				$primetime = 'false';
 			$row = array(
 				'link' => '/show-info/'.$data->project_id.'/'._mnnshow_url_feiendly_title($data->title),
 				'title' => $data->title,
 				'category' => isset($data->topic) ? $data->topic : '',
 				'start' => $start->format("H-i"),
 				'isCurrent' => $current,
+				'isPrimetime' => $primetime,
 				'duration' => $duration
 			);
 			switch ($data->channel){
@@ -324,9 +332,14 @@
 		$time_increment->setTime(0, 0, 0);
 		for ($i = 0; $i < 48; $i++){
 			$time_increment == $now ? $current = 'true' : $current = 'false';
+			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment))
+				$primetime = 'true';
+			else
+				$primetime = 'false';
 			$time_col[] = array(
 				'display' => $time_increment->format('g:i A'),
-				'isCurrent' => $current
+				'isCurrent' => $current,
+				'isPrimetime' => $primetime,
 			);
 			$time_increment->add(new DateInterval('PT30M'));
 		}
@@ -384,8 +397,11 @@
 				$blocks[2]['info'] = t('Watch Now');
 				$blocks[2]['cache'] = BLOCK_NO_CACHE;
 
-				$blocks[3]['info'] = t('Schedule Channel Listing');
+				$blocks[3]['info'] = t('Schedule Geolocator and Channel Listing');
 				$blocks[3]['cache'] = BLOCK_NO_CACHE;
+
+				$blocks[4]['info'] = t('Channel Listing');
+				$blocks[4]['cache'] = BLOCK_NO_CACHE;
 
 				return $blocks;
 
@@ -401,6 +417,11 @@
 					$block['content'] = _mnnshow_block_watch_now();
 				}
 				elseif ($delta == 3){
+					$block['subject'] = t('Channel Listing');
+					$block['content'] = _mnnshow_block_geolocator_and_channel_listing();
+				}
+				elseif ($delta == 4){
+					$block['subject'] = t('Channel Listing');
 					$block['content'] = _mnnshow_block_channel_listing();
 				}
 
@@ -629,12 +650,18 @@
 		return $content;
 	}
 
+	function _mnnshow_block_geolocator_and_channel_listing(){
+		$content = '<div class="col"><div class="locator"></div></div>';
+		$content .= '<div class="col">';
+		$content .= _mnnshow_block_channel_listing();
+		$content .= '</div>';
+		return $content;
+	}
+
 	function _mnnshow_block_channel_listing(){
 		$channel_info = mnnshow_get_channels();
 
-		$content = '<div class="col"><h2>Channel Listing</h2><div class="locator"></div></div>';
-		$content .= '<div class="col">';
-		$content .= '<table class="channel-grid">';
+		$content = '<table class="channel-grid">';
 		// heading row
 		$content .= '<tr><th></th>'; // first col is blank
 		for ($i = 0; $i < count($channel_info[1]['tvChannels']); $i++){
@@ -644,7 +671,7 @@
 		// channels
 		for ($i = 1; $i <= count($channel_info); $i++){
 			$content .= '<tr>';
-			$content .= '<th>'.$channel_info[$i]['name'].'</th>';
+			$content .= '<th>'.$i.' '.$channel_info[$i]['name'].'</th>';
 			for ($j = 0; $j < count($channel_info[1]['tvChannels']); $j++){
 				$content .= '<td>'.$channel_info[$i]['tvChannels'][$j]['tvStationChannel'].'</td>';
 			}
@@ -652,7 +679,6 @@
 		}
 
 		$content .= '</table>';
-		$content .= '</div>';
 		return $content;
 	}
 
@@ -896,4 +922,9 @@
 		$url_title = preg_replace("/[\/ ]/", '-', $url_title);
 
 		return $url_title;
+	}
+
+	function _mnnshow_is_date_in_range($start_date, $end_date, $date) {
+		// assume DateTime object
+		return (($date >= $start_date) && ($date <= $end_date));
 	}
