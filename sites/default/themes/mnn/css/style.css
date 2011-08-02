@@ -66,8 +66,8 @@ input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
 
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+::-moz-selection{ background: #50a323; color:#fff; text-shadow: none; }
+::selection { background:#50a323; color:#fff; text-shadow: none; }
 a:link { -webkit-tap-highlight-color: #FF5E99; }
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
@@ -665,6 +665,18 @@ Homepage Hero Styles
     left: 0;
 }
 
+#slideshow-buttons a.left span {
+    background:url('../images/icon-larrow-home.png') no-repeat;
+	width:20px;
+	height:20px;
+}
+
+#slideshow-buttons a.right span {
+    background:url('../images/icon-rarrow-home.png') no-repeat;
+	width:20px;
+	height:20px;
+}
+
 #slideshow-buttons a {
 	background:#dddddd;
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.4);
@@ -824,8 +836,7 @@ h3.title {
 }
 
 #block-views-homepage-news-grid .button a, 
-#block-views-video-grid---homepage .button a, 
-#block-block-schedule-buttons .button a
+#block-views-video-grid---homepage .button a
  {
 	font-size:12px;
 	color:#b9de0f;
@@ -941,6 +952,7 @@ Above Footer Styles
 
 #above-footer {
 	    margin-top: 100px;
+	background:#D4D5D6;
 	background-image: -webkit-gradient(
 	    linear,
 	    left bottom,
@@ -953,6 +965,7 @@ Above Footer Styles
 	    #D4D5D6 0%,
 	    #D6D8D8 100%
 	);
+	height:250px;
 }
 
 
@@ -979,34 +992,37 @@ Above Footer Styles
 }
 
 #above-footer .button a {
-	padding:10px 30px 10px 50px;
+	padding:8px 30px 10px 44px;
 }
 
-#above-footer .button .youtube a {
+#above-footer .youtube a {
 	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
 }
 
-#above-footer .button .facebook a {
+#above-footer .facebook a {
 	background:url("../images/icon_fb_grey.png") no-repeat 10px 10px;
 }
 
 
-#above-footer .button .twitter a {
+#above-footer .twitter a {
 	background:url("../images/icon_twitter_grey.png") no-repeat 10px 10px;
 }
 
 
-#above-footer .button .vimeo a {
-	background:url("../images/icon_vimeo_grey.png") no-repeat 10px 10px;
-}
+#above-footer .vimeo a {
+background:url("../images/icon_vimeo_grey.png") no-repeat scroll 14px 10px transparent;}
 
-#above-footer .button .bliptv a {
+#above-footer .bliptv a {
 	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
 }
 
 #above-footer .channel-grid tr {
     border-bottom: 1px solid #858b8f;
     height: 20px;
+}
+
+#above-footer .content .col {
+	width:230px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -1032,7 +1048,6 @@ background: -o-linear-gradient(top, #25292B 0%,#333A3D 100%); /* opera */
 color:white;
 padding-top:24px;
 height:400px; /* Figure out a better solution for this */
-margin-top: 100px;
 bottom:0;
     position: relative;
     width: 100%;
@@ -2145,6 +2160,12 @@ color:#25292b;
 }
 
 
+#block-block-resources p.info {
+	color:#666666;
+	font-size:12px;
+	line-height:18px;
+}
+
 /*--------------------------------------------------------------------------------
 Youth Channel Styles
 --------------------------------------------------------------------------------*/
@@ -2185,7 +2206,6 @@ Watch Now Styles
 }
 
 .front #watch-now {
-margin-top: -67px;
 background:#2b3033;
 background-image: -webkit-gradient(
     linear,
@@ -2213,6 +2233,10 @@ background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
 
 #watch-now a {
 	color: #B9DE0F;
+}
+
+#watch-now a:hover {
+    color: #eeff9e;
 }
 
 #watch-now .channel-info {
@@ -2860,21 +2884,45 @@ clear: left;
 	margin-right:10px;
 }
 
+#block-block-schedule-buttons .button a {
+font-size:12px;
+color:#b9de0f;
+font-weight:normal;
+float:left;
+ padding: 4px 20px 4px 10px;
+background:url("../images/right-arrow-sm.png") no-repeat scroll 95px 8px;
+}
+
+#block-block-schedule-buttons .button:nth-child(2) {
+	background: url("../images/right-arrow-sm.png") no-repeat scroll 125px 8px transparent;
+}
+
+
 #block-block-schedule-buttons {
-	margin-bottom:10px;
-	margin-left:20px;
-	clear:right;
+    clear: right;
+    margin-bottom: 10px;
+    padding-left: 180px;
+    padding-top: 61px;
 }
 
 #page-schedule #content-header {
 	float:left;
 }
 
+#schedule .cell.primetime {
+	background:#c6dada;
+	border-color: #dfefef #dfefef #a7bcbc #a7bcbc;
+	    border-style: solid;
+	    border-width: 1px;
+}
+
+
+
 /*--------------------------------------------------------------------------------
 Schedule Channel Styles
 --------------------------------------------------------------------------------*/
 
-.page-schedule #block-mnnshow-schedule-channel-listing {
+.page-schedule #block-mnnshow-schedule-geolocator-and-channel-listing {
 	border-radius:5px;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -2884,19 +2932,19 @@ Schedule Channel Styles
 	margin-bottom:20px;
 }
 
-#block-mnnshow-schedule-channel-listing h2 {
+#block-mnnshow-schedule-geolocator-and-channel-listing h2 {
 	font-size:24px;
 	font-weight:normal;
 }
 
-#block-mnnshow-schedule-channel-listing  .locator {
+#block-mnnshow-schedule-geolocator-and-channel-listing  .locator {
 	font-size:14px;
 	line-height:18px;
 	width:200px;
 	margin-top:20px;
 }
 
-#block-mnnshow-schedule-channel-listing .col {
+#block-mnnshow-schedule-geolocator-and-channel-listing .col {
 	width:400px;
 	font-family:arial;
 }
@@ -3148,6 +3196,13 @@ article.video .content, article.video .content p:first-child, article.watch-live
     line-height: 18px;
     margin-top: 20px;
     text-align: left;
+}
+
+.node-type-watch-live .content .category {
+	color: #666666;
+	    font-size: 12px;
+	    padding-bottom: 4px;
+	    text-transform: uppercase;
 }
 
 #content article.video header h1.title {
