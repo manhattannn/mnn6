@@ -665,6 +665,18 @@ Homepage Hero Styles
     left: 0;
 }
 
+#slideshow-buttons a.left span {
+    background:url('../images/icon-larrow-home.png') no-repeat;
+	width:20px;
+	height:20px;
+}
+
+#slideshow-buttons a.right span {
+    background:url('../images/icon-rarrow-home.png') no-repeat;
+	width:20px;
+	height:20px;
+}
+
 #slideshow-buttons a {
 	background:#dddddd;
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.4);
@@ -953,7 +965,7 @@ Above Footer Styles
 	    #D4D5D6 0%,
 	    #D6D8D8 100%
 	);
-	height:246px;
+	height:250px;
 }
 
 
@@ -980,34 +992,37 @@ Above Footer Styles
 }
 
 #above-footer .button a {
-	padding:10px 30px 10px 50px;
+	padding:8px 30px 10px 44px;
 }
 
-#above-footer .button .youtube a {
+#above-footer .youtube a {
 	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
 }
 
-#above-footer .button .facebook a {
+#above-footer .facebook a {
 	background:url("../images/icon_fb_grey.png") no-repeat 10px 10px;
 }
 
 
-#above-footer .button .twitter a {
+#above-footer .twitter a {
 	background:url("../images/icon_twitter_grey.png") no-repeat 10px 10px;
 }
 
 
-#above-footer .button .vimeo a {
-	background:url("../images/icon_vimeo_grey.png") no-repeat 10px 10px;
-}
+#above-footer .vimeo a {
+background:url("../images/icon_vimeo_grey.png") no-repeat scroll 14px 10px transparent;}
 
-#above-footer .button .bliptv a {
+#above-footer .bliptv a {
 	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
 }
 
 #above-footer .channel-grid tr {
     border-bottom: 1px solid #858b8f;
     height: 20px;
+}
+
+#above-footer .content .col {
+	width:230px;
 }
 
 /*--------------------------------------------------------------------------------
@@ -1033,7 +1048,6 @@ background: -o-linear-gradient(top, #25292B 0%,#333A3D 100%); /* opera */
 color:white;
 padding-top:24px;
 height:400px; /* Figure out a better solution for this */
-margin-top: 100px;
 bottom:0;
     position: relative;
     width: 100%;
@@ -2192,7 +2206,6 @@ Watch Now Styles
 }
 
 .front #watch-now {
-margin-top: -67px;
 background:#2b3033;
 background-image: -webkit-gradient(
     linear,
