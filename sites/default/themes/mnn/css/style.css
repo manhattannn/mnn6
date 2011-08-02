@@ -934,6 +934,81 @@ display:inline;
 	height: 250px;
 }
 
+
+/*--------------------------------------------------------------------------------
+Above Footer Styles
+--------------------------------------------------------------------------------*/
+
+#above-footer {
+	    margin-top: 100px;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #D4D5D6),
+	    color-stop(1, #D6D8D8)
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    #D4D5D6 0%,
+	    #D6D8D8 100%
+	);
+}
+
+
+#above-footer h3.title {
+    color: #25292B;
+}
+
+#block-mnnshow-channel-listing, #block-block-social-media {
+	width:460px;
+	float:left;
+}
+
+#above-footer .button {
+	width:220px;
+	height:35px;
+	margin:0px 10px 5px 0px;
+	float:left;
+}
+
+#above-footer .button a, #above-footer .button a:hover {
+	color:#b9de0f;
+	font-size:12px;
+	font-weight:normal;
+}
+
+#above-footer .button a {
+	padding:10px 30px 10px 50px;
+}
+
+#above-footer .button .youtube a {
+	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
+}
+
+#above-footer .button .facebook a {
+	background:url("../images/icon_fb_grey.png") no-repeat 10px 10px;
+}
+
+
+#above-footer .button .twitter a {
+	background:url("../images/icon_twitter_grey.png") no-repeat 10px 10px;
+}
+
+
+#above-footer .button .vimeo a {
+	background:url("../images/icon_vimeo_grey.png") no-repeat 10px 10px;
+}
+
+#above-footer .button .bliptv a {
+	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
+}
+
+#above-footer .channel-grid tr {
+    border-bottom: 1px solid #858b8f;
+    height: 20px;
+}
+
 /*--------------------------------------------------------------------------------
 Footer Styles
 --------------------------------------------------------------------------------*/
@@ -961,13 +1036,22 @@ margin-top: 100px;
 bottom:0;
     position: relative;
     width: 100%;
+    background-color: #25292B;
+    background-image: -moz-linear-gradient(center bottom , #25292B 0%, #333A3D 100%);
+    bottom: 0;
+    color: white;
+    height: 370px;
+    padding-top: 40px;
+    position: relative;
+    width: 100%;
 }
 
 footer h3 {
-	color:white;
-	font-size:24px;
-	padding-bottom:30px;
+    color: white;
+    font-size: 24px;
+    padding-bottom: 20px;
 }
+
 
 footer a {
 	text-decoration:none;
@@ -2952,7 +3036,8 @@ border:none
     margin: 30px 0;
 }
 
-.section-search #search input[type="text"], .section-search .search-form input[type="text"] {
+.section-search #search input#edit-keys, .section-search .search-form input#edit-keys, 
+.page-shows .search-form input#edit-custom-search-blocks-form-1-1 {
     background: url("../images/icon_search.png") no-repeat scroll 5px 8px white;
     border: 1px solid #DDDDDD;
     box-shadow: 1px 1px 1px 0 #8C8C8C inset;
@@ -2960,6 +3045,25 @@ border:none
     margin-top: 10px;
     padding: 4px 4px 4px 20px;
     width: 190px;
+}
+
+#edit-custom-search-blocks-form-1-1-wrapper label {
+	display:none;
+}
+
+#edit-custom-search-blocks-form-1-1-wrapper {
+	float:left;
+}
+
+#custom-search-blocks-form-1 input#edit-submit {
+    border: medium none;
+    float: left;
+    font-family: arial;
+    font-size: 12px;
+    margin-left: 4px;
+    margin-top: 32px;
+    padding: 5px 15px;
+    text-transform: uppercase;
 }
 
 ul.primary li:last-child {
@@ -2970,7 +3074,6 @@ ul.primary li:last-child {
 
 .page-search ul.primary li a .tab {
     background: none repeat scroll 0 0 transparent;
-    border-right: 1px solid #B2BBC0;
     border-width: 0 1px 0 0;
     color: black;
     display: block;
@@ -3028,24 +3131,6 @@ color:#005B25;
 
 .view-content .read-more a:hover {
 	color:#003f1a;
-}
-
-footer h3 {
-    color: white;
-    font-size: 24px;
-    padding-bottom: 20px;
-}
-
-footer {
-    background-color: #25292B;
-    background-image: -moz-linear-gradient(center bottom , #25292B 0%, #333A3D 100%);
-    bottom: 0;
-    color: white;
-    height: 370px;
-    margin-top: 100px;
-    padding-top: 40px;
-    position: relative;
-    width: 100%;
 }
 
 .addthis_toolbox {
