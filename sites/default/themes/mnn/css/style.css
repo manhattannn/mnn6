@@ -2893,7 +2893,7 @@ float:left;
 background:url("../images/right-arrow-sm.png") no-repeat scroll 95px 8px;
 }
 
-#block-block-schedule-buttons .button:nth-child(2) {
+#block-block-schedule-buttons .button:nth-child(2) a {
 	background: url("../images/right-arrow-sm.png") no-repeat scroll 125px 8px transparent;
 }
 
@@ -3109,7 +3109,7 @@ border:none
     font-family: arial;
     font-size: 12px;
     margin-left: 4px;
-    margin-top: 32px;
+    margin-top: 24px;
     padding: 5px 15px;
     text-transform: uppercase;
 }
