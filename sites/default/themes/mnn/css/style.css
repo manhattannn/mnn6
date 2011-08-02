@@ -2222,6 +2222,10 @@ background: -o-linear-gradient(top, #25292b 0%,#333a3d 100%); /* opera */
 	color: #B9DE0F;
 }
 
+#watch-now a:hover {
+    color: #eeff9e;
+}
+
 #watch-now .channel-info {
 	margin:0;
 	border-top:0;
