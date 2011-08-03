@@ -439,7 +439,7 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 26px;
+	margin-right: 24px;
 }
 
 #main-menu ul li.about_us {
@@ -3131,11 +3131,6 @@ color:white;
 background:none;
 }
 
-.page-search ul.primary li a:hover {
-	background:#003b18;
-	color:white;
-}
-
 .page-search ul.primary li a {
     background: none repeat scroll 0 0 white;
     border: medium none;
@@ -3216,12 +3211,6 @@ border:none
     margin-top: 24px;
     padding: 5px 15px;
     text-transform: uppercase;
-}
-
-ul.primary li:last-child {
-    background: none repeat scroll 0 0 transparent;
-    border-left: 1px solid #B2BBC0;
-    float: left;
 }
 
 .page-search ul.primary li a {
