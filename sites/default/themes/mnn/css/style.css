@@ -2960,13 +2960,14 @@ background:url("../images/right-arrow-sm.png") no-repeat scroll 99px 8px transpa
 }
 
 #block-block-geolocation-placeholder p {
-	font-family:'Droid Serif', georgia;
-	width:300px;
-	position:absolute;
-	top:100px;
-	z-index:9;
-	font-size:14px;
-	line-height:18px;
+ font-family: 'Droid Serif',georgia;
+    font-size: 14px;
+    left: 30px;
+    line-height: 21px;
+    position: absolute;
+    top: 55px;
+    width: 300px;
+    z-index: 9;
 }
 
 /*--------------------------------------------------------------------------------
@@ -3001,9 +3002,15 @@ Schedule Channel Styles
 }
 
 .channel-grid {
-	width:400px;
-	color:#25292b;
-	font-size:12px;
+    color: #25292B;
+    font-size: 12px;
+    width: 400px;
+}
+
+#block-mnnshow-schedule-geolocator-and-channel-listing .channel-grid {
+    left: 70px;
+    position: relative;
+    top: -10px;
 }
 
 .channel-grid tr {
@@ -3091,19 +3098,19 @@ ul.primary li a .tab {
 
 
 .section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, .section-search ul.primary li.active a:focus .tab {
-    background: none repeat scroll 0 0 transparent;
+    background: none repeat scroll 0 0 #005B25;
+    color: white;
     font-size: 14px;
     margin: 0;
-    padding: 0;
+    padding: 5px 13px;
 }
 
 .page-search ul.primary li {
-    border-right: 1px solid #CCCCCC;
+    border-right: medium none;
     float: left;
+    height: 18px;
     margin: 0;
     padding: 0;
-border-right: 1px solid #CCCCCC;
- height: 18px;
 }
 
 .page-search ul.primary li a .tab:hover {
@@ -3111,7 +3118,8 @@ background:none;
 }
 
 .page-search ul.primary li a:hover {
-	background:none;
+	background:#003b18;
+	color:white;
 }
 
 .page-search ul.primary li a {
@@ -3127,13 +3135,24 @@ background:none;
 }
 
 .page-search ul.primary li a .tab {
-    background: none repeat scroll 0 0 transparent;
+    background: none repeat scroll 0 0 #E0E0E0;
     border-width: 0;
+    color: #1D1D1D;
     display: block;
-    height: 10px;
+    font-weight: normal;
+    height: 18px;
     line-height: 19px;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 5px 13px;
+}
+
+.section-search ul.primary li.active a:hover {
+	background:none;
+}
+
+nav.tabs {
+	margin-top:20px;
 }
 
 html.js fieldset.collapsed {
@@ -3381,6 +3400,15 @@ article.video .content, article.video .content p:first-child, article.watch-live
     width: 100%;
 }
 
+#node-548 ul li span {
+	margin-bottom: 30px;	
+}
+
+.section-producers #content-area #node-548 ul li {
+    clear: left;
+    margin-bottom: 30px;
+}
+  
 .item-list ul li a:hover {
     color: #003f1a;
 }
