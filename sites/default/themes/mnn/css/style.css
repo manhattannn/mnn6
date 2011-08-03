@@ -439,7 +439,7 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 30px;
+	margin-right: 26px;
 }
 
 #main-menu ul li.about_us {
@@ -1021,7 +1021,7 @@ Above Footer Styles
 }
 
 #above-footer .button a {
-	padding:8px 44px 10px 44px;
+	padding:8px 40px 10px;
 }
 
 #above-footer .youtube a {
@@ -1269,7 +1269,11 @@ article header {
 }
 
 article img, article embed, article object {
-	margin-bottom:20px;
+    border: medium none;
+    box-shadow: none;
+    height: auto;
+    margin-bottom: 20px;
+    width: 560px;
 }
 
 /*article img {
@@ -3075,6 +3079,7 @@ Schedule Styles
 	float:left;
 	padding-right:2px;
 	color:#666666;
+	padding-top: 4px;
 }
 
 .section-search ul.primary li.active a {
@@ -3108,6 +3113,10 @@ ul.primary li a .tab {
     font-size: 14px;
     margin: 0;
     padding: 5px 13px;
+}
+
+.section-search ul.primary li.active a:hover, .section-search ul.primary li.active a:hover, .section-search ul.primary li.active a:hover {
+color:white;
 }
 
 .page-search ul.primary li {
@@ -3157,7 +3166,8 @@ background:none;
 }
 
 nav.tabs {
-	margin-top:20px;
+    height: 10px;
+    margin-top: 20px;
 }
 
 html.js fieldset.collapsed {
@@ -3212,18 +3222,6 @@ ul.primary li:last-child {
     background: none repeat scroll 0 0 transparent;
     border-left: 1px solid #B2BBC0;
     float: left;
-}
-
-.page-search ul.primary li a .tab {
-    background: none repeat scroll 0 0 transparent;
-    border-width: 0 1px 0 0;
-    color: black;
-    display: block;
-    height: 18px;
-    line-height: 19px;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding: 0 10px;
 }
 
 .page-search ul.primary li a {
