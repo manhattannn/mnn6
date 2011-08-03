@@ -318,8 +318,8 @@ Header Styles
 #main-menu li.home a {
     background: url("../images/icon_home.png") no-repeat scroll 0 -15px transparent;
     float: left;
-    height: 16px;
     width: 20px;
+ height: 3px;
 }
 
 #main-menu li.home a:hover {
@@ -366,7 +366,7 @@ Header Styles
 }
 
 
-#main-menu .get_involved a:hover {
+/*#main-menu .get_involved a:hover {
 	background:#25292a;
 	background-image: -webkit-gradient(
 	    linear,
@@ -380,7 +380,7 @@ Header Styles
 	    #34393B 0%,
 	    #181A1B 100%
 	);
-}
+}*/
 
 #main-menu .get_involved ul.menu li a {
 	float:left;
