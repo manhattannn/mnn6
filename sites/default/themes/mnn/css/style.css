@@ -355,14 +355,16 @@ Header Styles
 	    #34393B 0%,
 	    #181A1B 100%
 	);
- color: white;
-    margin-top: 5px;
-    padding: 0;
-    position: absolute;
-    text-transform: none;
-    width: 110px;
-    z-index: 9;
+	color: white;
+	    display: none;
+	    margin-top: 0px;
+	    padding: 5px 0;
+	    position: absolute;
+	    text-transform: none;
+	    width: 124px;
+	    z-index: 9;
 }
+
 
 #main-menu .get_involved a:hover {
 	background:#25292a;
@@ -396,16 +398,22 @@ li.expanded {
 }
 
 #main-menu .get_involved ul.menu li {
-	border-top:1px solid #3c4143;
-	border-bottom:1px solid #0d0e0f;
-	float: none;
+    border-bottom: 1px solid #0D0E0F;
+    border-top: 1px solid #3C4143;
+    float: left;
     margin: 0;
-	width:80px;
+   width: 124px;
+}
+
+#main-menu .get_involved > a {
+	width:100px;
 }
 
 #main-menu .get_involved ul.menu li a {
-    padding: 6px 17px 9px 7px;
-	float:left;
+	float: left;
+	    height: 15px;
+	    padding: 6px 17px 9px 7px;
+	    width: 100px;
 }
 
 #main-menu .get_involved ul.menu li:first-child {
@@ -1578,17 +1586,21 @@ Numbers
 }
 
 #node-2 ul li h5, #node-3 ul li h5,
-.section-producers ul li h5 {
+.section-producers #content-area ul li h5 {
 	font-size:18px;
 	font-family:arial;
 	font-weight:normal;
 margin-top: 0px;
 }
 
+.section-producers #content-area ul li {
+	clear:left;
+}
+
 
 #node-2 ul li p, #node-2 ul li p a,
 #node-3 ul li p, #node-3 ul li p a,
-.section-producers ul li p, .section-producers ul li p a {
+.section-producers ul li p, .section-producers #content-area ul li p a {
 	font-size: 14px;
     font-weight: normal;
     margin-top: 5px;
@@ -1596,7 +1608,7 @@ margin-bottom: 0;
 }
 
 #node-2 ul, #node-3 ul,
-.section-producers ul {
+.section-producers #content-area ul {
 	margin-left:0;
 	list-style-type:none;
 	list-style-image:none;
