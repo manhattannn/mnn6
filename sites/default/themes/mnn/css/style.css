@@ -3127,8 +3127,8 @@ color:white;
     padding: 0;
 }
 
-.page-search ul.primary li a .tab:hover {
-background:none;
+.page-search ul.primary li a:hover {
+	background:none;
 }
 
 .page-search ul.primary li a {
