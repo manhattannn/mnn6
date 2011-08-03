@@ -666,15 +666,17 @@ Homepage Hero Styles
 }
 
 #slideshow-buttons a.left span {
-    background:url('../images/icon-larrow-home.png') no-repeat;
-	width:20px;
-	height:20px;
+    background: url("../images/icon-larrow-home.png") no-repeat scroll 11px 30px transparent;
+    float: left;
+    height: 80px;
+    width: 50px;
 }
 
 #slideshow-buttons a.right span {
-    background:url('../images/icon-rarrow-home.png') no-repeat;
-	width:20px;
-	height:20px;
+    background: url("../images/icon-rarrow-home.png") no-repeat scroll 15px 30px transparent;
+    float: left;
+    height: 80px;
+    width: 30px;
 }
 
 #slideshow-buttons a {
@@ -738,7 +740,7 @@ font-family:arial;
 .content .col {
 	float: left;
 	    padding-right: 0;
-	    width: 300px;
+	    width: 290px;
 }
 
 .col1, .col2 {
@@ -966,6 +968,8 @@ Above Footer Styles
 	    #D6D8D8 100%
 	);
 	height:250px;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D4D5D6', endColorstr='#D6D8D8',GradientType=0 ); /* ie */
+	background: -o-linear-gradient(top, #D4D5D6 0%,#D6D8D8 100%); /* opera */
 }
 
 
@@ -992,28 +996,28 @@ Above Footer Styles
 }
 
 #above-footer .button a {
-	padding:8px 30px 10px 44px;
+	padding:8px 44px 10px 44px;
 }
 
 #above-footer .youtube a {
-	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
+	background:url("../images/icon_yt_grey.png") no-repeat scroll 12px 7px transparent;
 }
 
 #above-footer .facebook a {
-	background:url("../images/icon_fb_grey.png") no-repeat 10px 10px;
+	background:url("../images/icon_fb_grey.png") no-repeat scroll 13px 7px transparent;
 }
 
 
 #above-footer .twitter a {
-	background:url("../images/icon_twitter_grey.png") no-repeat 10px 10px;
+	background:url("../images/icon_twitter_grey.png") no-repeat scroll 11px 7px transparent;
 }
 
 
 #above-footer .vimeo a {
-background:url("../images/icon_vimeo_grey.png") no-repeat scroll 14px 10px transparent;}
+background:url("../images/icon_vimeo_grey.png") no-repeat scroll 12px 8px transparent;}
 
 #above-footer .blip a {
-	background:url("../images/icon_yt_grey.png") no-repeat 10px 10px;
+	background:url("../images/icon_bliptv_grey.png") no-repeat scroll 15px 7px transparent;
 }
 
 #above-footer .channel-grid tr {
@@ -1471,7 +1475,7 @@ padding: 10px 0 8px 0px;
 #page-producers .sidebar .top,
 #page-organizations .sidebar .top, #page-producers-submit-show .sidebar .top,
 #page-producers-become-producer .sidebar .top,
-#page-organizations-faq .sidebar .top
+#page-organizations-faq .sidebar .top, .section-producers .sidebar .top
 {
 padding: 10px 0 10px 24px;
 }
@@ -1556,7 +1560,8 @@ Numbers
     line-height: 20px;
 }
 
-#node-2 ul li h5, #node-3 ul li h5 {
+#node-2 ul li h5, #node-3 ul li h5,
+.section-producers ul li h5 {
 	font-size:18px;
 	font-family:arial;
 	font-weight:normal;
@@ -1565,14 +1570,16 @@ margin-top: 0px;
 
 
 #node-2 ul li p, #node-2 ul li p a,
-#node-3 ul li p, #node-3 ul li p a {
+#node-3 ul li p, #node-3 ul li p a,
+.section-producers ul li p, .section-producers ul li p a {
 	font-size: 14px;
     font-weight: normal;
     margin-top: 5px;
 margin-bottom: 0;
 }
 
-#node-2 ul, #node-3 ul {
+#node-2 ul, #node-3 ul,
+.section-producers ul {
 	margin-left:0;
 	list-style-type:none;
 	list-style-image:none;
@@ -2116,9 +2123,12 @@ article span.inline-right {
 }
 
 .caption {
-	font-weight:normal;
-	font-size:12px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    padding-bottom: 20px;
 }
+
 
 .channel-info ul {
 	list-style-type:none;
@@ -2450,6 +2460,10 @@ Show Styles
 
 .block-mnnshow .email span, .block-mnnshow .name span, .block-mnnshow .phone span {
 	font-weight:bold;
+}
+
+.block-mnnshow .phone {
+	display:none;
 }
 
 .block-mnnshow .email, .block-mnnshow .name, .block-mnnshow .phone {
@@ -2890,7 +2904,7 @@ color:#b9de0f;
 font-weight:normal;
 float:left;
  padding: 4px 20px 4px 10px;
-background:url("../images/right-arrow-sm.png") no-repeat scroll 95px 8px;
+background:url("../images/right-arrow-sm.png") no-repeat scroll 99px 8px transparent;
 }
 
 #block-block-schedule-buttons .button:nth-child(2) a {
@@ -2916,7 +2930,15 @@ background:url("../images/right-arrow-sm.png") no-repeat scroll 95px 8px;
 	    border-width: 1px;
 }
 
-
+#block-block-geolocation-placeholder p {
+	font-family:'Droid Serif', georgia;
+	width:300px;
+	position:absolute;
+	top:100px;
+	z-index:9;
+	font-size:14px;
+	line-height:18px;
+}
 
 /*--------------------------------------------------------------------------------
 Schedule Channel Styles
@@ -3046,15 +3068,24 @@ ul.primary li a .tab {
     padding: 0;
 }
 
-ul.primary li {
-    background: none repeat scroll 0 0 transparent;
+.page-search ul.primary li {
+    border-right: 1px solid #CCCCCC;
     float: left;
-    height: 17px;
-    margin: 0 0 10px;
-    padding: 0 10px;
+    margin: 0;
+    padding: 0;
+border-right: 1px solid #CCCCCC;
+ height: 18px;
 }
 
-ul.primary li a {
+.page-search ul.primary li a .tab:hover {
+background:none;
+}
+
+.page-search ul.primary li a:hover {
+	background:none;
+}
+
+.page-search ul.primary li a {
     background: none repeat scroll 0 0 white;
     border: medium none;
     display: block;
@@ -3063,9 +3094,10 @@ ul.primary li a {
     margin: 0;
     padding: 0 4px;
     text-decoration: none;
+	color:#005B25;
 }
 
-ul.primary li a .tab {
+.page-search ul.primary li a .tab {
     background: none repeat scroll 0 0 transparent;
     border-width: 0;
     display: block;
@@ -3075,7 +3107,16 @@ ul.primary li a .tab {
     padding: 0;
 }
 
-ul.primary li a:hover {
+html.js fieldset.collapsed {
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    display: none;
+    height: 1em;
+    margin-bottom: 0;
+}
+
+.page-search ul.primary li a:hover {
 border:none
 }
 
@@ -3289,7 +3330,7 @@ article.video .content, article.video .content p:first-child, article.watch-live
     padding-top: 0px;
 }
 
-#node-2 ul li span, #node-3 ul li span {
+#node-2 ul li span, #node-3 ul li span, .section-producers ul li span {
     background-color: #5A6970;
     border-radius: 45px 45px 45px 45px;
 -moz-border-radius: 45px 45px 45px 45px;
@@ -3320,7 +3361,8 @@ article.video .content, article.video .content p:first-child, article.watch-live
 }
 
 
-.page-organizations-forms ul.menu li, .page-producers-forms ul.menu li {
+.page-organizations-forms ul.menu li, .page-producers-forms ul.menu li,
+.section-forms ul.menu li {
     list-style: none outside none;
     margin: 0;
     padding-bottom: 16px;
@@ -3401,7 +3443,7 @@ display:none;
 
 
 #page-youthchannel #content-inner {
-	background:url("../youthchannel.png") no-repeat 300px 0px;
+	background:url("../images/youthchannel.png") no-repeat scroll 670px 40px transparent;
 }
 
 .channel-info {
