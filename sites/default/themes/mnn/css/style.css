@@ -1268,12 +1268,17 @@ article header {
 	width:100%;
 }
 
-article img, article embed, article object {
+.page-news article img, .page-news article embed, .page-news article object {
     border: medium none;
     box-shadow: none;
+	-webkit-box-shadow:none;
+		-moz-box-shadow:none;
     height: auto;
-    margin-bottom: 20px;
     width: 560px;
+}
+
+article img, article embed, article object {
+	margin-bottom:20px;
 }
 
 /*article img {
