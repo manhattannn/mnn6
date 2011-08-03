@@ -106,6 +106,23 @@ DirectoryIndex index.php
   # uncomment the following line:
   # RewriteBase /
 
+#custom redirects
+### redirects for non functional streaming urls
+Redirect 301  /sitefiles/mnn.org/streams/ch67.asx /no_streams_here.html
+Redirect 301 /sitefiles/mnn.org/streams/ch56.asx  /no_streams_here.html
+Redirect 301 /sitefiles/mnn.org/streams/ch57.asx  /no_streams_here.html
+Redirect 301 /sitefiles/mnn.org/streams/ch34.asx  /no_streams_here.html
+Redirect 301 /stream/ch34.asx  /no_streams_here.html
+Redirect 301 /stream/ch57.asx  /no_streams_here.html
+Redirect 301 /stream/ch56.asx  /no_streams_here.html
+Redirect 301 /stream/ch67.asx  /no_streams_here.html
+
+# send mnn.org hits to www.mnn.org
+RewriteCond %{http_host} ^mnn.org [NC]
+RewriteRule ^(.*)$ http://www.mnn.org/$1 [R=301,L]
+
+# end custom redirects
+
   # Rewrite URLs of the form 'x' to the form 'index.php?q=x'.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
