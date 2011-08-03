@@ -27,8 +27,8 @@ stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/default.css
 stylesheets[all][] = css/custom-theme/jquery-ui-1.8.14.custom.css
 stylesheets[all][] = css/style.css
-conditional-stylesheets[lt IE 7][all][] = css/ie6.css
-conditional-stylesheets[IE 7][all][] = css/ie7.css
+conditional-stylesheets[if lt IE 7][all][] = css/ie6.css
+conditional-stylesheets[if IE 7][all][] = css/ie7.css
 
 ; JavaScript
 ; ------------------------------

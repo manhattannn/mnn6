@@ -581,8 +581,8 @@ Homepage Hero Styles
 --------------------------------------------------------------------------------*/
 
 #header {
-	height: 516px;
-	margin-top: -100px;
+	height: 416px;
+	top: -100px;
 	width: 100%;
 	z-index: 0;
 	position: relative;
