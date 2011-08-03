@@ -329,6 +329,7 @@ Header Styles
 #main-menu a {
 	text-decoration:none;
 	color:white;
+	padding:7px 8px;
 }
 
 #main-menu a:hover {
@@ -341,12 +342,7 @@ Header Styles
 
 #main-menu .get_involved ul.menu {
 	display:none;
-	z-index:9;
-	width:100px;
 	background:#25292a;
-	color:white;
-	padding:0px;
-	text-transform:none;
 	background-image: -webkit-gradient(
 	    linear,
 	    left bottom,
@@ -359,17 +355,33 @@ Header Styles
 	    #34393B 0%,
 	    #181A1B 100%
 	);
-	color: white;
-    display: none;
-    margin-top: 12px;
+ color: white;
+    margin-top: 5px;
+    padding: 0;
     position: absolute;
     text-transform: none;
-    width: 80px;
+    width: 110px;
     z-index: 9;
 }
 
-#main-menu .get_involved:hover {
-	background:;
+#main-menu .get_involved a:hover {
+	background:#25292a;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #34393B),
+	    color-stop(1, #181A1B)
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    #34393B 0%,
+	    #181A1B 100%
+	);
+}
+
+#main-menu .get_involved ul.menu li a {
+	float:left;
 }
 
 #main-menu .get_involved:hover ul.menu {
@@ -388,7 +400,12 @@ li.expanded {
 	border-bottom:1px solid #0d0e0f;
 	float: none;
     margin: 0;
-    padding: 8px 7px;
+	width:80px;
+}
+
+#main-menu .get_involved ul.menu li a {
+    padding: 6px 17px 9px 7px;
+	float:left;
 }
 
 #main-menu .get_involved ul.menu li:first-child {
