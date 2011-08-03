@@ -138,7 +138,7 @@ var geolocator = (function() {
 	var map, community_boards, masks;
 
 	function init(){
-		initializeMap();
+		//initializeMap();
 	}
 	
 	function setCommunityBoard(i) {

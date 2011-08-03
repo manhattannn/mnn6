@@ -19,6 +19,7 @@
  *
  * @see template_preprocess_search_results()
  */
+drupal_set_title('Search');
 ?>
 <div class="search-results <?php print $type; ?>-results">
   <?php print $search_results; ?>
