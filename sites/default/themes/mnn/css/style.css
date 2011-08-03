@@ -2048,6 +2048,11 @@ Get Involved Styles
 	 margin-top: 20px;
 }
 
+#page-get-involved #above-footer .content .col {
+    margin-top: 20px;
+    width: 230px;
+}
+
 #page-get-involved .content .col1 {
 	clear:left;
 }
