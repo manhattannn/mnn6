@@ -35,10 +35,11 @@ function news_feature_imagecache_default_presets() {
         '0' => array(
           'weight' => '0',
           'module' => 'imagecache',
-          'action' => 'imagecache_scale_and_crop',
+          'action' => 'imagecache_scale',
           'data' => array(
             'width' => '619',
             'height' => '',
+            'upscale' => 1,
           ),
         ),
       ),
