@@ -1,4 +1,3 @@
-// $Id: README.txt,v 1.1 2010/04/14 17:38:42 aaron Exp $
 
 Media: BlipTV
 

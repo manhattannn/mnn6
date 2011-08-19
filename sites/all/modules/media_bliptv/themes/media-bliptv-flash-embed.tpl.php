@@ -1,5 +1,4 @@
 <?php
-// $Id: media-bliptv-flash-embed.tpl.php,v 1.1.2.1 2011/02/18 17:16:07 aaron Exp $
 
 /**
  * @file media_bliptv/themes/media-bliptv-flash-embed.tpl.php

@@ -1,5 +1,4 @@
 <?php
-// $Id: media_bliptv.media_mover.inc,v 1.1.2.1 2010/09/23 19:19:08 aaron Exp $
 
 /**
  * @file
