@@ -2729,6 +2729,7 @@ Schedule Styles
 }
 
 #schedule .cell.s00-00{
+	border-top:none;
 	top: 0;
 }
 #schedule .cell.s00-30{
@@ -3042,10 +3043,6 @@ clear: left;
 	position: relative;
 	top: 0;
 	z-index: 999;
-}
-
-#schedule .col div:first-child {
-	border-top:none;
 }
 
 #schedule-header .channels .ch1 {
