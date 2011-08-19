@@ -3,12 +3,11 @@ var schedule = (function(){
 	var schedDate = '';
 	var prevDate = '';
 	var nextDate = '';
-	var offset;
+	var offset, table, headerHeight;
 
 	function init(){
 		generateHtml();
 		offset = $('#schedule-header').offset().top;
-		setupEvents();
 		loadTableHeader()
 		//loadSchedule('2011-05-15');
 		loadSchedule(schedDate);
@@ -39,11 +38,15 @@ var schedule = (function(){
 				$('#schedule-header .inner').css('position', 'relative').removeClass('floating');
 			}
 			else */
-			if ($(window).scrollTop() >= offset){
-				$('#schedule-header .inner').css('position', 'fixed').addClass('floating');
+			if ($(window).scrollTop() > (table - headerHeight)){
+				var top = $('#schedule').height() - headerHeight;
+				$('#schedule-header .inner').css('position', 'absolute').addClass('floating').css('top', top);
+			}
+			else if ($(window).scrollTop() >= offset){
+				$('#schedule-header .inner').css('position', 'fixed').addClass('floating').css('top', 0);
 			}
 			else {
-				$('#schedule-header .inner').css('position', 'relative').removeClass('floating');
+				$('#schedule-header .inner').css('position', 'relative').removeClass('floating').css('top', 0);
 			}
 		});
 		$('#date-picker').datepicker({
@@ -80,6 +83,7 @@ var schedule = (function(){
 
 				$('#schedule-header .channels').html(cols);
 				$('#schedule-header').height($('#schedule-header .nav').outerHeight() + $('#schedule-header .channels').outerHeight()); // fix the height
+				headerHeight = $('#schedule-header').outerHeight();
 			}
 		});
 	}
@@ -103,7 +107,7 @@ var schedule = (function(){
 				for (var i = 0; i < 48; i++){
 					data.time[i].isCurrent == 'true' ? current = ' current' : current = '';
 					data.time[i].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
-					colTime += '<div class="cell cell-'+i+' t30'+current+primetime+'">'+ data.time[i].display + '</div>';
+					colTime += '<div class="cell cell-'+i+' t'+data.time[i].duration+' s'+data.time[i].start+current+primetime+'"><div class="cell-inner">'+ data.time[i].display + '</div></div>';
 				}
 				colTime += '</div>';
 				cols += colTime;
@@ -118,12 +122,14 @@ var schedule = (function(){
 						channel[j].isCurrent == 'true' ? current = ' current' : current = '';
 						channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
 						var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
-						col += '<div class="'+ cls +'">'+link+category+'</div>';
+						col += '<div class="'+ cls +'"><div class="cell-inner">'+link+category+'</div></div>';
 					}
 					col += '</div>';
 					cols += col;
 				}
 				$('#schedule #cols').html(cols);
+				table = $('#schedule').offset().top + $('#schedule').outerHeight();
+				setupEvents();
 			}
 		});
 	}

@@ -327,6 +327,7 @@
 
 		$time_increment = clone $requested_date;
 		$time_increment->setTime(0, 0, 0);
+		$duration = 30;
 		for ($i = 0; $i < 48; $i++){
 			$time_increment == $now ? $current = 'true' : $current = 'false';
 			if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment))
@@ -335,8 +336,10 @@
 				$primetime = 'false';
 			$time_col[] = array(
 				'display' => $time_increment->format('g:i A'),
+				'start' => $time_increment->format("H-i"),
 				'isCurrent' => $current,
 				'isPrimetime' => $primetime,
+				'duration' => $duration
 			);
 			$time_increment->add(new DateInterval('PT30M'));
 		}
@@ -762,22 +765,25 @@
 		$path = drupal_get_path_alias($_GET['q']);
 		$path = explode('/', $path);
 		if ($path[0] == 'show-info' && is_numeric($path[1])) {
-			$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
-			$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
-			$sql .= 'ON s.exec_producer_id = p.producer_id ';
+			$sql = 'SELECT DISTINCT s.project_id, s.public_contact_info AS name, s.public_email_value AS email ';
+			$sql .= 'FROM {ac_report_project_cache} s ';
 			$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+//			$sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+//			$sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+//			$sql .= 'ON s.exec_producer_id = p.producer_id ';
+//			$sql .= 'WHERE s.project_id = "' . $path[1] . '"';
 			$sql = db_rewrite_sql($sql);
 
 			$result = db_query($sql);
 			while ($row = db_fetch_object($result)) {
-				if ($row->display_name)
-					$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->display_name .'</div>';
+				if ($row->name)
+					$content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->name .'</div>';
 				if ($row->website)
 					$content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
 				if ($row->email)
 					$content .= '<div class="email"><span>'. t('Email by') .'</span><br /><a href="mailto:'. $row->email .'">'. $row->email .'</a></div>';
-				if ($row->phone_primary)
-					$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone_primary .'</div>';
+				if ($row->phone)
+					$content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone .'</div>';
 			}
 
 			return $content;

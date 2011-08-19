@@ -2679,9 +2679,13 @@ select {
 /*--------------------------------------------------------------------------------
 Schedule Styles
 --------------------------------------------------------------------------------*/
+.ui-datepicker{
+	z-index: 9999;
+}
 #schedule .col{
 	float: left;
 	width: 200px;
+	position: relative;
 }
 
 #schedule .col-time {
@@ -2691,10 +2695,21 @@ Schedule Styles
     -o-border-radius: 0 0 0 5px;
     width: 140px;
 }
-
+#schedule #cols{
+	overflow: hidden;
+}
+#schedule #cols .col{
+	height: 3503px;
+}
+#schedule #cols .cell{
+	position: absolute;
+	width: 199px;
+}
+#schedule #cols .col-time .cell{
+	width: 139px;
+}
 
 #schedule .cell{
-	padding: 10px;
 	border: 1px #666 solid;
 }
 
@@ -2702,14 +2717,160 @@ Schedule Styles
 	color:#25292b;
 }
 
-#schedule .cell.t30 {
+#schedule .cell .cell-inner {
+	padding: 10px;
+}
+#schedule .t30 .cell-inner {
     height: 51px;
-    margin-top: 0;
-    text-align: left;
 }
 
-#schedule .cell.t60{
+#schedule .t60 .cell-inner{
  height: 124px;
+}
+
+#schedule .cell.s00-00{
+	top: 0;
+}
+#schedule .cell.s00-30{
+	top: 72px;
+}
+#schedule .cell.s01-00{
+	top: 145px;
+}
+#schedule .cell.s01-30{
+	top: 218px;
+}
+#schedule .cell.s02-00{
+	top: 291px;
+}
+#schedule .cell.s02-30{
+	top: 364px;
+}
+#schedule .cell.s03-00{
+	top: 437px;
+}
+#schedule .cell.s03-30{
+	top: 510px;
+}
+#schedule .cell.s04-00{
+	top: 583px;
+}
+#schedule .cell.s04-30{
+	top: 656px;
+}
+#schedule .cell.s05-00{
+	top: 729px;
+}
+#schedule .cell.s05-30{
+	top: 802px;
+}
+#schedule .cell.s06-00{
+	top: 875px;
+}
+#schedule .cell.s06-30{
+	top: 948px;
+}
+#schedule .cell.s07-00{
+	top: 1021px;
+}
+#schedule .cell.s07-30{
+	top: 1094px;
+}
+#schedule .cell.s08-00{
+	top: 1167px;
+}
+#schedule .cell.s08-30{
+	top: 1240px;
+}
+#schedule .cell.s09-00{
+	top: 1313px;
+}
+#schedule .cell.s09-30{
+	top: 1386px;
+}
+#schedule .cell.s10-00{
+	top: 1459px;
+}
+#schedule .cell.s10-30{
+	top: 1532px;
+}
+#schedule .cell.s11-00{
+	top: 1605px;
+}
+#schedule .cell.s11-30{
+	top: 1678px;
+}
+#schedule .cell.s12-00{
+	top: 1751px;
+}
+#schedule .cell.s12-30{
+	top: 1824px;
+}
+#schedule .cell.s13-00{
+	top: 1897px;
+}
+#schedule .cell.s13-30{
+	top: 1970px;
+}
+#schedule .cell.s14-00{
+	top: 2043px;
+}
+#schedule .cell.s14-30{
+	top: 2116px;
+}
+#schedule .cell.s15-00{
+	top: 2189px;
+}
+#schedule .cell.s15-30{
+	top: 2262px;
+}
+#schedule .cell.s16-00{
+	top: 2335px;
+}
+#schedule .cell.s16-30{
+	top: 2408px;
+}
+#schedule .cell.s17-00{
+	top: 2481px;
+}
+#schedule .cell.s17-30{
+	top: 2554px;
+}
+#schedule .cell.s18-00{
+	top: 2627px;
+}
+#schedule .cell.s18-30{
+	top: 2700px;
+}
+#schedule .cell.s19-00{
+	top: 2773px;
+}
+#schedule .cell.s19-30{
+	top: 2846px;
+}
+#schedule .cell.s20-00{
+	top: 2919px;
+}
+#schedule .cell.s20-30{
+	top: 2992px;
+}
+#schedule .cell.s21-00{
+	top: 3065px;
+}
+#schedule .cell.s21-30{
+	top: 3138px;
+}
+#schedule .cell.s22-00{
+	top: 3211px;
+}
+#schedule .cell.s22-30{
+	top: 3284px;
+}
+#schedule .cell.s23-00{
+	top: 3357px;
+}
+#schedule .cell.s23-30{
+	top: 3430px;
 }
 
 #schedule .category {
@@ -2745,6 +2906,7 @@ border:1px solid #1D2022;
 	    -webkit-border-radius: 5px 5px 0 0;
 	    -o-border-radius: 5px 5px 0 0;
 	    float: left;
+	position: relative;
 }
 
 
@@ -2879,6 +3041,7 @@ clear: left;
 #schedule-header .inner{
 	position: relative;
 	top: 0;
+	z-index: 999;
 }
 
 #schedule .col div:first-child {
@@ -2918,7 +3081,7 @@ clear: left;
 	text-align:center;
 }
 
-#schedule .col-time .cell.t30 {
+#schedule .col-time .t30 .cell-inner {
     color: #25292B;
     font-weight: bold;
     height: 11px;
@@ -2928,13 +3091,24 @@ clear: left;
 }
 
 #schedule .cell {
-	border-top:1px solid #ffffff;
-	border-right:1px solid #ffffff;
-	border-bottom:1px solid #cfcfcf;
-	border-left:1px solid #cfcfcf;
+	border:1px solid #cfcfcf;
+	/*border-left:1px solid #cfcfcf;*/
 	background:#f1f1f1;
 	color:#25292b;
 	font-size:14px;
+}
+#schedule #cols .cell-inner {
+	border-top:1px solid #ffffff;
+	border-right:1px solid #ffffff;
+}
+
+#schedule .cell.primetime {
+	border-color: #a7bcbc;
+}
+#schedule #cols .primetime .cell-inner{
+	background:#c6dada;
+	border-top: 1px solid #dfefef;
+	border-right: 1px solid #dfefef;
 }
 
 #block-block-schedule-buttons .button {
@@ -2964,13 +3138,6 @@ background:url("../images/right-arrow-sm.png") no-repeat scroll 99px 8px transpa
 
 #page-schedule #content-header {
 	float:left;
-}
-
-#schedule .cell.primetime {
-	background:#c6dada;
-	border-color: #dfefef #dfefef #a7bcbc #a7bcbc;
-	    border-style: solid;
-	    border-width: 1px;
 }
 
 #block-block-geolocation-placeholder p {

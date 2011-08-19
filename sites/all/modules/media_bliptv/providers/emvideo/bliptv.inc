@@ -1,5 +1,4 @@
 <?php
-// $Id: bliptv.inc,v 1.1.2.8 2011/02/18 17:16:07 aaron Exp $
 
 /**
  * @file media_bliptv/providers/emvideo/bliptv.inc
@@ -49,7 +48,7 @@ function emvideo_bliptv_data($field, $item) {
 function emvideo_bliptv_request($code, $cacheable = TRUE, $skin = 'rss', $show = FALSE) {
   $args = array();
   $file = $show ? "http://$code.blip.tv/file/?skin=" . $skin : "http://blip.tv/file/$code?skin=" . $skin;
-  return module_invoke('emfield', 'request_xml', 'bliptv', $file, $args, $cacheable, FALSE, $code .':'. $skin . ($show ? ':show' : ':post'));
+  return emfield_request_xml('bliptv', $file, $args, $cacheable, FALSE, $code .':'. $skin . ($show ? ':show' : ':post'));
 }
 
 function emvideo_bliptv_extract($embed) {
@@ -58,11 +57,27 @@ function emvideo_bliptv_extract($embed) {
   if ($matches[1]) {
     return 'BLIP_TV_ERROR_EMBED';
   }
-  return array(
+
+  // Parse for the older URL format.
+  $patterns = array(
     '@blip\.tv/rss/flash/([^"\&\?/]+)@i',
     '@blip\.tv/file/view/([^"\&\?/]+)@i',
     '@blip\.tv/file/([^"\&\?/]+)@i',
   );
+  foreach ($patterns as $pattern) {
+    if (preg_match($pattern, $embed, $matches)) {
+      return $matches[1];
+    }
+  }
+
+  // If this is a blip.tv URL, then retrieve its associated RSS.
+  if (preg_match('@blip\.tv/([^"\&\?/]+)/([^"\&\?/]+)@i', $embed, $matches)) {
+    $rss = 'http://blip.tv/'. $matches[1] .'/'. $matches[2] .'?skin=rss';
+    $xml = emfield_request_xml('bliptv', $rss, array(), TRUE, FALSE, $matches[1] .'/'. $matches[2]);
+    if (isset($xml['ITEM']) && isset($xml['ITEM']['BLIP:ITEM_ID']) && isset($xml['ITEM']['BLIP:ITEM_ID'][0])) {
+      return $xml['ITEM']['BLIP:ITEM_ID'][0];
+    }
+  }
 }
 
 /**
@@ -77,7 +92,18 @@ function emvideo_bliptv_duration($item) {
   if (!isset($item['data']['emvideo_bliptv_data_version']) || $item['data']['emvideo_bliptv_data_version'] < 2) {
     $item['data'] = emvideo_bliptv_data(NULL, $item);
   }
-  return isset($item['data']['flv']['duration']) ? $item['data']['flv']['duration'] : 0;
+  // Use m4v duration property if available, or flv for older blip items.
+  if (isset($item['data']['m4v']['duration'])) {
+    // New api duration value.
+    return $item['data']['m4v']['duration'];
+  }
+  elseif (isset($item['data']['flv']['duration'])) {
+    // Old api duration value (just in case).
+    return $item['data']['flv']['duration'];
+  }
+  else {
+    return 0; // 0
+  }
 }
 
 /**

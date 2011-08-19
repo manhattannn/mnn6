@@ -1,5 +1,4 @@
 <?php
-// $Id: media_bliptv.variables.inc,v 1.1.2.2 2011/02/18 17:16:07 aaron Exp $
 
 /**
  * @file media_bliptv/includes/media_bliptv.admin.inc
