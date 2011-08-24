@@ -3237,34 +3237,27 @@ Schedule Styles
 	padding-bottom:5px;
 }
 
-.section-search ul.primary {
+ul.primary {
 	background:none;
 	border:none;
 	list-style-type:none;
 	float:left;
+	padding: 0;
+	margin: 0;
 }
 
-.section-search .tabs .label {
+.tabs .label {
 	float:left;
-	padding-right:2px;
+	padding-right:15px;
 	color:#666666;
-	padding-top: 4px;
+	padding-top: 5px;
 }
 
-.section-search ul.primary li.active a {
+ul.primary li.active a {
 	font-weight:normal;
 	color:#25292b;
 	background:none;
 	border:none;
-}
-
-.section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, 
-.section-search ul.primary li.active a:focus .tab {
-	background:none;
-}
-
-ul.primary li a .tab {
-	background:none;
 }
 
 .section-search #search-form .form-item > label {
@@ -3276,7 +3269,7 @@ ul.primary li a .tab {
 }
 
 
-.section-search ul.primary li.active a .tab, .section-search ul.primary li.active a:hover .tab, .section-search ul.primary li.active a:focus .tab {
+ul.primary li.active a .tab, ul.primary li.active a:hover .tab, ul.primary li.active a:focus .tab {
     background: none repeat scroll 0 0 #005B25;
     color: white;
     font-size: 14px;
@@ -3284,35 +3277,31 @@ ul.primary li a .tab {
     padding: 5px 13px;
 }
 
-.section-search ul.primary li.active a:hover, .section-search ul.primary li.active a:hover, .section-search ul.primary li.active a:hover {
+ul.primary li.active a:hover, ul.primary li.active a:hover {
 color:white;
 }
 
-.page-search ul.primary li {
+ul.primary li {
     border-right: medium none;
     float: left;
-    height: 18px;
+    height: 28px;
     margin: 0;
     padding: 0;
 }
 
-.page-search ul.primary li a:hover {
-	background:none;
-}
-
-.page-search ul.primary li a {
-    background: none repeat scroll 0 0 white;
-    border: medium none;
+ul.primary li a {
+    background: none;
+    border-width: 0;
+    color: #777777;
     display: block;
-    font-weight: normal;
-    height: 24px;
-    margin: 0;
-    padding: 0 4px;
+    font-weight: bold;
+    height: 28px;
+    margin: 0 5px 0 0;
+    padding: 0;
     text-decoration: none;
-	color:#005B25;
 }
 
-.page-search ul.primary li a .tab {
+ul.primary li a .tab {
     background: none repeat scroll 0 0 #E0E0E0;
     border-width: 0;
     color: #1D1D1D;
@@ -3325,12 +3314,8 @@ color:white;
     padding: 5px 13px;
 }
 
-.section-search ul.primary li.active a:hover {
-	background:none;
-}
-
 nav.tabs {
-    height: 10px;
+    height: 28px;
     margin-top: 20px;
 }
 
@@ -3343,13 +3328,13 @@ html.js fieldset.collapsed {
     margin-bottom: 0;
 }
 
-.page-search ul.primary li a:hover {
+ul.primary li a:hover {
 border:none
 }
 
 .section-search #content-area .search-form {
     clear: left;
-    margin: 30px 0;
+    margin: 10px 0 30px 0;
 }
 
 .section-search #search input#edit-keys, .section-search .search-form input#edit-keys, 
@@ -3380,18 +3365,6 @@ border:none
     margin-top: 24px;
     padding: 5px 15px;
     text-transform: uppercase;
-}
-
-.page-search ul.primary li a {
-    background: none;
-    border-width: 0;
-    color: #777777;
-    display: block;
-    font-weight: bold;
-    height: 24px;
-    margin: 0;
-    padding: 0 0 0 5px;
-    text-decoration: none;
 }
 
 
@@ -3539,7 +3512,7 @@ article.video .content, article.video .content p:first-child, article.watch-live
     padding-top: 0px;
 }
 
-#node-2 ul li span, #node-3 ul li span, .section-producers ul li span {
+#node-2 ul li span, #node-3 ul li span, .section-producers .node ul li span {
     background-color: #5A6970;
     border-radius: 45px 45px 45px 45px;
 -moz-border-radius: 45px 45px 45px 45px;
