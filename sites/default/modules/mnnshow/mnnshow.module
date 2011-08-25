@@ -808,7 +808,8 @@
 			$content .= '<div class="category">'. $row->topic .'</div>';
 			$content .= '<div class="meta"><span class="channel">'. $row->channel .'</span>';
 			if ($row->start_time){
-				$content .= '<span class="next-airing">Next Airing: '. date("D, M j, Y \a\\t g:ia T", strtotime($row->start_time)) .'</span></div>';
+				$start_time = new DateTime($row->start_time, new DateTimeZone('America/New_York'));
+				$content .= '<span class="next-airing">Next Airing: '. $start_time->format("D, M j, Y \a\\t g:ia T") .'</span></div>';
 			}
 			else {
 				$content .= '<span class="next-airing">Next Airing: There are no scheduled airings for this show.</span></div>';
