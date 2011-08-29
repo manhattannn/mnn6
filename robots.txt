@@ -17,7 +17,7 @@
 # http://www.sxw.org.uk/computing/robots/check.html
 
 User-agent: *
-Crawl-delay: 10
+Crawl-delay: 200
 # Directories
 Disallow: /includes/
 Disallow: /misc/
@@ -55,3 +55,16 @@ Disallow: /?q=search/
 Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
+#custom for MNN
+Disallow: /stream/
+Disallow: /?q=stream/
+Disallow: /viewers/schedule
+Disallow: /viewers/schedule/
+Disallow: /viewers/schedule?
+Disallow: /node/70
+Disallow: /node/70/
+Disallow: /node/70/print
+Disallow: /node/70/print?
+Disallow: /taxonomy/term/
+Disallow: /taxonomy/term/4?
+Disallow: /taxonomy/term/4
