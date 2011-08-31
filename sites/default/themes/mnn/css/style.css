@@ -789,17 +789,17 @@ font-family:arial;
 	text-shadow: -1px -1px 0 #252A2C;
 }
 
-#block-block-resources-for-links .producers a, .page-get-involved .producers a {
+#block-block-resources-for-links .producers a, .page-get-involved div.producers a {
 background:url("../images/right-arrow.png") no-repeat scroll 215px 18px,
 url("../images/icon_filmcamera.png") no-repeat scroll 15px 12px;	
 }
 
-#block-block-resources-for-links .organizations a, .page-get-involved .organizations a {
+#block-block-resources-for-links .organizations a, .page-get-involved div.organizations a {
 background:url("../images/right-arrow.png") no-repeat scroll 215px 18px,
 url("../images/icon_group.png") no-repeat scroll 12px 11px;	
 }
 
-#block-block-resources-for-links .youth-channel a, .page-get-involved .youth-channel a {
+#block-block-resources-for-links .youth-channel a, .page-get-involved div.youth-channel a {
 background:url("../images/right-arrow.png") no-repeat scroll 215px 18px,
 url("../images/icon_youth.png") no-repeat 13px 10px;	
 padding: 16px 122px 16px 60px;
