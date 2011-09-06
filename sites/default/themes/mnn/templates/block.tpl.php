@@ -59,8 +59,12 @@ if (!isset($block->attributes['id'])) {
   $info = module_invoke($block->module, 'block', 'list');
   if ($info[$block->delta]['info']) {
     $block_id = 'block-' . $block->module . '-' . $info[$block->delta]['info'];
-    $block_id = str_replace(array('(', ')', ':','!'), '', strtolower($block_id));
-    $block_id = str_replace(array(' ', '_'), '-', strtolower($block_id));
+//    $block_id = str_replace(array('(', ')', ':','!'), '', strtolower($block_id));
+//    $block_id = str_replace(array(' ', '_'), '-', strtolower($block_id));
+		// remove all non-alphanumeric characters, then remove leading/trailing spaces
+		$block_id = trim(preg_replace("/[^A-Za-z0-9-_\/ ]/", '', strtolower($block_id)));
+		// replace spaces with dashes
+		$block_id = preg_replace("/[\/_ ]/", '-', $block_id);
     $block->attributes['id'] = $block_id;
   }
   else {

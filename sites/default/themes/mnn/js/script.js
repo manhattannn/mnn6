@@ -22,8 +22,14 @@ var site = (function(){
 		});
 	}
 
+	function loadPageFromSelect(list) {
+		var link = list.options[list.selectedIndex].value.toLowerCase();
+		location.href = link;
+	}
+
 	return {
-		init: init
+		init: init,
+		loadPageFromSelect: loadPageFromSelect
 	}
 })();
 
@@ -124,6 +130,7 @@ var homeSlideshow = (function(){
 	}
 })();
 
+
 /************************************************* faq *****************************************************/
 var faq = (function(){
 
@@ -145,9 +152,45 @@ var faq = (function(){
 })();
 
 
+/*********************************************** calendar **************************************************/
+var calendar = (function(){
+
+	function init(){
+		if ($('div.calendar-calendar').length){
+			$.ajax({
+				url: 'http://'+document.domain+'/sites/default/themes/mnn/js/jquery-ui-1.8.14.custom.min.js',
+				dataType: "script",
+				success: function(){
+					setup();
+				}
+			});
+		}
+	}
+
+	function setup(){
+		$('<input type="text" id="date-picker" name="date-picker">').appendTo($('div.calendar-calendar .date-heading h3'));
+		$('#date-picker').datepicker({
+			dateFormat: 'yy-mm-dd',
+			onClose: function(dateText, inst){
+				location.href = '/calendar/' + dateText;
+			},
+			showOn: 'button',
+			buttonImageOnly: true,
+			buttonImage: '/sites/default/themes/mnn/images/icon_calendar.png'
+		});
+
+	}
+
+	return {
+		init: init
+	}
+})();
+
+
 
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
 	faq.init();
+	calendar.init();
 });
