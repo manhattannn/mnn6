@@ -27,7 +27,7 @@ function event_feature_node_info() {
       'has_body' => '1',
       'body_label' => t('Description'),
       'min_word_count' => '0',
-      'help' => '',
+      'help' => t('Please fill out the following fields to submit your event. After you have submitted your event, it will be reviewed by our staff. Once approved, it will be visible on the calendar.'),
     ),
   );
   return $items;
