@@ -153,7 +153,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '4' => '4',
+        '3' => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -818,7 +818,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'not in',
       'value' => array(
-        '4' => '4',
+        '3' => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1043,7 +1043,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '4' => '4',
+        '3' => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
