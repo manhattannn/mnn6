@@ -3128,6 +3128,10 @@ border:1px solid #1D2022;
 	width: 928px;
 }
 
+.calendar-calendar > ul.links{
+	padding-bottom: 15px;
+}
+
 .calendar-calendar > ul.links li{
 	/*display: none;*/
 	position: relative;
@@ -4047,7 +4051,7 @@ clear: left;
 	width: 119px;
 	overflow: hidden;
 	float: none;
-	font-size: 10px;
+	font-size: 11px;
 }
 .calendar-calendar .day-view div.calendar{
 	margin: 0 7px 1px 7px;
@@ -4106,17 +4110,17 @@ div.calendar-calendar .date-heading h3 img {
 
 .view-upcoming-events .views-row div.date-time{
 	color: #999;
-	font-size: 13px;
+	font-size: 14px;
 }
 .view-upcoming-events .views-row div.title a{
-	font-size: 13px;
+	font-size: 14px;
 	color: #25292B;
 }
 .view-upcoming-events .views-row div.title a:hover{
 	color: #005B25;
 }
 .view-upcoming-events div.view-footer a{
-	font-size: 13px;
+	font-size: 14px;
 }
 .view-upcoming-events li.views-row{
 	margin-bottom: 20px;
