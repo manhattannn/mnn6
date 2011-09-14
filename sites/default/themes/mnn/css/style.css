@@ -1144,6 +1144,7 @@ footer a {
 #block-webform-webform-send-us-a-message{
 	float: left;
 	width: 480px;
+	min-height: 400px;
 }
 #block-block-footer-contact-us {
 	float:left;
