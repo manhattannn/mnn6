@@ -165,6 +165,10 @@ var calendar = (function(){
 				}
 			});
 		}
+		if ($('div.calendar-calendar div.day-view').length){
+			$('.calendar-calendar > ul.links li.calendar-month a').html('&laquo; Back to Month view')
+			$('.calendar-calendar > ul.links li.calendar-month').css('left', 0);
+		}
 	}
 
 	function setup(){
