@@ -175,7 +175,7 @@ function event_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Calendar');
+  $handler->override_option('title', 'Event Calendar');
   $handler->override_option('header_empty', 1);
   $handler->override_option('items_per_page', 0);
   $handler->override_option('use_more', 0);

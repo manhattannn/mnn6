@@ -140,6 +140,67 @@ function event_feature_content_default_fields() {
     ),
   );
 
+  // Exported field: field_free_confirmation
+  $fields['event-field_free_confirmation'] = array(
+    'field_name' => 'field_free_confirmation',
+    'type_name' => 'event',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '1|I confirm that this event is free and open to the public.',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Is this event free?',
+      'weight' => 0,
+      'description' => '',
+      'type' => 'optionwidgets_buttons',
+      'module' => 'optionwidgets',
+    ),
+  );
+
   // Exported field: field_link
   $fields['event-field_link'] = array(
     'field_name' => 'field_link',
@@ -206,6 +267,7 @@ function event_feature_content_default_fields() {
   // Included for use with string extractors like potx.
   t('Address');
   t('Date');
+  t('Is this event free?');
   t('Link');
 
   return $fields;

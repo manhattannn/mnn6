@@ -76,15 +76,15 @@ function event_feature_strongarm() {
   $strongarm->value = array(
     'title' => '-5',
     'body_field' => '-1',
-    'revision_information' => '3',
-    'author' => '2',
-    'options' => '4',
-    'comment_settings' => '7',
-    'menu' => '1',
-    'path' => '8',
-    'custom_breadcrumbs' => '5',
-    'path_redirect' => '6',
-    'workflow' => '0',
+    'revision_information' => '4',
+    'author' => '3',
+    'options' => '5',
+    'comment_settings' => '8',
+    'menu' => '2',
+    'path' => '9',
+    'custom_breadcrumbs' => '6',
+    'path_redirect' => '7',
+    'workflow' => '1',
   );
   $export['content_extra_weights_event'] = $strongarm;
 
