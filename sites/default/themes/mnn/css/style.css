@@ -3150,7 +3150,7 @@ border:1px solid #1D2022;
 	margin-left: 0;
 }
 
-#page-node-add-event input[type="text"] {
+#page-node-add-event #node-form input[type="text"] {
 	padding:4px;
 	font-size:14px;
 	color:#666666;
