@@ -1977,7 +1977,8 @@ News
 	padding-left:10px;
 }
 
-.page-news .view-content .author {
+.page-news .view-content .author,
+.news .author {
 	padding-left:10px;
 }
 
@@ -1985,7 +1986,7 @@ News
 	margin-top:30px;
 }
 
-.page-news .body-content p,  {
+.page-news .body-content p  {
 	line-height:20px;
 	font-size:14px;
 	margin: 16px 0;

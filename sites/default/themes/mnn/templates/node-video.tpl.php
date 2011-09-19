@@ -25,7 +25,7 @@
 </article>
 
 <?php
-//print '<pre>';
-//print_r($node);
-//print '</pre>';
+/*print '<pre>';
+print_r($node);
+print '</pre>';*/
 ?>
