@@ -131,6 +131,27 @@ var homeSlideshow = (function(){
 })();
 
 
+/********************************************* sidebarMenu *************************************************/
+var sidebarMenu = (function(){
+
+	function init(){
+		if ($('.sidebar .block-menu li.expanded').length)
+			setupEvents();
+	}
+
+	function setupEvents(){
+		$('.sidebar .block-menu li.expanded a').click(function(event){
+			$(this).next('ul.menu').slideToggle();
+			event.preventDefault();
+		});
+	}
+
+	return {
+		init: init
+	}
+})();
+
+
 /************************************************* faq *****************************************************/
 var faq = (function(){
 
@@ -195,6 +216,7 @@ var calendar = (function(){
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
+	sidebarMenu.init();
 	faq.init();
 	calendar.init();
 });
