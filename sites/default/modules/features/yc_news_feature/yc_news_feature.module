@@ -1,0 +1,3 @@
+<?php
+
+include_once('yc_news_feature.features.inc');
