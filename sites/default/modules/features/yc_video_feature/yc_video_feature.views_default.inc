@@ -195,11 +195,23 @@ function yc_video_feature_views_default_views() {
   $handler->override_option('header_empty', 0);
   $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', '0');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'columns' => '3',
+    'alignment' => 'horizontal',
+    'fill_single_line' => 1,
+  ));
   $handler->override_option('block_description', 'YC Video Grid - homepage');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->override_option('use_ajax', FALSE);
-  $handler->override_option('items_per_page', 25);
+  $handler->override_option('items_per_page', 18);
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'columns' => '3',
+    'alignment' => 'horizontal',
+    'fill_single_line' => 1,
+  ));
   $handler->override_option('path', 'youth-channel/video');
   $handler->override_option('menu', array(
     'type' => 'none',
