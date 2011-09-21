@@ -15,7 +15,10 @@
   </header>
   
     <div class="content">
-      <?php print $node->body; ?>
+			<?php
+				print theme('imagecache', 'yc-news', $node->field_image[0]['filepath']);
+		    print $node->content['body']['#value'];
+	    ?>
     </div>
 
 	<?php if ($node->field_link[0]['view']): ?>
