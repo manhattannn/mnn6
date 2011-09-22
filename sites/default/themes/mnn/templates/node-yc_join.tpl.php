@@ -7,7 +7,11 @@
   </header>
   
     <div class="content">
-      <?php print $node->content['body']['#value']; ?>
+	    <?php
+		    if ($node->field_image[0]['filepath'])
+		      print theme('imagecache', 'news', $node->field_image[0]['filepath']);
+        print $node->content['body']['#value'];
+      ?>
     </div>
  
 
