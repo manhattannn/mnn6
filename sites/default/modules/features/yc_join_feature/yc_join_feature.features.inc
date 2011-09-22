@@ -15,6 +15,21 @@ function yc_join_feature_ctools_plugin_api() {
  */
 function yc_join_feature_imagecache_default_presets() {
   $items = array(
+    'yc-join-now' => array(
+      'presetname' => 'yc-join-now',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '619',
+            'height' => '',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
     'yc-join-now-thumb' => array(
       'presetname' => 'yc-join-now-thumb',
       'actions' => array(

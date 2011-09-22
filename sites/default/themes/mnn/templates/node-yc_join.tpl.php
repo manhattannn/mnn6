@@ -9,7 +9,7 @@
     <div class="content">
 	    <?php
 		    if ($node->field_image[0]['filepath'])
-		      print theme('imagecache', 'news', $node->field_image[0]['filepath']);
+		      print theme('imagecache', 'yc-join-now', $node->field_image[0]['filepath']);
         print $node->content['body']['#value'];
       ?>
     </div>
