@@ -24,4 +24,4 @@
 
 </article>
 
-<pre><?php print_r($node) ?></pre>
+<pre><?php //print_r($node) ?></pre>
