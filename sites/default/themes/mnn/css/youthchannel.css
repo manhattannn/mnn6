@@ -1,3 +1,120 @@
-﻿#header{
-  top:0;
+﻿/*--------------------------------------------------------------------------------------------------------------------------------
+Font Styles
+--------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* then for WOFF-capable browsers */
+@font-face { 
+	font-family: League; 
+	src: url("../fonts/League_Gothic-webfont.woff") format("woff");
+}
+
+/* then for TTF-capable browsers */
+@font-face { 
+	font-family: League; 
+	src: url("../fonts/League_Gothic-webfont.ttf") format("truetype");
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------
+YC Styles
+--------------------------------------------------------------------------------------------------------------------------------*/
+
+
+body {
+	background:;
+}
+
+a, a:visited, a:link {
+	color:#0ca676;
+	background:#d3ff7e;
+}
+
+#header {
+	background:url("../img/yc-hero-back.png") no-repeat #bdffeb;
+	  top:0;
+}
+
+#block-panels-mini-mini-panel-youth-channel---landing-intro {
+	width:940px;
+	margin:auto;
+	padding:10px;
+}
+
+#content-header {
+	position:absolute;
+	top:100px;
+	z-index:9;
+}
+
+h1, h2, h3, h4 {
+	font-family:'Bowl', arial;
+	color:;
+	font-weight:normal;
+}
+
+h3 {
+	font-size:24px;
+}
+
+h3.title a, h4 {
+    color: #25292B;
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 0;
+    text-decoration: none;
+    width: 260px;
+}
+
+.button, input[type="submit"] {
+    background-color: #ca4100;
+    background-image: linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
+	background-image: -o-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
+	background-image: -moz-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
+	background-image: -webkit-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
+	background-image: -ms-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #CA4000),
+		color-stop(1, #EF5711)
+	);
+    color: white;
+}
+
+.button a {
+    background: url("../images/right-arrow-sm.png") no-repeat scroll right center transparent;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+    margin-right: 9px;
+    padding: 4px 13px 4px 10px;
+    text-decoration: none;
+}
+
+.sidebar .top {
+    border-bottom: 1px solid #B2BBC0;
+    margin-bottom: 20px;
+    padding: 10px 0 8px 0;
+}
+
+.sidebar .top h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h3.title {
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+
+h3, #block-views-homepage-news-with-image .view-header h2 {
+    color: #25292B;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
