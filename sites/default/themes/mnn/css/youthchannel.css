@@ -3,16 +3,11 @@ Font Styles
 --------------------------------------------------------------------------------------------------------------------------------*/
 
 
-/* then for WOFF-capable browsers */
-@font-face { 
-	font-family: League; 
-	src: url("../fonts/League_Gothic-webfont.woff") format("woff");
-}
-
-/* then for TTF-capable browsers */
-@font-face { 
-	font-family: League; 
-	src: url("../fonts/League_Gothic-webfont.ttf") format("truetype");
+@font-face {
+  font-family: 'Bowlby One';
+  font-style: normal;
+  font-weight: normal;
+  src: local('BowlbyOne'), url('http://themes.googleusercontent.com/static/fonts/bowlbyone/v1/xBO3ZdzVBqGO6i8GOIrhUL3hpw3pgy2gAi-Ip7WPMi0.woff') format('woff');
 }
 
 /*--------------------------------------------------------------------------------------------------------------------------------
@@ -25,7 +20,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-	font-family:'Bowl', arial;
+	font-family:'Bowlby One', arial;
 	color:;
 	font-weight:normal;
 }
@@ -47,6 +42,8 @@ h3 {
 	  top:0;
 }
 
+
+
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
 	width:940px;
 	margin:auto;
@@ -64,7 +61,7 @@ h3 {
 	top:240px;
 }
 
-#content-header  #content h1.title {
+#content #content-header h1.title {
 	background:url('../img/yc-logo.png') no-repeat;
 	width:;
 	height:;
@@ -136,7 +133,32 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
 }
 
 #block-views-youth-channel-join-homepage-block ul li {
-	float:left;
-	width:300px;
-	margin-right:20px;
+    clear: none;
+    float: left;
+    margin-right: 20px;
+    width: 300px;
+}
+
+.section-youth-channel #main h5.title a {
+	color:#25292b;
+}
+
+.views-row h5.title {
+	color:#25292b;
+	margin-bottom:5px;
+}
+
+h4 {
+    color: #25292B;
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 0;
+    text-decoration: none;
+    width: 300px;
+}
+
+.col-1, .col-2{
+	width:216px;
 }
