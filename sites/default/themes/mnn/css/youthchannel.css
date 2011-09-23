@@ -24,8 +24,21 @@ body {
 	background:;
 }
 
-a, a:visited, a:link {
+h1, h2, h3, h4 {
+	font-family:'Bowl', arial;
+	color:;
+	font-weight:normal;
+}
+
+h3 {
+	font-size:24px;
+}
+
+.section-youth-channel #main a, .section-youth-channel #main a:visited, .section-youth-channel #main a:link {
 	color:#0ca676;
+}
+
+.view-content .read-more a, .sidebar a {
 	background:#d3ff7e;
 }
 
@@ -42,19 +55,22 @@ a, a:visited, a:link {
 
 #content-header {
 	position:absolute;
-	top:100px;
 	z-index:9;
+	   top: 170px;
 }
 
-h1, h2, h3, h4 {
-	font-family:'Bowl', arial;
-	color:;
-	font-weight:normal;
+#block-panels-mini-mini-panel-youth-channel---landing-intro {
+	position:absolute;
+	top:240px;
 }
 
-h3 {
-	font-size:24px;
+#content-header  #content h1.title {
+	background:url('../img/yc-logo.png') no-repeat;
+	width:;
+	height:;
+	text-indent:-10000px;
 }
+
 
 h3.title a, h4 {
     color: #25292B;
@@ -67,7 +83,7 @@ h3.title a, h4 {
     width: 260px;
 }
 
-.button, input[type="submit"] {
+.section-youth-channel #main .button, .section-youth-channel #main input[type="submit"] {
     background-color: #ca4100;
     background-image: linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
 	background-image: -o-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
@@ -84,7 +100,7 @@ h3.title a, h4 {
     color: white;
 }
 
-.button a {
+.section-youth-channel #main .button a {
     background: url("../images/right-arrow-sm.png") no-repeat scroll right center transparent;
     color: white;
     float: left;
@@ -117,4 +133,10 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
     font-weight: normal;
     margin-bottom: 20px;
     margin-top: 30px;
+}
+
+#block-views-youth-channel-join-homepage-block ul li {
+	float:left;
+	width:300px;
+	margin-right:20px;
 }
