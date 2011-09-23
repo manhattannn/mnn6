@@ -16,7 +16,7 @@ YC Styles
 
 
 body {
-	background:;
+	background:url('../images/graph-pattern.png');
 }
 
 
@@ -78,6 +78,7 @@ body {
 
 #header {
 	height:450px;
+	 margin-bottom: 40px;
 }
 
 
@@ -137,15 +138,57 @@ h3.title a, h4 {
     text-decoration: none;
 }
 
+
+/* All Homepage */
+
+#content-top > div {
+border-bottom: 1px solid #b2bbc0;	
+}
+
+/* Join Youth Channel */
+
+.view-content > div.item-list {
+    margin-bottom: 40px;
+    overflow: auto;
+padding-top:10px;
+}
+
+#block-views-youth-channel-join-homepage-block ul li {
+   clear: none;
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    overflow: auto;
+    width: 290px;
+}
+
+#block-views-youth-channel-join-homepage-block {
+	padding-top:;
+}
+
+
+/* Sidebar */
+
+.sidebar-second .sidebar {
+    float: left;
+    padding-left: 45px;
+    padding-top: 0;
+    width: 220px;
+}
+
 .sidebar .top {
-    border-bottom: 1px solid #B2BBC0;
+background:url('../images/flag.png') no-repeat;
     margin-bottom: 20px;
     padding: 10px 0 8px 0;
+border-bottom:none;
 }
 
 .sidebar .top h3 {
+	width:100%;
     font-size: 18px;
     font-weight: bold;
+color:white;
+	background:#ca4100;
 }
 
 h3.title {
@@ -161,12 +204,6 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
     margin-top: 30px;
 }
 
-#block-views-youth-channel-join-homepage-block ul li {
-    clear: none;
-    float: left;
-    margin-right: 20px;
-    width: 300px;
-}
 
 .section-youth-channel #main h5.title a {
 	color:#25292b;
