@@ -19,13 +19,18 @@ body {
 	background:;
 }
 
-h1, h2, h3, h4 {
+
+#main h1, 
+#main h2, 
+#main h3,
+#main h4 {
 	font-family:'Bowlby One', arial;
 	color:;
 	font-weight:normal;
 }
 
-h3 {
+
+#main h3 {
 	font-size:24px;
 }
 
@@ -37,12 +42,13 @@ h3 {
 	background:#d3ff7e;
 }
 
+/* Hero */
+
+
 #header {
 	background:url("../img/yc-hero-back.png") no-repeat #bdffeb;
 	  top:0;
 }
-
-
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
 	width:940px;
@@ -57,17 +63,40 @@ h3 {
 }
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
-	position:absolute;
-	top:240px;
+		background: url("../images/yc-hero-back.png") no-repeat scroll 40px 33px transparent;
+		    height: 430px;
+		    top: 0;
+		    width: 1841px;
 }
 
 #content #content-header h1.title {
-	background:url('../img/yc-logo.png') no-repeat;
-	width:;
-	height:;
-	text-indent:-10000px;
+  background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
+    height: 59px;
+    text-indent: -10000px;
+    width: 346px;
 }
 
+#header {
+	height:450px;
+}
+
+
+#node-1602 {
+	width:272px;
+	font-size:18px;
+	color:#25292b;
+	line-height:24px;
+	position:relative;
+	top:100px;
+}
+
+
+
+
+
+#main h3, #main h4 {
+	text-transform:uppercase;
+}
 
 h3.title a, h4 {
     color: #25292B;
