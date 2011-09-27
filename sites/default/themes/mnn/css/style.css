@@ -4169,6 +4169,7 @@ div.calendar-calendar .date-heading h3 img {
 	padding: 20px;
 	position: relative;
 	margin-bottom: 20px;
+	display: none;
 }
 div.open-close-container p{
 	margin-bottom: 10px;
