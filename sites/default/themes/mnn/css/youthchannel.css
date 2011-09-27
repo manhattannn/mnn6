@@ -16,7 +16,7 @@ YC Styles
 
 
 body {
-	background:url('../images/graph-pattern.png');
+	background:url('../images/graph_pattern.png');
 }
 
 
@@ -38,7 +38,7 @@ body {
 	color:#0ca676;
 }
 
-.view-content .read-more a, .sidebar a {
+.view-content .read-more a, .sidebar a, #block-views-youth-channel-our-services-block-homepage .item-list .views-row a {
 	background:#d3ff7e;
 }
 
@@ -62,11 +62,14 @@ body {
 	   top: 170px;
 }
 
+
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
-		background: url("../images/yc-hero-back.png") no-repeat scroll 40px 33px transparent;
-		    height: 430px;
-		    top: 0;
-		    width: 1841px;
+    background: url("../images/yc-hero-back.png") no-repeat scroll 40px 33px transparent;
+    height: 430px;
+    padding-left: 460px;
+    position: relative;
+    top: 0;
+    width: 1385px;
 }
 
 #content #content-header h1.title {
@@ -88,12 +91,15 @@ body {
 	color:#25292b;
 	line-height:24px;
 	position:relative;
-	top:100px;
+	  top: 160px;
+}
+
+#node-1602 p {
+margin-bottom:20px;
 }
 
 
-
-
+/* Homepage body content */
 
 #main h3, #main h4 {
 	text-transform:uppercase;
@@ -148,7 +154,7 @@ border-bottom: 1px solid #b2bbc0;
 /* Join Youth Channel */
 
 .view-content > div.item-list {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     overflow: auto;
 padding-top:10px;
 }
@@ -158,12 +164,38 @@ padding-top:10px;
     float: left;
     margin-bottom: 20px;
     margin-right: 20px;
-    overflow: auto;
     width: 290px;
 }
 
 #block-views-youth-channel-join-homepage-block {
 	padding-top:;
+}
+
+#block-views-youth-channel-our-services-block-homepage {
+	padding-top:20px;
+}
+
+#main #block-views-youth-channel-our-services-block-homepage .view-header h4, 
+#block-panels-mini-mini-panel-youth-channel---broadcast .view-header h4{
+	font-family:arial;
+	font-size:16px;
+	margin-bottom:0px;
+}
+
+#block-views-youth-channel-our-services-block-homepage .item-list .views-row {
+    clear: left;
+    margin: 20px 0;
+}
+
+#block-views-youth-channel-our-services-block-homepage .outer {
+	width:300px;
+	float:left;
+	margin-right:20px;
+}
+
+#block-panels-mini-mini-panel-youth-channel---broadcast {
+	border-top:none;
+	width:300px;
 }
 
 
