@@ -3743,7 +3743,7 @@ article.video .content, article.video .content p:first-child, article.watch-live
     padding-top: 0px;
 }
 
-#node-2 ul li span, #node-3 ul li span, .section-producers .node ul li span {
+#node-2 ul li span, #node-3 ul li span, .section-producers .node ul li span, #mini-panel-submit_your_video ul li span {
     background-color: #5A6970;
     border-radius: 45px 45px 45px 45px;
 -moz-border-radius: 45px 45px 45px 45px;
@@ -4151,6 +4151,67 @@ div.calendar-calendar .date-heading h3 img {
 	padding: 0 28px 0 22px;
 	color: #fff;
 }
+
+#mini-panel-submit_your_video .content h4{
+	font-size: 16px;
+	margin: 20px 0 10px 0;
+}
+#mini-panel-submit_your_video .content h4 a.opener-closer{
+	font-family: Arial, sans-serif;
+	font-size: 13px;
+}
+#mini-panel-submit_your_video .open-close-container{
+	border: 1px #c3c3c3 solid;
+	background-color: #fff79a;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 20px;
+	position: relative;
+	margin-bottom: 20px;
+}
+div.open-close-container p{
+	margin-bottom: 10px;
+	width: 700px;
+}
+#mini-panel-submit_your_video div.closer{
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-bottom: 1px #c3c3c3 solid;
+	border-left: 1px #c3c3c3 solid;
+	padding: 5px 7px 5px 9px;
+}
+#mini-panel-submit_your_video div.closer a{
+	color: #000;
+	font-size: 12px;
+}
+#mini-panel-submit_your_video em{
+	font-style: italic;
+}
+#mini-panel-submit_your_video .content ul{
+	height: 80px;
+	margin: 20px 0 0 0;
+}
+#mini-panel-submit_your_video .content li{
+	float: left;
+	width: 270px;
+	margin: 0 0 0 30px;
+}
+#mini-panel-submit_your_video .content li:first-child{
+	margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
