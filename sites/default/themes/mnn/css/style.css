@@ -3234,6 +3234,22 @@ border:1px solid #1D2022;
 		);
 }
 
+#schedule-header .nav .prev:hover, #schedule-header .nav .next:hover {
+	background:#e6e6e6;
+		background-image: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0, #FFFFFF),
+		    color-stop(1, #CBCBCB)
+		);
+		background-image: -moz-linear-gradient(
+		    center bottom,
+		    #FFFFFF 0%,
+		    #CBCBCB 100%
+		);
+}
+
 #schedule-header .nav .prev {
 	float:left;
 	text-align: right;
@@ -4159,6 +4175,7 @@ div.calendar-calendar .date-heading h3 img {
 #mini-panel-submit_your_video .content h4 a.opener-closer{
 	font-family: Arial, sans-serif;
 	font-size: 13px;
+	font-weight: normal;
 }
 #mini-panel-submit_your_video .open-close-container{
 	border: 1px #c3c3c3 solid;
@@ -4234,18 +4251,35 @@ a.download-button {
 	padding-right: 7px;
 }
 
+a.download-button:hover{
+	background:#e6e6e6;
+		background-image: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0, #FFFFFF),
+		    color-stop(1, #CBCBCB)
+		);
+		background-image: -moz-linear-gradient(
+		    center bottom,
+		    #FFFFFF 0%,
+		    #CBCBCB 100%
+		);
+	color: #25292B;
+}
+
 a.download-button span {
 background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transparent;
  clear: left;
     float: left;
-    height: 14px;
+    height: 15px;
     padding: 2px 16px 6px 8px;
 }
 
 #block-views-download-show-schedule-block{
 	position: absolute;
 	right: 0;
-	top: 20px;
+	top: 21px;
 }
 #content-top{
 	position: relative;
