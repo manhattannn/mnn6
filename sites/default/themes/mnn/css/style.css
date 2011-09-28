@@ -4203,8 +4203,53 @@ div.open-close-container p{
 	margin-left: 0;
 }
 
+a.download-button {
+	border:1px solid #919c9c;
+	color:#25292b;
+	font-family:arial;
+	font-size:13px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	border: 1px solid #919C9C;
+	    border-radius: 3px 3px 3px 3px;
+	    color: #25292B;
+	    font-family: arial;
+	    font-size: 13px;
+	background:#e6e6e6;
+		background-image: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0, #CBCBCB),
+		    color-stop(1, #FFFFFF)
+		);
+		background-image: -moz-linear-gradient(
+		    center bottom,
+		    #CBCBCB 0%,
+		    #FFFFFF 100%
+		);
+	float: left;
+	padding-right: 7px;
+}
 
+a.download-button span {
+background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transparent;
+ clear: left;
+    float: left;
+    height: 14px;
+    padding: 2px 16px 6px 8px;
+}
 
+#block-views-download-show-schedule-block{
+	position: absolute;
+	right: 0;
+	top: 20px;
+}
+#content-top{
+	position: relative;
+}
 
 
 
