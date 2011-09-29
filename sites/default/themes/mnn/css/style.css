@@ -4285,10 +4285,45 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	position: relative;
 }
 
-
-
-
-
+.view-job-listings {
+	border-top: 1px #b2bbc0 solid;
+	margin-top: 40px;
+	padding-top: 40px;
+}
+.view-job-listings .view-header h2{
+	font-size: 18px;
+	font-family: 'Droid Serif',georgia;
+	font-weight: normal;
+}
+.job-listing h3{
+	margin: 20px 0 0 0;
+	font-size: 16px;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+.job-listing .type-date{
+	margin-bottom: 10px;
+}
+.job-listing .type-date div{
+	float: left;
+	color: #666;
+	font-size: 14px;
+	text-transform: none;
+	padding: 0 8px;
+}
+.job-listing .type-date div.type{
+	padding-left: 0;
+	border-right: 1px #888 solid;
+}
+.job-listing .body-copy p{
+	margin-bottom: 5px;
+}
+.job-listing .application-link a{
+	color: #005b25;
+}
+.job-listing .application-link a:hover{
+	color: #173122;
+}
 
 
 
