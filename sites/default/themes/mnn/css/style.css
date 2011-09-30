@@ -889,11 +889,11 @@ h3.title {
 	height:25px;
 }
 
-.views-row-odd {
+.view-homepage-news-grid .views-row-odd {
 	margin-right:20px;
 }
 
-.view-content .views-row .content {
+.view-homepage-news-grid .views-row .content {
 	width:270px;
 }
 
@@ -2027,7 +2027,7 @@ News
 }
 
 .view-content > div {
-	margin-bottom:40px;
+	margin-bottom:30px;
 }
 
 .addthis_toolbox_item {
