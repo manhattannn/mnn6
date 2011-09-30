@@ -46,8 +46,7 @@ body {
 
 
 #header {
-	background:url("../img/yc-hero-back.png") no-repeat #bdffeb;
-	  top:0;
+    background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #BDFFEB;	  top:0;
 }
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
@@ -64,15 +63,15 @@ body {
 
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
-    background: url("../images/yc-hero-back.png") no-repeat scroll 40px 33px transparent;
     height: 430px;
-    padding-left: 460px;
-    position: relative;
-    top: 0;
-    width: 1385px;
+margin:auto;
 }
 
-#content #content-header h1.title {
+#mini-panel-youth_channel_landing_intro {
+	margin-top:130px;
+}
+
+#page-youth-channel #content #content-header h1.title {
   background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
     height: 59px;
     text-indent: -10000px;
@@ -205,6 +204,17 @@ padding-top:10px;
 border:none;	
 }
 
+
+
+/* News */
+
+#block-views-yc-news-with-image-block {
+	clear:left;
+}
+
+.section-youth-channel #main #block-views-yc-news-with-image-block h3.title a {
+	color:black;
+}
 
 /* Sidebar */
 
