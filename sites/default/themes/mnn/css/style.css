@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+
 /* HTML5 ? Boilerplate */
 
 html, body, div, span, object, iframe,
@@ -364,10 +366,10 @@ Header Styles
 	color: white;
 	    display: none;
 	    margin-top: 0px;
-	    padding: 5px 0;
+	    padding: 5px 0 0 0;
 	    position: absolute;
 	    text-transform: none;
-	    width: 124px;
+	    width: 164px;
 	    z-index: 9;
 }
 
@@ -408,7 +410,7 @@ li.expanded {
     border-top: 1px solid #3C4143;
     float: left;
     margin: 0;
-   width: 124px;
+   width: 164px;
 }
 
 #main-menu .expanded > a {
@@ -419,7 +421,7 @@ li.expanded {
 	float: left;
 	    height: 15px;
 	    padding: 6px 17px 9px 7px;
-	    width: 100px;
+	    width: 140px;
 }
 
 #main-menu .expanded ul.menu li:first-child {
@@ -4285,18 +4287,25 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	position: relative;
 }
 
+.view-staff-board-members,
 .view-job-listings {
 	border-top: 1px #b2bbc0 solid;
 	margin-top: 40px;
 	padding-top: 40px;
 }
+.view-staff-board-members .view-header h2,
 .view-job-listings .view-header h2{
 	font-size: 18px;
 	font-family: 'Droid Serif',georgia;
 	font-weight: normal;
 }
-.job-listing h3{
+.person,
+.job-listing{
 	margin: 20px 0 0 0;
+}
+.person h3,
+.job-listing h3{
+	margin: 0;
 	font-size: 16px;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
@@ -4325,9 +4334,28 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	color: #173122;
 }
 
-
-
-
+.person .photo{
+	float: left;
+}
+.view-staff-board-members .copy-column{
+	margin-left: 160px;
+}
+.person h3.name{
+	font-size: 16px;
+	margin: 0;
+	font-weight: bold;
+	font-family: arial, sans-serif;
+}
+.person .title{
+	font-size:14px;
+	margin-bottom: 10px;
+}
+.person a{
+	color: #005b25;
+}
+.person a:hover{
+	color: #173122;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
