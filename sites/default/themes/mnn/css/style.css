@@ -4340,6 +4340,12 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 .view-staff-board-members .copy-column{
 	margin-left: 160px;
 }
+#block-views-staff-board-members-block-upper-management .copy-column{
+ 	margin-left: 240px;
+}
+#block-views-staff-board-members-block-staff .copy-column{
+	margin-left: 0;
+}
 .person h3.name{
 	font-size: 16px;
 	margin: 0;
