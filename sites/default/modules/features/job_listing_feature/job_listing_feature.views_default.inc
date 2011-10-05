@@ -233,27 +233,15 @@ function job_listing_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Job Listings');
   $handler->override_option('header', '<h2>Available Jobs</h2>');
   $handler->override_option('header_format', '2');
   $handler->override_option('header_empty', 0);
+  $handler->override_option('empty', 'No job listings at this time.');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('use_pager', '1');
-  $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->override_option('path', 'about-us/job-listings');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
 
   $views[$view->name] = $view;
 
