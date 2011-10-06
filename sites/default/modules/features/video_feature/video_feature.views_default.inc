@@ -176,7 +176,7 @@ function video_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Watch Video');
+  $handler->override_option('title', 'Watch Videos');
   $handler->override_option('use_ajax', TRUE);
   $handler->override_option('items_per_page', 15);
   $handler->override_option('use_pager', '1');
