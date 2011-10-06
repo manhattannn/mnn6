@@ -4,7 +4,8 @@
       <small class="taxonomy">
 	      <?php
 					foreach($node->taxonomy as $tax) {
-						$categories .= $tax->name .', ';
+	          if ($tax->vid != 12) // do not show the 'Event Types' terms (mnn-sponsored, community-sponsored, etc).
+							$categories .= $tax->name .', ';
 					}
 			    $len = strlen($categories);
 		      print substr($categories, 0, ($len - 2));

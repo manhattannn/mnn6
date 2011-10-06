@@ -2005,7 +2005,7 @@ News
 }
 
 .collapsed ul {
-	display:hidden;
+	display:none;
 }
 
 .view-news-page-categories {
@@ -2028,9 +2028,9 @@ News
 	height:20px;
 }
 
-.view-content > div {
+/*.view-content > div {
 	margin-bottom:30px;
-}
+}*/
 
 .addthis_toolbox_item {
 	margin-right:30px;
@@ -3122,7 +3122,6 @@ border:1px solid #1D2022;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A2B0B0, endColorstr=#B4C2C2)";
 	padding:5px;
 	border-radius: 5px 5px 0 0;
-    float: left;
     padding: 5px;
     width: 930px;
 }
@@ -4049,9 +4048,24 @@ clear: left;
 	padding: 0 !important;
 }
 
-.calendar-calendar td .inner div,
-.calendar-calendar td .inner div a{
-	background: transparent !important;
+.calendar-calendar td .inner div.calendar div,
+.calendar-calendar td .inner div.calendar div a{
+	background: transparent;
+}
+
+.calendar-calendar td .inner div.calendar div.mnn-sponsored-event a{
+	color: #007d09;
+	background-color: #e1ffdf;
+}
+.calendar-calendar td .inner div.calendar div.mnn-sponsored-event a:hover{
+	color: #015507;
+}
+.calendar-calendar td .inner div.calendar div.community-sponsored-event a{
+	color: #0025b0;
+	background-color: #dbe7ff;
+}
+.calendar-calendar td .inner div.calendar div.community-sponsored-event a:hover{
+	color: #001666;
 }
 
 .calendar-calendar td .inner div.calendar div,
@@ -4147,16 +4161,62 @@ div.calendar-calendar .date-heading h3 img {
 	margin-bottom: 20px;
 }
 
+#block-views-event-types-block{
+	position: absolute;
+	right: 0;
+	top: -61px;
+	width: 295px;
+	padding: 10px 17px 15px 17px;
+	background-color: #e3e8eb;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+}
+#block-views-event-types-block h4{
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	border-bottom: 1px #d8dee2 solid;
+	text-transform: uppercase;
+	padding-bottom: 2px;
+}
+#block-views-event-types-block .views-row{
+	border-bottom: 1px #d8dee2 solid;
+	border-top: 1px #f3f6f8 solid;
+	font-size: 12px;
+	padding: 5px 0;
+	line-height: 19px;
+}
+#block-views-event-types-block .views-row-last{
+	border-bottom: 0 none;
+	padding-bottom: 0;
+}
+#block-views-event-types-block div span.color{
+	-webkit-border-radius: 2px;
+		 -moz-border-radius: 2px;
+					border-radius: 2px;
+	float: left;
+	width: 19px;
+	height: 19px;
+	display: block;
+	margin-right: 8px;
+}
+#block-views-event-types-block div.mnn-sponsored-event span.color{
+	background-color: #007d09;
+}
+#block-views-event-types-block div.community-sponsored-event span.color{
+	background-color: #0025b0;
+}
+
 #block-block-calendar-intro .content{
 	position: relative;
-	margin: 20px 0 40px 0;
+	margin: 20px 0 20px 0;
 }
 #block-block-calendar-intro .content p{
-	width: 520px;
+	width: 400px;
 }
 #block-block-calendar-intro .content .button{
 	position: absolute;
-	left: 540px;
+	left: 420px;
 	top: 0;
 }
 .button4{
