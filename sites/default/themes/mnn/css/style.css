@@ -4290,14 +4290,21 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 .view-staff-board-members,
 .view-job-listings {
 	border-top: 1px #b2bbc0 solid;
-	margin-top: 40px;
-	padding-top: 40px;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+#block-views-staff-board-members-block-upper-management .view{
+	border-top: 0 none;
+	padding-top: 0;
 }
 .view-staff-board-members .view-header h2,
 .view-job-listings .view-header h2{
 	font-size: 18px;
 	font-family: 'Droid Serif',georgia;
 	font-weight: normal;
+}
+.view-staff-board-members .views-row-last{
+	margin-bottom: 0;
 }
 .person,
 .job-listing{
@@ -4362,6 +4369,46 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 .person a:hover{
 	color: #173122;
 }
+
+#block-views-facilities-resources-block-dubbing .top h3,
+#block-views-facilities-resources-block-editing-user-operated .top h3{
+	font-size: 18px;
+	border-top: 1px #b2bbc0 solid;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+
+.view-facilities-resources .resource h4{
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+}
+.view-facilities-resources .resource .address{
+	color: #666;
+}
+.view-facilities-resources .resource .body-copy{
+	margin-top: 5px;
+}
+.view-facilities-resources .resource .website {
+	float: left;
+	border-right: 1px #888 solid;
+	padding-right: 8px;
+	margin-right: 8px;
+}
+.view-facilities-resources .resource .website a {
+	color: #005b25;
+}
+.view-facilities-resources .resource .website a:hover {
+	color: #003B18;
+}
+.view-facilities-resources .resource .phone {
+	color: #666;
+}
+.view-facilities-resources .views-row-last{
+	margin-bottom: 0;
+}
+
+
+
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
