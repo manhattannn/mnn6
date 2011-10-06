@@ -11,6 +11,57 @@ function staff_board_members_feature_ctools_plugin_api() {
 }
 
 /**
+ * Implementation of hook_imagecache_default_presets().
+ */
+function staff_board_members_feature_imagecache_default_presets() {
+  $items = array(
+    'person-board-of-directors' => array(
+      'presetname' => 'person-board-of-directors',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '133',
+            'height' => '133',
+          ),
+        ),
+      ),
+    ),
+    'person-management' => array(
+      'presetname' => 'person-management',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '133',
+            'height' => '133',
+          ),
+        ),
+      ),
+    ),
+    'person-upper-management' => array(
+      'presetname' => 'person-upper-management',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '213',
+            'height' => '213',
+          ),
+        ),
+      ),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implementation of hook_node_info().
  */
 function staff_board_members_feature_node_info() {

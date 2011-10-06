@@ -103,7 +103,7 @@ function staff_board_members_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'about-us/people/[title-raw]';
   $export['pathauto_node_person_pattern'] = $strongarm;
 
   return $export;
