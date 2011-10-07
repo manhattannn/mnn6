@@ -12,6 +12,7 @@ regions[main_menu] = Main Menu
 regions[header] = Header
 regions[sub_header] = Sub Header
 regions[watch_now] = Watch Now
+regions[content_header] = Content header
 regions[content_top] = Content top
 regions[content_bottom] = Content bottom
 regions[sidebar_first] = First sidebar

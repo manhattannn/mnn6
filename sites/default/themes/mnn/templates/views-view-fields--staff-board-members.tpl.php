@@ -29,7 +29,7 @@
 ?>
 
 <div class="person clearfix">
-	<?php if ($fields['field_photo_fid']) : ?>
+	<?php if ($fields['field_photo_fid']->content) : ?>
 		<div class="photo"><?php print $fields['field_photo_fid']->content ?></div>
 	<?php endif; ?>
 	<div class="copy-column">

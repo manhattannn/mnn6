@@ -4022,25 +4022,32 @@ clear: left;
 .calendar-calendar td.calendar-agenda-hour .calendar-hour{
 	font-size: 14px;
 }
+.calendar-calendar .day-view td.calendar-agenda-items{
+	vertical-align: middle;
+	padding: 20px 0;
+}
 .calendar-calendar .day-view td.calendar-agenda-hour{
 	width: 139px;
 	text-align: center;
 	vertical-align: middle;
 }
-.calendar-calendar .day-view td.calendar-agenda-hour span.calendar-hour{
-	width: 139px;
+.calendar-calendar .day-view td.calendar-agenda-hour span.calendar-hour,
+.calendar-calendar .day-view td.calendar-agenda-hour span.calendar-ampm{
 	text-align: center;
-	display: block;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 .calendar-calendar td.calendar-agenda-items div.calendar{
 	width: 790px;
 }
 .calendar-calendar .day-view .inner{
-	height: 72px;
+	min-height: 0;
 }
 .calendar-calendar .month-view td .inner{
 	width: 133px;
-	height: 150px !important;
+	height: 133px !important;
+	position: relative;
+	padding-top: 17px;
 }
 
 .calendar-calendar .month-view td .view-field {
@@ -4072,10 +4079,22 @@ clear: left;
 .calendar-calendar td .inner div.calendar div a{
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	overflow: hidden; 
+	overflow: hidden;
+	font-size: 14px;
 }
 .calendar-calendar tr td.today, .calendar-calendar tr.odd td.today, .calendar-calendar tr.even td.today{
 	background-color: #F9FBDF;
+}
+
+.calendar-calendar td span.date-display-single,
+.calendar-calendar td span.date-display-start,
+.calendar-calendar td span.date-display-end,
+.calendar-calendar td span.date-display-separator {
+	display: block;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #5e5e5e;
+	font-weight: normal;
 }
 
 .calendar-calendar .month-view div.calendar{
@@ -4098,6 +4117,16 @@ clear: left;
 	color: #005B25;
 	text-decoration: none;
 }
+.calendar-calendar td .inner div.day {
+	background-color: transparent;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.calendar-calendar td .inner div,
+.calendar-calendar td .inner div a{
+	background-color: transparent;
+}
 .calendar-calendar td .inner div.day a{
 	color: #005B25;
 }
@@ -4115,6 +4144,13 @@ div.calendar-calendar .date-heading h3 img {
     cursor: pointer;
 }
 
+div.calendar-calendar td .inner div.calendar div.calendar-more,
+div.calendar-calendar td .inner div.calendar div.calendar-more a{
+	background-color: transparent;
+	color: #666;
+	font-weight: normal;
+	font-size: 11px;
+}
 .event.node header {
 	padding: 10px 0 15px 0;
 	color: #999;
@@ -4138,6 +4174,18 @@ div.calendar-calendar .date-heading h3 img {
 	color: #999;
 	border-right: 0 none;
 	padding-left: 0;
+}
+.section-events #content h1.title{
+	font-size: 24px;
+	line-height: 26px;
+}
+.section-events #content-header-content .pane-content h2{
+	font-size: 36px;
+	font-weight: normal;
+	margin: 35px 0 45px 0;
+}
+.section-events #content-header-content .pane-content a{
+	color: #005b25;
 }
 
 .view-upcoming-events .views-row div.date-time{
@@ -4213,6 +4261,8 @@ div.calendar-calendar .date-heading h3 img {
 }
 #block-block-calendar-intro .content p{
 	width: 400px;
+	font-size: 14px;
+	font-family: 'Droid Serif', Georgia;
 }
 #block-block-calendar-intro .content .button{
 	position: absolute;
@@ -4341,7 +4391,7 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 #block-views-download-show-schedule-block{
 	position: absolute;
 	right: 0;
-	top: 21px;
+	top: 61px;
 }
 #content-top{
 	position: relative;
@@ -4372,13 +4422,13 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 }
 .person h3,
 .job-listing h3{
-	margin: 0;
+	margin: 0 0 4px 0;
 	font-size: 16px;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 }
 .job-listing .type-date{
-	margin-bottom: 10px;
+	margin-bottom: 13px;
 }
 .job-listing .type-date div{
 	float: left;
@@ -4404,24 +4454,18 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 .person .photo{
 	float: left;
 }
-.view-staff-board-members .copy-column{
+.view-staff-board-members .photo + .copy-column{
 	margin-left: 160px;
 }
-#block-views-staff-board-members-block-upper-management .copy-column{
+#block-views-staff-board-members-block-upper-management .photo + .copy-column{
  	margin-left: 240px;
 }
-#block-views-staff-board-members-block-staff .copy-column{
+#block-views-staff-board-members-block-staff .photo + .copy-column{
 	margin-left: 0;
-}
-.person h3.name{
-	font-size: 16px;
-	margin: 0;
-	font-weight: bold;
-	font-family: arial, sans-serif;
 }
 .person .title{
 	font-size:14px;
-	margin-bottom: 10px;
+	margin-bottom: 13px;
 }
 .person a{
 	color: #005b25;
@@ -4467,6 +4511,11 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	margin-bottom: 0;
 }
 
+#page-about-us-job-listings .node .content p,
+#page-about-us-staff .node .content p,
+#page-about-us-board-of-directors .node .content p{
+	font-size: 18px;
+}
 
 
 

@@ -85,6 +85,12 @@
 
 						<?php print $breadcrumb; ?>
 
+						<?php if ($content_header) : ?>
+						<div id="content-header-content">
+							<?php print $content_header ?>
+						</div>
+						<?php endif; ?>
+
 						<?php if ($title): ?>
 						<h1 class="title"><?php print $title; ?></h1>
 						<?php endif; ?>
