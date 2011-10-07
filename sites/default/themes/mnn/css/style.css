@@ -4475,6 +4475,10 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 }
 
 #block-views-facilities-resources-block-dubbing .top h3,
+#block-views-facilities-resources-block-tape-stock .top h3,
+#block-views-facilities-resources-block-repair-purchase-services .top h3,
+#block-views-facilities-resources-block-production-equipment-rental .top h3,
+#block-views-facilities-resources-block-editing-technician-assisted .top h3,
 #block-views-facilities-resources-block-editing-user-operated .top h3{
 	font-size: 18px;
 	border-top: 1px #b2bbc0 solid;
