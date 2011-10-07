@@ -4520,7 +4520,9 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 #page-about-us-board-of-directors .node .content p{
 	font-size: 18px;
 }
-
+#page-producers-production-facilities-equipment-resources .node .content p:first-child{
+	font-size: 18px;
+}
 
 
 
