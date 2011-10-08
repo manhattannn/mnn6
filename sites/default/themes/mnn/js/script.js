@@ -191,10 +191,43 @@ var calendar = (function(){
 })();
 
 
+/********************************************** openClose **************************************************/
+var openClose = (function(){
+
+	function init(){
+		if ($('.open-close-container').length){
+			generateHtml();
+			setupEvents();
+		}
+	}
+
+	function setupEvents(){
+		$('a.opener-closer').click(function(event){
+			$(this).parent().next('.open-close-container').slideToggle();
+			event.preventDefault();
+		});
+		$('.open-close-container div.closer a').click(function(event){
+			$(this).parent().parent('.open-close-container').slideToggle();
+			event.preventDefault();
+		});
+	}
+
+	function generateHtml(){
+		$('.open-close-container').append('<div class="closer"><a href="#">x Hide</a></div>');
+	}
+
+	return {
+		init: init
+	}
+})();
+
+
+
 
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
 	faq.init();
 	calendar.init();
+	openClose.init();
 });

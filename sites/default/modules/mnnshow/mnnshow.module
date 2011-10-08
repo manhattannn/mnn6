@@ -242,7 +242,7 @@
 		//drupal_add_js('document.write(unescape("%3Cscript src=\''. $external_js . '\' type=\'text/javascript\'%3E%3C/script%3E"));', 'inline');
 		//drupal_add_js(drupal_get_path('module', 'mnnshow').'/google.maps.in_poly.js');
 		drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow.js');
-		$content = '<div id="schedule"><header id="schedule-header"><div class="inner"><div class="nav"></div><div class="channels"></div></div></header><div id="cols"></div></div> ';
+		$content = '<div id="schedule"><header id="schedule-header"><div class="inner"><div class="nav clearfix"></div><div class="channels"></div></div></header><div id="cols"></div></div> ';
 		return $content;
 	}
 	
