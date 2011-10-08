@@ -4407,12 +4407,17 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	border-top: 0 none;
 	padding-top: 0;
 }
+.instructor h2,
 .view-staff-board-members .view-header h2,
 .view-job-listings .view-header h2{
 	font-size: 18px;
 	font-family: 'Droid Serif',georgia;
 	font-weight: normal;
 }
+.instructor h2{
+	margin: 25px 0 15px 0;
+}
+
 .view-staff-board-members .views-row-last{
 	margin-bottom: 0;
 }
@@ -4421,6 +4426,7 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	margin: 20px 0 0 0;
 }
 .person h3,
+.instructor h3,
 .job-listing h3{
 	margin: 0 0 4px 0;
 	font-size: 16px;
@@ -4451,9 +4457,11 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	color: #173122;
 }
 
+.instructor .photo,
 .person .photo{
 	float: left;
 }
+.instructor .photo + .copy-column,
 .view-staff-board-members .photo + .copy-column{
 	margin-left: 160px;
 }
@@ -4463,13 +4471,16 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 #block-views-staff-board-members-block-staff .photo + .copy-column{
 	margin-left: 0;
 }
+.instructor .title,
 .person .title{
 	font-size:14px;
 	margin-bottom: 13px;
 }
+.instructor a,
 .person a{
 	color: #005b25;
 }
+.instructor a:hover,
 .person a:hover{
 	color: #173122;
 }
@@ -4524,6 +4535,9 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	font-size: 18px;
 }
 
+body.not-logged-in .vertical-tabs {
+	display: none !important;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
