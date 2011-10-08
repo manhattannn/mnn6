@@ -1,0 +1,3 @@
+<?php
+
+include_once('facilities_resources_feature.features.inc');
