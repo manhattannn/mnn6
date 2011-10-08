@@ -22,6 +22,12 @@ function event_feature_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'panels_mini-event_content_header' => array(
+          'module' => 'panels_mini',
+          'delta' => 'event_content_header',
+          'region' => 'content_header',
+          'weight' => 0,
+        ),
         'views-upcoming_events-block_1' => array(
           'module' => 'views',
           'delta' => 'upcoming_events-block_1',
