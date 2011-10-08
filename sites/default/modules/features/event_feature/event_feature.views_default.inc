@@ -462,7 +462,7 @@ function event_feature_views_default_views() {
     'nothing' => array(
       'label' => '',
       'alter' => array(
-        'text' => '<div class="[tid]">[field_date] - [title]</div>',
+        'text' => '<div class="[tid]">[field_date] [title]</div>',
         'make_link' => 0,
         'path' => '',
         'link_class' => '',
@@ -495,7 +495,7 @@ function event_feature_views_default_views() {
   $handler->override_option('style_options', array(
     'name_size' => '99',
     'with_weekno' => '0',
-    'max_items' => '5',
+    'max_items' => '3',
     'max_items_behavior' => 'more',
     'groupby_times' => 'hour',
     'groupby_times_custom' => '',
