@@ -1013,6 +1013,7 @@ display:inline;
 #block-views-upcoming-events-block-content-center .view-content,
 #block-views-upcoming-events-block-content-center .top{
 	float: left;
+	padding-right: 430px;
 }
 
 /*--------------------------------------------------------------------------------
