@@ -3,13 +3,6 @@ Font Styles
 --------------------------------------------------------------------------------------------------------------------------------*/
 
 
-@font-face {
-  font-family: 'Bowlby One';
-  font-style: normal;
-  font-weight: normal;
-  src: local('BowlbyOne'), url('http://themes.googleusercontent.com/static/fonts/bowlbyone/v1/xBO3ZdzVBqGO6i8GOIrhUL3hpw3pgy2gAi-Ip7WPMi0.woff') format('woff');
-}
-
 /*--------------------------------------------------------------------------------------------------------------------------------
 YC Styles
 --------------------------------------------------------------------------------------------------------------------------------*/
@@ -20,25 +13,32 @@ body {
 }
 
 
-#main h1, 
-#main h2, 
-#main h3,
-#main h4 {
-	font-family:'Bowlby One', arial;
-	color:;
+#content h1,
+#content h2,
+#content h3 {
+	font-family:'Holtwood One SC', arial, sans-serif;
 	font-weight:normal;
 }
 
+#sidebar-second h2,
+#sidebar-second h3,
+#sidebar-second h4{
+	font-family: 'Bowlby One', arial, sans-serif;
+	text-transform: uppercase;
+}
 
-#main h3 {
+#content h2,
+#content h3 {
 	font-size:24px;
+	margin-bottom: 20px;
 }
 
-.section-youth-channel #main a, .section-youth-channel #main a:visited, .section-youth-channel #main a:link {
+#content .read-more a,
+#content a.read-more,
+#content p a,
+.view-youth-channel-our-services .views-row a,
+#sidebar-second a {
 	color:#0ca676;
-}
-
-.view-content .read-more a, .sidebar a, #block-views-youth-channel-our-services-block-homepage .item-list .views-row a {
 	background:#d3ff7e;
 }
 
@@ -46,7 +46,7 @@ body {
 
 
 #header {
-    background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #BDFFEB;	  top:0;
+	background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #BDFFEB;	  top:0;
 }
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
@@ -58,13 +58,13 @@ body {
 #content-header {
 	position:absolute;
 	z-index:9;
-	   top: 170px;
+	top: 170px;
 }
 
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
-    height: 430px;
-margin:auto;
+	height: 430px;
+	margin:auto;
 }
 
 #mini-panel-youth_channel_landing_intro {
@@ -72,188 +72,259 @@ margin:auto;
 }
 
 #page-youth-channel #content #content-header h1.title {
-  background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
-    height: 59px;
-    text-indent: -10000px;
-    width: 346px;
-margin-top:0px;
+	background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
+	height: 59px;
+	text-indent: -10000px;
+	width: 346px;
+	margin-top:0px;
 }
 
 #header {
 	height:450px;
-	 margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 
-#node-1602 {
+#mini-panel-youth_channel_landing_intro {
 	width:272px;
 	font-size:18px;
 	color:#25292b;
 	line-height:24px;
 	position:relative;
-	    top: 130px;
 }
 
-#node-1602 p {
-margin-bottom:20px;
+#mini-panel-youth_channel_landing_intro p {
+	margin-bottom:20px;
 }
 
 
 /* Homepage body content */
 
-#main h3, #main h4 {
-	text-transform:uppercase;
-}
-
 h3.title a, h4 {
-    color: #25292B;
-    font-family: arial;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-    margin-bottom: 0;
-    text-decoration: none;
-    width: 260px;
+	color: #25292B;
+	font-family: arial;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 0;
+	text-decoration: none;
+	width: 260px;
 }
 
-.section-youth-channel #main .button, .section-youth-channel #main input[type="submit"] {
-    background-color: #ca4100;
-    background-image: linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
-	background-image: -o-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
-	background-image: -moz-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
-	background-image: -webkit-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
-	background-image: -ms-linear-gradient(bottom, #CA4000 0%, #EF5711 100%);
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #CA4000),
-		color-stop(1, #EF5711)
-	);
-    color: white;
+#mini-panel-youth_channel_landing_intro .button,
+.section-youth-channel #main .button,
+.section-youth-channel #main input[type="submit"] {
+	background: #ef5711;
+	background: -moz-linear-gradient(top, #ef5711 0%, #ca4000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef5711), color-stop(100%,#ca4000));
+	background: -webkit-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+	background: -o-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+	background: -ms-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef5711', endColorstr='#ca4000',GradientType=0 );
+	background: linear-gradient(top, #ef5711 0%,#ca4000 100%);
+	color: white;
+}
+#mini-panel-youth_channel_landing_intro .button:hover,
+.section-youth-channel #main .button:hover,
+.section-youth-channel #main input[type="submit"]:hover {
+	background: #ca4000;
+	background: -moz-linear-gradient(top, #ca4000 0%, #ef5711 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ca4000), color-stop(100%,#ef5711));
+	background: -webkit-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+	background: -o-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+	background: -ms-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ca4000', endColorstr='#ef5711',GradientType=0 );
+	background: linear-gradient(top, #ca4000 0%,#ef5711 100%);
 }
 
+#mini-panel-youth_channel_landing_intro .button a,
 .section-youth-channel #main .button a {
-    background: url("../images/right-arrow-sm.png") no-repeat scroll right center transparent;
-    color: white;
-    float: left;
-    font-size: 12px;
-    font-weight: normal;
-    margin-right: 9px;
-    padding: 4px 13px 4px 10px;
-    text-decoration: none;
+	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
+	color: white;
+	float: left;
+	font-size: 12px;
+	font-weight: normal;
+	margin-right: 9px;
+	padding: 0 13px 0 10px;
+	text-decoration: none;
+	line-height: 24px;
 }
 
+#mini-panel-youth_channel_landing_intro .button-big{
+	float: none;
+}
+#mini-panel-youth_channel_landing_intro .button-big a{
+	line-height: 50px;
+	padding: 0 16px 0 12px;
+	text-shadow: 0 -1px 0 #666;
+	font-size: 14px;
+	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
+	float: none;
+	display: block;
+	margin-right: 12px;
+	font-weight: bold;
+	color: #f3f7f9;
+}
 
 /* All Homepage */
 
 #content-top > div {
-border-bottom: 1px solid #b2bbc0;	
+	border-top: 1px solid #b2bbc0;
+	padding-bottom: 10px;
+}
+div#block-views-youth-channel-join-homepage-block {
+	border-top: 0 none;
 }
 
 /* Join Youth Channel */
 
 .view-content > div.item-list {
-    margin-bottom: 20px;
-padding-top:10px;
+	margin-bottom: 20px;
+	padding-top:10px;
 }
 
 #block-views-youth-channel-join-homepage-block ul li {
-   clear: none;
-    float: left;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    width: 290px;
+	clear: none;
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 290px;
 }
 
 #block-views-youth-channel-join-homepage-block {
-	padding-top:;
 }
 
-#block-views-youth-channel-our-services-block-homepage {
-	padding-top:20px;
-}
-
-#main #block-views-youth-channel-our-services-block-homepage .view-header h4, 
-#block-panels-mini-mini-panel-youth-channel---broadcast #node-1598 h4 {
-  font-family: arial;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 2px;
-    text-transform: none;
-}
-
-#block-views-youth-channel-our-services-block-homepage .item-list .views-row {
-    clear: left;
-    margin: 20px 0;
-}
-
-#block-views-youth-channel-our-services-block-homepage {
-	width:300px;
+#block-views-youth-channel-our-services-block-homepage,
+#block-panels-mini-mini-panel-youth-channel---our-services,
+#block-panels-mini-mini-panel-youth-channel---news,
+#block-views-yc-video-grid---homepage{
+	padding-top:30px;
 	float:left;
-	padding-right:20px;
 }
 
-#block-panels-mini-mini-panel-youth-channel---broadcast {
-  float: left;
-    margin-top: 50px;
-    width: 300px;
+#block-panels-mini-mini-panel-youth-channel---our-services h4{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 2px;
+	text-transform: none;
 }
 
-#content-top > div#block-panels-mini-mini-panel-youth-channel---broadcast {
-border:none;	
+#block-panels-mini-mini-panel-youth-channel---our-services .item-list .views-row {
+	clear: left;
+	margin: 0 0 7px 0;
 }
 
-
-
-/* News */
-
-#block-views-yc-news-with-image-block {
-	clear:left;
+#block-panels-mini-mini-panel-youth-channel---our-services p{
+	margin-bottom: 10px;
 }
 
-.section-youth-channel #main #block-views-yc-news-with-image-block h3.title a {
-	color:black;
+#block-panels-mini-mini-panel-youth-channel---news .view-header{
+	position: absolute;
+	top: 31px;
+	right: 0;
+}
+
+#block-panels-mini-mini-panel-youth-channel---news .views-row h3{
+	margin-bottom: 12px;
+}
+
+.pane-yc-news-with-image img{
+	margin: 7px 0;
+}
+
+#block-views-yc-video-grid---homepage .view-header{
+	position: absolute;
+	top: 31px;
+	right: 0;
+}
+
+#block-views-yc-video-grid---homepage .views-field-title a{
+	color: #0ca676;
+	font-weight: bold;
+}
+
+#block-views-yc-video-grid---homepage .views-field-field-video-embed-1{
+	font-size: 10px;
+	color: #666;
 }
 
 /* Sidebar */
 
 .sidebar-second .sidebar {
-    float: left;
-    padding-left: 45px;
-    padding-top: 0;
-    width: 220px;
+	float: left;
+	padding-left: 45px;
+	padding-top: 0;
+	width: 220px;
 }
 
-.sidebar .top {
-background:url('../images/flag.png') no-repeat;
-    margin-bottom: 20px;
-    padding: 10px 0 8px 0;
-border-bottom:none;
+.sidebar-second .top {
+	background:url('../images/orange-tail.png') no-repeat right center;
+	margin-bottom: 20px;
+	padding: 0 21px 0 0;
+	border-bottom:none;
+	height: 40px;
 }
 
-.sidebar .top h3 {
-	width:100%;
-    font-size: 18px;
-    font-weight: bold;
-color:white;
+.sidebar-second .top h3 {
+	font-size: 17px;
+	font-weight: bold;
+	color:white;
 	background:#ca4100;
+	line-height: 34px;
+	padding: 4px 8px;
+	height: 32px;
+	text-shadow: 0px -1px 1px #666;
+	filter: dropshadow(color=#666, offx=0, offy=-1);
+	margin: 0 0 14px 0;
 }
 
-h3.title {
-    margin-bottom: 14px;
-    margin-top: 0;
+.sidebar-second .content h2{
+	display: none;
 }
 
-h3, #block-views-homepage-news-with-image .view-header h2 {
-    color: #25292B;
-    font-size: 24px;
-    font-weight: normal;
-    margin-bottom: 20px;
-    margin-top: 30px;
+#block-panels-mini-mini-panel-youth-channel---firehouse .top h3{
+	line-height: 17px;
 }
 
+#block-panels-mini-mini-panel-youth-channel---twitter-feed a{
+	background-color: transparent;
+}
+#block-panels-mini-mini-panel-youth-channel---twitter-feed img{
+	box-shadow: 0px 0px 0px 0px #fff; 
+}
 
+#mini-panel-youth_channel_stay_connected .content li{
+	background: transparent url(../images/connect-icons.png) no-repeat;
+	display: block;
+	height: 31px;
+	line-height: 31px;
+}
+#mini-panel-youth_channel_stay_connected .content li span,
+#mini-panel-youth_channel_stay_connected .content li a{
+	background-color: transparent;
+	line-height: 29px;
+	color: #25292b;
+	padding-left: 36px;
+	display: block;
+}
+#mini-panel-youth_channel_stay_connected .content li.phone{
+	background-position: 0 0;
+}
+#mini-panel-youth_channel_stay_connected .content li.email{
+	background-position: 0 -38px;
+}
+#mini-panel-youth_channel_stay_connected .content li.facebook{
+	background-position: 0 -74px;
+}
+#mini-panel-youth_channel_stay_connected .content li.twitter{
+	background-position: 0 -113px;
+}
+#mini-panel-youth_channel_stay_connected .content li.youtube{
+	background-position: 0 -150px;
+}
+#mini-panel-youth_channel_stay_connected .content li.vimeo{
+	background-position: 0 -188px;
+}
 .section-youth-channel #main h5.title a {
 	color:#25292b;
 }
@@ -261,17 +332,6 @@ h3, #block-views-homepage-news-with-image .view-header h2 {
 .views-row h5.title {
 	color:#25292b;
 	margin-bottom:5px;
-}
-
-h4 {
-    color: #25292B;
-    font-family: arial;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-    margin-bottom: 0;
-    text-decoration: none;
-    width: 300px;
 }
 
 .col-1, .col-2{
