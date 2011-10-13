@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
-
 /* HTML5 ? Boilerplate */
 
 html, body, div, span, object, iframe,
@@ -1434,7 +1432,10 @@ Not-Front Page Styles
 Individual News Post Styles
 --------------------------------------------------------------------------------*/
 
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
+#content h1.title,
+.node-type-cert-class .sidebar .top h3,
+#page-shows #content h1.title,
+#content-header-content .top h3.title{
 	font-size:36px;
 	color:#25292b;
 	font-weight:normal;
@@ -1685,16 +1686,17 @@ Sidebar Styles
 	font-weight:bold;
 }
 
-.sidebar .top {
-padding: 10px 0 8px 0px;
-	border-bottom:1px solid #b2bbc0;
-	margin-bottom:20px;
+#sidebar-second .top{
+	border-bottom: 1px solid #B2BBC0;
+	margin-bottom: 20px;
 }
 
 #page-producers #sidebar-second .top,
-#page-organizations #sidebar-second .top, #page-producers-submit-show #sidebar-second .top,
+#page-organizations #sidebar-second .top,
+#page-producers-submit-show #sidebar-second .top,
 #page-producers-become-producer #sidebar-second .top,
-#page-organizations-faq #sidebar-second .top, .section-producers #sidebar-second .top {
+#page-organizations-faq #sidebar-second .top,
+.section-producers #sidebar-second .top {
 	padding: 10px 0 10px 24px;
 }
 
@@ -2652,7 +2654,7 @@ Classes Styles
 	font-weight:normal;
     line-height: 40px;
     margin-bottom: 10px;
-margin-top: 110px;
+margin-top: 0;
 }
 
 .node-type-cert-class .sidebar .views-row {
@@ -3722,15 +3724,6 @@ article.video .content, article.video .content p:first-child, article.watch-live
 	color:#003f1a;
 }
 
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
-    color: #25292B;
-    font-size: 36px;
-    font-weight: normal;
-    line-height: 40px;
-    margin-bottom: 12px;
-    margin-top: 30px;
-}
-
 #page-homepage h1{
 	display: none;
 }
@@ -3898,6 +3891,7 @@ display:none;
     font-size: 24px;
     padding-bottom: 12px;
     padding-top: 20px;
+	line-height: 26px;
 }
 
 .view-feed-items th, .view-feed-items td{
