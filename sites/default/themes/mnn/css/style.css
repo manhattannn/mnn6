@@ -2123,8 +2123,10 @@ padding: 16px 67px 16px 16px;
 Video Viewing Styles
 --------------------------------------------------------------------------------*/
 
-.node-type-video header#content-header h1.title, .node-type-video #content-header,
-.node-type-watch-live header#content-header h1.title, .node-type-watch-live #content-header {
+.node-type-video #title h1.title,
+.node-type-video #title,
+.node-type-watch-live #title,
+.node-type-watch-live #content-header {
 	display:none;
 }
 
@@ -3381,11 +3383,14 @@ clear: left;
     clear: right;
     margin-bottom: 10px;
     padding-left: 180px;
-    padding-top: 61px;
+    padding-top: 38px;
 }
 
-#page-schedule #content-header {
+#page-schedule #title {
 	float:left;
+}
+#page-schedule #title h1 {
+	margin-bottom: 0;
 }
 
 #block-block-geolocation-placeholder p {
@@ -3726,21 +3731,16 @@ article.video .content, article.video .content p:first-child, article.watch-live
     margin-top: 30px;
 }
 
+#page-homepage h1{
+	display: none;
+}
+
 .item-list ul li h5.title a:hover {
     color: #005b25;
 }
 
 .item-list ul li a:hover {
     color: #003f1a;
-}
-
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
-    color: #25292B;
-    font-size: 36px;
-    font-weight: normal;
-    line-height: 40px;
-    margin-bottom: 5px;
-    margin-top: 30px;
 }
 
 .item-list .views-row {
@@ -4394,7 +4394,7 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 #block-views-download-show-schedule-block{
 	position: absolute;
 	right: 0;
-	top: 61px;
+	top: 39px;
 }
 #content-top{
 	position: relative;
