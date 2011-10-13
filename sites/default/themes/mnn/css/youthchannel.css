@@ -1,13 +1,4 @@
-﻿/*--------------------------------------------------------------------------------------------------------------------------------
-Font Styles
---------------------------------------------------------------------------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------------------------------------------------------------------------
-YC Styles
---------------------------------------------------------------------------------------------------------------------------------*/
-
-
+﻿
 body {
 	background:url('../images/graph_pattern.png');
 }
@@ -55,12 +46,6 @@ body {
 	padding:10px;
 }
 
-#content-header {
-	position:absolute;
-	z-index:9;
-	top: 170px;
-}
-
 
 #block-panels-mini-mini-panel-youth-channel---landing-intro {
 	height: 430px;
@@ -68,15 +53,21 @@ body {
 }
 
 #mini-panel-youth_channel_landing_intro {
-	margin-top:130px;
+	margin-top:40px;
+	width:272px;
+	font-size:18px;
+	color:#25292b;
+	line-height:24px;
+	position:relative;
 }
 
-#page-youth-channel #content #content-header h1.title {
+#page-youth-channel #header h2.pane-title {
 	background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
 	height: 59px;
-	text-indent: -10000px;
+	text-indent: -999em;
 	width: 346px;
-	margin-top:0px;
+	margin:0 0 25px 0;
+	display: block;
 }
 
 #header {
@@ -85,20 +76,16 @@ body {
 }
 
 
-#mini-panel-youth_channel_landing_intro {
-	width:272px;
-	font-size:18px;
-	color:#25292b;
-	line-height:24px;
-	position:relative;
-}
-
 #mini-panel-youth_channel_landing_intro p {
 	margin-bottom:20px;
 }
 
 
 /* Homepage body content */
+
+#page-youth-channel h1{
+	display: none;
+}
 
 h3.title a, h4 {
 	color: #25292B;
@@ -257,7 +244,7 @@ div#block-views-youth-channel-join-homepage-block {
 	width: 220px;
 }
 
-.sidebar-second .top {
+#sidebar-second .top {
 	background:url('../images/orange-tail.png') no-repeat right center;
 	margin-bottom: 20px;
 	padding: 0 21px 0 0;
@@ -265,7 +252,7 @@ div#block-views-youth-channel-join-homepage-block {
 	height: 40px;
 }
 
-.sidebar-second .top h3 {
+#sidebar-second .top h3 {
 	font-size: 17px;
 	font-weight: bold;
 	color:white;
@@ -278,7 +265,7 @@ div#block-views-youth-channel-join-homepage-block {
 	margin: 0 0 14px 0;
 }
 
-.sidebar-second .content h2{
+#sidebar-second .content h2{
 	display: none;
 }
 
