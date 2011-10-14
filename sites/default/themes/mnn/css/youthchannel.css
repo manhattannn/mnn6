@@ -230,6 +230,20 @@ div#block-views-youth-channel-join-homepage-block {
 	margin: 7px 0;
 }
 
+#block-views-yc-video-grid---homepage {
+	width: 100%;
+}
+
+#block-views-yc-video-grid---homepage td.col-1{
+	padding-right: 28px;
+}
+#block-views-yc-video-grid---homepage td.col-2{
+	padding: 0 14px;
+}
+#block-views-yc-video-grid---homepage td.col-3{
+	padding-left: 28px;
+}
+
 #block-views-yc-video-grid---homepage .view-header{
 	position: absolute;
 	top: 31px;
