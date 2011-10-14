@@ -235,18 +235,18 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 #block-views-yc-video-grid---homepage td.col-1{
-	padding-right: 28px;
+	padding: 0 28px 15px 0;
 }
 #block-views-yc-video-grid---homepage td.col-2{
-	padding: 0 14px;
+	padding: 0 14px 15px 0;
 }
 #block-views-yc-video-grid---homepage td.col-3{
-	padding-left: 28px;
+	padding: 0 0 15px 28px;
 }
 
 #block-views-yc-video-grid---homepage .view-header{
 	position: absolute;
-	top: 31px;
+	top: 29px;
 	right: 0;
 }
 
