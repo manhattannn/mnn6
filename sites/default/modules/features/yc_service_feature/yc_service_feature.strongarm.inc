@@ -75,16 +75,16 @@ function yc_service_feature_strongarm() {
   $strongarm->name = 'content_extra_weights_yc_service';
   $strongarm->value = array(
     'title' => '-5',
-    'body_field' => '1',
-    'revision_information' => '3',
-    'author' => '2',
-    'options' => '4',
-    'comment_settings' => '7',
+    'body_field' => '-1',
+    'revision_information' => '1',
+    'author' => '0',
+    'options' => '2',
+    'comment_settings' => '5',
     'menu' => '-4',
-    'taxonomy' => '-1',
-    'path' => '8',
-    'custom_breadcrumbs' => '5',
-    'path_redirect' => '6',
+    'path' => '6',
+    'custom_breadcrumbs' => '3',
+    'path_redirect' => '4',
+    'workflow' => '7',
   );
   $export['content_extra_weights_yc_service'] = $strongarm;
 

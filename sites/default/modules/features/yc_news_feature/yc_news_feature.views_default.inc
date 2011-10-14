@@ -730,7 +730,7 @@ function yc_news_feature_views_default_views() {
     ),
     'row' => array(
       'element_type' => 'div',
-      'class' => '',
+      'class' => 'views-row views-row-# clearfix',
       'last_every_nth' => '0',
       'first_class' => 'first',
       'last_class' => 'last',
@@ -1138,6 +1138,25 @@ function yc_news_feature_views_default_views() {
       'override' => array(
         'button' => 'Use default',
       ),
+    ),
+  ));
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'div',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
     ),
   ));
   $handler->override_option('pane_title', '');
@@ -2045,7 +2064,6 @@ function yc_news_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('header', '<h2>News &amp; Events</h2>');
   $handler->override_option('header_format', '2');
   $handler->override_option('header_empty', 0);
   $handler->override_option('items_per_page', 1);

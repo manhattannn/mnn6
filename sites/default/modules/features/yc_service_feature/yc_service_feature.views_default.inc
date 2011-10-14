@@ -103,7 +103,6 @@ function yc_service_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Our Services');
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('row_plugin', 'semanticviews_fields');
