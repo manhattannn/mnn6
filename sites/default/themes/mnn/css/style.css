@@ -111,6 +111,7 @@ body {
 	width:940px;
 	padding:0px 10px;
 	margin:auto;
+	position: relative;
 }
 
 a, a:link, a:visited {
@@ -1680,6 +1681,9 @@ Sidebar Styles
     width: 220px;
   padding-top: 20px;
 }
+.sidebar-first .sidebar.first {
+	padding-top: 0;
+}
 
 .sidebar .top h3 {
 	font-size:18px;
@@ -1970,16 +1974,7 @@ News
 
 .post-date, .taxonomy {
 	border-right:1px solid #666666;
-}
-
-.taxonomy {
-	padding-right:10px;
-	padding-left:10px;
-}
-
-.page-news .view-content .author,
-.news .author {
-	padding-left:10px;
+	margin-right: 12px;
 }
 
 .page-news .body-content {
@@ -1999,6 +1994,10 @@ News
 .news-image {
 	margin-bottom:20px;
 	margin-top:20px;
+}
+
+.view-news-page .views-row{
+	margin-bottom: 30px;
 }
 
 .news-image img {
@@ -2039,7 +2038,7 @@ News
 }*/
 
 .addthis_toolbox_item {
-	margin-right:30px;
+	margin: 0 15px 0 0;
 }
 
 .page-news .sidebar .top, .node-type-news .sidebar .top {
@@ -3868,7 +3867,7 @@ display:none;
 
 .page-news .view-content .read-more {
     color: #005B25;
-    float: left;
+    float: none;
     margin-bottom: 20px;
     margin-top: 5px;
 }
