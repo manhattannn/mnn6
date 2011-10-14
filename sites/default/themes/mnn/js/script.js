@@ -140,7 +140,7 @@ var sidebarMenu = (function(){
 	}
 
 	function setupEvents(){
-		$('.sidebar .block-menu li.expanded a').click(function(event){
+		$('.sidebar .block-menu li.expanded > a').click(function(event){
 			$(this).next('ul.menu').slideToggle();
 			event.preventDefault();
 		});
