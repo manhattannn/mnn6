@@ -3189,10 +3189,10 @@ border:1px solid #1D2022;
 .calendar-calendar div.date-nav h3,
 #schedule-header .nav .schedule-date {
     color: #25292B;
-    float: left;
+    /*float: left;*/
     font-family: 'Droid Serif';
     font-size: 17px;
-    margin-left: 340px;
+    /*margin-left: 340px;*/
     margin-top: 4px;
     text-align: center;
 }

@@ -490,10 +490,21 @@ body.node-type-yc-service #title h1{
 .view-yc-news-page .addthis{
 	margin-top: 20px;
 }
-.author
 
+#schedule-header .nav{
+	background: #3ac297;
+	background: -moz-linear-gradient(top, #3ac297 0%, #0da676 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ac297), color-stop(100%,#0da676));
+	background: -webkit-linear-gradient(top, #3ac297 0%,#0da676 100%);
+	background: -o-linear-gradient(top, #3ac297 0%,#0da676 100%);
+	background: -ms-linear-gradient(top, #3ac297 0%,#0da676 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ac297', endColorstr='#0da676',GradientType=0 );
+	background: linear-gradient(top, #3ac297 0%,#0da676 100%);
+}
 
-
+#schedule-header .nav .schedule-date{
+	font-family: 'Holtwood One SC', arial, sans-serif;
+}
 
 
 
