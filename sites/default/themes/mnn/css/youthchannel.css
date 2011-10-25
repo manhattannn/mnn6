@@ -547,6 +547,7 @@ body.node-type-yc-service #title h1{
 	font-size: 14px;
 	left: 0;
 	line-height: 50px;
+	text-transform: uppercase;
 }
 
 #yc-schedule .row-time .empty{
@@ -659,6 +660,7 @@ body.node-type-yc-service #title h1{
 	font-weight: bold;
 	border-left: 1px #2a2d2f solid;
 	text-align: center;
+	text-transform: uppercase;
 }
 #yc-schedule .row-time .cell .inner{
 	border-right: 1px #454b4e solid;

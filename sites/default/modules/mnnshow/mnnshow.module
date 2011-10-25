@@ -450,7 +450,7 @@
 		$query = 'SELECT s.project_id, s.title, s.topic, a.start_time, a.duration, a.channel ';
 		$query .= 'FROM {ac_report_project_cache} s ';
 		$query .= 'LEFT JOIN {ac_report_airing_cache} a ON s.project_id = a.project_id ';
-		$query .= 'WHERE a.channel = "Channel 1" AND ('. $where .') ';
+		$query .= 'WHERE a.channel = "Channel 4" AND ('. $where .') ';
 		$query .= 'ORDER BY a.start_time ASC';
 		$result = db_query(db_rewrite_sql($query));
 
@@ -532,6 +532,9 @@
 				$blocks[4]['info'] = t('Channel Listing');
 				$blocks[4]['cache'] = BLOCK_NO_CACHE;
 
+				$blocks[5]['info'] = t('Youth Channel Listing');
+				$blocks[5]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
@@ -552,6 +555,10 @@
 				elseif ($delta == 4){
 					$block['subject'] = t('Channel Listing');
 					$block['content'] = _mnnshow_block_channel_listing();
+				}
+				elseif ($delta == 5){
+					$block['subject'] = t('Youth Channel Listing');
+					$block['content'] = _mnnshow_block_yc_channel_listing();
 				}
 
 				return $block;
@@ -805,6 +812,25 @@
 			$content .= '</tr>';
 		}
 
+		$content .= '</table>';
+		return $content;
+	}
+
+	function _mnnshow_block_yc_channel_listing(){
+		$channel_info = mnnshow_get_channels();
+
+		//--- youth channel plays on channel 4
+
+		$content = '<table class="channel-grid">';
+		// heading row
+		$content .= '<tr><th></th><th>Youth Channel</th></tr>';
+		// channels
+		for ($i = 0; $i < count($channel_info[4]['tvChannels']); $i++){
+			$content .= '<tr>';
+			$content .= '<th>'.$channel_info[4]['tvChannels'][$i]['tvStationName'].'</th>';
+			$content .= '<td>'.$channel_info[4]['tvChannels'][$i]['tvStationChannel'].'</td>';
+			$content .= '</tr>';
+		}
 		$content .= '</table>';
 		return $content;
 	}
