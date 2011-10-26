@@ -1009,12 +1009,12 @@ display:inline;
 	font-weight: bold;
 	line-height: 16px;
 }
-#block-views-upcoming-events-block-content-center .view-content{
-	float: left;
-}
 #block-views-upcoming-events-block-content-center .top{
 	float: left;
 	padding-right: 430px;
+}
+#block-views-upcoming-events-block-content-center .view-content{
+	float: left;
 }
 
 /*--------------------------------------------------------------------------------
