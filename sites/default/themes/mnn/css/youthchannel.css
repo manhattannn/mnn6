@@ -384,8 +384,9 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar a{
 	background-color: transparent;
 }
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel img,
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar img{
-	box-shadow: 0px 0px 0px 0px #fff; 
+	box-shadow: 0px 0px 0px 0px #fff;
 }
 
 #mini-panel-youth_channel_stay_connected .content li{
@@ -560,4 +561,8 @@ margin-bottom:10px;
 .views-view-grid td {
     height: 190px;
     width: 192px;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel h3.title{
+	font-size: 18px;
 }
