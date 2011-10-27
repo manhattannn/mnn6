@@ -697,11 +697,51 @@ body.node-type-yc-service #title h1{
 	overflow: hidden;
 }
 
+div#block-panels-mini-mini-panel-yc-schedule-intro{
+	border-top: 0 none;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	background:#e3e8eb;
+	padding:16px 30px 16px 30px;
+	margin-bottom:30px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first{
+	font-family: 'Droid Serif', arial, sans-serif;
+	padding-top: 10px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first p{
+	margin-bottom: 10px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first p a{
+	color: #2262cc;
+	background-color: transparent;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .panel-col-last{
+	width: 220px;
+	padding: 0 60px 0 140px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid{
+	width: 220px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th + th,
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th + td{
+	text-align: center;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .inside{
+	margin: 0;
+}
 
-
-
-
-
+div#block-panels-mini-mini-panel-yc-schedule-buttons{
+	border-top: 0 none;
+	position: absolute;
+	top: -50px;
+	right: 0;
+}
+#block-panels-mini-mini-panel-yc-schedule-buttons .button{
+	margin-left: 10px;
+}
 
 
 

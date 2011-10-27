@@ -535,6 +535,9 @@
 				$blocks[5]['info'] = t('Youth Channel Listing');
 				$blocks[5]['cache'] = BLOCK_NO_CACHE;
 
+				$blocks[6]['info'] = t('Youth Channel Intro');
+				$blocks[6]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
@@ -557,8 +560,10 @@
 					$block['content'] = _mnnshow_block_channel_listing();
 				}
 				elseif ($delta == 5){
-					$block['subject'] = t('Youth Channel Listing');
 					$block['content'] = _mnnshow_block_yc_channel_listing();
+				}
+				elseif ($delta == 6){
+					$block['content'] = _mnnshow_block_yc_channel_intro();
 				}
 
 				return $block;
@@ -813,6 +818,29 @@
 		}
 
 		$content .= '</table>';
+		return $content;
+	}
+
+	function _mnnshow_block_yc_channel_intro(){
+		$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		$day = intval($now->format('w'));
+		if ($day > 0 && $day < 6) {
+			// weekday
+			$start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
+			$end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
+		}
+		else {
+			// weekend
+			$start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
+			$end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
+		}
+		
+		$content = '<p>Youth Channel broadcasts from 3 - 5 PM on weekdays,<br>and 7 AM - 12 PM on weekends.</p>';
+		if (_mnnshow_is_date_in_range($start, $end, $now))
+			$content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
+		else
+			$content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/videos">our videos</a>.</p>';
+
 		return $content;
 	}
 
@@ -1088,7 +1116,7 @@
 
 	/**
 	 * get_week_range accepts numeric $month, $day, and $year values.
-	 * It will find the first sunday and the last saturday of the week for the
+	 * It will find the first monday and the last sunday of the week for the
 	 * given day, and return them as YYYY-MM-DD HH:MM:SS timestamps
 	 *
 	 * @param string $day   : numeric value of the day (01 - 31)
