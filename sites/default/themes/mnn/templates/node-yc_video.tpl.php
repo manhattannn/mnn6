@@ -1,4 +1,4 @@
-<article class="video node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
+<article class="video yc-video node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
 
 	<div class="video">
 		<?php print $node->field_video[0]['view']; ?>
@@ -13,11 +13,11 @@
 	      <span class="video-duration"><?php print gmdate('i:s', intval($node->field_video[0]['duration'])) ?></span>
       </small>
     <?php endif; ?>
-        
+
   </header>
-  
+
     <div class="content">
-      <?php print $node->content['body']['#value']; ?>
+      <?php print $node->field_video[0]['data']['description'] ?>
 	    <?php print $node->links['addthis']['title']; ?>
     </div>
  

@@ -1,0 +1,3 @@
+<?php
+
+include_once('yc_service_feature.features.inc');
