@@ -1,13 +1,18 @@
-﻿
-body {
+﻿body {
 	background:url('../images/graph_pattern.png');
 }
 
+a, a:link, a:visited{
+	color: #0ca676;
+}
+a:hover{
+	color: #25292b;
+}
 
 #content h1,
 #content h2,
 #content h3 {
-	font-family:'Holtwood One SC', arial, sans-serif;
+	font-family:'Bowlby One', arial, sans-serif;
 	font-weight:normal;
 	text-transform: uppercase;
 }
@@ -34,6 +39,10 @@ body {
 	background:#d3ff7e;
 }
 
+#content-header .breadcrumb a{
+	color: #0ca676;
+}
+
 /* Hero */
 
 
@@ -56,7 +65,7 @@ body {
 	width:272px;
 	font-size:18px;
 	color:#25292b;
-	line-height:24px;
+	line-height:22px;
 	position:relative;
 }
 
@@ -94,6 +103,9 @@ h3.title a, h4 {
 	margin-bottom: 0;
 	text-decoration: none;
 	width: 260px;
+}
+h3.title a:hover{
+	color: #25292b;
 }
 
 #mini-panel-youth_channel_landing_intro .button,
@@ -319,7 +331,7 @@ div#block-views-youth-channel-join-homepage-block {
 	background-color: transparent;
 }
 #block-menu-youth-channel li a:hover{
-	color: #005b25;
+	color: #0ca676;
 }
 #block-menu-youth-channel li.expanded ul{
 	display: none;
@@ -335,7 +347,7 @@ div#block-views-youth-channel-join-homepage-block {
 	padding: 2px 3px;
 }
 #block-menu-youth-channel li.expanded li a:hover{
-	color: #005b25;
+	color: #0ca676;
 }
 
 #block-views-yc-news-page-categories-block .views-row a{
@@ -344,7 +356,7 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 #block-views-yc-news-page-categories-block .views-row a:hover{
-	color: #005b25;
+	color: #0ca676;
 }
 
 #block-mnnmisc-yc-news-archive li {
@@ -404,6 +416,9 @@ div#block-views-youth-channel-join-homepage-block {
 	padding-top: 3px;
 	display: block;
 }
+#mini-panel-youth_channel_stay_connected .content li a:hover{
+	color: #0ca676;
+}
 #mini-panel-youth_channel_stay_connected .content li.phone{
 	background-position: 0 0;
 }
@@ -437,7 +452,7 @@ div#block-views-youth-channel-join-homepage-block {
 #block-views-youth-channel-join-sidebar-block li a,
 #block-views-youth-channel-our-services-block-sidebar li a{
 	background-color: transparent;
-	color: #005b25;
+	color: #0ca676;
 	margin: 0;
 }
 #block-views-youth-channel-join-sidebar-block li a.active,
@@ -548,7 +563,7 @@ body.node-type-yc-service #title h1{
 }
 
 #schedule-header .nav .schedule-date{
-	font-family: 'Holtwood One SC', arial, sans-serif;
+	font-family: 'Bowlby One', arial, sans-serif;
 }
 
 #yc-schedule > div > .title{
