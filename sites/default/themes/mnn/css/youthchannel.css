@@ -9,6 +9,7 @@ body {
 #content h3 {
 	font-family:'Holtwood One SC', arial, sans-serif;
 	font-weight:normal;
+	text-transform: uppercase;
 }
 
 #sidebar-second h2,
@@ -129,7 +130,7 @@ h3.title a, h4 {
 	font-size: 12px;
 	font-weight: normal;
 	margin-right: 9px;
-	padding: 0 13px 0 10px;
+	padding: 1px 13px 0 10px;
 	text-decoration: none;
 	line-height: 24px;
 }
@@ -141,7 +142,7 @@ h3.title a, h4 {
 #content .button-big a,
 #mini-panel-youth_channel_landing_intro .button-big a{
 	line-height: 50px;
-	padding: 0 16px 0 12px;
+	padding: 1px 18px 0 22px;
 	text-shadow: 0 -1px 0 #666;
 	font-size: 14px;
 	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
@@ -187,6 +188,7 @@ div#block-views-youth-channel-join-homepage-block {
 #block-views-youth-channel-our-services-block-homepage,
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section,
 #block-panels-mini-mini-panel-yc-landing-page-news-section,
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel,
 #block-views-yc-video-grid---homepage{
 	padding-top:30px;
 	float:left;
@@ -223,15 +225,40 @@ div#block-views-youth-channel-join-homepage-block {
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row{
 	margin-bottom: 25px;
+	position: relative;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-news-section .view-content {
+	position:relative;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-news-section .view-yc-news-grid .views-row.views-row-last {
+  margin-bottom: 25px;
+  position: absolute;
+	top:201px;
 }
 
 .pane-yc-news-with-image img{
 	margin: 7px 0;
 }
 
+#block-views-yc-video-grid---homepage {
+	width: 100%;
+}
+
+#block-views-yc-video-grid---homepage td.col-1{
+	padding: 10px 28px 10px 0;
+}
+#block-views-yc-video-grid---homepage td.col-2{
+	padding: 10px 14px 10px 14px;
+}
+#block-views-yc-video-grid---homepage td.col-3{
+	padding: 10px 0 10px 28px;
+}
+
 #block-views-yc-video-grid---homepage .view-header{
 	position: absolute;
-	top: 31px;
+	top: 29px;
 	right: 0;
 }
 
@@ -263,16 +290,16 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 #sidebar-second .top h3 {
+	background: none repeat scroll 0 0 #CA4100;
+	color: white;
 	font-size: 17px;
-	font-weight: bold;
-	color:white;
-	background:#ca4100;
-	line-height: 34px;
-	padding: 4px 8px;
+	font-weight: normal;
 	height: 32px;
-	text-shadow: 0px -1px 1px #666;
+	line-height: 34px;
+	margin: 0 0 14px;
+	padding: 4px 8px;
+	text-shadow: 0 -1px 1px #666666;
 	filter: dropshadow(color=#666, offx=0, offy=-1);
-	margin: 0 0 14px 0;
 	white-space: nowrap;
 }
 
@@ -284,6 +311,8 @@ div#block-views-youth-channel-join-homepage-block {
 #block-menu-youth-channel li.leaf{
 	list-style-type: none;
 	list-style-image: none;
+	font-weight: bold;
+	margin-bottom: 14px;
 }
 #block-menu-youth-channel li a{
 	color: #25292b;
@@ -296,11 +325,14 @@ div#block-views-youth-channel-join-homepage-block {
 	display: none;
 }
 #block-menu-youth-channel li.expanded li{
-	margin: 0 0 0 3px;
+	margin: 3px 0 6px 3px;
 }
 #block-menu-youth-channel li.expanded li a{
 	color: #0ca676;
 	background-color: #deff73;
+	font-weight: normal;
+	margin-bottom: 0;
+	padding: 2px 3px;
 }
 #block-menu-youth-channel li.expanded li a:hover{
 	color: #005b25;
@@ -352,8 +384,9 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar a{
 	background-color: transparent;
 }
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel img,
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar img{
-	box-shadow: 0px 0px 0px 0px #fff; 
+	box-shadow: 0px 0px 0px 0px #fff;
 }
 
 #mini-panel-youth_channel_stay_connected .content li{
@@ -367,7 +400,8 @@ div#block-views-youth-channel-join-homepage-block {
 	background-color: transparent;
 	line-height: 29px;
 	color: #25292b;
-	padding-left: 36px;
+	padding-left: 46px;
+	padding-top: 3px;
 	display: block;
 }
 #mini-panel-youth_channel_stay_connected .content li.phone{
@@ -423,6 +457,7 @@ body.node-type-yc-join #title h1,
 body.node-type-yc-service #title h1{
 	font-family: Arial, sans-serif;
 	font-size: 24px;
+	font-weight: bold;
 	margin-top: 0;
 }
 
@@ -743,5 +778,43 @@ div#block-panels-mini-mini-panel-yc-schedule-buttons{
 	margin-left: 10px;
 }
 
+#content .view-yc-news-page .view-content h2.title a {
+    color: #25292B;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
 
+.news-image img {
+    border: 1px solid #CCCCCC;
+    box-shadow: none;
+    max-width: 619px;
+}
 
+.node-type-yc-video #title,
+.node-type-yc-video #content-header{
+	display: none;
+}
+
+.node-type-yc-video #main{
+	background: transparent url(../images/video-back-black.png) repeat-x;
+	padding-top: 0;
+}
+
+.node-type-yc-video #content-bottom{
+	border-top: 1px #b4c2c2 solid;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+
+.page-youth-channel-news .body-content p {
+margin-bottom:10px;
+}
+
+.views-view-grid td {
+    height: 190px;
+    width: 192px;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel h3.title{
+	font-size: 18px;
+}
