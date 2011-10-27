@@ -94,7 +94,7 @@ a:hover{
 	display: none;
 }
 
-h3.title a, h4 {
+h3.title a {
 	color: #25292B;
 	font-family: arial;
 	font-size: 18px;
@@ -106,6 +106,18 @@ h3.title a, h4 {
 }
 h3.title a:hover{
 	color: #25292b;
+}
+
+
+h4 {
+   color: #25292B;
+   font-family: arial;
+   font-size: 18px;
+   font-weight: bold;
+   line-height: 20px;
+   margin-bottom: 10px;
+   margin-top: 20px;
+   text-decoration: none;
 }
 
 #mini-panel-youth_channel_landing_intro .button,
@@ -420,22 +432,22 @@ div#block-views-youth-channel-join-homepage-block {
 	color: #0ca676;
 }
 #mini-panel-youth_channel_stay_connected .content li.phone{
-	background-position: 0 0;
+	background-position: 0 3px;
 }
 #mini-panel-youth_channel_stay_connected .content li.email{
-	background-position: 0 -38px;
+	background-position: 0 -36px;
 }
 #mini-panel-youth_channel_stay_connected .content li.facebook{
 	background-position: 0 -74px;
 }
 #mini-panel-youth_channel_stay_connected .content li.twitter{
-	background-position: 0 -113px;
+	background-position: 0 -149px;
 }
 #mini-panel-youth_channel_stay_connected .content li.youtube{
-	background-position: 0 -150px;
+	background-position: 0 -112px;
 }
 #mini-panel-youth_channel_stay_connected .content li.vimeo{
-	background-position: 0 -188px;
+	background-position: 0 -187px;
 }
 .section-youth-channel #main h5.title a {
 	color:#25292b;

@@ -839,7 +839,7 @@
 		if (_mnnshow_is_date_in_range($start, $end, $now))
 			$content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
 		else
-			$content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/videos">our videos</a>.</p>';
+			$content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/video">our videos</a>.</p>';
 
 		return $content;
 	}
