@@ -63,9 +63,9 @@ a:hover{
 #mini-panel-youth_channel_landing_intro {
 	padding-top:40px;
 	width:272px;
-	font-size:18px;
+	font-size:17px;
 	color:#25292b;
-	line-height:22px;
+	line-height:21px;
 	position:relative;
 }
 
@@ -108,6 +108,11 @@ h3.title a:hover{
 	color: #25292b;
 }
 
+.content .col h5, .content h5 {
+    font-family: arial;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
 
 h4 {
    color: #25292B;
@@ -116,7 +121,7 @@ h4 {
    font-weight: bold;
    line-height: 20px;
    margin-bottom: 10px;
-   margin-top: 20px;
+   margin-top: 40px;
    text-decoration: none;
 }
 
@@ -259,11 +264,15 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-landing-page-news-section .view-yc-news-grid .views-row.views-row-last {
   margin-bottom: 25px;
   position: absolute;
-	top:201px;
+	top:212px;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-news-section .content {
+	margin-right:10px;
 }
 
 .pane-yc-news-with-image img{
-	margin: 7px 0;
+	margin: 3px 0 20px;
 }
 
 #block-views-yc-video-grid---homepage {
@@ -286,6 +295,11 @@ div#block-views-youth-channel-join-homepage-block {
 	right: 0;
 }
 
+.thumb {
+	float: left;
+	margin: 2px 20px 20px 0;
+}
+
 .view-yc-video-thumbnail-grid .views-field-title a{
 	color: #0ca676;
 	font-weight: bold;
@@ -303,6 +317,22 @@ div#block-views-youth-channel-join-homepage-block {
 	padding-left: 45px;
 	padding-top: 0;
 	width: 220px;
+}
+
+.sidebar-second #content-inner {
+    border-right: 1px dotted #B2BBC0;
+    padding-bottom: 0;
+    padding-right: 45px;
+    width: 620px;
+}
+
+.sidebar-first #content-inner .content p {
+	width:500px;
+}
+
+.sidebar .views-row {
+    line-height: 18px;
+    margin-bottom: 6px;
 }
 
 #sidebar-second .top {
@@ -347,6 +377,9 @@ div#block-views-youth-channel-join-homepage-block {
 }
 #block-menu-youth-channel li.expanded ul{
 	display: none;
+}
+#block-menu-youth-channel li.expanded.active-trail ul{
+	display: block;
 }
 #block-menu-youth-channel li.expanded li{
 	margin: 3px 0 6px 3px;
@@ -411,6 +444,7 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel img,
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar img{
 	box-shadow: 0px 0px 0px 0px #fff;
+	border: medium none;
 }
 
 #mini-panel-youth_channel_stay_connected .content li{
@@ -534,9 +568,14 @@ body.node-type-yc-service #title h1{
 	color: #0ca676;
 }
 
-#content .view-yc-news-page h2.title{
+#content .view-yc-news-page h2.title a{
 	font-family: Arial, sans-serif;
 	color:#25292b;
+	font-weight: bold;
+	margin-bottom: 16px;
+}
+#content .view-yc-news-page h2.title a:hover {
+	color:#0ca676;
 }
 
 .view-yc-news-page .views-row{
@@ -782,7 +821,7 @@ div#block-panels-mini-mini-panel-yc-schedule-intro{
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-last{
 	width: 220px;
-	padding: 0 60px 0 140px;
+	padding: 0 0 0 220px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .channel-grid{
 	width: 220px;
@@ -805,10 +844,9 @@ div#block-panels-mini-mini-panel-yc-schedule-buttons{
 	margin-left: 10px;
 }
 
-#content .view-yc-news-page .view-content h2.title a {
-    color: #25292B;
-    font-weight: bold;
-    margin-bottom: 16px;
+.news-image {
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .news-image img {
@@ -834,14 +872,39 @@ div#block-panels-mini-mini-panel-yc-schedule-buttons{
 }
 
 .page-youth-channel-news .body-content p {
-margin-bottom:10px;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 15px 0;
+}
+
+.views-view-grid {
+	margin-top: 0;
 }
 
 .views-view-grid td {
-    height: 190px;
-    width: 192px;
+	height: 190px;
+	width: 192px;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel h3.title{
 	font-size: 18px;
+}
+
+span.inline-right {
+    display: block;
+    float: right;
+    margin: 0 0 5px 25px;
+}
+
+#mini-panel-youth_channel_firehouse span.inline-left {
+    display: block;
+    float: left;
+    margin: 5px 5px 10px 0;
+}
+
+.node-type-news article p,
+.node-type-news article p:first-child {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 20px 0;
 }
