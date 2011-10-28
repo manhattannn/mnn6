@@ -245,6 +245,9 @@ div#block-views-youth-channel-join-homepage-block {
 	right: 0;
 }
 
+#block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3 a:hover{
+	color: #0ca676;
+}
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3{
 	font-family: Arial;
 	margin-bottom: 12px;
@@ -276,7 +279,7 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .panel-col-last .views-row{
-	height: 186px;
+	height: 185px;
 }
 
 .pane-yc-news-with-image img{

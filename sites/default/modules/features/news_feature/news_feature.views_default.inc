@@ -1026,7 +1026,7 @@ function news_feature_views_default_views() {
     ),
     'row' => array(
       'element_type' => 'div',
-      'class' => '',
+      'class' => 'views-row clearfix',
       'last_every_nth' => '0',
       'first_class' => 'first',
       'last_class' => 'last',
@@ -1419,6 +1419,25 @@ function news_feature_views_default_views() {
       'validate_argument_transform' => 1,
       'validate_user_restrict_roles' => 0,
       'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'div',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
     ),
   ));
   $handler->override_option('pane_title', '');

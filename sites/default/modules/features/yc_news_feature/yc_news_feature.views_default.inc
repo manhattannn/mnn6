@@ -139,7 +139,7 @@ function yc_news_feature_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '140',
+        'max_length' => '260',
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 1,
@@ -153,6 +153,9 @@ function yc_news_feature_views_default_views() {
       'table' => 'node_revisions',
       'field' => 'body',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'nid' => array(
       'label' => '',
@@ -1938,7 +1941,7 @@ function yc_news_feature_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '140',
+        'max_length' => '260',
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 1,
@@ -1970,7 +1973,7 @@ function yc_news_feature_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '400',
+        'max_length' => '700',
         'word_boundary' => 1,
         'ellipsis' => 1,
         'html' => 0,
@@ -1984,6 +1987,9 @@ function yc_news_feature_views_default_views() {
       'table' => 'node_revisions',
       'field' => 'body',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'nid' => array(
       'label' => '',
