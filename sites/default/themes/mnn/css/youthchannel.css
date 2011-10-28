@@ -246,7 +246,11 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3{
+	font-family: Arial;
 	margin-bottom: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 #block-panels-mini-mini-panel-yc-landing-page-news-section .read-more{
 	float: none;
@@ -261,14 +265,18 @@ div#block-views-youth-channel-join-homepage-block {
 	position:relative;
 }
 
-#block-panels-mini-mini-panel-yc-landing-page-news-section .view-yc-news-grid .views-row.views-row-last {
-  margin-bottom: 25px;
-  position: absolute;
-	top:212px;
-}
-
 #block-panels-mini-mini-panel-yc-landing-page-news-section .content {
 	margin-right:10px;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-news-section .datetime-category {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#block-panels-mini-mini-panel-yc-landing-page-news-section .panel-col-last .views-row{
+	height: 186px;
 }
 
 .pane-yc-news-with-image img{
