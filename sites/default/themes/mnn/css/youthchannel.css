@@ -919,3 +919,28 @@ span.inline-right {
     line-height: 22px;
     margin: 20px 0;
 }
+
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel {
+	width: 620px;
+}
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .copy-column{
+	width: 270px;
+	float: left;
+}
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors{
+	float: right;
+	width: 320px;
+	text-align: center;
+}
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel span.inline-left{
+	display: inline;
+	float: none;
+	margin: 0 0 0 20px;
+}
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors a{
+	background-color: transparent;
+}
+#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors p{
+	margin-bottom: 20px;
+	font-size: 12px;
+}
