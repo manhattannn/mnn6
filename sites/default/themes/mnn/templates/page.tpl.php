@@ -83,12 +83,6 @@
 
 					<?php print $breadcrumb; ?>
 
-					<?php if ($content_header) : ?>
-					<div id="content-header-content">
-						<?php print $content_header ?>
-					</div>
-					<?php endif; ?>
-
 					<?php if ($mission): ?>
 					<div id="mission"><?php print $mission; ?></div>
 					<?php endif; ?>
@@ -105,6 +99,12 @@
 				<?php endif; ?>
 
 				<div id="content-inner" class="inner column center">
+
+					<?php if ($content_header) : ?>
+					<div id="content-header-content">
+						<?php print $content_header ?>
+					</div>
+					<?php endif; ?>
 
 					<?php if ($title): ?>
 					<div id="title"><h1 class="title"><?php print $title; ?></h1></div>
