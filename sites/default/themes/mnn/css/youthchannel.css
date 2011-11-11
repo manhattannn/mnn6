@@ -2,17 +2,18 @@
 	background:url('../images/graph_pattern.png');
 }
 
-a, a:link, a:visited,
+#main a, #main a:link, #main a:visited,
+#content-header .breadcrumb a,
 .view-content a.read-more,
 .view-content .read-more a{
 	color: #0ca676;
 }
-a:hover,
+#main a:hover,
+#content-header .breadcrumb a:hover,
 .view-content .read-more:hover,
 .view-content .read-more a:hover{
-	color: #25292b;
     color:#0ca676;
-       background:#d3ff7e;
+    background-color:#d3ff7e;
 }
 
 #content h1,
@@ -46,10 +47,6 @@ a:hover,
 #page-youth-channel #content h3,
 #page-youth-channel #content h4{
     color: #25292b;
-}
-
-#content-header .breadcrumb a{
-	color: #0ca676;
 }
 
 /* Hero */
@@ -103,6 +100,7 @@ a:hover,
 	display: none;
 }
 
+#main h3.title a,
 h3.title a {
 	color: #25292B;
 	font-family: arial;
@@ -605,6 +603,9 @@ body.node-type-yc-service #title h1{
 
 .view-yc-news-page .addthis_toolbox{
 	margin-top: 0;
+}
+#main .addthis_toolbox a{
+    background-color: transparent;
 }
 .view-yc-news-page .read-more{
 	float: none;
