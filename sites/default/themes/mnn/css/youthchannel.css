@@ -2,11 +2,17 @@
 	background:url('../images/graph_pattern.png');
 }
 
-a, a:link, a:visited{
+a, a:link, a:visited,
+.view-content a.read-more,
+.view-content .read-more a{
 	color: #0ca676;
 }
-a:hover{
+a:hover,
+.view-content .read-more:hover,
+.view-content .read-more a:hover{
 	color: #25292b;
+    color:#0ca676;
+       background:#d3ff7e;
 }
 
 #content h1,
@@ -29,14 +35,17 @@ a:hover{
 	font-size:24px;
 	margin-bottom: 20px;
 }
-
-#content .read-more a,
-#content a.read-more,
-#content p a,
-.view-youth-channel-our-services .views-row a,
-#sidebar-second a {
-	color:#0ca676;
-	background:#d3ff7e;
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6{
+    color: #ca4100;
+}
+#page-youth-channel #content h2,
+#page-youth-channel #content h3,
+#page-youth-channel #content h4{
+    color: #25292b;
 }
 
 #content-header .breadcrumb a{
@@ -47,7 +56,7 @@ a:hover{
 
 
 #header {
-	background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #BDFFEB;
+	background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #16ffb6;
 	top:0;
 	height:450px;
 	margin-bottom: 40px;
@@ -73,7 +82,7 @@ a:hover{
 	background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
 	height: 59px;
 	text-indent: -999em;
-	width: 346px;
+	width: 352px;
 	margin:0 0 25px 0;
 	display: block;
 }
@@ -228,6 +237,7 @@ div#block-views-youth-channel-join-homepage-block {
 	font-weight: bold;
 	margin-bottom: 2px;
 	text-transform: none;
+    color: #25292B;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section .item-list .views-row {
@@ -452,7 +462,7 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar a{
 	background-color: transparent;
 }
-#block-panels-mini-mini-panel-yc-landing-page-support-youth-channel img,
+#page-youth-channel-support-youth-channel div.sponsors img,
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar img{
 	box-shadow: 0px 0px 0px 0px #fff;
 	border: medium none;
@@ -948,3 +958,4 @@ span.inline-right {
 #page-youth-channel-our-services-resources #content-area .button{
 	float: left;
 }
+
