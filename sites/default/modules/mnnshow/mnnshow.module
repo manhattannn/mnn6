@@ -538,6 +538,9 @@
 				$blocks[6]['info'] = t('Youth Channel Intro');
 				$blocks[6]['cache'] = BLOCK_NO_CACHE;
 
+				$blocks[7]['info'] = t('Youth Channel Playing Now?');
+				$blocks[7]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
@@ -564,6 +567,9 @@
 				}
 				elseif ($delta == 6){
 					$block['content'] = _mnnshow_block_yc_channel_intro();
+				}
+				elseif ($delta == 7){
+					$block['content'] = _mnnshow_block_yc_channel_is_playing_now();
 				}
 
 				return $block;
@@ -840,6 +846,28 @@
 			$content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
 		else
 			$content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/video">our videos</a>.</p>';
+
+		return $content;
+	}
+
+	function _mnnshow_block_yc_channel_is_playing_now(){
+		$now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+		$day = intval($now->format('w'));
+		if ($day > 0 && $day < 6) {
+			// weekday
+			$start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
+			$end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
+		}
+		else {
+			// weekend
+			$start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
+			$end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
+		}
+
+		if (_mnnshow_is_date_in_range($start, $end, $now))
+			$content = '<p>Youth Channel is playing right now on MNN - <a href="/live/4-culture-channel">Watch Online Now!</a></p>';
+		else
+			$content = '';
 
 		return $content;
 	}

@@ -995,7 +995,7 @@ display:inline;
 	font-weight: bold;
 	font-size: 18px;
 }
-#block-views-upcoming-events-block-content-center .title,
+#block-views-upcoming-events-block-content-center .view .title,
 #block-views-upcoming-events-block-content-center .time-taxonomy{
 	width: 245px;
 }
@@ -1006,8 +1006,8 @@ display:inline;
 	text-transform: uppercase;
 	border-right: 0 none;
 }
-#block-views-upcoming-events-block-content-center .title,
-#block-views-upcoming-events-block-content-center .title a{
+#block-views-upcoming-events-block-content-center .view .title,
+#block-views-upcoming-events-block-content-center .view .title a{
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 16px;
@@ -4074,6 +4074,13 @@ clear: left;
 .calendar-calendar td .inner div.calendar div.community-sponsored-event a:hover{
 	color: #001666;
 }
+.calendar-calendar td .inner div.calendar div.yc-sponsored-event a{
+	color: #ca4100;
+	background-color: #ffdac8;
+}
+.calendar-calendar td .inner div.calendar div.yc-sponsored-event a:hover{
+	color: #af3901;
+}
 
 .calendar-calendar td .inner div.calendar div,
 .calendar-calendar td .inner div.calendar div a{
@@ -4253,6 +4260,9 @@ div.calendar-calendar td .inner div.calendar div.calendar-more a{
 }
 #block-views-event-types-block div.community-sponsored-event span.color{
 	background-color: #0025b0;
+}
+#block-views-event-types-block div.yc-sponsored-event span.color{
+	background-color: #ca4100;
 }
 
 #block-block-calendar-intro .content{

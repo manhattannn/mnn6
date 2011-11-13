@@ -33,6 +33,26 @@ function yc_service_feature_default_panels_mini() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
+    $pane->type = 'panels_mini';
+    $pane->subtype = 'youth_channel_broadcast';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Broadcast',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
     $pane->type = 'views';
     $pane->subtype = 'youth_channel_our_services';
     $pane->shown = TRUE;
@@ -50,28 +70,8 @@ function yc_service_feature_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'block_2',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'panels_mini';
-    $pane->subtype = 'youth_channel_broadcast';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Our Services',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -82,8 +82,8 @@ function yc_service_feature_default_panels_mini() {
     $pane->position = 0;
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-1';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = 'new-2';
   $mini->display = $display;
   $export['yc_our_services'] = $mini;
 
@@ -135,7 +135,7 @@ function yc_service_feature_default_panels_mini() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Broadcast';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -164,7 +164,7 @@ function yc_service_feature_default_panels_mini() {
     $pane->position = 0;
     $display->content['new-1'] = $pane;
     $display->panels['middle'][0] = 'new-1';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $mini->display = $display;
   $export['youth_channel_broadcast'] = $mini;

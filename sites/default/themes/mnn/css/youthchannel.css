@@ -230,6 +230,12 @@ div#block-views-youth-channel-join-homepage-block {
 	float:left;
 }
 
+#block-panels-mini-mini-panel-yc-landing-page-our-services-section .pane-title{
+    display: block;
+}
+#block-panels-mini-mini-panel-yc-landing-page-our-services-section .pane-content .pane-title{
+    display: none;
+}
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section h4{
 	font-size: 16px;
 	font-weight: bold;
@@ -641,7 +647,7 @@ body.node-type-yc-service #title h1{
 
 #yc-schedule > div > .title{
 	color: #fff;
-	background-color: #6a7074;
+	background-color: #18624b;
 	text-transform: uppercase;
 	height: 38px;
 	font-size: 12px;
@@ -770,23 +776,23 @@ body.node-type-yc-service #title h1{
 	height: 45px;
 }
 #yc-schedule .row-time .cell{
-	background: #464c4f;
-	background: -moz-linear-gradient(top, #464c4f 0%, #393d3e 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#464c4f), color-stop(100%,#393d3e));
-	background: -webkit-linear-gradient(top, #464c4f 0%,#393d3e 100%);
-	background: -o-linear-gradient(top, #464c4f 0%,#393d3e 100%);
-	background: -ms-linear-gradient(top, #464c4f 0%,#393d3e 100%);
-	background: linear-gradient(top, #464c4f 0%,#393d3e 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464c4f', endColorstr='#393d3e',GradientType=0 );
+	background: #ee5b0e;
+	background: -moz-linear-gradient(top, #ee5b0e 0%, #c94202 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ee5b0e), color-stop(100%,#c94202));
+	background: -webkit-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+	background: -o-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+	background: -ms-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+	background: linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee5b0e', endColorstr='#c94202',GradientType=0 );
 	color: #fff;
 	line-height: 25px;
 	font-weight: bold;
-	border-left: 1px #2a2d2f solid;
+	border-left: 1px #bd4304 solid;
 	text-align: center;
 	text-transform: uppercase;
 }
 #yc-schedule .row-time .cell .inner{
-	border-right: 1px #454b4e solid;
+	border-right: 1px #f47532 solid;
 	height: 25px;
 }
 
@@ -959,4 +965,155 @@ span.inline-right {
 #page-youth-channel-our-services-resources #content-area .button{
 	float: left;
 }
+
+#block-views-upcoming-events-block-yc-content-center{
+	border-top: 1px #fff solid;
+	padding-top: 30px;
+	clear: both;
+}
+#block-views-upcoming-events-block-yc-content-center .views-row{
+	width: 290px;
+	float: left;
+	margin: 0 20px 0 0;
+}
+#block-views-upcoming-events-block-yc-content-center .views-row-last{
+	margin-right: 0;
+}
+#block-views-upcoming-events-block-yc-content-center .month-date{
+	float:left;
+	text-align: center;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #ffffff 0%,#cccccc 100%); /* W3C */
+	width: 45px;
+	height: 50px;
+	margin: 4px 10px 10px 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px #999 solid;
+}
+#block-views-upcoming-events-block-yc-content-center .month{
+	text-transform: uppercase;
+	padding-top: 12px;
+	font-size: 12px;
+	line-height: 10px;
+}
+#block-views-upcoming-events-block-yc-content-center .date{
+	font-weight: bold;
+	font-size: 18px;
+}
+#block-views-upcoming-events-block-yc-content-center .view .title,
+#block-views-upcoming-events-block-yc-content-center .time-taxonomy{
+	width: 245px;
+}
+#block-views-upcoming-events-block-yc-content-center .time,
+#block-views-upcoming-events-block-yc-content-center .taxonomy{
+	font-size: 9px;
+	color: #666;
+	display: inline;
+	text-transform: uppercase;
+	border-right: 0 none;
+}
+#block-views-upcoming-events-block-yc-content-center .view .title,
+#block-views-upcoming-events-block-yc-content-center .view .title a{
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 16px;
+    color: #25292B;
+}
+#block-views-upcoming-events-block-yc-content-center .top{
+	float: left;
+	padding-right: 320px;
+}
+#block-views-upcoming-events-block-yc-content-center .view-content{
+	float: left;
+}
+#block-views-upcoming-events-block-yc-content-center .view-header{
+	position: absolute;
+	top: 29px;
+	right: 0;
+}
+
+#block-mnnshow-youth-channel-playing-now{
+	position: absolute;
+	top: -510px;
+	left: 230px;
+}
+#block-mnnshow-youth-channel-playing-now .content{
+	background-color: #ebfec7;
+	padding: 10px 15px;
+}
+
+#mini-panel-yc_newsletter_signup{
+	margin-top: 30px;
+	background-color: #0ca676;
+	color: #fff;
+}
+#mini-panel-yc_newsletter_signup .content h2{
+	display: block;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	text-transform: none;
+	padding: 12px;
+	background: transparent url(../images/green-checker.png) repeat;
+	text-shadow: 0px -2px 1px #26705a;
+	filter: dropshadow(color=#26705a, offx=0, offy=-2);
+}
+#mini-panel-yc_newsletter_signup form {
+	color: #fff;
+	padding: 12px;
+	text-shadow: 0px -2px 1px #26705a;
+	filter: dropshadow(color=#26705a, offx=0, offy=-2);
+}
+#mini-panel-yc_newsletter_signup p{
+	margin-bottom: 12px;
+}
+#mini-panel-yc_newsletter_signup .mc-field-group {
+	margin-bottom: 12px;
+}
+#mini-panel-yc_newsletter_signup .mc-field-group input{
+	width: 186px;
+	padding: 2px 4px;
+	color: #666;
+}
+#sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]{
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 12px;
+	padding: 12px 10px;
+	float: none;
+	background: #505050;
+	background: -moz-linear-gradient(top,  #505050 0%, #383838 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#505050), color-stop(100%,#383838));
+	background: -webkit-linear-gradient(top,  #505050 0%,#383838 100%);
+	background: -o-linear-gradient(top,  #505050 0%,#383838 100%);
+	background: -ms-linear-gradient(top,  #505050 0%,#383838 100%);
+	background: linear-gradient(top,  #505050 0%,#383838 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505050', endColorstr='#383838',GradientType=0 );
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	height: inherit;
+	text-shadow: 0px -2px 1px #000;
+	filter: dropshadow(color=#000, offx=0, offy=-2);
+}
+#sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]:hover{
+	background: #383838;
+	background: -moz-linear-gradient(top,  #383838 0%, #505050 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#505050));
+	background: -webkit-linear-gradient(top,  #383838 0%,#505050 100%);
+	background: -o-linear-gradient(top,  #383838 0%,#505050 100%);
+	background: -ms-linear-gradient(top,  #383838 0%,#505050 100%);
+	background: linear-gradient(top,  #383838 0%,#505050 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#505050',GradientType=0 );
+}
+
+
 

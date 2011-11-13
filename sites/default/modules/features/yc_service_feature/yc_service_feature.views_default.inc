@@ -119,6 +119,7 @@ function yc_service_feature_views_default_views() {
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('block', 'Block: homepage', 'block_2');
+  $handler->override_option('title', 'Our Services');
   $handler->override_option('header', '<h4>For Educators and Organizations</h4>
 <p>Help young people find their voice. Youth Channel provides free workshops and media literacy resources to Manhattan-based organizations, middle schools and high schools.</p>');
   $handler->override_option('header_format', '2');

@@ -217,6 +217,26 @@ function yc_misc_feature_default_panels_mini() {
     $pane->position = 0;
     $display->content['new-1'] = $pane;
     $display->panels['middle'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'middle';
+    $pane->type = 'panels_mini';
+    $pane->subtype = 'yc_newsletter_signup';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['middle'][1] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $mini->display = $display;

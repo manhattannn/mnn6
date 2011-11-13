@@ -27,7 +27,7 @@ function yc_news_feature_default_panels_mini() {
     ),
   );
   $display->cache = array();
-  $display->title = 'News & Events';
+  $display->title = 'News';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
