@@ -4417,6 +4417,11 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 	border-top: 0 none;
 	padding-top: 0;
 }
+.view-job-listings ul{
+  list-style: inherit;
+  margin: 0 0 10px 2em;
+}
+
 .instructor h2,
 .view-staff-board-members .view-header h2,
 .view-job-listings .view-header h2{
