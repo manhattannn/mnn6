@@ -76,15 +76,15 @@ function yc_workshop_strongarm() {
   $strongarm->value = array(
     'title' => '-5',
     'body_field' => '-2',
-    'revision_information' => '2',
-    'author' => '1',
-    'options' => '3',
-    'comment_settings' => '6',
+    'revision_information' => '4',
+    'author' => '3',
+    'options' => '5',
+    'comment_settings' => '8',
     'menu' => '-4',
-    'path' => '7',
-    'custom_breadcrumbs' => '5',
-    'path_redirect' => '4',
-    'workflow' => '0',
+    'path' => '9',
+    'custom_breadcrumbs' => '7',
+    'path_redirect' => '6',
+    'workflow' => '2',
   );
   $export['content_extra_weights_yc_workshop'] = $strongarm;
 
