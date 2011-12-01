@@ -1115,5 +1115,11 @@ span.inline-right {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#505050',GradientType=0 );
 }
 
+.view-youth-channel-our-services h4,
+#mini-panel-youth_channel_broadcast h4{
+	margin-top: 20px;
+}
 
-
+#block-views-yc-workshop-list-block .views-field-title{
+	width: inherit;
+}
