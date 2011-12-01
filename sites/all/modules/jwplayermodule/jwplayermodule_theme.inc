@@ -9,6 +9,10 @@
 /**
  * Theme function for getting the URL for a file attached on the node.  Can use
  * the description or its index.
+ * @param $fid
+ * @param $node
+ * @param bool $use_ID
+ * @return bool|string
  */
 function theme_jwplayermodule_get_attachment_url($fid, $node, $use_ID = FALSE) {
   $count = 0;
@@ -71,17 +75,17 @@ function theme_jwplayermodule_admin($form) {
     $header[] = t("Width");
     $header[] = t("Actions");
     $form["Manage"]["Players"]["#value"] .= theme("table", $header, $rows);
-  } else if (isset($form["Plugins"])) {
+  } else if (isset($form["JWPlugins"])) {
     jquery_ui_add('ui.tabs');
-    $form["Plugins"]["#value"] .= "<div id='tabs'><ul id='tabNavigation'>";
-    foreach(element_children($form["Plugins"]) as $key) {
-      $form["Plugins"]["#value"] .= "<li id='$key" . "_tab'>" . drupal_render($form["Plugins"][$key]["tab"]) . "</li>";
+    $form["JWPlugins"]["#value"] .= "<div id='tabs'><ul id='tabNavigation'>";
+    foreach(element_children($form["JWPlugins"]) as $key) {
+      $form["JWPlugins"]["#value"] .= "<li id='$key" . "_tab'>" . drupal_render($form["JWPlugins"][$key]["tab"]) . "</li>";
     }
-    $form["Plugins"]["#value"] .= "</ul>";
-    foreach(element_children($form["Plugins"]) as $key) {
-      $form["Plugins"]["#value"] .= "<div id='$key'>" . drupal_render($form["Plugins"][$key]["body"]) . "</div>";
+    $form["JWPlugins"]["#value"] .= "</ul>";
+    foreach(element_children($form["JWPlugins"]) as $key) {
+      $form["JWPlugins"]["#value"] .= "<div id='$key'>" . drupal_render($form["JWPlugins"][$key]["body"]) . "</div>";
     }
-    $form["Plugins"]["#value"] .= "</div>";
+    $form["JWPlugins"]["#value"] .= "</div>";
   }
   if (isset($form["Breadcrumbs"])) {
     $output .= "<div id='breadcrumbs'>";

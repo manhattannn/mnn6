@@ -72,20 +72,20 @@ class PluginState extends WizardState {
 
 
     $id = LONGTAIL_KEY . "plugin_selector";
-    $form["Plugins"] = array(
+    $form["JWPlugins"] = array(
       "#prefix" => "<div>",
       "#suffix" => "</div>",
     );
-    $form["Plugins"][$id] = array();
-    $form["Plugins"][$id]["tab"] = array(
+    $form["JWPlugins"][$id] = array();
+    $form["JWPlugins"][$id]["tab"] = array(
       "#id" => "$id" . "_tab",
       "#type" => "item",
       "#value" => "<a href='#$id'>Plugin Selector</a>",
     );
     foreach ($plugins as $plugin) {
       $id = LONGTAIL_KEY . "plugin_" . $plugin->getRepository();
-      $form["Plugins"][$id] = array();
-      $form["Plugins"][$id]["tab"] = array(
+      $form["JWPlugins"][$id] = array();
+      $form["JWPlugins"][$id]["tab"] = array(
         "#id" => "$id" . "_tab",
         "#type" => "item",
         "#value" => "<a href='#$id'>" . $plugin->getTitle() . "</a>",
@@ -93,11 +93,11 @@ class PluginState extends WizardState {
     }
 
     $id = LONGTAIL_KEY . "plugin_selector";
-    $form["Plugins"][$id]["body"] = array();
+    $form["JWPlugins"][$id]["body"] = array();
     foreach($plugins as $plugin) {
       $name = LONGTAIL_KEY . "plugin_" . $plugin->getRepository() . "_" . "enable";
       $value = $form_state["storage"][$name] ? $form_state["storage"][$name] : $plugin->isEnabled();
-      $form["Plugins"][$id]["body"][$name] = array(
+      $form["JWPlugins"][$id]["body"][$name] = array(
         "#type" => "checkbox",
         "#title" => "Enable " . $plugin->getTitle(),
         "#description" => $plugin->getDescription(),
@@ -108,26 +108,26 @@ class PluginState extends WizardState {
 
     foreach($plugins as $plugin) {
       $id = LONGTAIL_KEY . "plugin_" . $plugin->getRepository();
-      $form["Plugins"][$id]["body"] = array();
+      $form["JWPlugins"][$id]["body"] = array();
       foreach(array_keys($plugin->getFlashVars()) as $plugin_flash_vars) {
         $p_vars = $plugin->getFlashVars();
         foreach($p_vars[$plugin_flash_vars] as $plugin_flash_var) {
           $name = LONGTAIL_KEY . "plugin_" . $plugin->getPluginPrefix() . "_" . $plugin_flash_var->getName();
           $value = $form_state["storage"][$name] ? $form_state["storage"][$name] : $plugin_flash_var->getDefaultValue();
-          $form["Plugins"][$id]["body"][$name] = array(
+          $form["JWPlugins"][$id]["body"][$name] = array(
             "#title" => $plugin->getPluginPrefix() . "." . $plugin_flash_var->getName(),
             "#description" => $plugin_flash_var->getDescription(),
             "#default_value" => $value,
           );
           if ($plugin_flash_var->getType() == FlashVar::SELECT) {
-            $form["Plugins"][$id]["body"][$name]["#type"] = "select";
+            $form["JWPlugins"][$id]["body"][$name]["#type"] = "select";
             $options = array();
             foreach($plugin_flash_var->getValues() as $val) {
               $options[$val] = $val;
             }
-            $form["Plugins"][$id]["body"][$name]["#options"] = $options;
+            $form["JWPlugins"][$id]["body"][$name]["#options"] = $options;
           } else {
-            $form["Plugins"][$id]["body"][$name]["#type"] = "textfield";
+            $form["JWPlugins"][$id]["body"][$name]["#type"] = "textfield";
           }
         }
       }

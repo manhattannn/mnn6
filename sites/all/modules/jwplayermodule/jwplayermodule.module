@@ -140,6 +140,12 @@ function jwplayermodule_menu() {
     "type" => MENU_CALLBACK,
     "file" => "jwplayermodule_admin.inc",
   );
+  $items["admin/settings/jwplayermodule/adminjs"] = array(
+    "page callback" => "jwplayermodule_js",
+    "access arguments" => array("administer jwplayermodule"),
+    "type" => MENU_CALLBACK,
+    "file" => "jwplayermodule_admin.php",
+  );
 
   return $items;
 }

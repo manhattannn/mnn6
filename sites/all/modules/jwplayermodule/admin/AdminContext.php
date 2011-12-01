@@ -25,7 +25,7 @@ class AdminContext {
    * @param $form
    * @param $form_state
    */
-  public function processState(&$form, $form_state) {
+  public function processState(&$form, &$form_state) {
     $state = $form_state["storage"][LONGTAIL_KEY . "state"];
     if (isset($_POST["breadcrumb"]) && !empty($_POST["breadcrumb"])) {
       $state = $_POST["breadcrumb"];
@@ -58,7 +58,7 @@ class AdminContext {
    * @param $form_state
    *
    */
-  private function processPost($st, &$form, $form_state) {
+  private function processPost($st, &$form, &$form_state) {
     $state = $st;
     if (isset($_POST["Next"])) {
       if ($_POST["Next"] == "Delete") {
@@ -83,6 +83,7 @@ class AdminContext {
     } else if (isset($_POST["Previous"])) {
       $state->getPreviousState()->render($form, $form_state);
     } else if (isset($_POST["Cancel"])) {
+      unset($form_state["storage"]);
       $state->getCancelState()->render($form, $form_state);
     } else if (isset($_POST["Save"])) {
       $config = $form_state["storage"][LONGTAIL_KEY . "config"];
@@ -100,6 +101,7 @@ class AdminContext {
       } else {
         drupal_set_message(t("The '$save_player' failed to save.  Please make sure the " . JWPLAYER_FILES_DIR . "/configs/ directory exists and is writable."), "error");
       }
+      unset($form_state["storage"]);
       $state->getSaveState()->render($form, $form_state);
     } else {
       if (isset($form_state["storage"][LONGTAIL_KEY . "default"])) {
