@@ -180,6 +180,7 @@ h4 {
 	line-height: 50px;
 	padding: 1px 18px 0 22px;
 	text-shadow: 0 -1px 0 #666;
+	filter: dropshadow(color=#666, offx=0, offy=-1);
 	font-size: 14px;
 	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
 	float: none;
@@ -215,7 +216,14 @@ div#block-views-youth-channel-join-homepage-block {
 	float: left;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	width: 290px;
+	width: 310px;
+}
+#block-views-youth-channel-join-homepage-block ul li.views-row-even {
+	clear: none;
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 0px;
+	width: 310px;
 }
 
 #block-views-youth-channel-join-homepage-block {
@@ -377,7 +385,7 @@ div#block-views-youth-channel-join-homepage-block {
 	line-height: 34px;
 	margin: 0 0 14px;
 	padding: 4px 8px;
-	text-shadow: 0 -1px 1px #666666;
+	text-shadow: 0 -1px 0px #666666;
 	filter: dropshadow(color=#666, offx=0, offy=-1);
 	white-space: nowrap;
 }
@@ -520,6 +528,7 @@ div#block-views-youth-channel-join-homepage-block {
 .views-row h5.title {
 	color:#25292b;
 	margin-bottom:5px;
+	line-height: 1.08em;
 }
 
 .col-1, .col-2{
@@ -604,6 +613,7 @@ body.node-type-yc-service #title h1{
 	color:#25292b;
 	font-weight: bold;
 	margin-bottom: 16px;
+	line-height: 26px;
 }
 #content .view-yc-news-page h2.title a:hover {
 	color:#0ca676;
@@ -1074,8 +1084,8 @@ span.inline-right {
 #mini-panel-yc_newsletter_signup form {
 	color: #fff;
 	padding: 12px;
-	text-shadow: 0px -2px 1px #26705a;
-	filter: dropshadow(color=#26705a, offx=0, offy=-2);
+	text-shadow: 0px -1px 0px #26705a;
+	filter: dropshadow(color=#26705a, offx=0, offy=-1);
 }
 #mini-panel-yc_newsletter_signup p{
 	margin-bottom: 12px;
@@ -1107,8 +1117,8 @@ span.inline-right {
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 	height: inherit;
-	text-shadow: 0px -2px 1px #000;
-	filter: dropshadow(color=#000, offx=0, offy=-2);
+	text-shadow: 0px -1px 0px #000;
+	filter: dropshadow(color=#000, offx=0, offy=-1);
 }
 #sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]:hover{
 	background: #383838;
@@ -1123,7 +1133,7 @@ span.inline-right {
 
 .view-youth-channel-our-services h4,
 #mini-panel-youth_channel_broadcast h4{
-	margin-top: 20px;
+	margin-top: 0;
 }
 
 #block-views-yc-workshop-list-block .views-field-title{
