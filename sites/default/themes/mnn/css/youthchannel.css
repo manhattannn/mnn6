@@ -511,6 +511,11 @@ div#block-views-youth-channel-join-homepage-block {
 .section-youth-channel #main h5.title a {
 	color:#25292b;
 }
+.section-youth-channel #main .view-yc-workshop-list h5.title a ,
+.section-youth-channel #main .view-yc-workshop-list h5.title a:hover{
+	color: #ca4100;
+	background-color: transparent;
+}
 
 .views-row h5.title {
 	color:#25292b;
@@ -540,6 +545,7 @@ div#block-views-youth-channel-join-homepage-block {
 }
 
 body.node-type-yc-join #title h1,
+body.node-type-yc-workshop #title h1,
 body.node-type-yc-service #title h1{
 	font-family: Arial, sans-serif;
 	font-size: 24px;
