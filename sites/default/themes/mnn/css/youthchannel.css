@@ -10,7 +10,7 @@
 }
 #main a:hover,
 #content-header .breadcrumb a:hover,
-.view-content .read-more:hover,
+.view-content a.read-more:hover,
 .view-content .read-more a:hover{
     color:#0ca676;
     background-color:#d3ff7e;
@@ -619,6 +619,11 @@ body.node-type-yc-service #title h1{
 #content .view-yc-news-page-archive h2.title a:hover,
 #content .view-yc-news-page h2.title a:hover {
 	color:#0ca676;
+}
+
+#content .view-yc-news-page-archive .body-content,
+#content .view-yc-news-page .body-content{
+	margin-top: 15px;
 }
 
 .view-yc-news-page .views-row{

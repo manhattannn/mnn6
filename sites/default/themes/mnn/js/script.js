@@ -7,9 +7,9 @@ var site = (function(){
 	}
 
 	function setupWatermark(){
-		$('#edit-submitted-name').watermark('Your Name');
-		$('#edit-submitted-email-address').watermark('Your Email');
-		$('#edit-submitted-message').watermark('Your message goes here');
+		$('#footer #edit-submitted-name').watermark('Your Name');
+		$('#footer #edit-submitted-email-address').watermark('Your Email');
+		$('#footer #edit-submitted-message').watermark('Your message goes here');
 	}
 
 	function inPageScroll(){
