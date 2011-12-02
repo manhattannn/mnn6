@@ -216,14 +216,10 @@ div#block-views-youth-channel-join-homepage-block {
 	float: left;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	width: 310px;
+	width: 300px;
 }
 #block-views-youth-channel-join-homepage-block ul li.views-row-even {
-	clear: none;
-	float: left;
-	margin-bottom: 20px;
 	margin-right: 0px;
-	width: 310px;
 }
 
 #block-views-youth-channel-join-homepage-block {
@@ -326,6 +322,10 @@ div#block-views-youth-channel-join-homepage-block {
 	position: absolute;
 	top: 29px;
 	right: 0;
+}
+
+#main .views-field-field-video-embed a:hover{
+	background-color: transparent;
 }
 
 .thumb {
@@ -608,6 +608,7 @@ body.node-type-yc-service #title h1{
 	color: #0ca676;
 }
 
+#content .view-yc-news-page-archive h2.title a,
 #content .view-yc-news-page h2.title a{
 	font-family: Arial, sans-serif;
 	color:#25292b;
@@ -615,6 +616,7 @@ body.node-type-yc-service #title h1{
 	margin-bottom: 16px;
 	line-height: 26px;
 }
+#content .view-yc-news-page-archive h2.title a:hover,
 #content .view-yc-news-page h2.title a:hover {
 	color:#0ca676;
 }
