@@ -1939,7 +1939,7 @@ display:none;
 
 legend {
 	font-weight:bold;
-	margin-left:160px;
+	/*margin-left:160px;*/
 }
 
 .form-checkboxes, .form-radios {
