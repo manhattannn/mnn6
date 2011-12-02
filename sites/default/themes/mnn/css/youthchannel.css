@@ -272,10 +272,11 @@ div#block-views-youth-channel-join-homepage-block {
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3{
 	font-family: Arial;
 	margin-bottom: 12px;
-	white-space: nowrap;
+	/*white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	text-overflow: ellipsis;*/
 	text-transform: none;
+	line-height: 0.9;
 }
 #block-panels-mini-mini-panel-yc-landing-page-news-section .read-more{
 	float: none;
@@ -328,6 +329,7 @@ div#block-views-youth-channel-join-homepage-block {
 	right: 0;
 }
 
+#main .imagecache a:hover,
 #main .views-field-field-video-embed a:hover{
 	background-color: transparent;
 }
