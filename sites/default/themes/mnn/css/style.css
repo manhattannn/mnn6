@@ -457,7 +457,7 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 24px;
+	margin-right: 19px;
 }
 
 #main-menu ul li.about_us {
@@ -1946,6 +1946,10 @@ legend {
     float: left;
     margin:0;
     width: 308px;
+}
+
+.page-node-add-event .node-form .form-checkboxes{
+	float: none;
 }
 
 .form-item label.option {
@@ -4399,7 +4403,7 @@ a.download-button:hover{
 }
 
 a.download-button span {
-background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transparent;
+background: url("../images/right-arrow-sm.png") no-repeat scroll right 6px transparent;
  clear: left;
     float: left;
     height: 15px;
