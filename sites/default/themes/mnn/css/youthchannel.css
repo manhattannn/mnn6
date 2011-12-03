@@ -329,7 +329,7 @@ div#block-views-youth-channel-join-homepage-block {
 	right: 0;
 }
 
-#main .imagecache a:hover,
+#main a.imagecache:hover,
 #main .views-field-field-video-embed a:hover{
 	background-color: transparent;
 }
