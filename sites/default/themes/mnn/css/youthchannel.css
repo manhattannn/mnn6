@@ -34,6 +34,7 @@
 #content h2,
 #content h3 {
 	font-size:24px;
+	line-height: 24px;
 	margin-bottom: 20px;
 }
 #content h2,
@@ -49,6 +50,27 @@
     color: #25292b;
 }
 
+#content .content > h4 {
+    color: #25292B;
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    text-decoration: none;
+}
+
+#content-area h4{
+	color: #25292B;
+	    font-family: arial;
+	    font-size: 18px;
+	    font-weight: bold;
+	    line-height: 20px;
+	    margin-bottom: 10px;
+	    margin-top: 20px;
+	    text-decoration: none;
+}
 /* Hero */
 
 
@@ -341,7 +363,7 @@ div#block-views-youth-channel-join-homepage-block {
 
 .view-yc-video-thumbnail-grid .views-field-title a{
 	color: #0ca676;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .view-yc-video-thumbnail-grid .views-field-field-video-embed-1{
@@ -873,7 +895,7 @@ div#block-panels-mini-mini-panel-yc-schedule-intro{
 	margin-bottom: 10px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first p a{
-	color: #2262cc;
+	color: #0ca676;
 	background-color: transparent;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-last{
@@ -992,7 +1014,10 @@ span.inline-right {
 }
 
 #page-youth-channel-our-services-resources #content-area .button{
-	float: left;
+	clear: both;
+  float: none;
+  margin-bottom: 30px;
+  width: 114px;
 }
 
 #block-views-upcoming-events-block-yc-content-center{
