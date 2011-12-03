@@ -11,10 +11,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_calendar';
   $view->description = 'An event calendar for Date';
   $view->tag = 'Calendar';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -120,17 +119,17 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '12' => 12,
-        '6' => 0,
-        '7' => 0,
-        '11' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '10' => 0,
-        '5' => 0,
-        '4' => 0,
-        '9' => 0,
+        12 => 12,
+        6 => 0,
+        7 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
       ),
       'exclude' => 1,
       'id' => 'tid',
@@ -248,7 +247,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -295,8 +294,8 @@ function event_feature_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('calendar_colors', array(
-    '0' => array(
-      '0' => array(
+    0 => array(
+      0 => array(
         'event' => '#ffffff',
       ),
     ),
@@ -361,17 +360,17 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '12' => 12,
-        '6' => 0,
-        '7' => 0,
-        '11' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '10' => 0,
-        '5' => 0,
-        '4' => 0,
-        '9' => 0,
+        12 => 12,
+        6 => 0,
+        7 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
       ),
       'exclude' => 1,
       'id' => 'tid',
@@ -686,10 +685,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_queue';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -962,7 +960,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'not in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1061,10 +1059,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_types';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'term_data';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -1169,7 +1166,7 @@ function event_feature_views_default_views() {
     'vid' => array(
       'operator' => 'in',
       'value' => array(
-        '12' => '12',
+        12 => '12',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1203,10 +1200,9 @@ function event_feature_views_default_views() {
   $view->name = 'upcoming_events';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -1329,7 +1325,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1374,9 +1370,9 @@ function event_feature_views_default_views() {
     'tid' => array(
       'operator' => 'or',
       'value' => array(
-        '40' => '40',
-        '41' => '41',
-        '44' => '44',
+        40 => '40',
+        41 => '41',
+        44 => '44',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1598,13 +1594,13 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '7' => 7,
-        '6' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '5' => 0,
-        '4' => 0,
+        7 => 7,
+        6 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        5 => 0,
+        4 => 0,
       ),
       'exclude' => 0,
       'id' => 'tid',
@@ -1899,17 +1895,17 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '7' => 7,
-        '6' => 0,
-        '12' => 0,
-        '11' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '10' => 0,
-        '5' => 0,
-        '4' => 0,
-        '9' => 0,
+        7 => 7,
+        6 => 0,
+        12 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
       ),
       'exclude' => 0,
       'id' => 'tid',
@@ -2053,7 +2049,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -2098,7 +2094,7 @@ function event_feature_views_default_views() {
     'tid' => array(
       'operator' => 'or',
       'value' => array(
-        '44' => '44',
+        44 => '44',
       ),
       'group' => '0',
       'exposed' => FALSE,
