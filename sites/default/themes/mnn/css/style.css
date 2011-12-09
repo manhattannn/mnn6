@@ -329,25 +329,26 @@ Header Styles
 }
 
 #main-menu li.home {
-    text-indent: -100000px;
- margin-right: 36px;
+	text-indent: -100000px;
 }
 
 #main-menu li.home a {
-    background: url("../images/icon_home.png") no-repeat scroll 0 -15px transparent;
-    float: left;
-    width: 20px;
- height: 3px;
+	background: url("../images/icon_home.png") no-repeat scroll left top transparent;
+	width: 20px;
+	height: 15px;
+	padding-left: 0;
 }
 
 #main-menu li.home a:hover {
-	background: url("../images/icon_home.png") no-repeat scroll 0 1px transparent;
+	background-position: left bottom;
 }
 
 #main-menu a {
 	text-decoration:none;
 	color:white;
-	padding:7px 8px;
+	padding:0 8px;
+	display: block;
+	font-size: 14px;
 }
 
 #main-menu a:hover {
@@ -423,10 +424,6 @@ li.expanded {
    width: 164px;
 }
 
-#main-menu .expanded > a {
-	width:100px;
-}
-
 #main-menu .expanded ul.menu li a {
 	float: left;
 	    height: 15px;
@@ -457,7 +454,7 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 18px;
+	margin-right: 16px;
 }
 
 #main-menu ul li.about_us {
