@@ -13,9 +13,9 @@ define("JWPLAYER_FILES_URL", $GLOBALS["base_url"] . "/" . file_directory_path() 
 
 include "framework/LongTailFramework.php";
 
-define("CONFIG", "config");
-define("SUBMIT", "submit");
-define("VERSION", "version");
+define("JW_PLAYER_CONFIG", "config");
+define("JW_PLAYER_SUBMIT", "submit");
+define("JW_PLAYER_VERSION", "version");
 define("JW_PLAYER_GA_VARS", "?utm_source=Drupal&utm_medium=Product&utm_campaign=Drupal");
 define("JW_PLAYER_DESC",
   "Please select <em>New Player</em> or an existing Player from the dropdown.  To delete a Player click the <em>Delete</em> button.  " .
@@ -139,6 +139,12 @@ function jwplayermodule_menu() {
     "access arguments" => array("administer jwplayermodule"),
     "type" => MENU_CALLBACK,
     "file" => "jwplayermodule_admin.inc",
+  );
+  $items["admin/settings/jwplayermodule/adminjs"] = array(
+    "page callback" => "jwplayermodule_js",
+    "access arguments" => array("administer jwplayermodule"),
+    "type" => MENU_CALLBACK,
+    "file" => "jwplayermodule_admin.php",
   );
 
   return $items;

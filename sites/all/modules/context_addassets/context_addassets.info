@@ -1,0 +1,12 @@
+; $Id: context_addassets.info,v 1.1.2.1 2010/09/16 19:55:19 electblake Exp $
+name = Context Add Assets
+description = "Provides a simply way to include JS/CSS files based on context"
+dependencies[] = context
+package = Context
+core = "6.x"
+; Information added by drupal.org packaging script on 2010-09-20
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "context_addassets"
+datestamp = "1284989760"
+

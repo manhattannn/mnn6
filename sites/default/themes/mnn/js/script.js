@@ -7,9 +7,9 @@ var site = (function(){
 	}
 
 	function setupWatermark(){
-		$('#edit-submitted-name').watermark('Your Name');
-		$('#edit-submitted-email-address').watermark('Your Email');
-		$('#edit-submitted-message').watermark('Your message goes here');
+		$('#footer #edit-submitted-name').watermark('Your Name');
+		$('#footer #edit-submitted-email-address').watermark('Your Email');
+		$('#footer #edit-submitted-message').watermark('Your message goes here');
 	}
 
 	function inPageScroll(){
@@ -131,6 +131,27 @@ var homeSlideshow = (function(){
 })();
 
 
+/********************************************* sidebarMenu *************************************************/
+var sidebarMenu = (function(){
+
+	function init(){
+		if ($('.sidebar .block-menu li.expanded').length)
+			setupEvents();
+	}
+
+	function setupEvents(){
+		$('.sidebar .block-menu li.expanded > a').click(function(event){
+			$(this).next('ul.menu').slideToggle();
+			event.preventDefault();
+		});
+	}
+
+	return {
+		init: init
+	}
+})();
+
+
 /************************************************* faq *****************************************************/
 var faq = (function(){
 
@@ -227,6 +248,7 @@ var openClose = (function(){
 $(document).ready(function(){
 	homeSlideshow.init();
 	site.init();
+	sidebarMenu.init();
 	faq.init();
 	calendar.init();
 	openClose.init();

@@ -105,3 +105,7 @@ background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;
     background: url("../images/right-arrow.png") no-repeat scroll 215px 18px;
     padding: 16px 122px 16px 60px;
 }
+
+#sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]{
+	height: 39px;
+}

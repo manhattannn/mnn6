@@ -124,7 +124,6 @@ function certification_class_feature_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Class Tracks');
   $handler->override_option('style_plugin', 'list');
   $handler->override_option('row_plugin', 'semanticviews_fields');
   $handler->override_option('row_options', array(

@@ -11,10 +11,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_calendar';
   $view->description = 'An event calendar for Date';
   $view->tag = 'Calendar';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -120,17 +119,17 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '12' => 12,
-        '6' => 0,
-        '7' => 0,
-        '11' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '10' => 0,
-        '5' => 0,
-        '4' => 0,
-        '9' => 0,
+        12 => 12,
+        6 => 0,
+        7 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
       ),
       'exclude' => 1,
       'id' => 'tid',
@@ -248,7 +247,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -295,8 +294,8 @@ function event_feature_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('calendar_colors', array(
-    '0' => array(
-      '0' => array(
+    0 => array(
+      0 => array(
         'event' => '#ffffff',
       ),
     ),
@@ -361,17 +360,17 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '12' => 12,
-        '6' => 0,
-        '7' => 0,
-        '11' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '10' => 0,
-        '5' => 0,
-        '4' => 0,
-        '9' => 0,
+        12 => 12,
+        6 => 0,
+        7 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
       ),
       'exclude' => 1,
       'id' => 'tid',
@@ -686,10 +685,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_queue';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -962,7 +960,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'not in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1061,10 +1059,9 @@ function event_feature_views_default_views() {
   $view->name = 'event_types';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'term_data';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -1169,7 +1166,7 @@ function event_feature_views_default_views() {
     'vid' => array(
       'operator' => 'in',
       'value' => array(
-        '12' => '12',
+        12 => '12',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1203,10 +1200,9 @@ function event_feature_views_default_views() {
   $view->name = 'upcoming_events';
   $view->description = '';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -1329,7 +1325,7 @@ function event_feature_views_default_views() {
     'sid' => array(
       'operator' => 'in',
       'value' => array(
-        '3' => '3',
+        3 => '3',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -1370,6 +1366,32 @@ function event_feature_views_default_views() {
       'table' => 'node_data_field_date',
       'field' => 'field_date_value',
       'relationship' => 'none',
+    ),
+    'tid' => array(
+      'operator' => 'or',
+      'value' => array(
+        40 => '40',
+        41 => '41',
+        44 => '44',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'type' => 'select',
+      'limit' => TRUE,
+      'vid' => '12',
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'hierarchy' => 0,
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
     ),
   ));
   $handler->override_option('access', array(
@@ -1572,13 +1594,13 @@ function event_feature_views_default_views() {
       'link_to_taxonomy' => 0,
       'limit' => 1,
       'vids' => array(
-        '7' => 7,
-        '6' => 0,
-        '1' => 0,
-        '2' => 0,
-        '3' => 0,
-        '5' => 0,
-        '4' => 0,
+        7 => 7,
+        6 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        5 => 0,
+        4 => 0,
       ),
       'exclude' => 0,
       'id' => 'tid',
@@ -1700,6 +1722,408 @@ function event_feature_views_default_views() {
     'separator' => '',
     'hide_empty' => 0,
   ));
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
+  $handler = $view->new_display('block', 'Block: YC Content Center', 'block_3');
+  $handler->override_option('fields', array(
+    'field_date_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'month_abbreviation',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => '',
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'field_date_value_1' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'date_only',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => '',
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value_1',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_date_value_2' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'time_only',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => '',
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_date_value_2',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'tid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'type' => 'separator',
+      'separator' => ', ',
+      'link_to_taxonomy' => 0,
+      'limit' => 1,
+      'vids' => array(
+        7 => 7,
+        6 => 0,
+        12 => 0,
+        11 => 0,
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        10 => 0,
+        5 => 0,
+        4 => 0,
+        9 => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 1,
+        'max_length' => '40',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 1,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'body' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 1,
+        'max_length' => '110',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 1,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'body',
+      'table' => 'node_revisions',
+      'field' => 'body',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'view_node' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'text' => 'More Info',
+      'exclude' => 0,
+      'id' => 'view_node',
+      'table' => 'node',
+      'field' => 'view_node',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'event' => 'event',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'sid' => array(
+      'operator' => 'in',
+      'value' => array(
+        3 => '3',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'sid',
+      'table' => 'workflow_node',
+      'field' => 'sid',
+      'relationship' => 'none',
+    ),
+    'field_date_value' => array(
+      'operator' => '>=',
+      'value' => array(
+        'min' => NULL,
+        'max' => NULL,
+        'value' => NULL,
+        'default_date' => 'now',
+        'default_to_date' => '',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'date_fields' => array(
+        'node_data_field_date.field_date_value' => 'node_data_field_date.field_date_value',
+      ),
+      'date_method' => 'OR',
+      'granularity' => 'minute',
+      'form_type' => 'date_select',
+      'default_date' => 'now',
+      'default_to_date' => '',
+      'year_range' => '-0:+3',
+      'id' => 'field_date_value',
+      'table' => 'node_data_field_date',
+      'field' => 'field_date_value',
+      'relationship' => 'none',
+    ),
+    'tid' => array(
+      'operator' => 'or',
+      'value' => array(
+        44 => '44',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'type' => 'select',
+      'limit' => TRUE,
+      'vid' => '12',
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'hierarchy' => 0,
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+  ));
+  $handler->override_option('header', '<div class="button"><a href="/calendar">View All Events</a></div>');
+  $handler->override_option('header_format', '2');
+  $handler->override_option('header_empty', 0);
+  $handler->override_option('footer', '');
+  $handler->override_option('items_per_page', 2);
+  $handler->override_option('style_plugin', 'default');
+  $handler->override_option('row_plugin', 'fields');
+  $handler->override_option('row_options', array());
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
 
