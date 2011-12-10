@@ -3,9 +3,9 @@ description = Embed a JW Player for Flash in your Nodes.
 package = "Media"
 core = 6.x
 dependencies[] = jquery_ui
-; Information added by drupal.org packaging script on 2011-06-30
-version = "6.x-1.4"
+; Information added by drupal.org packaging script on 2011-11-08
+version = "6.x-1.6"
 core = "6.x"
 project = "jwplayermodule"
-datestamp = "1309470116"
+datestamp = "1320710452"
 

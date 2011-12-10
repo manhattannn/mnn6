@@ -74,7 +74,7 @@ class PlayerState extends AdminState {
    * @param $form_state
    */
   public function render(&$form, $form_state) {
-    drupal_add_js(drupal_get_path("module", "jwplayermodule") . "/jwplayermodule_admin.php", "module", "footer");
+    drupal_add_js("/admin/settings/jwplayermodule/adminjs", "module", "header");
     $form["Version"] = array(
       "#description" => JW_SETUP_DESC,
       "#type" => "fieldset",

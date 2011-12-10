@@ -78,36 +78,36 @@
 		<div class="pinch">
 
 			<div id="content">
+				<?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
+				<header id="content-header">
+
+					<?php print $breadcrumb; ?>
+
+					<?php if ($mission): ?>
+					<div id="mission"><?php print $mission; ?></div>
+					<?php endif; ?>
+
+					<?php print $messages; ?>
+
+					<?php print $help; ?>
+
+					<?php if ($tabs): ?>
+					<nav class="tabs"><?php print $tabs; ?></nav>
+					<?php endif; ?>
+
+				</header>
+				<?php endif; ?>
+
 				<div id="content-inner" class="inner column center">
 
-					<?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
-					<header id="content-header">
+					<?php if ($content_header) : ?>
+					<div id="content-header-content">
+						<?php print $content_header ?>
+					</div>
+					<?php endif; ?>
 
-						<?php print $breadcrumb; ?>
-
-						<?php if ($content_header) : ?>
-						<div id="content-header-content">
-							<?php print $content_header ?>
-						</div>
-						<?php endif; ?>
-
-						<?php if ($title): ?>
-						<h1 class="title"><?php print $title; ?></h1>
-						<?php endif; ?>
-
-						<?php if ($mission): ?>
-						<div id="mission"><?php print $mission; ?></div>
-						<?php endif; ?>
-
-						<?php print $messages; ?>
-
-						<?php print $help; ?>
-
-						<?php if ($tabs): ?>
-						<nav class="tabs"><?php print $tabs; ?></nav>
-						<?php endif; ?>
-
-					</header>
+					<?php if ($title): ?>
+					<div id="title"><h1 class="title"><?php print $title; ?></h1></div>
 					<?php endif; ?>
 
 					<?php if ($content_top): ?>

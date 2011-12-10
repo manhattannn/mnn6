@@ -90,12 +90,7 @@ class LongTailFramework
     } else {
       $xml_file = JWPLAYER_FILES_DIR . "/configs/" . $target . ".xml";
     }
-    $xml_handle = @fopen($xml_file, "w");
-    if (!$xml_handle) return false;
-    fwrite($xml_handle, "<config>\n" . $xml_string . "</config>");
-    fclose($xml_handle);
-    chmod($xml_file, 0755);
-    return true;
+    return file_save_data("<config>\n" . $xml_string . "</config>", $xml_file, FILE_EXISTS_REPLACE);
   }
 
   /**
@@ -103,7 +98,7 @@ class LongTailFramework
    */
   public static function deleteConfig() {
     $xml_file = LongTailFramework::getConfigPath();
-    unlink($xml_file);
+    return file_delete($xml_file);
   }
 
   /**

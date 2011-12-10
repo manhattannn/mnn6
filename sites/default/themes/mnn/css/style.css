@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
-
 /* HTML5 ? Boilerplate */
 
 html, body, div, span, object, iframe,
@@ -11,12 +9,20 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	-moz-font-feature-settings: inherit;
+	-moz-font-language-override: inherit;
+	border: 0 none;
+	font-family: inherit;
+	font-size: inherit;
+	font-size-adjust: inherit;
+	font-stretch: inherit;
+	font-style: inherit;
+	font-variant: inherit;
+	font-weight: inherit;
+	line-height: 1.3em;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure,
@@ -113,6 +119,7 @@ body {
 	width:940px;
 	padding:0px 10px;
 	margin:auto;
+	position: relative;
 }
 
 a, a:link, a:visited {
@@ -143,6 +150,9 @@ text-decoration:none;
 font-weight:normal;
 }
 
+em{
+	font-style: italic;
+}
 
 h1, h2, h3, h4, h5 {
 	font-family:'Droid Serif', Georgia, serif;
@@ -218,11 +228,11 @@ color:white;
 }
 
 .button {
-	border-radius:5px;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	-o-border-radius:5px;
-	-ms-border-radius:5px;
+	-webkit-border-radius:3px;
+	   -moz-border-radius:3px;
+	     -o-border-radius:3px;
+	    -ms-border-radius:3px;
+	        border-radius:3px;
 	float:right;
 	height: 25px;
 }
@@ -319,25 +329,26 @@ Header Styles
 }
 
 #main-menu li.home {
-    text-indent: -100000px;
- margin-right: 36px;
+	text-indent: -100000px;
 }
 
 #main-menu li.home a {
-    background: url("../images/icon_home.png") no-repeat scroll 0 -15px transparent;
-    float: left;
-    width: 20px;
- height: 3px;
+	background: url("../images/icon_home.png") no-repeat scroll left top transparent;
+	width: 20px;
+	height: 15px;
+	padding-left: 0;
 }
 
 #main-menu li.home a:hover {
-	background: url("../images/icon_home.png") no-repeat scroll 0 1px transparent;
+	background-position: left bottom;
 }
 
 #main-menu a {
 	text-decoration:none;
 	color:white;
-	padding:7px 8px;
+	padding:0 8px;
+	display: block;
+	font-size: 14px;
 }
 
 #main-menu a:hover {
@@ -413,10 +424,6 @@ li.expanded {
    width: 164px;
 }
 
-#main-menu .expanded > a {
-	width:100px;
-}
-
 #main-menu .expanded ul.menu li a {
 	float: left;
 	    height: 15px;
@@ -447,7 +454,7 @@ li.expanded {
 	float:left;
 	list-style-type:none;
 	margin-left:0;
-	margin-right: 24px;
+	margin-right: 16px;
 }
 
 #main-menu ul li.about_us {
@@ -933,7 +940,7 @@ h3.title {
 
 .views-field-title {
 	width:172px;
-	margin-top:10px;
+	margin-top:5px;
 }
 
 .emvideo-duration {
@@ -993,7 +1000,7 @@ display:inline;
 	font-weight: bold;
 	font-size: 18px;
 }
-#block-views-upcoming-events-block-content-center .title,
+#block-views-upcoming-events-block-content-center .view .title,
 #block-views-upcoming-events-block-content-center .time-taxonomy{
 	width: 245px;
 }
@@ -1004,8 +1011,8 @@ display:inline;
 	text-transform: uppercase;
 	border-right: 0 none;
 }
-#block-views-upcoming-events-block-content-center .title,
-#block-views-upcoming-events-block-content-center .title a{
+#block-views-upcoming-events-block-content-center .view .title,
+#block-views-upcoming-events-block-content-center .view .title a{
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 16px;
@@ -1434,13 +1441,16 @@ Not-Front Page Styles
 Individual News Post Styles
 --------------------------------------------------------------------------------*/
 
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
+#content h1.title,
+.node-type-cert-class .sidebar .top h3,
+#page-shows #content h1.title,
+#content-header-content .top h3.title{
 	font-size:36px;
 	color:#25292b;
 	font-weight:normal;
-    line-height: 40px;
-    margin-bottom: 20px;
- margin-top: 30px;
+	line-height: 34px;
+	margin-bottom: 20px;
+	margin-top: 30px;
 }
 
 article header .submitted {
@@ -1454,12 +1464,12 @@ article header {
 }
 
 .page-news article img, .page-news article embed, .page-news article object {
-    border: medium none;
-    box-shadow: none;
-	-webkit-box-shadow:none;
-		-moz-box-shadow:none;
-    height: auto;
-    width: 560px;
+	border: medium none;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+	        box-shadow: none;
+	height: auto;
+	width: 560px;
 }
 
 article img, article embed, article object {
@@ -1679,22 +1689,26 @@ Sidebar Styles
     width: 220px;
   padding-top: 20px;
 }
+.sidebar-first .sidebar.first {
+	padding-top: 0;
+}
 
 .sidebar .top h3 {
 	font-size:18px;
 	font-weight:bold;
 }
 
-.sidebar .top {
-padding: 10px 0 8px 0px;
-	border-bottom:1px solid #b2bbc0;
-	margin-bottom:20px;
+#sidebar-second .top{
+	border-bottom: 1px solid #B2BBC0;
+	margin-bottom: 20px;
 }
 
 #page-producers #sidebar-second .top,
-#page-organizations #sidebar-second .top, #page-producers-submit-show #sidebar-second .top,
+#page-organizations #sidebar-second .top,
+#page-producers-submit-show #sidebar-second .top,
 #page-producers-become-producer #sidebar-second .top,
-#page-organizations-faq #sidebar-second .top, .section-producers #sidebar-second .top {
+#page-organizations-faq #sidebar-second .top,
+.section-producers #sidebar-second .top {
 	padding: 10px 0 10px 24px;
 }
 
@@ -1703,7 +1717,7 @@ padding: 10px 0 8px 0px;
 }
 
 .sidebar .block {
-	margin-bottom:50px;
+	margin-bottom:30px;
 }
 
 .block-views-forms-producers-block, .block-views-faq-sidebar-producers-block {
@@ -1922,13 +1936,17 @@ display:none;
 
 legend {
 	font-weight:bold;
-	margin-left:160px;
+	/*margin-left:160px;*/
 }
 
 .form-checkboxes, .form-radios {
     float: left;
     margin:0;
     width: 308px;
+}
+
+.page-node-add-event .node-form .form-checkboxes{
+	float: none;
 }
 
 .form-item label.option {
@@ -1968,22 +1986,14 @@ News
 
 .post-date, .taxonomy {
 	border-right:1px solid #666666;
-}
-
-.taxonomy {
-	padding-right:10px;
-	padding-left:10px;
-}
-
-.page-news .view-content .author {
-	padding-left:10px;
+	margin-right: 12px;
 }
 
 .page-news .body-content {
 	margin-top:30px;
 }
 
-.page-news .body-content p,  {
+.page-news .body-content p  {
 	line-height:20px;
 	font-size:14px;
 	margin: 16px 0;
@@ -1996,6 +2006,10 @@ News
 .news-image {
 	margin-bottom:20px;
 	margin-top:20px;
+}
+
+.view-news-page .views-row{
+	margin-bottom: 30px;
 }
 
 .news-image img {
@@ -2036,7 +2050,7 @@ News
 }*/
 
 .addthis_toolbox_item {
-	margin-right:30px;
+	margin: 0 15px 0 0;
 }
 
 .page-news .sidebar .top, .node-type-news .sidebar .top {
@@ -2123,8 +2137,10 @@ padding: 16px 67px 16px 16px;
 Video Viewing Styles
 --------------------------------------------------------------------------------*/
 
-.node-type-video header#content-header h1.title, .node-type-video #content-header,
-.node-type-watch-live header#content-header h1.title, .node-type-watch-live #content-header {
+.node-type-video #title h1.title,
+.node-type-video #title,
+.node-type-watch-live #title,
+.node-type-watch-live #content-header {
 	display:none;
 }
 
@@ -2650,7 +2666,7 @@ Classes Styles
 	font-weight:normal;
     line-height: 40px;
     margin-bottom: 10px;
-margin-top: 110px;
+margin-top: 0;
 }
 
 .node-type-cert-class .sidebar .views-row {
@@ -3185,10 +3201,10 @@ border:1px solid #1D2022;
 .calendar-calendar div.date-nav h3,
 #schedule-header .nav .schedule-date {
     color: #25292B;
-    float: left;
+    /*float: left;*/
     font-family: 'Droid Serif';
     font-size: 17px;
-    margin-left: 340px;
+    /*margin-left: 340px;*/
     margin-top: 4px;
     text-align: center;
 }
@@ -3381,11 +3397,14 @@ clear: left;
     clear: right;
     margin-bottom: 10px;
     padding-left: 180px;
-    padding-top: 61px;
+    padding-top: 38px;
 }
 
-#page-schedule #content-header {
+#page-schedule #title {
 	float:left;
+}
+#page-schedule #title h1 {
+	margin-bottom: 0;
 }
 
 #block-block-geolocation-placeholder p {
@@ -3717,13 +3736,8 @@ article.video .content, article.video .content p:first-child, article.watch-live
 	color:#003f1a;
 }
 
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
-    color: #25292B;
-    font-size: 36px;
-    font-weight: normal;
-    line-height: 40px;
-    margin-bottom: 12px;
-    margin-top: 30px;
+#page-homepage h1{
+	display: none;
 }
 
 .item-list ul li h5.title a:hover {
@@ -3732,15 +3746,6 @@ article.video .content, article.video .content p:first-child, article.watch-live
 
 .item-list ul li a:hover {
     color: #003f1a;
-}
-
-#content h1.title, .node-type-cert-class .sidebar .top h3, #page-shows #content h1.title {
-    color: #25292B;
-    font-size: 36px;
-    font-weight: normal;
-    line-height: 40px;
-    margin-bottom: 5px;
-    margin-top: 30px;
 }
 
 .item-list .views-row {
@@ -3874,7 +3879,7 @@ display:none;
 
 .page-news .view-content .read-more {
     color: #005B25;
-    float: left;
+    float: none;
     margin-bottom: 20px;
     margin-top: 5px;
 }
@@ -3898,6 +3903,7 @@ display:none;
     font-size: 24px;
     padding-bottom: 12px;
     padding-top: 20px;
+	line-height: 26px;
 }
 
 .view-feed-items th, .view-feed-items td{
@@ -4076,6 +4082,13 @@ clear: left;
 }
 .calendar-calendar td .inner div.calendar div.community-sponsored-event a:hover{
 	color: #001666;
+}
+.calendar-calendar td .inner div.calendar div.yc-sponsored-event a{
+	color: #ca4100;
+	background-color: #ffdac8;
+}
+.calendar-calendar td .inner div.calendar div.yc-sponsored-event a:hover{
+	color: #af3901;
 }
 
 .calendar-calendar td .inner div.calendar div,
@@ -4257,6 +4270,9 @@ div.calendar-calendar td .inner div.calendar div.calendar-more a{
 #block-views-event-types-block div.community-sponsored-event span.color{
 	background-color: #0025b0;
 }
+#block-views-event-types-block div.yc-sponsored-event span.color{
+	background-color: #ca4100;
+}
 
 #block-block-calendar-intro .content{
 	position: relative;
@@ -4384,7 +4400,7 @@ a.download-button:hover{
 }
 
 a.download-button span {
-background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transparent;
+background: url("../images/right-arrow-sm.png") no-repeat scroll right 6px transparent;
  clear: left;
     float: left;
     height: 15px;
@@ -4394,7 +4410,7 @@ background: url("../images/down-arrow-sm.png") no-repeat scroll right 9px transp
 #block-views-download-show-schedule-block{
 	position: absolute;
 	right: 0;
-	top: 61px;
+	top: 39px;
 }
 #content-top{
 	position: relative;

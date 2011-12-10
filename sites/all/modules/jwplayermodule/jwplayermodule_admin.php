@@ -2,6 +2,8 @@
 
 require_once("framework/LongTailFramework.php");
 
+function jwplayermodule_js() {
+
 ?>
 
 function updateHandler(button) {
@@ -44,4 +46,8 @@ function saveHandler(button) {
     }
   }
   return true;
+}
+
+<?php
+
 }
