@@ -1,0 +1,13 @@
+name = Webform Share
+description = "Enables users with the right permissions to export and import webforms. This can also be used to set content type default webforms."
+core = 6.x
+package = Webform
+dependencies[] = webform
+php = 5.0
+
+; Information added by drupal.org packaging script on 2011-04-30
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "webform_share"
+datestamp = "1304124234"
+
