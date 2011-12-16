@@ -2,8 +2,8 @@
   <header class="clearfix">
 
 	  <?php
+		  $categories = array();
 	    if ($node->taxonomy){
-				$categories = array();
 				foreach($node->taxonomy as $tax) {
 					$categories[] = $tax->name;
 				}
