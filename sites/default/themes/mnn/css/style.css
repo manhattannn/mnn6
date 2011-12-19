@@ -205,6 +205,12 @@ Global List Styles
 	list-style: disc;
 }
 
+.node ul.no-bullets{
+	margin-left: 0;
+}
+.node ul.no-bullets li{
+	list-style: none;
+}
 
 
 /*--------------------------------------------------------------------------------
@@ -1820,9 +1826,6 @@ margin-bottom: 0;
 
 #node-2 ul, #node-3 ul,
 .section-producers #content-area ul {
-	margin-left:0;
-	list-style-type:none;
-	list-style-image:none;
 	margin-top: 40px;
 }
 
