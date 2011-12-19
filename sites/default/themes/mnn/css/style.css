@@ -201,6 +201,10 @@ Global List Styles
 	list-style-type:disc;
 }
 
+.node ul li{
+	list-style: disc;
+}
+
 
 
 /*--------------------------------------------------------------------------------
@@ -2379,6 +2383,7 @@ article span.inline-right {
 
 .channel-info ul li {
 	padding-bottom:30px;
+	list-style: none;
 }
 
 
