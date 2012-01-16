@@ -1783,20 +1783,19 @@ Numbers
 }
 
 
-#node-2 ul li span, #node-3 ul li span {
-	border-radius:45px;
-	-webkit-border-radius:45px;
-	-moz-border-radius:45px;
-	-o-border-radius:45px;
- background-color: #5A6970;
-    border-radius: 45px 45px 45px 45px;
-    color: white;
-    float: left;
-    font-family: "Droid Serif",georgia;
-    font-size: 24px;
-    margin-right: 20px;
-       padding: 22px 24px;
- margin-bottom: 20px;
+#node-2 ul li span, #node-3 ul li span, .section-producers .node ul li span, #mini-panel-submit_your_video ul li span {
+	-webkit-border-radius:45px 45px 45px 45px;
+	-moz-border-radius:45px 45px 45px 45px;
+	-o-border-radius:45px 45px 45px 45px;
+	border-radius: 45px 45px 45px 45px;
+	background-color: #5A6970;
+	color: white;
+	float: left;
+	font-family: "Droid Serif",georgia;
+	font-size: 20px;
+	margin-right: 20px;
+	padding: 14px 22px;
+	margin-bottom: 10px;
 }
 
 #block-block-get-involved p, .content .col p {
@@ -4457,7 +4456,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 6px trans
 }
 .person,
 .job-listing{
-	margin: 20px 0 0 0;
+	margin: 20px 0 50px 0;
 }
 .person h3,
 .instructor h3,
