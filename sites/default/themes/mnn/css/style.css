@@ -1791,7 +1791,7 @@ Numbers
 	background-color: #5A6970;
 	color: white;
 	float: left;
-	font-family: "Droid Serif",georgia;
+	font-family: "Times New Roman", serif;
 	font-size: 20px;
 	margin-right: 20px;
 	padding: 14px 22px;
@@ -3289,7 +3289,7 @@ background: url("../images/left-arrow-sm.png") no-repeat scroll 8px 9px transpar
  clear: left;
     float: left;
     height: 14px;
-    padding: 4px 10px 8px;
+    padding: 5px 10px 7px;
     width: 60px;
 }
 
@@ -3298,7 +3298,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll 68px 9px transp
 clear: left;
    float: left;
    height: 14px;
-   padding: 4px 10px 8px;
+   padding: 5px 10px 7px;
    width: 60px;
 }
 
@@ -3775,20 +3775,6 @@ article.video .content, article.video .content p:first-child, article.watch-live
 #node-2 .available-tracks, .available-tracks {
     clear: both;
     padding-top: 0px;
-}
-
-#node-2 ul li span, #node-3 ul li span, .section-producers .node ul li span, #mini-panel-submit_your_video ul li span {
-    background-color: #5A6970;
-    border-radius: 45px 45px 45px 45px;
--moz-border-radius: 45px 45px 45px 45px;
--webkit-border-radius: 45px 45px 45px 45px;
-    color: white;
-    float: left;
-    font-family: "Times New Roman", serif;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-right: 20px;
-    padding: 14px 18px;
 }
 
 #node-2 ul li, #node-3 ul li {
@@ -4409,11 +4395,11 @@ a.download-button:hover{
 }
 
 a.download-button span {
-background: url("../images/right-arrow-sm.png") no-repeat scroll right 6px transparent;
+background: url("../images/download.png") no-repeat scroll right 5px transparent;
  clear: left;
     float: left;
     height: 15px;
-    padding: 2px 16px 6px 8px;
+    padding: 3px 26px 5px 8px;
 }
 
 #block-views-download-show-schedule-block{
