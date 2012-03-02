@@ -2,14 +2,33 @@
 var site = (function(){
 
 	function init(){
+		imageCaptions();
 		setupWatermark();
 		inPageScroll();
+	}
+
+	function imageCaptions(){
+		var selectors = '.node img';
+		$(selectors).each(function() {
+			var caption = $(this).attr('title');
+			if (caption){
+				var parts = caption.split('|');
+				var captions = '';
+				for (var i = 0; i < parts.length; i++){
+					captions += '<div class="caption">' + parts[i] + '</div>'
+				}
+				var style = $(this).attr('style');
+				$(this).attr('style', '');
+				$(this).wrap('<div class="image-wrapper" style="'+ style +'" />').after(captions);
+			}
+		});
 	}
 
 	function setupWatermark(){
 		$('#footer #edit-submitted-name').watermark('Your Name');
 		$('#footer #edit-submitted-email-address').watermark('Your Email');
 		$('#footer #edit-submitted-message').watermark('Your message goes here');
+		$('#footer #mce-EMAIL').watermark('Enter your email address');
 	}
 
 	function inPageScroll(){
