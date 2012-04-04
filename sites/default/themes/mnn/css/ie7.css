@@ -109,3 +109,7 @@ background:url("../images/right-arrow.png") no-repeat scroll 215px 18px;
 #sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]{
 	height: 39px;
 }
+
+a.watch-live-button {
+	left: 350px;
+}

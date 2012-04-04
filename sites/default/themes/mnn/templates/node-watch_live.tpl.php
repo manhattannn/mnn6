@@ -1,7 +1,11 @@
 <?php
 $channel = node_load($node->field_channel[0]['nid']);
 
-$embed_code =$node->field_iframe_embed_code[0]['value'];
+$url = (!empty($_SERVER['HTTPS']))
+  ? "https://".$_SERVER['SERVER_NAME']
+  : "http://".$_SERVER['SERVER_NAME'];
+$embed_url = drupal_get_path_alias('node/'. $node->field_iframe_embed_url[0]['nid']);
+$embed_code = '<iframe src="'. $url .'/'. $embed_url .'?iframe=1" frameborder="0" width="600" height="334" scrolling="no" allowfullscreen></iframe>';
 $embed_code = htmlspecialchars($embed_code);
 
 ?>
