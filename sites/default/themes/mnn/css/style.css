@@ -4753,6 +4753,10 @@ a.watch-live-button:hover{
 	color: #25292B;
 }
 
+img.imagecache-inline-image-half-content-width{
+	float: left;
+	margin: 0 20px 20px 0;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
