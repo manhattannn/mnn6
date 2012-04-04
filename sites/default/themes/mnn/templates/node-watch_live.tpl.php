@@ -1,7 +1,8 @@
 <?php
 $channel = node_load($node->field_channel[0]['nid']);
 
-$block = module_invoke('mnnmisc', 'block', 'view', '2');
+$embed_code =$node->field_iframe_embed_code[0]['value'];
+$embed_code = htmlspecialchars($embed_code);
 
 ?>
 
@@ -26,12 +27,15 @@ $block = module_invoke('mnnmisc', 'block', 'view', '2');
 					print '<div class="website"><span class="label">Website: </span><a href="'. $current_show['public_url'] .'">'. $current_show['public_url'] .'</a></div>';
 				}
         print $node->links['addthis']['title'];
-        print $block['content'];
 	    ?>
+      <a href='#' class='modal-trigger watch-live-button' data-modal-element='video-embed-code'>Embed this video</a>
+      <div id='video-embed-code'>
+        <h3>Embed this video</h3>
+        <h5>Copy the embed code below, and paste it to your website.</h5>
+        <textarea class="embed-code select-all" spellcheck="false"><?php print $embed_code ?></textarea>
+      </div>
     </div>
 
 </article>
 
-<pre><?php //print_r($block) ?></pre>
-<pre><?php //print_r($channel) ?></pre>
 

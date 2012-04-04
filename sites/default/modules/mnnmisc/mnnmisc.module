@@ -132,7 +132,7 @@
     $url = (!empty($_SERVER['HTTPS']))
       ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']
       : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-    $embed_code = '<iframe src="'. $url .'?iframe=1" frameborder="0" width="808" height="450" scrolling="no" allowfullscreen></iframe>';
+    $embed_code = '<iframe src="'. $url .'?iframe=1" frameborder="0" width="600" height="334" scrolling="no" allowfullscreen></iframe>';
     $embed_code = htmlspecialchars($embed_code);
 
     $content = "<a href='#' class='modal-trigger watch-live-button' data-modal-element='video-embed-code'>Embed this video</a>";
