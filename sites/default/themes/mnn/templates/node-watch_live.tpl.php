@@ -1,5 +1,13 @@
 <?php
 $channel = node_load($node->field_channel[0]['nid']);
+
+$url = (!empty($_SERVER['HTTPS']))
+  ? "https://".$_SERVER['SERVER_NAME']
+  : "http://".$_SERVER['SERVER_NAME'];
+$embed_url = drupal_get_path_alias('node/'. $node->field_iframe_embed_url[0]['nid']);
+$embed_code = '<iframe src="'. $url .'/'. $embed_url .'?iframe=1" frameborder="0" width="600" height="334" scrolling="no" allowfullscreen></iframe>';
+$embed_code = htmlspecialchars($embed_code);
+
 ?>
 
 <article class="watch-live node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
@@ -24,11 +32,14 @@ $channel = node_load($node->field_channel[0]['nid']);
 				}
         print $node->links['addthis']['title'];
 	    ?>
+      <a href='#' class='modal-trigger watch-live-button' data-modal-element='video-embed-code'>Embed this video</a>
+      <div id='video-embed-code'>
+        <h3>Embed this video</h3>
+        <h5>Copy the embed code below, and paste it to your website.</h5>
+        <textarea class="embed-code select-all" spellcheck="false"><?php print $embed_code ?></textarea>
+      </div>
     </div>
- 
 
 </article>
 
-<pre><?php //print_r($node) ?></pre>
-<pre><?php //print_r($channel) ?></pre>
 

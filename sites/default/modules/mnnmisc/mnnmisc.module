@@ -33,6 +33,9 @@
 				$blocks[1]['info'] = t('YC News Archive');
 				$blocks[1]['cache'] = BLOCK_NO_CACHE;
 
+				$blocks[2]['info'] = t('Watch Live Embed');
+				$blocks[2]['cache'] = BLOCK_NO_CACHE;
+
 				return $blocks;
 
 			case 'view':
@@ -43,6 +46,9 @@
 				elseif ($delta == 1) {
 					$block['subject'] = t('Archives');
 					$block['content'] = _mnnmisc_block_yc_news_archive();
+				}
+				elseif ($delta == 2) {
+					$block['content'] = _mnnmisc_block_watch_live_embed_code();
 				}
 
 				return $block;
@@ -122,3 +128,21 @@
 		return $content;
 	}
 
+  function _mnnmisc_block_watch_live_embed_code(){
+    $url = (!empty($_SERVER['HTTPS']))
+      ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']
+      : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    $embed_code = '<iframe src="'. $url .'?iframe=1" frameborder="0" width="600" height="334" scrolling="no" allowfullscreen></iframe>';
+    $embed_code = htmlspecialchars($embed_code);
+
+    $content = "<a href='#' class='modal-trigger watch-live-button' data-modal-element='video-embed-code'>Embed this video</a>";
+    $content .= "<div id='video-embed-code'>";
+    $content .= "<h3>Embed this video</h3>";
+    $content .= "<h5>Copy the embed code below, and paste it to your website.</h5>";
+    //$content .= '<div contenteditable="true" class="embed-code" spellcheck="false">'. $embed_code .'</div>';
+    $content .= '<textarea class="embed-code select-all" spellcheck="false">'. $embed_code .'</textarea>';
+    //$content .= $embed_code;
+    $content .= "</div> ";
+
+    return $content;
+  }
