@@ -1,5 +1,8 @@
 <?php
 $channel = node_load($node->field_channel[0]['nid']);
+
+$block = module_invoke('mnnmisc', 'block', 'view', '2');
+
 ?>
 
 <article class="watch-live node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
@@ -23,12 +26,12 @@ $channel = node_load($node->field_channel[0]['nid']);
 					print '<div class="website"><span class="label">Website: </span><a href="'. $current_show['public_url'] .'">'. $current_show['public_url'] .'</a></div>';
 				}
         print $node->links['addthis']['title'];
+        print $block['content'];
 	    ?>
     </div>
- 
 
 </article>
 
-<pre><?php //print_r($node) ?></pre>
+<pre><?php //print_r($block) ?></pre>
 <pre><?php //print_r($channel) ?></pre>
 

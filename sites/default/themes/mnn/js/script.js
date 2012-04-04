@@ -5,6 +5,8 @@ var site = (function(){
 		imageCaptions();
 		setupWatermark();
 		inPageScroll();
+		setupModal();
+		setupSelectAll();
 	}
 
 	function imageCaptions(){
@@ -29,6 +31,25 @@ var site = (function(){
 		$('#footer #edit-submitted-email-address').watermark('Your Email');
 		$('#footer #edit-submitted-message').watermark('Your message goes here');
 		$('#footer #mce-EMAIL').watermark('Enter your email address');
+	}
+
+	function setupModal(){
+		$('.modal-trigger').click(function(){
+			var el = $(this).attr('data-modal-element');
+			$('#' + el).modal();
+			return false;
+		});
+	}
+
+	function setupSelectAll(){
+		$('textarea.select-all')
+			.click(function(){
+				$(this).select();
+			})
+			.mouseup(function(e){
+				e.preventDefault();
+			})
+		;
 	}
 
 	function inPageScroll(){

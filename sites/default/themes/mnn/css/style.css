@@ -360,6 +360,9 @@ Header Styles
 	display: block;
 	font-size: 14px;
 }
+#main-menu a.context-block-region{
+	display: none;
+}
 
 #main-menu a:hover,
 #main-menu a.active,
@@ -4642,6 +4645,115 @@ ul.no-bullets .li-content{
 	position: relative;
 	top: -1px;
 }
+
+#simplemodal-overlay {
+	background-color:#000;
+	cursor:wait;
+}
+
+/* Container */
+#simplemodal-container {
+	background-color: #fff;
+	padding: 40px;
+}
+
+#simplemodal-container a.modalCloseImg {
+	background: url(../images/modal-close.png) no-repeat;
+	width: 26px;
+	height: 26px;
+	display: inline;
+	z-index: 3200;
+	position: absolute;
+	top: 14px;
+	right: 11px;
+	cursor: pointer;
+}
+
+#video-embed-code{
+	display: none;
+	height: 210px;
+	width: 520px;
+}
+
+#video-embed-code h3 {
+	color: #000;
+	font-size: 27px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	margin: 0 0 5px 0;
+}
+#video-embed-code h5{
+	color: #000;
+	font-size: 16px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	margin: 0;
+}
+#video-embed-code textarea.embed-code{
+	background-color: #f8f8f8;
+	font-family: Monaco, "Courier New", Courier, monospace;
+	border: 1px #cfcfcf solid;
+	padding: 25px 20px;
+	margin-top: 40px;
+	resize: none;
+	width: 478px;
+	height: 50px;
+	font-size: 13px;
+	color: #494949;
+}
+#video-embed-code textarea.embed-code:focus{
+	outline: none;
+}
+a.watch-live-button {
+	border:1px solid #919c9c;
+	color:#25292b;
+	font-family:arial;
+	font-size:13px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	-o-border-radius:2px;
+	border-radius:2px;
+	border: 1px solid #919C9C;
+	color: #25292B;
+	font-family: arial;
+	font-size: 12px;
+	background:#e6e6e6;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #CBCBCB),
+		color-stop(1, #FFFFFF)
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		#CBCBCB 0%,
+		#FFFFFF 100%
+	);
+	float: left;
+	padding: 1px 10px 0 10px;
+	position: relative;
+	top: -20px;
+}
+
+a.watch-live-button:hover{
+	background:#e6e6e6;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #CBCBCB)
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		#FFFFFF 0%,
+		#CBCBCB 100%
+	);
+	color: #25292B;
+}
+
+
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
