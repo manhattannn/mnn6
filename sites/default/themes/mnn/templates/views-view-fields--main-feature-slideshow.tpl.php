@@ -22,10 +22,7 @@
 
 <?php
 
-//foreach($fields as $key => $value){
-//	print '<br>key: '.$key;
-//	print '<br>value: '.$value;
-//}
+//dpr($fields);
 
 ?>
 

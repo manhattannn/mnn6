@@ -28,4 +28,14 @@ function mnn_preprocess_page(&$vars, $hook) {
 
   $vars['body_classes'] .= ' ' . $section_class;
 	$vars['body_id'] = $body_id;
+
+  if ( isset($_GET['iframe']) && $_GET['iframe'] == 1 ) {
+    $vars['template_file'] = 'page-iframe';
+  }
+}
+
+function mnn_preprocess_node(&$vars, $hook) {
+  if ( isset($_GET['iframe']) && $_GET['iframe'] == 1 &&$vars['node']){
+    $vars['template_files'][] = 'node-iframe-' . $vars['node']->type;
+  }
 }

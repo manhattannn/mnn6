@@ -1,0 +1,26 @@
+diff --git a/plugins/context_reaction_block.inc b/plugins/context_reaction_block.inc
+index 7aaedae..a64e80a 100644
+--- plugins/context_reaction_block.inc
++++ plugins/context_reaction_block.inc
+@@ -282,6 +282,7 @@ class context_reaction_block extends context_reaction {
+             $block = (object) $block;
+             $block->context = $context->name;
+             $block->bid = "{$block->module}-{$block->delta}";
++            $block->title = isset($info[$block->bid]->title) ? $info[$block->bid]->title : NULL;
+             $block->cache = isset($info[$block->bid]->cache) ? $info[$block->bid]->cache : BLOCK_NO_CACHE;
+             $build_queue[$block->region][] = $block;
+           }
+@@ -441,11 +442,12 @@ class context_reaction_block extends context_reaction {
+ 
+       // Gather only region info from the database.
+       $theme_key = variable_get('theme_default', 'garland');
+-      $result = db_query("SELECT module,weight,delta,region,status FROM {blocks} WHERE theme = '%s' ORDER BY weight ASC", $theme_key);
++      $result = db_query("SELECT module,weight,delta,region,status,title FROM {blocks} WHERE theme = '%s' ORDER BY weight ASC", $theme_key);
+       while ($row = db_fetch_object($result)) {
+         if ($row->status && isset($block_info["{$row->module}-{$row->delta}"])) {
+           $block_info["{$row->module}-{$row->delta}"]->weight = $row->weight;
+           $block_info["{$row->module}-{$row->delta}"]->region = $row->region;
++          $block_info["{$row->module}-{$row->delta}"]->title = $row->title;
+         }
+       }
+     }
