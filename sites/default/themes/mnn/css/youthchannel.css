@@ -548,6 +548,9 @@ div#block-views-youth-channel-join-homepage-block {
 #mini-panel-youth_channel_stay_connected .content li.vimeo{
 	background-position: 0 -187px;
 }
+#mini-panel-youth_channel_stay_connected .content li.blip{
+	background-position: 0 -221px;
+}
 .section-youth-channel #main h5.title a {
 	color:#25292b;
 }
