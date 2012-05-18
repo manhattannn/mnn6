@@ -22,20 +22,20 @@
 
 <?php
 
-//foreach($fields as $key => $value){
-//	print '<br>key: '.$key;
-//	print '<br>value: '.$value;
-//}
+// foreach($fields as $key => $value){
+// 	print '<br>key: '.$key;
+// 	print '<br>value: '.$value;
+// }
 
 ?>
 
 <div class="month-date">
-	<div class="month"><?php print $fields['field_date_value']->content ?></div>
-	<div class="date"><?php print $fields['field_date_value_1']->content ?></div>
+	<div class="month"><?php print $fields['field_dates_value']->content ?></div>
+	<div class="date"><?php print $fields['field_dates_value_1']->content ?></div>
 </div>
 <div class="time-taxonomy-title clearfix">
 	<div class="time-taxonomy">
-		<div class="time"><?php print $fields['field_date_value_2']->content ?></div>
+		<div class="time"><?php print $fields['field_dates_value_2']->content ?></div>
 		<div class="taxonomy"><?php print $fields['tid']->content ?></div>
 	</div>
 	<div class="title"><?php print $fields['title']->content ?></div>
