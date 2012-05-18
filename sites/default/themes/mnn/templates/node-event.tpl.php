@@ -15,7 +15,7 @@
 
 		<div class="date-time-address">
 			<div class="date"><?php print date('F j, Y', strtotime($node->field_date[0]['value'])) ?></div>
-			<div class="time"><?php print date('g:i A', strtotime($node->field_date[0]['value'])) ?></div>
+			<div class="time"><?php print date('g:i A', strtotime($node->field_dates[0]['value'])) ?></div>
 			<div class="address"><?php print $node->field_address[0]['safe'] ?></div>
 		</div>
 
