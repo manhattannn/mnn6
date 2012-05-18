@@ -4084,11 +4084,18 @@ clear: left;
 	color: #001666;
 }
 .calendar-calendar td .inner div.calendar div.yc-sponsored-event a{
-	color: #ca4100;
-	background-color: #ffdac8;
+  color: #ca4100;
+  background-color: #ffdac8;
 }
 .calendar-calendar td .inner div.calendar div.yc-sponsored-event a:hover{
-	color: #af3901;
+  color: #af3901;
+}
+.calendar-calendar td .inner div.calendar div.el-barrio-firehouse-sponsored-event a{
+  color: #710924;
+  background-color: #e4d9dc;
+}
+.calendar-calendar td .inner div.calendar div.el-barrio-firehouse-sponsored-event a:hover{
+	color: #480517;
 }
 
 .calendar-calendar td .inner div.calendar div,
@@ -4271,7 +4278,10 @@ div.calendar-calendar td .inner div.calendar div.calendar-more a{
 	background-color: #0025b0;
 }
 #block-views-event-types-block div.yc-sponsored-event span.color{
-	background-color: #ca4100;
+  background-color: #ca4100;
+}
+#block-views-event-types-block div.el-barrio-firehouse-sponsored-event span.color{
+	background-color: #710924;
 }
 
 #block-block-calendar-intro .content{
@@ -4433,13 +4443,19 @@ background: url("../images/download.png") no-repeat scroll right 5px transparent
 
 .instructor h2,
 .view-staff-board-members .view-header h2,
-.view-job-listings .view-header h2{
+.view-job-listings .view-header h2,
+.cert-class .location h2{
 	font-size: 18px;
 	font-family: 'Droid Serif',georgia;
 	font-weight: normal;
 }
+.cert-class .location h2{
+  margin: 25px 0 0 0;
+  font-weight:bold;
+}
 .instructor h2{
-	margin: 25px 0 15px 0;
+  margin: 25px 0 15px 0;
+  font-weight: bold;
 }
 
 .view-staff-board-members .views-row-last{

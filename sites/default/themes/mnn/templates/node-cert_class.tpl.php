@@ -10,6 +10,14 @@
 		<?php print $node->content['body']['#value']; ?>
 	</div>
 
+  <div class="location">
+    <h2>Location</h2>
+    <?php 
+      foreach ($node->field_class_locations as $key => $value) {
+        print '<p>'. $value['value'] .'</p>';
+      }
+    ?>
+  </div>
 	<?php if ($node->field_instructor[0]['nid']){	$instructor = node_load($node->field_instructor[0]['nid']);	}	?>
 	<?php if ($instructor) : ?>
 	<div class="instructor">
@@ -27,7 +35,7 @@
 </article>
 
 <?php
-//print '<pre>';
-//print_r($node);
-//print '</pre>';
+// print '<pre>';
+// print_r($node);
+// print '</pre>';
 ?>
