@@ -4436,6 +4436,12 @@ background: url("../images/download.png") no-repeat scroll right 5px transparent
 	border-top: 0 none;
 	padding-top: 0;
 }
+.view-job-listings .views-row{
+  border-bottom:  1px #B2BBC0 solid;
+}
+.view-job-listings .views-row .job-listing{
+  margin: 30px 0;
+}
 .view-job-listings ul{
   list-style: inherit;
   margin: 0 0 10px 2em;
@@ -4444,6 +4450,7 @@ background: url("../images/download.png") no-repeat scroll right 5px transparent
 .instructor h2,
 .view-staff-board-members .view-header h2,
 .view-job-listings .view-header h2,
+.view-job-listings .view-empty h2,
 .cert-class .location h2{
 	font-size: 18px;
 	font-family: 'Droid Serif',georgia;

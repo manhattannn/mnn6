@@ -22,19 +22,19 @@
 
 <?php
 
-//foreach($fields as $key => $value){
-//	print '<br>key: '.$key;
-////	print '<br>value: '.$value;
-//}
+// foreach($fields as $key => $value){
+// 	print '<br>key: '.$key;
+// //	print '<br>value: '.$value;
+// }
 
 ?>
 
-<div class="job-listing">
+<div class="job-listing clearfix">
 	<h3 class="title"><?php print $fields['title']->content ?></h3>
 	<div class="type-date clearfix">
 		<div class="type"><?php print $fields['field_employment_type_value']->content ?></div>
 		<div class="date"><?php print $fields['created']->content ?></div>
 	</div>
 	<div class="body-copy"><?php print $fields['body']->content ?></div>
-	<div class="application-link"><?php print $fields['field_application_link_value']->content ?></div>
+	<div class="read-more"><?php print $fields['view_node']->content ?></div>
 </div>
