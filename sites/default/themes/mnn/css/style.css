@@ -4860,7 +4860,6 @@ img.imagecache-inline-image-half-content-width{
 
 #block-views-firehouse-events-block .views-row a,
 #block-views-firehouse-events-block .view-footer a{
-  font-weight: bold;
   color: #005B25;
 }
 #block-views-firehouse-events-block .views-row a:hover,
@@ -4894,7 +4893,16 @@ div.firehouse-item .read-more a{
   font-weight: bold;
 }
 
+#block-views-firehouse-classes-block .views-row a{
+  color: #005B25;
+}
+#block-views-firehouse-classes-block .views-row a:hover{
+  color: #003B18;
+}
 
+#block-block-community-studio-dialogue-content-header{
+  margin-top:20px;
+}
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
