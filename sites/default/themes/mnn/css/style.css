@@ -4869,8 +4869,9 @@ img.imagecache-inline-image-half-content-width{
 
 div.firehouse-items{
   border-top: 1px #b4c2c2 solid;
-  margin-top: 35px;
-  padding-top: 30px;
+  border-bottom: 1px #b4c2c2 solid;
+  margin: 35px 0 0 0;
+  padding: 30px 0 10px 0;
 }
 div.firehouse-item{
   padding-bottom: 30px;
