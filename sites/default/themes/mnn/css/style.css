@@ -158,7 +158,9 @@ h1, h2, h3, h4, h5 {
 	font-family:'Droid Serif', Georgia, serif;
 }
 
-h3, #block-views-homepage-news-with-image .view-header h2 {
+h3, 
+#block-views-homepage-news-with-image .view-header h2,
+#block-views-firehouse-landing-news-with-image .view-header h2 {
 	font-size:24px;
 	color:#25292b;
 	font-weight:normal;
@@ -854,7 +856,8 @@ font-family:arial;
 Homepage News Styles
 --------------------------------------------------------------------------------*/
 
-#block-views-homepage-news-with-image {
+#block-views-homepage-news-with-image,
+#block-views-firehouse-landing-news-with-image {
 	width:300px;
 	float:left;
 	padding-right:20px;
@@ -887,7 +890,8 @@ h3.title {
 	margin-bottom:14px;
 } 
 
-#block-views-homepage-news-grid {
+#block-views-homepage-news-grid,
+#block-views-firehouse-landing-news-grid {
 	float:left;
 	width:620px;
 	padding-top:30px;
@@ -896,28 +900,38 @@ h3.title {
 	border-bottom: 1px solid #b4c2c2;
 	height: 500px;
 }
+#block-views-firehouse-landing-news-grid {
+  width: 300px;
+}
 
 .front #content-header {
 	display:none;
 }
 
-#block-views-homepage-news-grid .views-row {
+#block-views-homepage-news-grid .views-row,
+#block-views-firehouse-landing-news-grid .views-row {
 	width:300px;
 	float:left;
 	margin-bottom: 36px;
 }
 
-#block-views-homepage-news-grid .view-header {
+#block-views-homepage-news-grid .view-header,
+#block-views-firehouse-landing-news-grid .view-header {
 	width:620px;
   	margin-bottom: 14px;
-	height:25px;
+	height:37px;
+}
+#block-views-firehouse-landing-news-grid .view-header {
+  width: 300px;
 }
 
-.view-homepage-news-grid .views-row-odd {
+#block-views-homepage-news-grid .views-row-odd,
+#block-views-firehouse-landing-news-grid .views-row-odd {
 	margin-right:20px;
 }
 
-.view-homepage-news-grid .views-row .content {
+#block-views-homepage-news-grid .views-row .content,
+#block-views-firehouse-landing-news-grid .views-row .content {
 	width:270px;
 }
 
@@ -1553,7 +1567,7 @@ Producer Styles
 }
 
 .producer-info p, .organization-info p:first-child, .youth-channel p,
-.about-info p:first-child {
+.about-info p:first-child, .community-studio-dialogue p:first-child {
 	font-size:18px;
 	line-height:24px;
 }
@@ -1977,7 +1991,8 @@ input:valid, textarea:valid {
 News
 --------------------------------------------------------------------------------*/
 
-.page-news #content-area h2.title {
+.page-news #content-area h2.title,
+.page-about-us-firehouse-news #content-area h2.title {
 	font-size:24px;
 	padding-bottom:20px;
 	padding-top:20px;
@@ -1998,17 +2013,20 @@ News
 	margin-right: 12px;
 }
 
-.page-news .body-content {
+.page-news .body-content,
+.page-about-us-firehouse-news .body-content{
 	margin-top:30px;
 }
 
-.page-news .body-content p  {
+.page-news .body-content p,
+.page-about-us-firehouse-news .body-content p  {
 	line-height:20px;
 	font-size:14px;
 	margin: 16px 0;
 }
 
-.page-news .view-content {
+.page-news .view-content,
+.page-about-us-firehouse-news .view-content {
 	width:620px;
 }
 
@@ -3865,6 +3883,7 @@ display:none;
 	line-height: 21px;
 }
 
+.page-about-us-firehouse-news .addthis_toolbox,
 .page-news .addthis_toolbox {
 	margin-top:0px;
 }
@@ -3877,7 +3896,8 @@ display:none;
     width: 100%;
 }
 
-.page-news .view-content .read-more {
+.page-news .view-content .read-more,
+.page-about-us-firehouse-news .view-content .read-more {
     color: #005B25;
     float: none;
     margin-bottom: 20px;
@@ -3899,6 +3919,7 @@ display:none;
     padding-top: 30px;
 }
 
+.page-about-us-firehouse-news #content-area h2.title,
 .page-news #content-area h2.title {
     font-size: 24px;
     padding-bottom: 12px;
@@ -4785,16 +4806,117 @@ img.imagecache-inline-image-half-content-width{
 	margin: 0 20px 20px 0;
 }
 
+.community-studio-dialogue .main-image{
+  float: right;
+  width: 305px;
+  margin:0 0 20px 20px;
+}
 
+#block-block-community-studio-dialogue-content-header h4{
+  font-size: 16px;
+  font-weight: normal;
+}
+.node-type-community-studio-dialogue #content h1{
+  margin-top: 10px;
+}
+
+#block-menu-firehouse-nav .top{
+  display: none;
+}
+#block-menu-firehouse-nav .menu li{
+  list-style-image: none;
+  list-style-type: none;
+  padding: 10px 0;
+  border-bottom: 1px #ebebeb solid;
+  margin: 0;
+}
+#block-menu-firehouse-nav .menu li.last{
+  border-bottom: 0 none;
+}
+
+#block-views-community-studio-dialogues-block{
+  margin-top: 35px;
+  border-top: 1px #b4c2c2 solid;
+  padding-top: 40px;
+}
+#block-views-community-studio-dialogues-block .views-row{
+  padding-bottom: 40px;
+}
+#block-views-community-studio-dialogues-block .photo{
+  float: left;
+}
+#block-views-community-studio-dialogues-block .copy-column{
+  margin-left: 205px;
+}
+#block-views-community-studio-dialogues-block h2{
+  font-family: Arial;
+  font-size: 18px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+#block-views-community-studio-dialogues-block .read-more a{
+  font-weight: bold;
+}
+
+#block-views-firehouse-events-block .views-row a,
+#block-views-firehouse-events-block .view-footer a{
+  color: #005B25;
+}
+#block-views-firehouse-events-block .views-row a:hover,
+#block-views-firehouse-events-block .view-footer a:hover{
+  color: #003B18;
+}
+
+div.firehouse-items{
+  border-top: 1px #b4c2c2 solid;
+  border-bottom: 1px #b4c2c2 solid;
+  margin: 35px 0 0 0;
+  padding: 30px 0 10px 0;
+}
+div.firehouse-item{
+  padding-bottom: 30px;
+}
+div.firehouse-item .photo{
+  float: left;
+}
+div.firehouse-item .copy-column{
+  margin-left:203px;
+}
+div.firehouse-item h2{
+  font-family: Arial;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+div.firehouse-item .read-more{
+  margin-top: 10px;
+}
+div.firehouse-item .read-more a{
+  font-weight: bold;
+}
+
+#block-views-firehouse-classes-block .views-row a{
+  color: #005B25;
+}
+#block-views-firehouse-classes-block .views-row a:hover{
+  color: #003B18;
+}
+
+#block-block-community-studio-dialogue-content-header{
+  margin-top:20px;
+}
+
+#block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+#block-views-community-studio-dialogues-block .views-row:after,
+.clearfix:after { clear: both; }
+#block-views-community-studio-dialogues-block .views-row,
+.clearfix { zoom: 1; }
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 .invisible { visibility: hidden; }
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
 
 
 @media all and (orientation:portrait) {
