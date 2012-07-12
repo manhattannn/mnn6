@@ -7,6 +7,19 @@ var site = (function(){
 		inPageScroll();
 		setupModal();
 		setupSelectAll();
+		setContentSidebarHeights();
+	}
+
+	function setContentSidebarHeights(){
+		if ($('#content-inner').length && $('#sidebar-second').length){
+			var extra = Math.abs($('#content-inner').outerHeight(true) - $('#sidebar-second').outerHeight(true));
+			if ($('#content-inner').outerHeight(true) > $('#sidebar-second').outerHeight(true)){
+				$('#sidebar-second').height($('#sidebar-second').height() + extra);
+			}
+			else{
+				$('#content-inner').height($('#content-inner').height() + extra);
+			}
+		}
 	}
 
 	function imageCaptions(){
