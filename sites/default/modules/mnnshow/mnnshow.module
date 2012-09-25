@@ -979,10 +979,10 @@ function _mnnshow_block_publisher_info(){
     $sql = 'SELECT DISTINCT s.project_id, s.public_contact_info AS name, s.public_email_value AS email ';
     $sql .= 'FROM {ac_report_project_cache} s ';
     $sql .= 'WHERE s.project_id = "' . $path[1] . '"';
-//      $sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
-//      $sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
-//      $sql .= 'ON s.exec_producer_id = p.producer_id ';
-//      $sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+    // $sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+    // $sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+    // $sql .= 'ON s.exec_producer_id = p.producer_id ';
+    // $sql .= 'WHERE s.project_id = "' . $path[1] . '"';
     $sql = db_rewrite_sql($sql);
 
     $result = db_query($sql);
@@ -1225,11 +1225,11 @@ class MnnShow {
     $this->yc_weekend_end   = '12:00:00';
 
     $this->start_datetime = $start_datetime;
-//      watchdog('mnnshow', '6 $start_datetime: '.var_export($start_datetime, true), array(), WATCHDOG_INFO);
-//      watchdog('mnnshow', '7 $duration: '.var_export($duration, true), array(), WATCHDOG_INFO);
+    // watchdog('mnnshow', '6 $start_datetime: '.var_export($start_datetime, true), array(), WATCHDOG_INFO);
+    // watchdog('mnnshow', '7 $duration: '.var_export($duration, true), array(), WATCHDOG_INFO);
     $this->duration_actual = round($duration / 30) * 30; // round to nearest 15 minutes
     $this->duration = $this->duration_actual;
-//      watchdog('mnnshow', '8 $this->duration: '.var_export($this->duration, true), array(), WATCHDOG_INFO);
+    // watchdog('mnnshow', '8 $this->duration: '.var_export($this->duration, true), array(), WATCHDOG_INFO);
     $this->is_youthchannel = $is_youthchannel;
 
     $this->setTimeProperties();
@@ -1324,10 +1324,10 @@ class MnnShow {
           $this->duration -= intval($diff->format('%i'));
         }
         if ($this->end_datetime > $end){
-//            watchdog('mnnshow', '3 $this->end_datetime: '.var_export($this->end_datetime, true), array(), WATCHDOG_INFO);
-//            watchdog('mnnshow', '4 $end: '.var_export($end, true), array(), WATCHDOG_INFO);
+          // watchdog('mnnshow', '3 $this->end_datetime: '.var_export($this->end_datetime, true), array(), WATCHDOG_INFO);
+          // watchdog('mnnshow', '4 $end: '.var_export($end, true), array(), WATCHDOG_INFO);
           $diff = $this->end_datetime->diff($end);
-//            watchdog('mnnshow', '5 $diff: '.var_export($diff, true), array(), WATCHDOG_INFO);
+          // watchdog('mnnshow', '5 $diff: '.var_export($diff, true), array(), WATCHDOG_INFO);
           $this->duration -= intval($diff->format('%i'));
         }
       }
