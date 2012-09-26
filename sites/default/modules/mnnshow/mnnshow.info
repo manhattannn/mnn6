@@ -1,6 +1,7 @@
 name = "MNN Show"
 description = "Show info and schedule."
 dependencies[] = jquery_ui
+dependencies[] = ctools
 version = "6.x-1.0"
 core = "6.x"
 package = "MNN"
