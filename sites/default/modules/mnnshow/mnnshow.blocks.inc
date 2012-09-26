@@ -1,0 +1,280 @@
+<?php
+
+ctools_include('mnnshow.common', 'mnnshow', '');
+
+function _mnnshow_block_publisher_info(){
+  $path = drupal_get_path_alias($_GET['q']);
+  $path = explode('/', $path);
+  if ($path[0] == 'show-info' && is_numeric($path[1])) {
+    $sql = 'SELECT DISTINCT s.project_id, s.public_contact_info AS name, s.public_email_value AS email ';
+    $sql .= 'FROM {ac_report_project_cache} s ';
+    $sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+    // $sql = 'SELECT DISTINCT s.project_id, p.producer_id, p.display_name, p.email, p.phone_primary ';
+    // $sql .= 'FROM {ac_report_project_cache} s INNER JOIN {ac_report_producer_cache} p ';
+    // $sql .= 'ON s.exec_producer_id = p.producer_id ';
+    // $sql .= 'WHERE s.project_id = "' . $path[1] . '"';
+    $sql = db_rewrite_sql($sql);
+
+    $result = db_query($sql);
+    while ($row = db_fetch_object($result)) {
+      if ($row->name)
+        $content = '<div class="name"><span>'. t('Produced by') .'</span><br />'. $row->name .'</div>';
+      if ($row->website)
+        $content .= '<div class="website"><span>'. t('Website') .'</span><br />'. $row->website .'</div>';
+      if ($row->email)
+        $content .= '<div class="email"><span>'. t('Email by') .'</span><br /><a href="mailto:'. $row->email .'">'. $row->email .'</a></div>';
+      if ($row->phone)
+        $content .= '<div class="phone"><span>'. t('Phone') .'</span><br />'. $row->phone .'</div>';
+    }
+
+    return $content;
+  }
+  else {
+    return t('Producer info not found');
+  }
+}
+
+function _mnnshow_block_shows_filter(){
+  $path = drupal_get_path_alias($_GET['q']);
+  $path = explode('/', $path);
+  if ($path[0] == 'shows' && $path[1] == 'past-shows' && $path[2] == 'category') { // past shows with category
+    $is_current_shows = false;
+    $is_alphabetical = false;
+    if ($path[3])
+      $current_category = $path[3];
+    else
+      $current_category = '';
+  }
+  elseif ($path[0] == 'shows' && $path[1] == 'past-shows') { // past shows alphabetical
+    $is_current_shows = false;
+    $is_alphabetical = true;
+    if ($path[2])
+      $current_category = $path[2];
+    else
+      $current_category = 'a';
+  }
+  elseif ($path[0] == 'shows' && $path[1] == 'category') { // current shows with category
+    $is_current_shows = true;
+    $is_alphabetical = false;
+    if ($path[2])
+      $current_category = $path[2];
+    else
+      $current_category = '';
+  }
+  else { // current shows alphabetical
+    $is_current_shows = true;
+    $is_alphabetical = true;
+    if ($path[1])
+      $current_category = $path[1];
+    else
+      $current_category = 'a';
+  }
+
+  // build the 'viewing' section
+  $content = '<div class="viewing">Viewing:';
+  if ($is_current_shows){
+    $content .= '<span class="current">Current Shows</span>';
+    if ($is_alphabetical)
+      $content .= '<span class="past"><a href="/shows/past-shows">Past Shows</a></span>';
+    else
+      $content .= '<span class="past"><a href="/shows/past-shows/category/'.$current_category.'">Past Shows</a></span>';
+  }
+  else{
+    if ($is_alphabetical)
+      $content .= '<span class="current"><a href="/shows">Current Shows</a></span>';
+    else
+      $content .= '<span class="current"><a href="/shows/category/'.$current_category.'">Current Shows</a></span>';
+    $content .= '<span class="past">Past Shows</span>';
+  }
+  $content .= '</div>';
+
+  // build the 'sort by' section
+  $content .= '<div class="sort-by">Sort By:';
+  if ($is_alphabetical){
+    $content .= '<span class="alphabetical">Alphabetical</span>';
+    if ($is_current_shows)
+      $content .= '<span class="category"><a href="/shows/category">Category</a></span>';
+    else
+      $content .= '<span class="category"><a href="/shows/past-shows/category">Category</a></span>';
+  }
+  else{
+    if ($is_current_shows)
+      $content .= '<span class="alphabetical"><a href="/shows">Alphabetical</a></span>';
+    else
+      $content .= '<span class="alphabetical"><a href="/shows/past-shows">Alphabetical</a></span>';
+    $content .= '<span class="category">Category</span>';
+    $content .= _mnnshow_block_category_dropdown($is_current_shows, $current_category);
+  }
+  $content .= '</div>';
+
+  // build the alphabet links (if necessary)
+  if ($is_alphabetical){
+    $content .= _mnnshow_block_alphabet_links($is_current_shows, $current_category);
+  }
+
+  return $content;
+}
+
+function _mnnshow_block_watch_now(){
+  $channel_info = mnnshow_get_channels();
+  $channels = array();
+
+  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  //$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
+  $query = 'SELECT s.project_id, s.title, a.channel ';
+  $query .= 'FROM {ac_report_project_cache} s ';
+  $query .= 'LEFT JOIN {ac_report_airing_cache} a ON s.project_id = a.project_id ';
+  $query .= 'WHERE (a.start_time <= "'.$now->format('Y-m-d G:i:s').'" AND DATE_ADD(a.end_time, INTERVAL 2 MINUTE) >= "'.$now->format('Y-m-d G:i:s').'") ';
+  $query .= 'ORDER BY a.channel ASC';
+
+  $result = db_query(db_rewrite_sql($query));
+  while ($data = db_fetch_object($result)) {
+    $show = array(
+      'id' => $data->project_id,
+      'title' => $data->title,
+      'url' => _mnnshow_get_show_href($data->title, $data->project_id)
+    );
+    switch ($data->channel){
+      case 'Channel 1':
+        if (!isset($channels[1]))
+          $channels[1] = $show;
+        break;
+      case 'Channel 2':
+        if (!isset($channels[2]))
+          $channels[2] = $show;
+        break;
+      case 'Channel 3':
+        if (!isset($channels[3]))
+          $channels[3] = $show;
+        break;
+      case 'Channel 4':
+        if (!isset($channels[4]))
+          $channels[4] = $show;
+        break;
+    }
+  }
+
+  $content = "<div class='whats-on-now'>";
+  $content .= "<h3>What's on Now</h3>";
+  $content .= "<time>".$now->format('M j, Y g:i a')."</time>";
+  $content .= "<p class='view-sched'><a href='/schedule'>View Schedule</a></p>";
+  $content .= "</div>";
+
+  $content .= "<ul>";
+  for ($i = 1; $i <= 4; $i++){
+    $content .= '<li id="channel'.$i.'"><div class="channel-info">';
+    $content .= '<h4>'.$channel_info[$i]['name'].'</h4>';
+    $content .= '<h5><a href="/'.$channel_info[$i]['watchLiveUrl'].'">'.$channels[$i]['title'].'</h5>';
+    $content .= '<p class="watch-now-link"><a href="/'.$channel_info[$i]['watchLiveUrl'].'">Watch Now</a></p>';
+    $content .= "<div class='channel-about'>";
+    $content .= "<p class='channel-description'>".$channel_info[$i]['description']."</p>";
+    $content .= "<ul class='cable-channel-list'>";
+    foreach ($channel_info[$i]['tvChannels'] as $tvStation){
+      $content .= '<li>'.$tvStation['tvStationName'].'<span class="cable-number"">'.$tvStation['tvStationChannel'].'</span></li>';
+    }
+    $content .= "</ul>";
+    $content .= "</div>";
+    $content .= "</div>";
+    $content .= "</li>";
+  }
+  $content .= "</ul>";
+
+  return $content;
+}
+
+function _mnnshow_block_geolocator_and_channel_listing(){
+  $content = '<div class="col"><div class="locator"></div></div>';
+  $content .= '<div class="col">';
+  $content .= _mnnshow_block_channel_listing();
+  $content .= '</div>';
+  return $content;
+}
+
+function _mnnshow_block_channel_listing(){
+  $channel_info = mnnshow_get_channels();
+
+  $content = '<table class="channel-grid">';
+  // heading row
+  $content .= '<tr><th></th>'; // first col is blank
+  for ($i = 0; $i < count($channel_info[1]['tvChannels']); $i++){
+    $content .= '<th>'.$channel_info[1]['tvChannels'][$i]['tvStationName'].'</th>';
+  }
+  $content .= '</tr>';
+  // channels
+  for ($i = 1; $i <= count($channel_info); $i++){
+    $content .= '<tr>';
+    $content .= '<th>'.$i.' '.$channel_info[$i]['name'].'</th>';
+    for ($j = 0; $j < count($channel_info[1]['tvChannels']); $j++){
+      $content .= '<td>'.$channel_info[$i]['tvChannels'][$j]['tvStationChannel'].'</td>';
+    }
+    $content .= '</tr>';
+  }
+
+  $content .= '</table>';
+  return $content;
+}
+
+function _mnnshow_block_yc_channel_listing(){
+  $channel_info = mnnshow_get_channels();
+
+  //--- youth channel plays on channel 4
+
+  $content = '<table class="channel-grid">';
+  // heading row
+  $content .= '<tr><th></th><th>Youth Channel</th></tr>';
+  // channels
+  for ($i = 0; $i < count($channel_info[4]['tvChannels']); $i++){
+    $content .= '<tr>';
+    $content .= '<th>'.$channel_info[4]['tvChannels'][$i]['tvStationName'].'</th>';
+    $content .= '<td>'.$channel_info[4]['tvChannels'][$i]['tvStationChannel'].'</td>';
+    $content .= '</tr>';
+  }
+  $content .= '</table>';
+  return $content;
+}
+
+function _mnnshow_block_yc_channel_intro(){
+  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  $day = intval($now->format('w'));
+  if ($day > 0 && $day < 6) {
+    // weekday
+    $start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
+    $end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
+  }
+  else {
+    // weekend
+    $start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
+    $end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
+  }
+
+  $content = '<p>Youth Channel broadcasts from 3 - 5 PM on weekdays,<br>and 7 AM - 12 PM on weekends.</p>';
+  if (_mnnshow_is_date_in_range($start, $end, $now))
+    $content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
+  else
+    $content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/video">our videos</a>.</p>';
+
+  return $content;
+}
+
+function _mnnshow_block_yc_channel_is_playing_now(){
+  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  $day = intval($now->format('w'));
+  if ($day > 0 && $day < 6) {
+    // weekday
+    $start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
+    $end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
+  }
+  else {
+    // weekend
+    $start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
+    $end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
+  }
+
+  if (_mnnshow_is_date_in_range($start, $end, $now))
+    $content = '<p>Youth Channel is playing right now on MNN - <a href="/live/4-culture-channel">Watch Online Now!</a></p>';
+  else
+    $content = '';
+
+  return $content;
+}
+
