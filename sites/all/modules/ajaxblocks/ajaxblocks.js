@@ -10,7 +10,7 @@ Drupal.ajaxblocksSendRequest = function (request, delay) {
     return;
   }
   $.ajax({
-    url: Drupal.settings.basePath + "ajaxblocks",
+    url: ((typeof Drupal.settings.ajaxblocks_path !== 'undefined') ? Drupal.settings.ajaxblocks_path : (Drupal.settings.basePath + "ajaxblocks")),
     type: "GET",
     dataType: "json",
     data: request + '&nocache=1',
@@ -36,19 +36,25 @@ Drupal.ajaxblocksSetBlockContent = function (id, data) {
   if (!wrapper) return;
   var context = wrapper.parent();
   if (!context) return;
+  $('#block-' + id).addClass('ajaxblocks-loaded');
   context.html(data['content']);
   if (data['ajaxblocks_settings']) $.extend(true, Drupal.settings, data['ajaxblocks_settings']);
   Drupal.attachBehaviors(context);
 }
 
-if (Drupal.jsEnabled) $(document).ready(function () {
-  if (typeof Drupal.settings.ajaxblocks !== 'undefined') {
-    Drupal.ajaxblocksSendRequest(Drupal.settings.ajaxblocks, Drupal.settings.ajaxblocks_delay);
-  }
-});
 
-if (Drupal.jsEnabled) $(window).ready(function () {
-  if (typeof Drupal.settings.ajaxblocks_late !== 'undefined') {
-    Drupal.ajaxblocksSendRequest(Drupal.settings.ajaxblocks_late, Drupal.settings.ajaxblocks_late_delay);
-  }
-});
+if (Drupal.jsEnabled) {
+
+  $(document).ready(function () {
+    if (typeof Drupal.settings.ajaxblocks !== 'undefined') {
+      Drupal.ajaxblocksSendRequest(Drupal.settings.ajaxblocks, Drupal.settings.ajaxblocks_delay);
+    }
+  });
+
+  $(window).load(function () {
+    if (typeof Drupal.settings.ajaxblocks_late !== 'undefined') {
+      Drupal.ajaxblocksSendRequest(Drupal.settings.ajaxblocks_late, Drupal.settings.ajaxblocks_late_delay);
+    }
+  });
+
+}

@@ -42,15 +42,13 @@
 */
 // Add standard block class
 $default_class = 'clear-block block'. ($block->module ? ' block-'. $block->module : '') . ' ' . $block_zebra;
-if (function_exists(block_class))
-	$default_class .= ' ' . block_class($block); // 'block_edit' module
 
 if (!isset($block->attributes))
   $block->attributes = array();
 if (!isset($block->attributes['class']))
-  $block->attributes['class'] = $default_class;
+  $block->attributes['class'] = $block_classes;
 else
-  $block->attributes['class'] = $default_class .' '. $block->attributes['class'];
+  $block->attributes['class'] = $block_classes .' '. $block->attributes['class'];
 
 if (!isset($block->attributes['id'])) {
   /*
