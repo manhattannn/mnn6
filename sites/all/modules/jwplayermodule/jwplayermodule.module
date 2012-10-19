@@ -68,6 +68,9 @@ function jwplayermodule_enable() {
 
 /**
  * Implementation of hook_help.
+ * @param $path
+ * @param $arg
+ * @return string
  */
 function jwplayermodule_help($path, $arg) {
   $output = "";
@@ -81,6 +84,7 @@ function jwplayermodule_help($path, $arg) {
 
 /**
  * Implementation of hook_perm.
+ * @return array
  */
 function jwplayermodule_perm() {
   return array("administer jwplayermodule");
@@ -88,6 +92,7 @@ function jwplayermodule_perm() {
 
 /**
  * Implementation of hook_menu.
+ * @return array
  */
 function jwplayermodule_menu() {
   $items = array();
@@ -153,12 +158,16 @@ function jwplayermodule_menu() {
 /**
  * Implementation of hook_nodeapi.  This method processes jwplayer tag and
  * begins the embed process.
+ * @param $node
+ * @param $op
+ * @param $a3
+ * @param $a4
  */
 function jwplayermodule_nodeapi(&$node, $op, $a3, $a4) {
   switch ($op) {
     case "view":
       $text = $node->content["body"]["#value"];
-      $node->content["body"]["#value"] = tag_processor($text);
+      $node->content["body"]["#value"] = theme("jwplayermodule_tag_processor", $text, $node);
       break;
   }
 }
@@ -167,67 +176,14 @@ function jwplayermodule_comment(&$comment, $op) {
   switch ($op) {
     case "view":
       $text = $comment->comment;
-      $comment->comment = tag_processor($text);
+      $comment->comment = theme("jwplayermodule_tag_processor", $text);
       break;
   }
 }
 
-function tag_processor($content) {
-  $text = $content;
-  $regex = "/\[(\<br \/\>|\s)*jwplayer(\<br \/\>|\s)*(\|([a-zA-Z0-9_.\s]+=[-a-zA-Z0-9+.,\(\){}:&@#\/\?<>\"%=~_\'\"\s]+))*(\<br \/\>|\s)*\]/";
-  if (preg_match_all($regex, $text, $matches)) {
-    $patterns = array();
-    $players = array();
-    //Have to process multiple matches since more than one player can be on a node.
-    foreach ($matches[0] as $match) {
-      $tag = $match;
-      $config = "";
-      $flash_vars = array();
-      $tag = str_replace("<br />", "", $tag);
-      $tag = preg_replace("/\[(\s)*jwplayer(\s)*(\||\])/", "", $tag);
-      $tag = str_replace("]", "", $tag);
-      $args = preg_split("/\|/", $tag);
-      //For the current match, process each parameter.
-      foreach ($args as $fvar) {
-        $key_val = preg_split("/=/", $fvar, 2);
-        switch (trim($key_val[0])) {
-          case "config":
-            $config = trim($key_val[1]);
-            break;
-          case "file":
-          case "image":
-          case "html5_file":
-          case "download_file":
-            //Drupal automatically converts URLs into <a> tags.  Must strip this out.
-            $file = preg_replace("/<(.)*>/U", "", $key_val[1]);
-            $attachment = theme("jwplayermodule_get_attachment_url", trim($file), $node);
-            if ($attachment) {
-              $flash_vars[trim($key_val[0])] = $attachment;
-            }
-            else {
-              $flash_vars[trim($key_val[0])] = trim($file);
-            }
-            break;
-          default:
-            if ($key_val[0] != "") {
-              $flash_vars[trim($key_val[0])] = trim($key_val[1]);
-            }
-            break;
-        }
-      }
-      //If the file and image tags haven't been set, try to find content on the node.
-      $flash_vars["file"] = $flash_vars["file"] ? $flash_vars["file"] : theme("jwplayermodule_get_attachment_url", 0, $node, TRUE);
-      $flash_vars["image"] = $flash_vars["image"] ? $flash_vars["image"] : theme("jwplayermodule_get_attachment_url", 1, $node, TRUE);
-      $patterns[] = $regex;
-      $players[] = theme("jwplayermodule_render_player", $config, $flash_vars);
-    }
-    $text = preg_replace($patterns, $players, $text, 1);
-  }
-  return $text;
-}
-
 /**
  * Implementation of hook_theme.
+ * @return array
  */
 function jwplayermodule_theme() {
   return array(
@@ -251,6 +207,13 @@ function jwplayermodule_theme() {
       "arguments" => array(
         "form" => NULL,
       ),
+    ),
+    "jwplayermodule_tag_processor" => array(
+      "file" => "jwplayermodule_theme.inc",
+      "arguments" => array(
+        "content" => NULL,
+        "node" => NULL
+      )
     )
   );
 }
@@ -297,39 +260,70 @@ function jwplayermodule_add_file_check() {
 }
 
 function install_player_from_package($file) {
-  $zip = new ZipArchive();
-  if ($zip->open($file)) {
-    $contents = "";
-    $dir = $zip->getNameIndex(0);
-    $fp = $zip->getStream($dir . "player.swf");
-    if ($fp) {
-      while(!feof($fp)) $contents .= fread($fp, 2);
-      fclose($fp);
-    } else {
-      form_set_error("", t("This is not a valid player package."));
-    }
-    if (!file_save_data($contents, LongTailFramework::getPrimaryPlayerPath(), FILE_EXISTS_REPLACE)) {
-      form_set_error("", t("There was an error trying to save player.swf."));
-    }
-    $fp = $zip->getStream($dir . "yt.swf");
-    if ($fp) {
+  if (class_exists("ZipArchive")) {
+    $zip = new ZipArchive();
+    if ($zip->open($file)) {
       $contents = "";
-      while(!feof($fp)) $contents .= fread($fp, 2);
-      fclose($fp);
-      if (!file_save_data($contents, str_replace("player.swf", "yt.swf", LongTailFramework::getPrimaryPlayerPath()), FILE_EXISTS_REPLACE)) {
-        form_set_error("", t("There was an error trying to save yt.swf."));
+      $dir = $zip->getNameIndex(0);
+      $fp = $zip->getStream($dir . "player.swf");
+      if ($fp) {
+        while(!feof($fp)) $contents .= fread($fp, 2);
+        fclose($fp);
+      } else {
+        form_set_error("", t("This is not a valid player package."));
+      }
+      if (!file_save_data($contents, LongTailFramework::getPrimaryPlayerPath(), FILE_EXISTS_REPLACE)) {
+        form_set_error("", t("There was an error trying to save player.swf."));
+      }
+      $fp = $zip->getStream($dir . "yt.swf");
+      if ($fp) {
+        $contents = "";
+        while(!feof($fp)) $contents .= fread($fp, 2);
+        fclose($fp);
+        if (!file_save_data($contents, str_replace("player.swf", "yt.swf", LongTailFramework::getPrimaryPlayerPath()), FILE_EXISTS_REPLACE)) {
+          form_set_error("", t("There was an error trying to save yt.swf."));
+        }
+      }
+      $fp = $zip->getStream($dir . "jwplayer.js");
+      if ($fp) {
+        $contents = "";
+        while(!feof($fp)) $contents .= fread($fp, 2);
+        fclose($fp);
+        if (!file_save_data($contents, LongTailFramework::getEmbedderPath(), FILE_EXISTS_REPLACE)) {
+          form_set_error("", t("There was an error trying to save jwplayer.js."));
+        }
+      }
+      $zip->close();
+      file_delete($file);
+    }
+  } else {
+    zip_fallback($file);
+  }
+}
+
+function zip_fallback($file) {
+  if (file_exists(JWPLAYER_MODULE_DIR . "/framework/pclzip.lib.php")) {
+    require_once('framework/pclzip.lib.php');
+    $zip = new PclZip($file);
+    $archive_files = $zip->extract(PCLZIP_OPT_EXTRACT_AS_STRING);
+    $dir = $archive_files[0]["filename"];
+    foreach($archive_files as $archive_file) {
+      if ($archive_file["filename"] == $dir . "player.swf" || $archive_file["filename"] == $dir . "player-licensed.swf") {
+        if (!file_save_data($archive_file["content"], LongTailFramework::getPrimaryPlayerPath(), FILE_EXISTS_REPLACE)) {
+          form_set_error("", t("There was an error trying to save player.swf."));
+        }
+      } else if ($archive_file["filename"] == $dir . "yt.swf") {
+        if (!file_save_data($archive_file["content"], str_replace("player.swf", "yt.swf", LongTailFramework::getPrimaryPlayerPath()), FILE_EXISTS_REPLACE)) {
+          form_set_error("", t("There was an error trying to save yt.swf."));
+        }
+      } else if ($archive_file["filename"] == $dir . "jwplayer.js") {
+        if (!file_save_data($archive_file["content"], LongTailFramework::getEmbedderPath(), FILE_EXISTS_REPLACE)) {
+          form_set_error("", t("There was an error trying to save jwplayer.js."));
+        }
       }
     }
-    $fp = $zip->getStream($dir . "jwplayer.js");
-    if ($fp) {
-      $contents = "";
-      while(!feof($fp)) $contents .= fread($fp, 2);
-      fclose($fp);
-      if (!file_save_data($contents, LongTailFramework::getEmbedderPath(), FILE_EXISTS_REPLACE)) {
-        form_set_error("", t("There was an error trying to save jwplayer.js."));
-      }
-    }
-    $zip->close();
     file_delete($file);
+  } else {
+    form_set_error("", t("Unzipping is currently not supported by your PHP installation.  For an alternative please refer to the following <a href='http://www.longtailvideo.com/support/addons/jw-player-module-for-drupal/10650/getting-started-with-the-drupal-module#Installation' target='_blank'>support document</a>."));
   }
 }

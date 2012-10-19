@@ -79,9 +79,11 @@ class LongTailFramework
 
   /**
    * Save the Player configuration to an xml file.
-   * @param string $xmlString The xml formatted content to be saved.
+   * @param $xml_string
    * @param string $target Specified config file to save to.  Default is null,
    * in which case the currently loaded config is used.
+   * @return bool
+   * @internal param string $xmlString The xml formatted content to be saved.
    */
   public static function saveConfig($xml_string, $target = "") {
     $xml_file = "";
@@ -161,7 +163,6 @@ class LongTailFramework
     $results = array();
     $handler = @opendir(JWPLAYER_FILES_DIR . "/configs");
     if (!$handler) return false;
-    $results[] = "New Player";
     while ($file = readdir($handler)) {
       if ($file != "." && $file != ".." && strstr($file, ".xml")) {
         $results[] = str_replace(".xml", "", $file);
@@ -177,7 +178,7 @@ class LongTailFramework
    */
   public static function configsAvailable() {
     $configs = LongTailFramework::getConfigs();
-    if ($configs && count($configs) > 1) {
+    if ($configs && count($configs) > 0) {
       return true;
     }
     return false;
@@ -195,7 +196,7 @@ class LongTailFramework
   }
 
   /**
-   * Get the complete path to the JW Embbeder javascript file.
+   * Get the complete path to the JW Embedder javascript file.
    * @return string The path to the JW Embedder.
    */
   public static function getEmbedderPath() {
@@ -255,7 +256,7 @@ class LongTailFramework
   }
 
   /**
-   * Get the complete url to the primary (and execpted) player location.
+   * Get the complete url to the primary (and expected) player location.
    * @return string The url to the player.
    */
   public static function getPrimaryPlayerURL() {
@@ -281,7 +282,7 @@ class LongTailFramework
 
   /**
    * For the given Player configuration, returns the LTAS details.
-   * @param string $config The name of the Player configuration
+   * @internal param string $config The name of the Player configuration
    * @return array An array containing the enabled state and channel code.
    */
   public static function getLTASConfig() {
@@ -306,7 +307,8 @@ class LongTailFramework
 
   /**
    * Generates a list of the available plugins along with their flashvars and default values.
-   * @param string $config (optional) Pass in if you wish to load the plugin enabled state and flashvar values.
+   * @param null $config_values
+   * @internal param string $config (optional) Pass in if you wish to load the plugin enabled state and flashvar values.
    * @return array The list of available plugins
    */
   public static function getPlugins(&$config_values = null) {
@@ -377,7 +379,9 @@ class LongTailFramework
 
   /**
    * Generates the SWFObjectConfig object which acts as a wrapper for the SWFObject javascript library.
-   * @param array $flashVars The array of flashVars to be used in the embedding
+   * @param $flash_vars
+   * @param bool $useJWEmbedder
+   * @internal param array $flashVars The array of flashVars to be used in the embedding
    * @return SWFObjectConfig The configured SWFObjectConfig object to be used for embedding
    */
   public static function generateSWFObject($flash_vars, $useJWEmbedder = false) {
@@ -391,7 +395,7 @@ class LongTailFramework
    * Generates the SWFObjectConfig object which acts as a wrapper for the SWFObject javascript library.
    * This will embed the temporary swf file uploaded by a plugin.
    * @param array $flash_vars The array of flashvars to be used in the embedding
-   * @return SWFObjectConfig The configured SWFOjbectConfig object to be used for embedding
+   * @return SWFObjectConfig The configured SWFObjectConfig object to be used for embedding
    */
   public static function generateTempSWFObject($flash_vars) {
     return new SWFObjectConfig(LongTailFramework::$div_id++, LongTailFramework::getTempPlayerURL(), LongTailFramework::getConfigURL(), LongTailFramework::getEmbedParameters(), $flash_vars);
@@ -400,7 +404,7 @@ class LongTailFramework
   /**
    * Helper function to flatten the additional flashvars into a string representation.
    * @param array The array of additional flashvars
-   * @return string The string represetnation of the additional flashvars
+   * @return string The string representation of the additional flashvars
    */
   private static function flattenAdditionalFlashVars($flashvars) {
     $output = "";
