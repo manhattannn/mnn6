@@ -2,6 +2,9 @@
 
 ctools_include('mnnshow.common', 'mnnshow', '');
 
+/**
+ * Publisher Info block for individual show node.
+ */
 function mnnshow_block_publisher_info(){
   $path = drupal_get_path_alias($_GET['q']);
   $path = explode('/', $path);
@@ -34,6 +37,9 @@ function mnnshow_block_publisher_info(){
   }
 }
 
+/**
+ * Show filter block (navigation) for shows page.
+ */
 function mnnshow_block_shows_filter(){
   $path = drupal_get_path_alias($_GET['q']);
   $path = explode('/', $path);
@@ -115,6 +121,9 @@ function mnnshow_block_shows_filter(){
   return $content;
 }
 
+/**
+ * Watch Now block (horizontal bar).
+ */
 function mnnshow_block_watch_now(){
   $channel_info = mnnshow_get_channels();
   $channels = array();
@@ -182,6 +191,9 @@ function mnnshow_block_watch_now(){
   return $content;
 }
 
+/**
+ * Channel Listing wrapper block for schedule.
+ */
 function mnnshow_block_geolocator_and_channel_listing(){
   $content = '<div class="col"><div class="locator"></div></div>';
   $content .= '<div class="col">';
@@ -190,6 +202,9 @@ function mnnshow_block_geolocator_and_channel_listing(){
   return $content;
 }
 
+/**
+ * Channel Listing block for schedule.
+ */
 function mnnshow_block_channel_listing(){
   $channel_info = mnnshow_get_channels();
 
@@ -214,6 +229,9 @@ function mnnshow_block_channel_listing(){
   return $content;
 }
 
+/**
+ * YC Channel Listing block for YC schedule.
+ */
 function mnnshow_block_yc_channel_listing(){
   $channel_info = mnnshow_get_channels();
 
@@ -233,6 +251,9 @@ function mnnshow_block_yc_channel_listing(){
   return $content;
 }
 
+/**
+ * YC Channel Intro block for YC schedule.
+ */
 function mnnshow_block_yc_channel_intro(){
   $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
   $day = intval($now->format('w'));
@@ -256,6 +277,9 @@ function mnnshow_block_yc_channel_intro(){
   return $content;
 }
 
+/**
+ * YC Is Playing Now block for homepage.
+ */
 function mnnshow_block_yc_channel_is_playing_now(){
   $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
   $day = intval($now->format('w'));
@@ -276,5 +300,49 @@ function mnnshow_block_yc_channel_is_playing_now(){
     $content = '';
 
   return $content;
+}
+
+/**
+ * Alphabet links block for shows page.
+ */
+function mnnshow_block_alphabet_links($is_current_shows, $current_category) {
+  $links = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+  $content = '<div class="alphabet">';
+  foreach ($links as $link) {
+    $content .= '<span>';
+    if (strtolower($current_category) == $link){
+      $content .= strtoupper($link);
+    }
+    else {
+      if ($is_current_shows)
+        $l = '/shows/';
+      else
+        $l = '/shows/past-shows/';
+      $content .= '<a href="'.$l.$link.'">'.strtoupper($link).'</a>';
+    }
+    $content .= '</span>';
+  }
+  $content .= '</div>';
+
+  return $content;
+}
+
+/**
+ * Category dropdown block for shows page.
+ */
+function mnnshow_block_category_dropdown($is_current_shows, $current_category) {
+  global $base_root;
+  if (!$is_current_shows)
+    $past_url = 'past-shows/';
+  $categories = mnnshow_get_categories();
+  $js = 'location.href=\''. $base_root .'/shows/'. $past_url . 'category/\' + this.options[this.selectedIndex].value;';
+  $select = '<select name="category" size="1" onchange="'.$js.'" onmouseup="this.focus()">';
+  $select .= '<option value="">All</option>';
+  foreach ($categories as $cat => $cat_value){
+    if ($cat == $current_category) { $selected = ' selected="selected"'; } else { $selected = ''; }
+    $select .= '<option value="'. $cat .'"'. $selected .'>'. $cat_value .'</option>';
+  }
+  $select .= '</select>';
+  return $select;
 }
 

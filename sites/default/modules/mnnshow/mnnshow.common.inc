@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Get the channels (tv stations).
+ */
 function mnnshow_get_channels(){
   // check for cached channels
   if ($cached = cache_get('mnnshow:channels', 'cache')) {
@@ -39,6 +42,9 @@ function mnnshow_get_channels(){
   return $channels;
 }
 
+/**
+ * Render current shows in a list.
+ */
 function mnnshow_show_current_list($query, $count_query, $category) {
   $pager_num = 0;
   $result = pager_query(db_rewrite_sql($query), 15, $pager_num, $count_query);
@@ -66,6 +72,9 @@ function mnnshow_show_current_list($query, $count_query, $category) {
   return $content . theme('pager', NULL, 15, $pager_num);
 }
 
+/**
+ * Render past shows in a list.
+ */
 function mnnshow_show_past_list($query, $count_query, $category) {
   $pager_num = 0;
   $result = pager_query(db_rewrite_sql($query), 45, $pager_num, $count_query);
@@ -104,44 +113,9 @@ function mnnshow_show_past_list($query, $count_query, $category) {
   return $content . theme('pager', NULL, 45, $pager_num);
 }
 
-function mnnshow_block_alphabet_links($is_current_shows, $current_category) {
-  $links = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-  $content = '<div class="alphabet">';
-  foreach ($links as $link) {
-    $content .= '<span>';
-    if (strtolower($current_category) == $link){
-      $content .= strtoupper($link);
-    }
-    else {
-      if ($is_current_shows)
-        $l = '/shows/';
-      else
-        $l = '/shows/past-shows/';
-      $content .= '<a href="'.$l.$link.'">'.strtoupper($link).'</a>';
-    }
-    $content .= '</span>';
-  }
-  $content .= '</div>';
-
-  return $content;
-}
-
-function mnnshow_block_category_dropdown($is_current_shows, $current_category) {
-  global $base_root;
-  if (!$is_current_shows)
-    $past_url = 'past-shows/';
-  $categories = mnnshow_get_categories();
-  $js = 'location.href=\''. $base_root .'/shows/'. $past_url . 'category/\' + this.options[this.selectedIndex].value;';
-  $select = '<select name="category" size="1" onchange="'.$js.'" onmouseup="this.focus()">';
-  $select .= '<option value="">All</option>';
-  foreach ($categories as $cat => $cat_value){
-    if ($cat == $current_category) { $selected = ' selected="selected"'; } else { $selected = ''; }
-    $select .= '<option value="'. $cat .'"'. $selected .'>'. $cat_value .'</option>';
-  }
-  $select .= '</select>';
-  return $select;
-}
-
+/**
+ * Get show categories.
+ */
 function mnnshow_get_categories(){
   $sql = 'SELECT DISTINCT s.topic ';
   $sql .= 'FROM {ac_report_project_cache} s ';
@@ -157,12 +131,18 @@ function mnnshow_get_categories(){
   return $ret;
 }
 
+/**
+ * Get show href.
+ */
 function mnnshow_get_show_href($title, $id) {
   $url_title = mnnshow_url_feiendly_title($title);
   $href = 'show-info/' . $id . '/' . $url_title;
   return $href;
 }
 
+/**
+ * Generate a url friendly title.
+ */
 function mnnshow_url_feiendly_title($title){
   // remove all non-alphanumeric characters, then remove leading/trailing spaces
   $url_title = trim(preg_replace("/[^A-Za-z0-9\/ ]/", '', strtolower($title)));
@@ -172,6 +152,9 @@ function mnnshow_url_feiendly_title($title){
   return $url_title;
 }
 
+/**
+ * Check if a date is within a range.
+ */
 function mnnshow_is_date_in_range($start_date, $end_date, $date) {
   // assume DateTime object
   return (($date >= $start_date) && ($date <= $end_date));
