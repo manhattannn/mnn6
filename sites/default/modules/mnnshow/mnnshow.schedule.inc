@@ -55,12 +55,12 @@ function mnnshow_schedule_get(){
       $current = 'true';
     else
       $current = 'false';
-    if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $end->sub(new DateInterval('PT1M'))))
+    if (mnnshow_is_date_in_range($primetime_start, $primetime_end, $start) || mnnshow_is_date_in_range($primetime_start, $primetime_end, $end->sub(new DateInterval('PT1M'))))
       $primetime = 'true';
     else
       $primetime = 'false';
     $row = array(
-      'link' => '/show-info/'.$data->project_id.'/'._mnnshow_url_feiendly_title($data->title),
+      'link' => '/show-info/'.$data->project_id.'/'.mnnshow_url_feiendly_title($data->title),
       'title' => $data->title,
       'category' => isset($data->topic) ? $data->topic : '',
       'start' => $start->format("H-i"),
@@ -97,7 +97,7 @@ function mnnshow_schedule_get(){
   $duration = 30;
   for ($i = 0; $i < 48; $i++){
     $time_increment == $now ? $current = 'true' : $current = 'false';
-    if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment) || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment))
+    if (mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment) || mnnshow_is_date_in_range($primetime_start, $primetime_end, $time_increment))
       $primetime = 'true';
     else
       $primetime = 'false';
@@ -175,7 +175,7 @@ function mnnshow_yc_schedule_get(){
   }
 
   //--- date of the first & end of the week (monday & sunday)
-  $week =_mnnshow_get_week_range($requested_date->format('d'), $requested_date->format('m'), $requested_date->format('Y'));
+  $week =mnnshow_get_week_range($requested_date->format('d'), $requested_date->format('m'), $requested_date->format('Y'));
   $week_start = new DateTime($week['first'], new DateTimeZone('America/New_York'));
   $week_end = new DateTime($week['last'], new DateTimeZone('America/New_York'));
 
@@ -214,12 +214,12 @@ function mnnshow_yc_schedule_get(){
   while ($data = db_fetch_object($result)) {
     // watchdog('mnnshow', '1 data: '.var_export($data, true), array(), WATCHDOG_INFO);
     $show = new MnnShow(new DateTime($data->start_time, new DateTimeZone('America/New_York')), $data->duration / 60, true);
-    $show->setLink('/show-info/'.$data->project_id.'/'._mnnshow_url_feiendly_title($data->title));
+    $show->setLink('/show-info/'.$data->project_id.'/'.mnnshow_url_feiendly_title($data->title));
     $show->setTitle($data->title);
     $show->setCategory(isset($data->topic) ? $data->topic : '');
     $show->setChannel($data->channel);
     /*$show = array(
-      'link' => '/show-info/'.$data->project_id.'/'._mnnshow_url_feiendly_title($data->title),
+      'link' => '/show-info/'.$data->project_id.'/'.mnnshow_url_feiendly_title($data->title),
       'title' => $data->title,
       'category' => isset($data->topic) ? $data->topic : '',
       'start' => $start->format("H-i"),
@@ -255,7 +255,7 @@ function mnnshow_yc_schedule_get(){
                 'schedDate' => $requested_date->format('m/d/Y'),
                 'prevDate' => $prevDate->format('m/d/Y'),
                 'nextDate' => $nextDate->format('m/d/Y'),
-                'displayDate' => _mnnshow_format_date_range($week_start, $week_end),
+                'displayDate' => mnnshow_format_date_range($week_start, $week_end),
                 'shows' => $shows,
                 'dayCol' => $day_col,
                 'timeRow' => $time_row

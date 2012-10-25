@@ -1,6 +1,45 @@
 <?php
 
-function _mnnshow_show_current_list($query, $count_query, $category) {
+function mnnshow_get_channels(){
+  // check for cached channels
+  if ($cached = cache_get('mnnshow:channels', 'cache')) {
+    return $cached->data;
+  }
+
+  $channels = array();
+
+  $result = db_query("SELECT nid FROM {node} WHERE type = 'channel_info'");
+  while($row = db_fetch_object($result)) {
+    $channel_info = node_load($row->nid); // drupal content type
+    $tv_ch = array();
+    foreach ($channel_info->field_television_channel as $tv_ch_nid){
+      $television_channel = node_load($tv_ch_nid['nid']); // drupal content type
+      $television_station = node_load($television_channel->field_television_station[0]['nid']); // drupal content type
+      $tv_ch[] = array(
+        'tvStationName' => $television_station->title,
+        'tvStationChannel' => $television_channel->field_channel_number[0]['value']
+      );
+    }
+    // sort the tv stations
+    foreach ($tv_ch as $key => $value){
+      $station_name[$key] = $value['tvStationName'];
+    }
+    array_multisort($station_name, SORT_DESC, $tv_ch);
+
+    $channels[$channel_info->field_number[0]['value']] = array(
+      'name' => $channel_info->title,
+      'description' => $channel_info->body,
+      'watchLiveUrl' => drupal_get_path_alias('node/'.$channel_info->field_watch_live_link[0]['nid']),
+      'tvChannels' => $tv_ch
+    );
+  }
+
+  // store in cache with a minimum expiration time of 1 day
+  cache_set('mnnshow:channels', $channels, 'cache', time() + (60 * 60 * 24));
+  return $channels;
+}
+
+function mnnshow_show_current_list($query, $count_query, $category) {
   $pager_num = 0;
   $result = pager_query(db_rewrite_sql($query), 15, $pager_num, $count_query);
   $content = '';
@@ -8,7 +47,7 @@ function _mnnshow_show_current_list($query, $count_query, $category) {
     $content .= '<h2>'.$category.'</h2>';
   while ($row = db_fetch_object($result)) {
     $title = $row->title; //ucwords(strtolower($row->title));
-    $href = _mnnshow_get_show_href($title, $row->project_id);
+    $href = mnnshow_get_show_href($title, $row->project_id);
 
     $content .= '<div class="row">';
     $content .= '<h3 class="title"><a href="/'. $href .'">'. $title .'</a></h3>';
@@ -27,7 +66,7 @@ function _mnnshow_show_current_list($query, $count_query, $category) {
   return $content . theme('pager', NULL, 15, $pager_num);
 }
 
-function _mnnshow_show_past_list($query, $count_query, $category) {
+function mnnshow_show_past_list($query, $count_query, $category) {
   $pager_num = 0;
   $result = pager_query(db_rewrite_sql($query), 45, $pager_num, $count_query);
   $content = '';
@@ -36,7 +75,7 @@ function _mnnshow_show_past_list($query, $count_query, $category) {
   $items = array();
   while ($row = db_fetch_object($result)) {
     $title = $row->title; //ucwords(strtolower($row->title));
-    $href = _mnnshow_get_show_href($title, $row->project_id);
+    $href = mnnshow_get_show_href($title, $row->project_id);
 
     $items[] = '<a href="/'. $href .'">'. $title .'</a>';
   }
@@ -65,7 +104,7 @@ function _mnnshow_show_past_list($query, $count_query, $category) {
   return $content . theme('pager', NULL, 45, $pager_num);
 }
 
-function _mnnshow_block_alphabet_links($is_current_shows, $current_category) {
+function mnnshow_block_alphabet_links($is_current_shows, $current_category) {
   $links = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
   $content = '<div class="alphabet">';
   foreach ($links as $link) {
@@ -87,11 +126,11 @@ function _mnnshow_block_alphabet_links($is_current_shows, $current_category) {
   return $content;
 }
 
-function _mnnshow_block_category_dropdown($is_current_shows, $current_category) {
+function mnnshow_block_category_dropdown($is_current_shows, $current_category) {
   global $base_root;
   if (!$is_current_shows)
     $past_url = 'past-shows/';
-  $categories = _mnnshow_get_categories();
+  $categories = mnnshow_get_categories();
   $js = 'location.href=\''. $base_root .'/shows/'. $past_url . 'category/\' + this.options[this.selectedIndex].value;';
   $select = '<select name="category" size="1" onchange="'.$js.'" onmouseup="this.focus()">';
   $select .= '<option value="">All</option>';
@@ -103,7 +142,7 @@ function _mnnshow_block_category_dropdown($is_current_shows, $current_category) 
   return $select;
 }
 
-function _mnnshow_get_categories(){
+function mnnshow_get_categories(){
   $sql = 'SELECT DISTINCT s.topic ';
   $sql .= 'FROM {ac_report_project_cache} s ';
   $sql .= 'ORDER BY s.topic ASC ';
@@ -111,20 +150,20 @@ function _mnnshow_get_categories(){
   $ret = array();
   while ($row = db_fetch_object($result)){
     if (!is_null($row->topic)){
-      $url_cat = _mnnshow_url_feiendly_title($row->topic);
+      $url_cat = mnnshow_url_feiendly_title($row->topic);
       $ret[$url_cat] = $row->topic;
     }
   }
   return $ret;
 }
 
-function _mnnshow_get_show_href($title, $id) {
-  $url_title = _mnnshow_url_feiendly_title($title);
+function mnnshow_get_show_href($title, $id) {
+  $url_title = mnnshow_url_feiendly_title($title);
   $href = 'show-info/' . $id . '/' . $url_title;
   return $href;
 }
 
-function _mnnshow_url_feiendly_title($title){
+function mnnshow_url_feiendly_title($title){
   // remove all non-alphanumeric characters, then remove leading/trailing spaces
   $url_title = trim(preg_replace("/[^A-Za-z0-9\/ ]/", '', strtolower($title)));
   // replace spaces with dashes
@@ -133,7 +172,7 @@ function _mnnshow_url_feiendly_title($title){
   return $url_title;
 }
 
-function _mnnshow_is_date_in_range($start_date, $end_date, $date) {
+function mnnshow_is_date_in_range($start_date, $end_date, $date) {
   // assume DateTime object
   return (($date >= $start_date) && ($date <= $end_date));
 }
@@ -148,7 +187,7 @@ function _mnnshow_is_date_in_range($start_date, $end_date, $date) {
  * @param string $year  : four-digit value of the year (2008)
  * @return array|bool   : array('first' => monday of week, 'last' => sunday of week);
  */
-function _mnnshow_get_week_range($day = '', $month = '', $year = '') {
+function mnnshow_get_week_range($day = '', $month = '', $year = '') {
   // default empties to current values
   if (empty($day)) $day = date('d');
   if (empty($month)) $month = date('m');
@@ -173,7 +212,7 @@ function _mnnshow_get_week_range($day = '', $month = '', $year = '') {
  * @param DateTime $end   : end of the range
  * @return string         : the formatted string
  */
-function _mnnshow_format_date_range($start, $end){
+function mnnshow_format_date_range($start, $end){
   if ($start->format('Y') == $end->format('Y') && $start->format('m') == $end->format('m'))
     return $start->format('F j - ').$end->format('j, ').$start->format('Y');
   elseif ($start->format('Y') == $end->format('Y'))

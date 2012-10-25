@@ -126,30 +126,30 @@ function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
     case 'view':
       if ($delta == 0) {
         $block['subject'] = t('About the Producer');
-        $block['content'] = _mnnshow_block_publisher_info();
+        $block['content'] = mnnshow_block_publisher_info();
       }
       elseif ($delta == 1){
-        $block['content'] = _mnnshow_block_shows_filter();
+        $block['content'] = mnnshow_block_shows_filter();
       }
       elseif ($delta == 2){
-        $block['content'] = _mnnshow_block_watch_now();
+        $block['content'] = mnnshow_block_watch_now();
       }
       elseif ($delta == 3){
         $block['subject'] = t('Channel Listing');
-        $block['content'] = _mnnshow_block_geolocator_and_channel_listing();
+        $block['content'] = mnnshow_block_geolocator_and_channel_listing();
       }
       elseif ($delta == 4){
         $block['subject'] = t('Channel Listing');
-        $block['content'] = _mnnshow_block_channel_listing();
+        $block['content'] = mnnshow_block_channel_listing();
       }
       elseif ($delta == 5){
-        $block['content'] = _mnnshow_block_yc_channel_listing();
+        $block['content'] = mnnshow_block_yc_channel_listing();
       }
       elseif ($delta == 6){
-        $block['content'] = _mnnshow_block_yc_channel_intro();
+        $block['content'] = mnnshow_block_yc_channel_intro();
       }
       elseif ($delta == 7){
-        $block['content'] = _mnnshow_block_yc_channel_is_playing_now();
+        $block['content'] = mnnshow_block_yc_channel_is_playing_now();
       }
 
       return $block;
@@ -213,7 +213,7 @@ function mnnshow_search($op = 'search', $keys = NULL) {
         $query .= 'WHERE s.project_id = %d';
         $show = db_fetch_object(db_query($query, $item->sid));
         $results[] = array(
-          'link' => url(_mnnshow_get_show_href($show->title, $item->sid), array('absolute' => 'true')),
+          'link' => url(mnnshow_get_show_href($show->title, $item->sid), array('absolute' => 'true')),
           'type' => t('Show'),
           'title' => $show->title,
           'date' => $show->changed,
@@ -238,45 +238,6 @@ function mnnshow_update_shutdown() {
 /******************************************************************************
  * Other Public Functions
  *****************************************************************************/
-
-function mnnshow_get_channels(){
-  // check for cached channels
-  if ($cached = cache_get('mnnshow:channels', 'cache')) {
-    return $cached->data;
-  }
-
-  $channels = array();
-
-  $result = db_query("SELECT nid FROM {node} WHERE type = 'channel_info'");
-  while($row = db_fetch_object($result)) {
-    $channel_info = node_load($row->nid); // drupal content type
-    $tv_ch = array();
-    foreach ($channel_info->field_television_channel as $tv_ch_nid){
-      $television_channel = node_load($tv_ch_nid['nid']); // drupal content type
-      $television_station = node_load($television_channel->field_television_station[0]['nid']); // drupal content type
-      $tv_ch[] = array(
-        'tvStationName' => $television_station->title,
-        'tvStationChannel' => $television_channel->field_channel_number[0]['value']
-      );
-    }
-    // sort the tv stations
-    foreach ($tv_ch as $key => $value){
-      $station_name[$key] = $value['tvStationName'];
-    }
-    array_multisort($station_name, SORT_DESC, $tv_ch);
-
-    $channels[$channel_info->field_number[0]['value']] = array(
-      'name' => $channel_info->title,
-      'description' => $channel_info->body,
-      'watchLiveUrl' => drupal_get_path_alias('node/'.$channel_info->field_watch_live_link[0]['nid']),
-      'tvChannels' => $tv_ch
-    );
-  }
-
-  // store in cache with a minimum expiration time of 1 day
-  cache_set('mnnshow:channels', $channels, 'cache', time() + (60 * 60 * 24));
-  return $channels;
-}
 
 function mnnshow_current_show_info($channelNum){
   if (!is_numeric($channelNum)) {

@@ -2,7 +2,7 @@
 
 ctools_include('mnnshow.common', 'mnnshow', '');
 
-function _mnnshow_block_publisher_info(){
+function mnnshow_block_publisher_info(){
   $path = drupal_get_path_alias($_GET['q']);
   $path = explode('/', $path);
   if ($path[0] == 'show-info' && is_numeric($path[1])) {
@@ -34,7 +34,7 @@ function _mnnshow_block_publisher_info(){
   }
 }
 
-function _mnnshow_block_shows_filter(){
+function mnnshow_block_shows_filter(){
   $path = drupal_get_path_alias($_GET['q']);
   $path = explode('/', $path);
   if ($path[0] == 'shows' && $path[1] == 'past-shows' && $path[2] == 'category') { // past shows with category
@@ -103,19 +103,19 @@ function _mnnshow_block_shows_filter(){
     else
       $content .= '<span class="alphabetical"><a href="/shows/past-shows">Alphabetical</a></span>';
     $content .= '<span class="category">Category</span>';
-    $content .= _mnnshow_block_category_dropdown($is_current_shows, $current_category);
+    $content .= mnnshow_block_category_dropdown($is_current_shows, $current_category);
   }
   $content .= '</div>';
 
   // build the alphabet links (if necessary)
   if ($is_alphabetical){
-    $content .= _mnnshow_block_alphabet_links($is_current_shows, $current_category);
+    $content .= mnnshow_block_alphabet_links($is_current_shows, $current_category);
   }
 
   return $content;
 }
 
-function _mnnshow_block_watch_now(){
+function mnnshow_block_watch_now(){
   $channel_info = mnnshow_get_channels();
   $channels = array();
 
@@ -132,7 +132,7 @@ function _mnnshow_block_watch_now(){
     $show = array(
       'id' => $data->project_id,
       'title' => $data->title,
-      'url' => _mnnshow_get_show_href($data->title, $data->project_id)
+      'url' => mnnshow_get_show_href($data->title, $data->project_id)
     );
     switch ($data->channel){
       case 'Channel 1':
@@ -182,15 +182,15 @@ function _mnnshow_block_watch_now(){
   return $content;
 }
 
-function _mnnshow_block_geolocator_and_channel_listing(){
+function mnnshow_block_geolocator_and_channel_listing(){
   $content = '<div class="col"><div class="locator"></div></div>';
   $content .= '<div class="col">';
-  $content .= _mnnshow_block_channel_listing();
+  $content .= mnnshow_block_channel_listing();
   $content .= '</div>';
   return $content;
 }
 
-function _mnnshow_block_channel_listing(){
+function mnnshow_block_channel_listing(){
   $channel_info = mnnshow_get_channels();
 
   $content = '<table class="channel-grid">';
@@ -214,7 +214,7 @@ function _mnnshow_block_channel_listing(){
   return $content;
 }
 
-function _mnnshow_block_yc_channel_listing(){
+function mnnshow_block_yc_channel_listing(){
   $channel_info = mnnshow_get_channels();
 
   //--- youth channel plays on channel 4
@@ -233,7 +233,7 @@ function _mnnshow_block_yc_channel_listing(){
   return $content;
 }
 
-function _mnnshow_block_yc_channel_intro(){
+function mnnshow_block_yc_channel_intro(){
   $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
   $day = intval($now->format('w'));
   if ($day > 0 && $day < 6) {
@@ -248,7 +248,7 @@ function _mnnshow_block_yc_channel_intro(){
   }
 
   $content = '<p>Youth Channel broadcasts from 3 - 5 PM on weekdays,<br>and 7 AM - 12 PM on weekends.</p>';
-  if (_mnnshow_is_date_in_range($start, $end, $now))
+  if (mnnshow_is_date_in_range($start, $end, $now))
     $content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
   else
     $content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/video">our videos</a>.</p>';
@@ -256,7 +256,7 @@ function _mnnshow_block_yc_channel_intro(){
   return $content;
 }
 
-function _mnnshow_block_yc_channel_is_playing_now(){
+function mnnshow_block_yc_channel_is_playing_now(){
   $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
   $day = intval($now->format('w'));
   if ($day > 0 && $day < 6) {
@@ -270,7 +270,7 @@ function _mnnshow_block_yc_channel_is_playing_now(){
     $end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
   }
 
-  if (_mnnshow_is_date_in_range($start, $end, $now))
+  if (mnnshow_is_date_in_range($start, $end, $now))
     $content = '<p>Youth Channel is playing right now on MNN - <a href="/live/4-culture-channel">Watch Online Now!</a></p>';
   else
     $content = '';

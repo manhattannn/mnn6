@@ -11,7 +11,7 @@ function mnnshow_show_list_past_by_category($category) {
     $display_category = 'All';
   }
   else {
-    $categories = _mnnshow_get_categories();
+    $categories = mnnshow_get_categories();
     if (array_key_exists($category, $categories)) {
       $display_category = $categories[$category];
     }
@@ -35,7 +35,7 @@ function mnnshow_show_list_past_by_category($category) {
 
   $count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
-  return _mnnshow_show_past_list($query, $count_query, $display_category);
+  return mnnshow_show_past_list($query, $count_query, $display_category);
 }
 
 /**
@@ -58,7 +58,7 @@ function mnnshow_show_list_past_by_alpha($char) {
 
   $count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
-  return _mnnshow_show_past_list($query, $count_query, strtoupper($char));
+  return mnnshow_show_past_list($query, $count_query, strtoupper($char));
 }
 
 /**
@@ -70,7 +70,7 @@ function mnnshow_show_list_current_by_category($category) {
     $display_category = 'All';
   }
   else {
-    $categories = _mnnshow_get_categories();
+    $categories = mnnshow_get_categories();
     if (array_key_exists($category, $categories)) {
       $display_category = $categories[$category];
     }
@@ -94,7 +94,7 @@ function mnnshow_show_list_current_by_category($category) {
 
   $count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
-  return _mnnshow_show_current_list($query, $count_query, $display_category);
+  return mnnshow_show_current_list($query, $count_query, $display_category);
 }
 
 /**
@@ -120,7 +120,7 @@ function mnnshow_show_list_current_by_alpha($char) {
 
   $count_query = 'SELECT COUNT(*) FROM ('. $query .') AS count_query';
 
-  return _mnnshow_show_current_list($query, $count_query, NULL);
+  return mnnshow_show_current_list($query, $count_query, NULL);
 }
 
 /**
