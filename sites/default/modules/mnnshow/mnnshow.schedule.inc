@@ -175,7 +175,7 @@ function mnnshow_yc_schedule_get(){
   }
 
   //--- date of the first & end of the week (monday & sunday)
-  $week =mnnshow_get_week_range($requested_date->format('d'), $requested_date->format('m'), $requested_date->format('Y'));
+  $week = mnnshow_get_week_range($requested_date->format('d'), $requested_date->format('m'), $requested_date->format('Y'));
   $week_start = new DateTime($week['first'], new DateTimeZone('America/New_York'));
   $week_end = new DateTime($week['last'], new DateTimeZone('America/New_York'));
 

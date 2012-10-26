@@ -106,8 +106,8 @@ class MnnShow {
     // is_primetime (primetime is 7pm to midnight)
     $primetime_start = new DateTime($this->start_datetime->format('m/d/Y 19:00:00'), new DateTimeZone('America/New_York'));
     $primetime_end = new DateTime($this->start_datetime->format('m/d/Y 23:59:59'), new DateTimeZone('America/New_York'));
-    if (_mnnshow_is_date_in_range($primetime_start, $primetime_end, $this->start_datetime)
-        || _mnnshow_is_date_in_range($primetime_start, $primetime_end, $this->end_datetime))
+    if (mnnshow_is_date_in_range($primetime_start, $primetime_end, $this->start_datetime)
+        || mnnshow_is_date_in_range($primetime_start, $primetime_end, $this->end_datetime))
       $this->is_primetime = 'true';
     else
       $this->is_primetime = 'false';

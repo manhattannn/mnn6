@@ -1,5 +1,7 @@
 <?php
 
+ctools_include('cleanstring', 'ctools', 'includes');
+
 /**
  * Get the channels (tv stations).
  */
@@ -145,10 +147,11 @@ function mnnshow_get_show_href($title, $id) {
  */
 function mnnshow_url_feiendly_title($title){
   // remove all non-alphanumeric characters, then remove leading/trailing spaces
-  $url_title = trim(preg_replace("/[^A-Za-z0-9\/ ]/", '', strtolower($title)));
+  // $url_title = trim(preg_replace("/[^A-Za-z0-9\/ ]/", '', strtolower($title)));
   // replace spaces with dashes
-  $url_title = preg_replace("/[\/ ]/", '-', $url_title);
+  // $url_title = preg_replace("/[\/ ]/", '-', $url_title);
 
+  $url_title = ctools_cleanstring($title, array('lower case' => true));
   return $url_title;
 }
 
