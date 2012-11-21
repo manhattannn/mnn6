@@ -19,6 +19,7 @@ function mnnshow_menu() {
     'page callback' => 'mnnshow_show_list_past_by_category',
     'page arguments' => array(3),
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows/past-shows'] = array(
@@ -26,6 +27,7 @@ function mnnshow_menu() {
     'page callback' => 'mnnshow_show_list_past_by_alpha',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows/category'] = array(
@@ -33,6 +35,7 @@ function mnnshow_menu() {
     'page callback' => 'mnnshow_show_list_current_by_category',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows'] = array(
@@ -40,6 +43,7 @@ function mnnshow_menu() {
     'page callback' => 'mnnshow_show_list_current_by_alpha',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.shows.inc',
   );
   $items['show-info/%'] = array(
@@ -47,12 +51,14 @@ function mnnshow_menu() {
     'page callback' => 'mnnshow_show_info',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.shows.inc',
   );
   $items['schedule'] = array(
     'title' => 'Schedule',
     'page callback' => 'mnnshow_schedule',
     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.schedule.inc',
   );
   $items['schedule/get'] = array(
@@ -71,13 +77,14 @@ function mnnshow_menu() {
     'title' => 'Youth Channel Schedule',
     'page callback' => 'mnnshow_yc_schedule',
     'access arguments' => array('access content'),
-    'file' => 'mnnshow.schedule.inc',
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'mnnshow.ycschedule.inc',
   );
   $items['youth-channel/schedule/get'] = array(
     'page callback' => 'mnnshow_yc_schedule_get',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
-    'file' => 'mnnshow.schedule.inc',
+    'file' => 'mnnshow.ycschedule.inc',
   );
   // $items['youth-channel/schedule/header'] = array(
   //   'page callback' => 'mnnshow_yc_schedule_table_header',
@@ -239,6 +246,11 @@ function mnnshow_update_shutdown() {
  * Other Public Functions
  *****************************************************************************/
 
+/**
+ * Gets information about the current show playing on the specified channel.
+ * @param  string $channelNum The numeric channel (1 - 4)
+ * @return array
+ */
 function mnnshow_current_show_info($channelNum){
   if (!is_numeric($channelNum)) {
     return null;
@@ -264,19 +276,3 @@ function mnnshow_current_show_info($channelNum){
     );
   }
 }
-
-/******************************************************************************
- * Helper Functions
- *****************************************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
