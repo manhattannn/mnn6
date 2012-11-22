@@ -5,70 +5,72 @@ ctools_include('mnnshow.common', 'mnnshow', '');
 /**
  * The channels/days/times that YC is on the air.
  */
-function mnnshow_yc_on_air() {
-  $on_air = array();
-  $on_air[] = array(
+function mnnshow_yc_schedules() {
+  // schedule 1
+  $schedules[0][] = array(
     'channel' => 1,
     'day' => 0, // monday
     'start_time' => '16:00:00', // 4pm
     'stop_time' => '16:59:59', // 5pm
   );
-  $on_air[] = array(
+  $schedules[0][] = array(
     'channel' => 1,
     'day' => 1, // tuesday
     'start_time' => '16:00:00', // 4pm
     'stop_time' => '16:59:59', // 5pm
   );
-  $on_air[] = array(
+  $schedules[0][] = array(
     'channel' => 1,
     'day' => 2, // wednesday
     'start_time' => '16:00:00', // 4pm
     'stop_time' => '16:59:59', // 5pm
   );
-  $on_air[] = array(
+  $schedules[0][] = array(
     'channel' => 1,
     'day' => 3, // thursday
     'start_time' => '16:00:00', // 4pm
     'stop_time' => '16:59:59', // 5pm
   );
-  $on_air[] = array(
+  $schedules[0][] = array(
     'channel' => 1,
     'day' => 4, // friday
     'start_time' => '16:00:00', // 4pm
     'stop_time' => '16:59:59', // 5pm
   );
-  $on_air[] = array(
+
+  // schedule 2
+  $schedules[1][] = array(
     'channel' => 4,
     'day' => 0, // monday
     'start_time' => '17:00:00', // 5pm
     'stop_time' => '17:59:59', // 6pm
   );
-  $on_air[] = array(
+  $schedules[1][] = array(
     'channel' => 4,
     'day' => 1, // tuesday
     'start_time' => '17:00:00', // 5pm
     'stop_time' => '17:59:59', // 6pm
   );
-  $on_air[] = array(
+  $schedules[1][] = array(
     'channel' => 4,
     'day' => 2, // wednesday
     'start_time' => '17:00:00', // 5pm
     'stop_time' => '17:59:59', // 6pm
   );
-  $on_air[] = array(
+  $schedules[1][] = array(
     'channel' => 4,
     'day' => 3, // thursday
     'start_time' => '17:00:00', // 5pm
     'stop_time' => '17:59:59', // 6pm
   );
-  $on_air[] = array(
+  $schedules[1][] = array(
     'channel' => 4,
     'day' => 4, // friday
     'start_time' => '17:00:00', // 5pm
     'stop_time' => '17:59:59', // 6pm
   );
 
-  return $on_air;
+  return $schedules;
 }
 
 /**
@@ -79,8 +81,8 @@ function mnnshow_yc_schedule() {
   drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow.js');
   $content = '<div id="yc-schedule">';
   $content .= '<header id="schedule-header"> <div class="inner"> <div class="nav clearfix"></div> </div> </header>';
-  $content .= '<div id="weekday"> <div class="title">Weekday Schedule</div> <div class="rows"></div> </div>';
-  $content .= '<div id="weekend"> <div class="title">Weekend Schedule</div> <div class="rows"></div> </div>';
+  $content .= '<div id="schedule-0" class="schedule-grid two-hours"> <div class="title">Weekday Schedule</div> <div class="rows"></div> </div>';
+  $content .= '<div id="schedule-1" class="schedule-grid five-hours"> <div class="title">Weekend Schedule</div> <div class="rows"></div> </div>';
   $content .= '</div>'; // yc-schedule
 
   return $content;
@@ -90,7 +92,7 @@ function mnnshow_yc_schedule() {
  * Page callback.
  */
 function mnnshow_yc_schedule_get(){
-  $on_air = mnnshow_yc_on_air();
+  $schedules = mnnshow_yc_schedules();
 
   try {
     $requested_date = new DateTime($_POST['date'], new DateTimeZone('America/New_York'));
@@ -105,17 +107,19 @@ function mnnshow_yc_schedule_get(){
 
   //--- create where clause
   $wherea = array();
-  foreach ($on_air as $key => $value) {
-    // cycle thru each on_air item, building the where clause
-    // reset the current_day on each loop
-    // then add the on_air 'day' to current_day
-    $current_day = clone $week_start;
-    $current_day->add(new DateInterval('P' . $value['day'] . 'D'));
-    $w = 'a.channel = "Channel ' . $value['channel'] . '" AND (';
-    $w .= '(a.start_time >= "'.$current_day->format('Y-m-d').' ' . $value['start_time'] . '" AND a.start_time <= "'.$current_day->format('Y-m-d').' ' . $value['stop_time'] . '") ';
-    $w .= 'OR (a.end_time > "'.$current_day->format('Y-m-d').' ' . $value['start_time'] . '" AND a.end_time <= "'.$current_day->format('Y-m-d').' ' . $value['stop_time'] . '")';
-    $w .= ') ';
-    $wherea[] = $w;
+  foreach ($schedules as $schedule_num => $schedule_items) {
+    foreach ($schedule_items as $key => $item) {
+      // cycle thru each on_air item, building the where clause
+      // reset the current_day on each loop
+      // then add the on_air 'day' to current_day
+      $current_day = clone $week_start;
+      $current_day->add(new DateInterval('P' . $item['day'] . 'D'));
+      $w = 'a.channel = "Channel ' . $item['channel'] . '" AND (';
+      $w .= '(a.start_time >= "'.$current_day->format('Y-m-d').' ' . $item['start_time'] . '" AND a.start_time <= "'.$current_day->format('Y-m-d').' ' . $item['stop_time'] . '") ';
+      $w .= 'OR (a.end_time > "'.$current_day->format('Y-m-d').' ' . $item['start_time'] . '" AND a.end_time <= "'.$current_day->format('Y-m-d').' ' . $item['stop_time'] . '")';
+      $w .= ') ';
+      $wherea[] = $w;
+    }
   }
 
   // $current_day = clone $week_start;
@@ -144,33 +148,14 @@ function mnnshow_yc_schedule_get(){
   $result = db_query(db_rewrite_sql($query));
 
   //--- individual shows
-  $shows = array(
-    'weekday' => array(),
-    'weekend' => array()
-  );
+  $shows = array();
+  foreach ($schedules as $idx => $schedule) {
+    $shows['schedule-' . $idx] = array();
+  }
   while ($data = db_fetch_object($result)) {
-    // watchdog('mnnshow', '1 data: '.var_export($data, true), array(), WATCHDOG_INFO);
-    $show = new MnnShow(new DateTime($data->start_time, new DateTimeZone('America/New_York')), $data->duration / 60, true);
-    $show->setLink('/show-info/'.$data->project_id.'/'.mnnshow_url_feiendly_title($data->title));
-    $show->setTitle($data->title);
-    $show->setCategory(isset($data->topic) ? $data->topic : '');
-    $show->setChannel($data->channel);
-    /*$show = array(
-      'link' => '/show-info/'.$data->project_id.'/'.mnnshow_url_feiendly_title($data->title),
-      'title' => $data->title,
-      'category' => isset($data->topic) ? $data->topic : '',
-      'start' => $start->format("H-i"),
-      'isCurrent' => $current,
-      'duration' => $duration,
-      'dateTime' => $start->format('Y/m/d H:i')
-    );*/
-
-    // watchdog('mnnshow', '2 show: '.var_export($show, true), array(), WATCHDOG_INFO);
-    if ($show->day_of_week < 6) // weekday
-      $shows['weekday'][$show->day_of_week][] = $show;
-    else
-      $shows['weekend'][$show->day_of_week][] = $show;
-
+    $show = mnnshow_yc_set_show_properties($data, $schedules);
+    $schedule_num = $show['schedule_num'];
+    $shows[$schedule_num][] = $show;
   }
 
   //--- day of week column
@@ -200,3 +185,102 @@ function mnnshow_yc_schedule_get(){
   exit();
 }
 
+/**
+ * Set all show properties from the returned database data.
+ * @return array : the show with data.
+ */
+function mnnshow_yc_set_show_properties($db_data, $schedules) {
+  $show = array();
+
+  // parse database data
+  $start_datetime = new DateTime($db_data->start_time, new DateTimeZone('America/New_York'));
+  $show['duration_actual'] = $db_data->duration;
+  $show['duration'] = round($show['duration_actual'] / 30) * 30; // round to nearest 15 minutes
+  $show['link'] = '/show-info/'.$db_data->project_id.'/'.mnnshow_url_feiendly_title($db_data->title);
+  $show['title'] = $db_data->title;
+  $show['category'] = (isset($db_data->topic)) ? $db_data->topic : '';
+  $show['channel'] = $db_data->channel;
+
+  $end_datetime = clone $start_datetime;
+  $end_datetime->add(new DateInterval('PT' . $show['duration'] . 'M'));
+
+  $show['start'] = $start_datetime->format('H-i');
+  $show['end'] = $end_datetime->format('H-i');
+  // $show['start_date'] = $start_datetime->format('Y/m/d');
+  // $show['end_date'] = $end_datetime->format('Y/m/d');
+  // $show['start_date_time'] = $start_datetime->format('Y/m/d H:i');
+  // $show['end_date_time'] = $end_datetime->format('Y/m/d H:i');
+
+  // day_of_week (monday = 1, sunday = 7)
+  $show['day_of_week'] = intval($start_datetime->format('w'));
+  if ($show['day_of_week'] == 0) {
+    $show['day_of_week'] = 7;
+  }
+
+  // is_today
+  $today = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  if ($today->format('Y-m-d') == $start_datetime->format('Y-m-d')) {
+    $show['is_today'] = 'true';
+  }
+  else {
+    $show['is_today'] = 'false';
+  }
+
+  // is_current
+  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  if ($now >= $start_datetime && $now <= $end_datetime) {
+    $show['is_current'] = 'true';
+  }
+  else {
+    $show['is_current'] = 'false';
+  }
+
+  // is_primetime (primetime is 7pm to midnight)
+  $primetime_start = new DateTime($start_datetime->format('m/d/Y 19:00:00'), new DateTimeZone('America/New_York'));
+  $primetime_end = new DateTime($start_datetime->format('m/d/Y 23:59:59'), new DateTimeZone('America/New_York'));
+  if (mnnshow_is_date_in_range($primetime_start, $primetime_end, $start_datetime)
+      || mnnshow_is_date_in_range($primetime_start, $primetime_end, $end_datetime)) {
+    $show['is_primetime'] = 'true';
+  }
+  else {
+    $show['is_primetime'] = 'false';
+  }
+
+  // schedule number
+  foreach ($schedules as $schedule_num => $schedule) {
+    foreach ($schedule as $item) {
+
+      $format_string = $start_datetime->format('m/d/Y ') . $item['start_time'];
+      $item_start = new DateTime($format_string, new DateTimeZone('America/New_York'));
+
+      $format_string = $end_datetime->format('m/d/Y ') . $item['stop_time'];
+      $item_end = new DateTime($format_string, new DateTimeZone('America/New_York'));
+
+      // is channels/days equal
+      if ($item['channel'] == (int) preg_replace('/\D/', '', $show['channel'])
+          && $item['day'] == $show['day_of_week']) {
+
+        // is show's start or end in this item's start/end range
+        if (mnnshow_is_date_in_range($item_start, $item_end, $start_datetime)
+            || mnnshow_is_date_in_range($item_start, $item_end, $end_datetime)) {
+          $show['schedule_num'] = $schedule_num;
+
+          // is show's start before this item's start
+          if ($start_datetime < $item_start){
+            $diff = $item_start->diff($start_datetime);
+            $show['duration'] -= intval($diff->format('%i'));
+          }
+          // is show's end after this item's end
+          if ($end_datetime > $item_end){
+            $diff = $end_datetime->diff($item_end);
+            $show['duration'] -= intval($diff->format('%i'));
+          }
+
+          break 2; // exit both loops
+        }
+      }
+    }
+  }
+
+  return $show;
+}

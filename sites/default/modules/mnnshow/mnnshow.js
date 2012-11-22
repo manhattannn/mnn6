@@ -8,7 +8,7 @@ var schedule = (function(){
 	function init(){
 		generateHtml();
 		offset = $('#schedule-header').offset().top;
-		loadTableHeader()
+		loadTableHeader();
 		//loadSchedule('2011-05-15');
 		loadSchedule(schedDate);
 	}
@@ -151,7 +151,7 @@ var ycSchedule = (function(){
 	function init(){
 		generateHtml();
 		offset = $('#schedule-header').offset().top;
-		loadTableHeader()
+		// loadTableHeader(); // Is this needed?
 		//loadSchedule('2011-05-15');
 		loadSchedule(schedDate);
 	}
@@ -160,7 +160,6 @@ var ycSchedule = (function(){
 		var nav = '<a href="#" class="prev"><span>Previous</span></a><a href="#" class="next"><span>Next</span></a>';
 		nav += '<div class="schedule-date"><span class="time"></span><input type="text" id="date-picker" name="date-picker"></div> ';
 		$('#schedule-header .nav').html(nav);
-
 	}
 
 	function setupEvents(){
@@ -193,7 +192,7 @@ var ycSchedule = (function(){
 				$('#schedule-header .inner').css('position', 'relative').removeClass('floating').css('top', 0);
 			}
 		});
-		
+
 		$('#date-picker').datepicker({
 			onClose: function(dateText, inst){
 				if (dateText != schedDate){
@@ -251,7 +250,7 @@ var ycSchedule = (function(){
 				(function(){
 					var wdRows = '';
 					// time row
-					var wdRowTime = '<div class="row row-time row-weekday"><div class="cell day empty"><div class="inner" /></div>';
+					var wdRowTime = '<div class="row row-time"><div class="cell day empty"><div class="inner" /></div>';
 					for (var i = 0; i < data.timeRow.weekday.length; i++){
 						wdRowTime += '<div class="cell cell-'+i+' t60"><div class="inner">'+ data.timeRow.weekday[i] + '</div></div>';
 					}
@@ -260,10 +259,10 @@ var ycSchedule = (function(){
 
 					// show rows
 					for (var i = 1; i <= 5; i++){
-						var wdShowRow = '<div class="row row-shows row-weekday" id="row-'+i+'">';
+						var wdShowRow = '<div class="row row-shows" id="row-'+i+'">';
 						wdShowRow += '<div class="cell day"><div class="inner">'+data.dayCol.weekday[i]+'</div></div>';
 						wdShowRow += '</div> ';
-						wdRows += wdShowRow
+						wdRows += wdShowRow;
 					}
 
 					// insert html
@@ -274,7 +273,7 @@ var ycSchedule = (function(){
 				(function(){
 					var weRows = '';
 					// time row
-					var weRowTime = '<div class="row row-time row-weekend"><div class="cell day empty"><div class="inner" /></div>';
+					var weRowTime = '<div class="row row-time"><div class="cell day empty"><div class="inner" /></div>';
 					for (var i = 0; i < data.timeRow.weekend.length; i++){
 						weRowTime += '<div class="cell cell-'+i+' t60"><div class="inner">'+ data.timeRow.weekend[i] + '</div></div>';
 					}
@@ -283,7 +282,7 @@ var ycSchedule = (function(){
 
 					// show rows
 					for (i = 6; i <= 7; i++){
-						var weShowRow = '<div class="row row-shows row-weekend" id="row-'+i+'">';
+						var weShowRow = '<div class="row row-shows" id="row-'+i+'">';
 						weShowRow += '<div class="cell day"><div class="inner">'+data.dayCol.weekend[i]+'</div></div>';
 						weShowRow += '</div> ';
 						weRows += weShowRow;
@@ -299,20 +298,21 @@ var ycSchedule = (function(){
 					var content = day[idx].title;
 					var link = '<div class="link-wrapper"><a href="'+day[idx].link+'">'+content+'</a></div>';
 					var category = '<div class="category">'+day[idx].category+'</div>';
-					day[idx].is_today == 'true' ? current = ' current' : current = '';
+					current = day[idx].is_today == 'true' ? ' current' : '';
 					var cls = 'cell cell-' + idx + ' t' + day[idx].duration + ' s' + day[idx].start + current;
 					return '<div class="'+ cls +'"><div class="inner">'+link+category+'</div></div>';
-				};
+				}
 
 				// weekday show cells
 				(function(){
 					for (var i in data.shows.weekday) {
 						var shows = '';
-						if (Object.keys(data.shows.weekday).length > 0)
+						if (Object.keys(data.shows.weekday).length > 0) {
 							var numShows = data.shows.weekday[i].length;
-						for (var j = 0; j < numShows; j++) {
-							var day = data.shows.weekday[i];
-							shows += cell(day, j);
+							for (var j = 0; j < numShows; j++) {
+								var day = data.shows.weekday[i];
+								shows += cell(day, j);
+							}
 						}
 
 						// insert html
@@ -324,21 +324,21 @@ var ycSchedule = (function(){
 				(function(){
 					for (var i in data.shows.weekend) {
 						var shows = '';
-						if (Object.keys(data.shows.weekend).length > 0)
+						if (Object.keys(data.shows.weekend).length > 0) {
 							var numShows = data.shows.weekend[i].length;
-						for (var j = 0; j < numShows; j++) {
-							var day = data.shows.weekend[i];
-							shows += cell(day, j);
-/*
-							var content = day[j].title;
-							var link = '<div class="link-wrapper"><a href="'+day[j].link+'">'+content+'</a></div>';
-							var category = '<div class="category">'+day[j].category+'</div>';
-							day[j].is_today == 'true' ? current = ' current' : current = '';
-							var cls = 'cell cell-' + j + ' t' + day[j].duration + ' s' + day[j].start + current;
-							shows += '<div class="'+ cls +'"><div class="inner">'+link+category+'</div></div>';
-*/
-						}
+							for (var j = 0; j < numShows; j++) {
+								var day = data.shows.weekend[i];
+								shows += cell(day, j);
 
+								// var content = day[j].title;
+								// var link = '<div class="link-wrapper"><a href="'+day[j].link+'">'+content+'</a></div>';
+								// var category = '<div class="category">'+day[j].category+'</div>';
+								// day[j].is_today == 'true' ? current = ' current' : current = '';
+								// var cls = 'cell cell-' + j + ' t' + day[j].duration + ' s' + day[j].start + current;
+								// shows += '<div class="'+ cls +'"><div class="inner">'+link+category+'</div></div>';
+
+							}
+						}
 						// insert html
 						$('#row-' + i).append(shows);
 					}
