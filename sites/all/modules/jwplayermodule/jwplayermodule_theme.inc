@@ -31,9 +31,13 @@ function theme_jwplayermodule_get_attachment_url($fid, $node, $use_ID = FALSE) {
 
 /**
  * Theme function for generating the SWFObject embed code for a player.
+ * @param $config
+ * @param $flash_vars
+ * @return string
  */
 function theme_jwplayermodule_render_player($config, $flash_vars) {
   static $done = FALSE;
+  $config = empty($config) ? variable_get(LONGTAIL_KEY . "default", "") : $config;
   LongTailFramework::setConfig($config);
   $useEmbedder = file_exists(LongTailFramework::getEmbedderPath());
   $swf = LongTailFramework::generateSWFObject($flash_vars, $useEmbedder);
@@ -51,6 +55,60 @@ function theme_jwplayermodule_render_player($config, $flash_vars) {
   }
   drupal_add_js($swf->getConfig(), "setting", "footer", FALSE, TRUE, FALSE);
   return $swf->generateDiv();
+}
+
+function theme_jwplayermodule_tag_processor($content, $node = null) {
+  $text = $content;
+  $regex = "/\[(\<br \/\>|\s)*jwplayer(\<br \/\>|\s)*(\|([a-zA-Z0-9_.\s]+=[-a-zA-Z0-9+.,\(\){}:&@#\/\?<>\"%=~_\'\"\s]+))*(\<br \/\>|\s)*\]/";
+  if (preg_match_all($regex, $text, $matches)) {
+    $patterns = array();
+    $players = array();
+    //Have to process multiple matches since more than one player can be on a node.
+    foreach ($matches[0] as $match) {
+      $tag = $match;
+      $config = "";
+      $flash_vars = array();
+      $tag = str_replace("<br />", "", $tag);
+      $tag = preg_replace("/\[(\s)*jwplayer(\s)*(\||\])/", "", $tag);
+      $tag = str_replace("]", "", $tag);
+      $args = preg_split("/\|/", $tag);
+      //For the current match, process each parameter.
+      foreach ($args as $fvar) {
+        $key_val = preg_split("/=/", $fvar, 2);
+        switch (trim($key_val[0])) {
+          case "config":
+            $config = trim($key_val[1]);
+            break;
+          case "file":
+          case "image":
+          case "html5_file":
+          case "download_file":
+            //Drupal automatically converts URLs into <a> tags.  Must strip this out.
+            $file = preg_replace("/<(.)*>/U", "", $key_val[1]);
+            $attachment = theme("jwplayermodule_get_attachment_url", trim($file), $node);
+            if ($attachment) {
+              $flash_vars[trim($key_val[0])] = $attachment;
+            }
+            else {
+              $flash_vars[trim($key_val[0])] = trim($file);
+            }
+            break;
+          default:
+            if ($key_val[0] != "") {
+              $flash_vars[trim($key_val[0])] = trim($key_val[1]);
+            }
+            break;
+        }
+      }
+      //If the file and image tags haven't been set, try to find content on the node.
+      $flash_vars["file"] = $flash_vars["file"] ? $flash_vars["file"] : theme("jwplayermodule_get_attachment_url", 0, $node, TRUE);
+      $flash_vars["image"] = $flash_vars["image"] ? $flash_vars["image"] : theme("jwplayermodule_get_attachment_url", 1, $node, TRUE);
+      $patterns[] = $regex;
+      $players[] = theme("jwplayermodule_render_player", $config, $flash_vars);
+    }
+    $text = preg_replace($patterns, $players, $text, 1);
+  }
+  return $text;
 }
 
 function theme_jwplayermodule_admin($form) {

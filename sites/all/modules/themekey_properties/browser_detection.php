@@ -7,7 +7,7 @@
  * @see http://www.dinke.net/blog/2005/10/30/browser-detection/en/
  * @see themekey_properties.module
  *
- * Here's a snippet of Dragan's mail response when we asked for permission to reuse his code:
+ * Here's a snippet of Dragans mail response as we asked him to reuse his code:
  *
  * > Hello Markus,
  * >
@@ -21,22 +21,22 @@
  * > Best Regards,
  * > Dragan
  *
- * @author Markus Kalkbrenner | Cocomore AG
+ * @author Markus Kalkbrenner | bio.logis GmbH
  *   @see http://drupal.org/user/124705
  */
 
 /**
  * Browser Detection class
  * contains common static method for
- * getting browser version and os
+ * getting browser version and OS
  *
- * It supports most popular browsers (IE, FF, Safari, Opera, Chrome ...)
- * As well as some not so popular (lynx etc.)
- * It doesn't recognize bots (like google, yahooo etc)
+ * It supports most popular browsers (IE, FF, Safari, Opera, Chrome ...),
+ * as well as some not-so-popular (lynx etc.)
+ * It doesn't recognize bots (like google, yahoo etc)
  *
  * usage
  * <code>
- * $browser = BrowserDetection::getBrowser($_SERVER['HTTP_USER_AGENT']);
+ * $browser = ThemekeyBrowserDetection::getBrowser($_SERVER['HTTP_USER_AGENT']);
  * $os = Browser_Detection::getOs($_SERVER['HTTP_USER_AGENT']);
  * </code>
  * @access public
@@ -44,24 +44,29 @@
 class BrowserDetection {
 
   /**
-   * Get browsername and version
+   * Get browser name and version
    * @param string user agent
    * @return string browser name and version or 'unknown' if unrecognized
    * @static
    * @access public
    */
-  function getBrowser($useragent) {
-    //check for most popular browsers first
-    //unfortunately that's ie. We also ignore opera and netscape 8
-    //because they sometimes send msie agent
+  static function getBrowser($useragent) {
+    // check for most popular browsers first
+    // unfortunately, that's IE. We also ignore Opera and Netscape 8
+    // because they sometimes send msie agent
     if (strpos($useragent, 'MSIE') !== FALSE && strpos($useragent, 'Opera') === FALSE && strpos($useragent, 'Netscape') === FALSE) {
       //deal with Blazer
       if (preg_match("/Blazer\/([0-9]{1}\.[0-9]{1}(\.[0-9])?)/", $useragent, $matches)) {
         return 'Blazer ' . $matches[1];
       }
       //deal with IE
-      if (preg_match("/MSIE ([0-9]{1}\.[0-9]{1,2})/", $useragent, $matches)) {
+      if (preg_match("/MSIE ([0-9]{1,2}\.[0-9]{1,2})/", $useragent, $matches)) {
         return 'Internet Explorer ' . $matches[1];
+      }
+    }
+    elseif (strpos($useragent, 'IEMobile') !== FALSE) {
+      if (preg_match("/IEMobile\/([0-9]{1,2}\.[0-9]{1,2})/", $useragent, $matches)) {
+        return 'Internet Explorer Mobile ' . $matches[1];
       }
     }
     elseif (strpos($useragent, 'Gecko')) {
@@ -142,7 +147,7 @@ class BrowserDetection {
    * @static
    * @access public
    */
-  function getBrowserSimplified($browser) {
+  static function getBrowserSimplified($browser) {
     return trim(preg_replace('/[0-9.]/', '', $browser));
   }
 
@@ -153,7 +158,7 @@ class BrowserDetection {
    * @static
    * @access public
    */
-  function getOs($useragent) {
+  static function getOs($useragent) {
     $useragent = drupal_strtolower($useragent);
 
     //check for (aaargh) most popular first
@@ -187,6 +192,9 @@ class BrowserDetection {
     }
     elseif (strpos($useragent, 'win 9x 4.90') !== FALSE) {
       return 'Windows ME';
+    }
+    elseif (strpos($useragent, 'windows phone') !== FALSE) {
+      return 'Windows Phone';
     }
     elseif (strpos($useragent, 'iphone') !== FALSE) {
       return 'iPhone';
@@ -234,8 +242,11 @@ class BrowserDetection {
    * @static
    * @access public
    */
-  function getOsSimplified($os) {
-    if (strpos($os, 'Windows') !== FALSE) {
+  static function getOsSimplified($os) {
+    if (strpos($os, 'Windows Phone') !== FALSE) {
+      return 'Windows Phone';
+    }
+    elseif (strpos($os, 'Windows') !== FALSE) {
       return 'Windows';
     }
     else {

@@ -160,9 +160,9 @@ function _emfield_emfield_widget_settings($op, $widget, $module) {
     case 'save':
       $columns = array('providers');
       foreach (module_implements('emfield_widget_settings_extra') as $module) {
-        $check = module_invoke($module, 'emfield_widget_settings_extra', 'save', $widget);
-        $invoked = (is_array($check) ? $check : array());
-        $columns = array_merge($columns, $invoked);
+        $module_invoke = module_invoke($module, 'emfield_widget_settings_extra', 'save', $widget);
+        $module_invoke = (array) $module_invoke;
+        $columns = array_merge($columns, $module_invoke);
       }
 
       return $columns;

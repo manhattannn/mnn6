@@ -1,26 +1,4 @@
 
-*************************** IMPORTANT ****************************************
-
-NOTE FOR ACQUIA DRUPAL USERS
-----------------------------
-
-Installation and upgrade instructions for this Acquia Drupal distribution
-can be found in the Getting Started Guide available at 
-http://network.acquia.com/documentation/. The rest of this file contains the
-standard Drupal installation instructions available with Drupal core.
-You should use the Getting Started Guide instead of the instructions in this
-file to install this Acquia Drupal distribution.
-
-You can also obtain comprehensive technical support for this or any
-Drupal distribution through an Acquia Network subscription. More information
-available at http://acquia.com/drupal-support
-
-More about Acquia Network at http://acquia.com/products-services/acquia-network
-
-******************************************************************************
-
-
-
 CONTENTS OF THIS FILE
 ---------------------
 

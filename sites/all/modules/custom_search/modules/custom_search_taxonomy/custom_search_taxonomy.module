@@ -40,17 +40,6 @@ function custom_search_taxonomy_form_alter(&$form, $form_state, $form_id) {
 
   switch ($form_id_processed) {
 
-    case 'search_form':
-
-      // Apply Custom Search settings to the advanced search form.
-      $vocabularies = taxonomy_get_vocabularies();
-      foreach ($vocabularies as $voc) {
-        if (!variable_get('custom_search_advanced_voc' . $voc->vid . '_display', TRUE)) unset($form['advanced']['category']['#options'][$voc->name]);
-      }
-      if (!count($form['advanced']['category']['#options'])) unset($form['advanced']['category']);
-
-    break;
-
     case 'search_theme_form':
     case 'search_block_form':
     case 'custom_search_blocks_form':
@@ -113,7 +102,7 @@ function custom_search_taxonomy_form_alter(&$form, $form_state, $form_id) {
     break;
 
     case 'block_admin_configure':
-      if ($form['module']['#value'] == 'custom_search_blocks') {
+      if (isset($form['module']) && $form['module']['#value'] == 'custom_search_blocks') {
 
         $delta = $form['delta']['#value'];
 
@@ -245,24 +234,6 @@ function custom_search_taxonomy_form_alter(&$form, $form_state, $form_id) {
         '#default_value'  => variable_get('custom_search_paths_terms_separator', CUSTOM_SEARCH_PATHS_TERMS_SEPARATOR_DEFAULT),
         '#size'           => 2
       );
-    break;
-
-    case 'custom_search_results_admin':
-      $form['search_form']['advanced']['taxonomy'] = array(
-        '#type'         => 'fieldset',
-        '#title'        => t('Taxonomy'),
-        '#description'  => t('Select the vocabularies to display on the advanced search form.'),
-        '#collapsible'  => TRUE,
-        '#collapsed'    => TRUE,
-      );
-      $vocabularies = taxonomy_get_vocabularies();
-      foreach ($vocabularies as $voc) {
-        $form['search_form']['advanced']['taxonomy']['custom_search_advanced_voc' . $voc->vid . '_display'] = array(
-          '#type'           => 'checkbox',
-          '#title'          => $voc->name,
-          '#default_value'  => variable_get('custom_search_advanced_voc' . $voc->vid . '_display', TRUE),
-        );
-      }
     break;
 
   }
