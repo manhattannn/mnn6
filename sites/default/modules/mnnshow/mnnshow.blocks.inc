@@ -1,6 +1,7 @@
 <?php
 
 ctools_include('mnnshow.common', 'mnnshow', '');
+ctools_include('mnnshow.ycschedule', 'mnnshow', '');
 
 /**
  * Publisher Info block for individual show node.
@@ -255,24 +256,54 @@ function mnnshow_block_yc_channel_listing(){
  * YC Channel Intro block for YC schedule.
  */
 function mnnshow_block_yc_channel_intro(){
+  $schedules = mnnshow_yc_schedules();
+
   $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
-  $day = intval($now->format('w'));
-  if ($day > 0 && $day < 6) {
-    // weekday
-    $start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
-    $end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
-  }
-  else {
-    // weekend
-    $start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
-    $end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
+  $day = intval($now->format('N')) - 1; // 0 = Monday, 6 = Sunday
+  $content = '';
+
+  foreach ($schedules as $schedule_num => $schedule) {
+    foreach ($schedule as $item) {
+      if ($item['day'] == $day) {
+        $start = new DateTime($now->format('m/d/Y '. $item['start_time']), new DateTimeZone('America/New_York'));
+        $end = new DateTime($now->format('m/d/Y '. $item['stop_time']), new DateTimeZone('America/New_York'));
+
+        if (mnnshow_is_date_in_range($start, $end, $now)) {
+          switch ($item['channel']) {
+            case 1:
+              $link = '/live/1-community-channel';
+              break;
+
+            case 2:
+              $link = '/live/2-lifestyle-channel';
+              break;
+
+            case 3:
+              $link = '/live/3-spirit-channel';
+              break;
+
+            case 4:
+              $link = '/live/4-culture-channel';
+              break;
+
+            default:
+              $link = '';
+              break;
+          }
+
+          break 2;
+        }
+      }
+    }
   }
 
-  $content = '<p>Youth Channel broadcasts from 3 - 5 PM on weekdays,<br>and 7 AM - 12 PM on weekends.</p>';
-  if (mnnshow_is_date_in_range($start, $end, $now))
-    $content .= '<p>Youth Channel is streaming right now. <a href="/live/4-culture-channel">Click to watch online</a>.</p>';
-  else
+  $content = '<p>Youth Channel broadcasts weekdays on Channel 1 from 4 - 5 PM and on Channel 4 from 5 - 6 PM.</p>';
+  if ($link != '') {
+    $content .= '<p>Youth Channel is streaming right now. <a href="' . $link .'"">Click to watch online</a>.</p>';
+  }
+  else {
     $content .= '<p>Until Youth Channel broadcasts again, watch <a href="/youth-channel/video">our videos</a>.</p>';
+  }
 
   return $content;
 }
@@ -281,23 +312,48 @@ function mnnshow_block_yc_channel_intro(){
  * YC Is Playing Now block for homepage.
  */
 function mnnshow_block_yc_channel_is_playing_now(){
-  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
-  $day = intval($now->format('w'));
-  if ($day > 0 && $day < 6) {
-    // weekday
-    $start = new DateTime($now->format('m/d/Y 15:00:00'), new DateTimeZone('America/New_York'));
-    $end = new DateTime($now->format('m/d/Y 17:00:00'), new DateTimeZone('America/New_York'));
-  }
-  else {
-    // weekend
-    $start = new DateTime($now->format('m/d/Y 07:00:00'), new DateTimeZone('America/New_York'));
-    $end = new DateTime($now->format('m/d/Y 12:00:00'), new DateTimeZone('America/New_York'));
-  }
+  $schedules = mnnshow_yc_schedules();
 
-  if (mnnshow_is_date_in_range($start, $end, $now))
-    $content = '<p>Youth Channel is playing right now on MNN - <a href="/live/4-culture-channel">Watch Online Now!</a></p>';
-  else
-    $content = '';
+  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
+  $day = intval($now->format('N')) - 1; // 0 = Monday, 6 = Sunday
+  $content = '';
+
+  foreach ($schedules as $schedule_num => $schedule) {
+    foreach ($schedule as $item) {
+      if ($item['day'] == $day) {
+        $start = new DateTime($now->format('m/d/Y '. $item['start_time']), new DateTimeZone('America/New_York'));
+        $end = new DateTime($now->format('m/d/Y '. $item['stop_time']), new DateTimeZone('America/New_York'));
+
+        if (mnnshow_is_date_in_range($start, $end, $now)) {
+          switch ($item['channel']) {
+            case 1:
+              $link = '/live/1-community-channel';
+              break;
+
+            case 2:
+              $link = '/live/2-lifestyle-channel';
+              break;
+
+            case 3:
+              $link = '/live/3-spirit-channel';
+              break;
+
+            case 4:
+              $link = '/live/4-culture-channel';
+              break;
+
+            default:
+              $link = '';
+              break;
+          }
+
+          $content = '<p>Youth Channel is playing right now on MNN - <a href="' . $link . '">Watch Online Now!</a></p>';
+
+          break 2;
+        }
+      }
+    }
+  }
 
   return $content;
 }

@@ -74,6 +74,13 @@ function mnnshow_yc_schedules() {
 }
 
 /**
+ * An array to map numeric DOWs to text DOWs.
+ */
+function mnnshow_yc_dow() {
+  return array('Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun');
+}
+
+/**
  * Page callback.
  */
 function mnnshow_yc_schedule() {
@@ -81,8 +88,8 @@ function mnnshow_yc_schedule() {
   drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow.js');
   $content = '<div id="yc-schedule">';
   $content .= '<header id="schedule-header"> <div class="inner"> <div class="nav clearfix"></div> </div> </header>';
-  $content .= '<div id="schedule-0" class="schedule-grid two-hours"> <div class="title">Weekday Schedule</div> <div class="rows"></div> </div>';
-  $content .= '<div id="schedule-1" class="schedule-grid five-hours"> <div class="title">Weekend Schedule</div> <div class="rows"></div> </div>';
+  $content .= '<div id="schedule-0" class="schedule-grid one-hour"> <div class="title">MNN1: Community Channel Schedule</div> <div class="rows"></div> </div>';
+  $content .= '<div id="schedule-1" class="schedule-grid one-hour"> <div class="title">MNN4: Culture Channel Schedule</div> <div class="rows"></div> </div>';
   $content .= '</div>'; // yc-schedule
 
   return $content;
@@ -107,8 +114,8 @@ function mnnshow_yc_schedule_get(){
 
   //--- create where clause
   $wherea = array();
-  foreach ($schedules as $schedule_num => $schedule_items) {
-    foreach ($schedule_items as $key => $item) {
+  foreach ($schedules as $schedule_num => $schedule) {
+    foreach ($schedule as $item) {
       // cycle thru each on_air item, building the where clause
       // reset the current_day on each loop
       // then add the on_air 'day' to current_day
@@ -122,21 +129,6 @@ function mnnshow_yc_schedule_get(){
     }
   }
 
-  // $current_day = clone $week_start;
-  // for ($i = 0; $i < 5; $i++){
-  //   // weekday times are from 3p to 5p
-  //   $w = '((a.start_time >= "'.$current_day->format('Y-m-d').' 15:00:00" AND a.start_time <= "'.$current_day->format('Y-m-d').' 16:59:59") ';
-  //   $w .= 'OR (a.end_time > "'.$current_day->format('Y-m-d').' 15:00:00" AND a.end_time <= "'.$current_day->format('Y-m-d').' 16:59:59")) ';
-  //   $wherea[] = $w;
-  //   $current_day->add(new DateInterval('P1D'));
-  // }
-  // for ($i = 0; $i < 2; $i++){
-  //   // weekend times are from 7a to 12p
-  //   $w = '((a.start_time >= "'.$current_day->format('Y-m-d').' 07:00:00" AND a.start_time <= "'.$current_day->format('Y-m-d').' 11:59:59") ';
-  //   $w .= 'OR (a.end_time > "'.$current_day->format('Y-m-d').' 07:00:00" AND a.end_time <= "'.$current_day->format('Y-m-d').' 11:59:59")) ';
-  //   $wherea[] = $w;
-  //   $current_day->add(new DateInterval('P1D'));
-  // }
   $where = implode(' OR ', $wherea);
 
   //--- run the query
@@ -149,22 +141,32 @@ function mnnshow_yc_schedule_get(){
 
   //--- individual shows
   $shows = array();
-  foreach ($schedules as $idx => $schedule) {
-    $shows['schedule-' . $idx] = array();
+  foreach ($schedules as $schedule_num => $schedule) {
+    $shows['schedule-' . $schedule_num] = array();
   }
   while ($data = db_fetch_object($result)) {
     $show = mnnshow_yc_set_show_properties($data, $schedules);
     $schedule_num = $show['schedule_num'];
-    $shows[$schedule_num][] = $show;
+    $shows['schedule-' . $schedule_num][] = $show;
   }
 
-  //--- day of week column
-  $day_col['weekday'] = array(1 => 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri');
-  $day_col['weekend'] = array(6 => 'Sat', 'Sun');
+  $dow_map = mnnshow_yc_dow();
+  //--- day of week columns & time rows
+  foreach ($schedules as $schedule_num => $schedule) {
+    $all_times = array();
+    foreach ($schedule as $item) {
+      $day_num = $item['day'] + 1;
+      $day_str = $dow_map[$item['day']];
+      $day_col['schedule-' . $schedule_num][$day_num] = $day_str;
 
-  //--- time row
-  $time_row['weekday'] = array('3:00 pm', '4:00 pm');
-  $time_row['weekend'] = array('7:00 am', '8:00 am', '9:00 am', '10:00 am', '11:00 am');
+      $all_times[] = $item['start_time'];
+    }
+    $unique_times = array_unique($all_times);
+    foreach ($unique_times as $unique_time) {
+      $unique_datetime = new DateTime('1/1/2012 ' . $unique_time);
+      $time_row['schedule-' . $schedule_num][] = $unique_datetime->format('g:i a');
+    }
+  }
 
   // dates
   $prevDate = clone $requested_date;
@@ -194,7 +196,7 @@ function mnnshow_yc_set_show_properties($db_data, $schedules) {
 
   // parse database data
   $start_datetime = new DateTime($db_data->start_time, new DateTimeZone('America/New_York'));
-  $show['duration_actual'] = $db_data->duration;
+  $show['duration_actual'] = $db_data->duration / 60; // convert seconds to minutes
   $show['duration'] = round($show['duration_actual'] / 30) * 30; // round to nearest 15 minutes
   $show['link'] = '/show-info/'.$db_data->project_id.'/'.mnnshow_url_feiendly_title($db_data->title);
   $show['title'] = $db_data->title;
@@ -204,12 +206,7 @@ function mnnshow_yc_set_show_properties($db_data, $schedules) {
   $end_datetime = clone $start_datetime;
   $end_datetime->add(new DateInterval('PT' . $show['duration'] . 'M'));
 
-  $show['start'] = $start_datetime->format('H-i');
-  $show['end'] = $end_datetime->format('H-i');
-  // $show['start_date'] = $start_datetime->format('Y/m/d');
-  // $show['end_date'] = $end_datetime->format('Y/m/d');
-  // $show['start_date_time'] = $start_datetime->format('Y/m/d H:i');
-  // $show['end_date_time'] = $end_datetime->format('Y/m/d H:i');
+  $show['start_date'] = $start_datetime->format('Y/m/d');
 
   // day_of_week (monday = 1, sunday = 7)
   $show['day_of_week'] = intval($start_datetime->format('w'));
@@ -258,7 +255,7 @@ function mnnshow_yc_set_show_properties($db_data, $schedules) {
 
       // is channels/days equal
       if ($item['channel'] == (int) preg_replace('/\D/', '', $show['channel'])
-          && $item['day'] == $show['day_of_week']) {
+          && ($item['day'] + 1) == $show['day_of_week']) {
 
         // is show's start or end in this item's start/end range
         if (mnnshow_is_date_in_range($item_start, $item_end, $start_datetime)
@@ -282,5 +279,26 @@ function mnnshow_yc_set_show_properties($db_data, $schedules) {
     }
   }
 
+  // ordinal (used for horizontal placement in grid)
+  static $last_date = '';
+  static $last_channel = '';
+  static $last_ordinal = 0;
+  static $last_duration = 0;
+  if (($show['start_date'] == $last_date) && ($show['channel'] == $last_channel)) {
+    $show['ordinal'] = $last_ordinal + $last_duration;
+    $last_ordinal = $show['ordinal'];
+    $last_duration = $show['duration'];
+  }
+  else {
+    $last_date = $show['start_date'];
+    $last_channel = $show['channel'];
+    $last_ordinal = 0;
+    $last_duration = $show['duration'];
+    $show['ordinal'] = 0;
+  }
+  unset($show['start_date']);
+
   return $show;
 }
+
+

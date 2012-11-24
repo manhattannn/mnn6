@@ -825,6 +825,22 @@ body.node-type-yc-service #title h1{
 	left: 855px;
 }
 
+.schedule-grid.one-hour .cell.t60{
+	width: 850px;
+}
+.schedule-grid.one-hour .cell.t30{
+	width: 425px;
+}
+.schedule-grid.one-hour .row-time .cell-0{
+	left: 90px;
+}
+.schedule-grid.one-hour .cell-0{
+	left: 90px;
+}
+.schedule-grid.one-hour .cell-30{
+	left: 516px;
+}
+
 #yc-schedule .cell .inner{
 	padding: 10px;
 	height: 50px;
