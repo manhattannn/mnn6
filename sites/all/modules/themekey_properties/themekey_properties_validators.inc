@@ -10,7 +10,7 @@
  * @author Markus Kalkbrenner | Cocomore AG
  *   @see http://drupal.org/user/124705
  *
- * @author Carsten MÃ¼ller | Cocomore AG
+ * @author Carsten MŸller | Cocomore AG
  *   @see http://drupal.org/user/124707
  */
 
@@ -29,7 +29,7 @@
  *   A Theme Switching Rule as associative array:
  *   - property: ThemeKey property as string (p.e. "drupal:path")
  *   - wildcard: optional string, only used if property is "drupal:path:wildcard"
- *   - operator: ThemeKey operator as string ("=", "!", "<". "<=", ">", ">=", "~")
+ *   - operator: ThemeKey operator as string ("=", "!", "*", "!*", "<", "<=", ">", ">=", "~", "!~")
  *   - value: ThemeKey property value as string
  *
  * @return
@@ -58,7 +58,7 @@ function themekey_properties_validator_ip_address($rule) {
       break;
 
     case '~':
-      // CHECK THE REGULAR EXPRESSION
+    case '!~':
       $errors = themekey_validator_regex($rule);
       break;
 
@@ -87,7 +87,7 @@ function themekey_properties_validator_ip_address($rule) {
  *   A Theme Switching Rule as associative array:
  *   - property: ThemeKey property as string (e.g., "drupal:path")
  *   - wildcard: optional string, only used if property is "drupal:path:wildcard"
- *   - operator: ThemeKey operator as string ("=", "!", "<". "<=", ">", ">=", "~")
+ *   - operator: ThemeKey operator as string ("=", "!", "*", "!*", "<", "<=", ">", ">=", "~", "!~")
  *   - value: ThemeKey property value as string
  *
  * @return
@@ -120,11 +120,12 @@ function themekey_validator_role($rule) {
       break;
 
     case '~':
+    case '!~':
       $errors = themekey_validator_regex($rule);
       break;
 
     default:
-      $errors['operator'] = t('Possible operators are "=", "!", "~"');
+      $errors['operator'] = t('Possible operators are "=", "!", "*", "!*", "~", "!~"');
       break;
 
   }
@@ -144,7 +145,7 @@ function themekey_validator_role($rule) {
  *   A Theme Switching Rule as associative array:
  *   - property: ThemeKey property as string (e.g. "drupal:path")
  *   - wildcard: optional string, only used if property is "drupal:path:wildcard"
- *   - operator: ThemeKey operator as string ("=", "!", "<". "<=", ">", ">=", "~")
+ *   - operator: ThemeKey operator as string ("=", "!", "*", "!*", "<", "<=", ">", ">=", "~", "!~")
  *   - value: ThemeKey property value as string
  *
  * @return

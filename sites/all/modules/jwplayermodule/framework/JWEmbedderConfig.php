@@ -64,6 +64,7 @@ class JWEmbedderConfig implements EmbedConfigInterface {
   private $id;
   private $path;
   private $conf;
+  private $config;
   private $fvars;
   private $dim;
 

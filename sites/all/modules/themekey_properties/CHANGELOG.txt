@@ -1,3 +1,20 @@
+ThemeKey Properties 6.x-4.2, 2012-09-12
+---------------------------------------
+[        ] mkalkbrenner: fixed rare fatal error "Call to undefined function apache_request_headers()" if property system:http_header is used in combination with ThemeKey Debug and drush
+[        ] mkalkbrenner: fixed warnings in themekey_browser_detection.php
+[#1413144] Mod74, mkalkbrenner: Detecting Windows Phone 7
+
+
+ThemeKey Properties 6.x-4.1, 2011-12-14
+---------------------------------------
+[        ] mkalkbrenner: new property for HTTP headers: system:http_header
+
+
+ThemeKey Properties 6.x-4.0, 2011-10-07
+---------------------------------------
+[#1298644] mkalkbrenner: new operators "*", "!*", "!~"
+
+
 ThemeKey Properties 6.x-3.0, 2011-05-05
 ---------------------------------------
 [#1142402] mkalkbrenner: new property for POST variables: system:post
@@ -54,7 +71,7 @@ ThemeKey Properties 6.x-2.0-beta2, 2009-01-12
 
 ThemeKey Properties 6.x-2.0-beta1, 2009-01-04
 ---------------------------------------------
-[       ] mkalkbrenner: adjusted examples in README.txt according to the new user interface provided by ThemeKey 6.x-2.0beta1 
+[       ] mkalkbrenner: adjusted examples in README.txt according to the new user interface provided by ThemeKey 6.x-2.0beta1
 [       ] mkalkbrenner: moved modules into package ThemeKey
 [       ] Carsten Müller, mkalkbrenner: added validation functions for properties
 [       ] mkalkbrenner: applied "coder" and fixed warnings
@@ -72,7 +89,7 @@ ThemeKey Properties 6.x-2.0-alpha2, 2009-11-25
 ThemeKey Properties 6.x-2.0-alpha1, 2009-11-24
 ----------------------------------------------
 [       ] mkalkbrenner: property values in debug messages are clickable to start creating a corresponding Theme Switching Rule
-[       ] mkalkbrenner: moved extra logic to set more sophisticated properties to mapping functions to be compatible to ThemeKey 6.x-2.x API 
+[       ] mkalkbrenner: moved extra logic to set more sophisticated properties to mapping functions to be compatible to ThemeKey 6.x-2.x API
 
 
 ThemeKey Properties 6.x-1.2, 2009-11-12

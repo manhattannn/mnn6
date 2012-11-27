@@ -85,7 +85,7 @@ class AdminContext {
     } else if (isset($_POST["Cancel"])) {
       unset($form_state["storage"]);
       $state->getCancelState()->render($form, $form_state);
-    } else if (isset($_POST["Save"])) {
+    } else if (isset($_POST["Save"]) && isset($form_state["storage"])) {
       $config = $form_state["storage"][LONGTAIL_KEY . "config"];
       $save_player = $form_state["storage"][LONGTAIL_KEY . "new_player"] ? $form_state["storage"][LONGTAIL_KEY . "new_player"] : $config;
       LongTailFramework::setConfig($config);
@@ -93,7 +93,6 @@ class AdminContext {
       $success = LongTailFramework::saveConfig($this->convertToXML($save_values), check_plain($save_player));
       $configs = LongTailFramework::getConfigs();
       if ($configs && count($configs) == 2) {
-        variable_set(LONGTAIL_KEY . "default", $config ? $config : $form_state["storage"][LONGTAIL_KEY . "new_player"]);
         variable_set(LONGTAIL_KEY . "ootb", false);
       }
       if ($success) {
