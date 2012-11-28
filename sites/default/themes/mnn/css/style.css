@@ -592,13 +592,13 @@ Header Search Styles
 }
 
 #search input[type="text"], .search-form input[type="text"] {
-    -moz-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
+/*    -moz-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
     -webkit-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
     -o-box-shadow: 1px 1px 1px 0 #8C8C8C inset;
     box-shadow: 1px 1px 1px 0 #8C8C8C inset;
-	background: url("../images/icon_search.png") no-repeat scroll 5px 8px white;
-	    border: medium none;
-	    height: 17px;
+*/	background: url("../images/icon_search.png") no-repeat scroll 5px 6px white;
+	    border: 0;
+	    /*height: 17px;*/
 		padding: 4px 4px 4px 20px;
 		    width: 190px;
 }
@@ -1378,22 +1378,30 @@ footer a {
 #block-webform-webform-send-us-a-message .captcha .form-item .description{
   margin: 0 0 10px 0;
 }
+#block-webform-webform-send-us-a-message .mollom-privacy {
+  margin: 0 0 10px 0;
+  width: 433px;
+}
 #block-webform-webform-send-us-a-message .captcha #edit-captcha-response{
   width: 212px;
 }
 
 #block-webform-webform-send-us-a-message input[type="text"],
-#block-webform-webform-send-us-a-message input[type="email"] {
-	padding:4px;
+#block-webform-webform-send-us-a-message input[type="email"],
+#block-webform-webform-send-us-a-message textarea {
+	padding:6px;
 	font-size:14px;
 	color:#666666;
-	box-shadow:inset 0px 0px 10px 0px black;
+/*	box-shadow:inset 0px 0px 10px 0px black;
 	-moz-box-shadow:inset 0px 0px 10px 0px black;
 	-webkit-box-shadow:inset 0px 0px 10px 0px black;
-	-o-box-shadow:inset 0px 0px 10px 0px black;
-	width:433px;
+	-o-box-shadow:inset 0px 0px 10px 0px black; */
+  width:433px;
+  border: 0;
 }
-
+#block-webform-webform-send-us-a-message textarea {
+  width: 433px;
+}
 
 footer textarea#edit-submitted-message {
     color: #666666;
@@ -1941,7 +1949,9 @@ Web Forms
 	  width: 250px;
 	}
 
-.webform-client-form input[type="text"] {
+.webform-client-form input[type="text"],
+.webform-client-form input[type="email"],
+.webform-client-form textarea {
 	padding:4px;
 	width:300px;
 }
@@ -2014,8 +2024,38 @@ input:valid, textarea:valid {
     vertical-align: baseline;
 }
 
+.webform-client-form .mollom-privacy {
+  margin-left: 260px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
 .webform-client-form input[type="submit"] {
     margin-left: 260px;
+}
+
+#page-contact-us .webform-client-form label {
+  width: 110px;
+}
+
+#page-contact-us .webform-client-form input[type="submit"] {
+    margin-left: 120px;
+}
+
+#page-contact-us .webform-client-form .mollom-privacy {
+  margin-left: 120px;
+}
+
+#edit-mollom-captcha-wrapper input {
+  margin-left: 120px;
+}
+
+#edit-mollom-captcha-wrapper .description {
+  margin-left: 120px;
+}
+
+#edit-mollom-captcha-wrapper img {
+  margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------------------------
@@ -4690,15 +4730,16 @@ ul.no-bullets .li-content{
 	width: 440px;
 }
 #block-block-footer-join-mailing-list form input[type="text"]{
-	padding:4px;
+	padding:6px;
 	font-size:14px;
 	color:#666666;
-	box-shadow:inset 0px 0px 10px 0px black;
+/*	box-shadow:inset 0px 0px 10px 0px black;
 	-moz-box-shadow:inset 0px 0px 10px 0px black;
 	-webkit-box-shadow:inset 0px 0px 10px 0px black;
 	-o-box-shadow:inset 0px 0px 10px 0px black;
-	width:300px;
+*/	width:300px;
 	float: left;
+  border: 0;
 }
 #block-block-footer-join-mailing-list form input[type="submit"]{
 	height: auto;
@@ -4722,7 +4763,7 @@ ul.no-bullets .li-content{
 
 #logo-title #search input[type="submit"]{
 	position: relative;
-	top: -1px;
+	/*top: -1px;*/
 }
 
 #simplemodal-overlay {
