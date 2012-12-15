@@ -236,18 +236,25 @@ function mnnshow_block_channel_listing(){
 function mnnshow_block_yc_channel_listing(){
   $channel_info = mnnshow_get_channels();
 
-  //--- youth channel plays on channel 4
+  //--- youth channel plays on channel 1 & 4
 
   $content = '<table class="channel-grid">';
   // heading row
-  $content .= '<tr><th></th><th>Youth Channel</th></tr>';
+  $content .= '<tr><th></th>'; // first col is blank
+  for ($i = 0; $i < count($channel_info[1]['tvChannels']); $i++){
+    $content .= '<th>'.$channel_info[1]['tvChannels'][$i]['tvStationName'].'</th>';
+  }
+  $content .= '</tr>';
   // channels
-  for ($i = 0; $i < count($channel_info[4]['tvChannels']); $i++){
+  for ($i = 1; $i <= count($channel_info); $i=$i+3){
     $content .= '<tr>';
-    $content .= '<th>'.$channel_info[4]['tvChannels'][$i]['tvStationName'].'</th>';
-    $content .= '<td>'.$channel_info[4]['tvChannels'][$i]['tvStationChannel'].'</td>';
+    $content .= '<th>'.$i.' '.$channel_info[$i]['name'].'</th>';
+    for ($j = 0; $j < count($channel_info[1]['tvChannels']); $j++){
+      $content .= '<td>'.$channel_info[$i]['tvChannels'][$j]['tvStationChannel'].'</td>';
+    }
     $content .= '</tr>';
   }
+
   $content .= '</table>';
   return $content;
 }
@@ -297,7 +304,7 @@ function mnnshow_block_yc_channel_intro(){
     }
   }
 
-  $content = '<p>Youth Channel broadcasts weekdays on Channel 1 from 4 - 5 PM and on Channel 4 from 5 - 6 PM.</p>';
+  $content = '<p>Youth Channel broadcasts weekdays, from 4-5 PM on MNN1 and 5-6 on MNN4.</p>';
   if ($link != '') {
     $content .= '<p>Youth Channel is streaming right now. <a href="' . $link .'"">Click to watch online</a>.</p>';
   }
