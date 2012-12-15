@@ -221,7 +221,7 @@ h4 {
 	border-top: 1px solid #b2bbc0;
 	padding-bottom: 10px;
 }
-div#block-views-youth-channel-join-homepage-block {
+div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 	border-top: 0 none;
 }
 
@@ -248,7 +248,7 @@ div#block-views-youth-channel-join-homepage-block {
 
 #block-views-youth-channel-our-services-block-homepage,
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section,
-#block-panels-mini-mini-panel-yc-landing-page-news-section,
+#block-views-youth-channel-join-homepage-block,
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel,
 #block-views-yc-video-grid---homepage{
 	padding-top:30px;
