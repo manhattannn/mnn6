@@ -280,7 +280,7 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .view-header{
 	position: absolute;
-	top: 31px;
+	top: 1px;
 	right: 0;
 }
 
@@ -922,15 +922,19 @@ div#block-panels-mini-mini-panel-yc-schedule-intro{
 	background-color: transparent;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-last{
-	width: 220px;
-	padding: 0 0 0 220px;
+	width: 270px;
+	padding: 0 0 0 170px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .channel-grid{
-	width: 220px;
+	width: 100%;
 }
-#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th + th,
-#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th + td{
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th,
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid td{
 	text-align: center;
+	padding: 5px;
+}
+#block-panels-mini-mini-panel-yc-schedule-intro .channel-grid th:first-child {
+	text-align: left;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .inside{
 	margin: 0;
