@@ -38,3 +38,35 @@ scripts[] = js/plugins.js
 ;scripts[] = js/jquery-ui-1.8.14.custom.min.js
 scripts[] = js/script.js
 
+; Context Layouts
+; ------------------------------
+layouts[default][name] = "Default"
+layouts[default][description] = "Simple two column page."
+layouts[default][template] = "page"
+layouts[default][regions][] = "main_menu"
+layouts[default][regions][] = "header"
+layouts[default][regions][] = "sub_header"
+layouts[default][regions][] = "watch_now"
+layouts[default][regions][] = "content_header"
+layouts[default][regions][] = "content_top"
+layouts[default][regions][] = "content_bottom"
+layouts[default][regions][] = "sidebar_first"
+layouts[default][regions][] = "sidebar_second"
+layouts[default][regions][] = "above_footer"
+layouts[default][regions][] = "footer"
+layouts[default][regions][] = "sub_footer"
+
+layouts[no_sidebars][name] = "No Sidebars"
+layouts[no_sidebars][description] = "No sidebars page."
+layouts[no_sidebars][template] = "page"
+layouts[no_sidebars][regions][] = "main_menu"
+layouts[no_sidebars][regions][] = "header"
+layouts[no_sidebars][regions][] = "sub_header"
+layouts[no_sidebars][regions][] = "watch_now"
+layouts[no_sidebars][regions][] = "content_header"
+layouts[no_sidebars][regions][] = "content_top"
+layouts[no_sidebars][regions][] = "content_bottom"
+layouts[no_sidebars][regions][] = "above_footer"
+layouts[no_sidebars][regions][] = "footer"
+layouts[no_sidebars][regions][] = "sub_footer"
+
