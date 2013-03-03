@@ -1,12 +1,12 @@
 ﻿body {
-	background:url('../images/graph_pattern.png');
+  background:url('../images/graph_pattern.png');
 }
 
 #main a, #main a:link, #main a:visited,
 #content-header .breadcrumb a,
 .view-content a.read-more,
 .view-content .read-more a{
-	color: #0ca676;
+  color: #0ca676;
 }
 #main a:hover,
 #content-header .breadcrumb a:hover,
@@ -19,23 +19,23 @@
 #content h1,
 #content h2,
 #content h3 {
-	font-family:'Bowlby One', arial, sans-serif;
-	font-weight:normal;
-	text-transform: uppercase;
+  font-family:'Bowlby One', arial, sans-serif;
+  font-weight:normal;
+  text-transform: uppercase;
 }
 
 #sidebar-second h2,
 #sidebar-second h3,
 #sidebar-second h4{
-	font-family: 'Bowlby One', arial, sans-serif;
-	text-transform: uppercase;
+  font-family: 'Bowlby One', arial, sans-serif;
+  text-transform: uppercase;
 }
 
 #content h2,
 #content h3 {
-	font-size:24px;
-	line-height: 24px;
-	margin-bottom: 20px;
+  font-size:24px;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
 #content h2,
 #content h3,
@@ -62,79 +62,79 @@
 }
 
 #content-area h4{
-	color: #25292B;
-	    font-family: arial;
-	    font-size: 18px;
-	    font-weight: bold;
-	    line-height: 20px;
-	    margin-bottom: 10px;
-	    margin-top: 20px;
-	    text-decoration: none;
+  color: #25292B;
+      font-family: arial;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 20px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      text-decoration: none;
 }
 /* Hero */
 
 
 #header {
-	background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px #16ffb6;
-	top:0;
-	height:450px;
-	margin-bottom: 40px;
+  background: url("../images/yc-hero-back.png") no-repeat scroll 50% 33px transparent;
+  top:0;
+  height:450px;
+  margin-bottom: 40px;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-intro {
-	width:940px;
-	margin:auto;
-	padding:10px;
-	height: 430px;
+  width:940px;
+  margin:auto;
+  padding:10px;
+  height: 430px;
 }
 
 #mini-panel-youth_channel_landing_intro {
-	padding-top:40px;
-	width:272px;
-	font-size:17px;
-	color:#25292b;
-	line-height:21px;
-	position:relative;
+  padding-top:40px;
+  width:272px;
+  font-size:17px;
+  color:#25292b;
+  line-height:21px;
+  position:relative;
 }
 
 #page-youth-channel #header h2.pane-title {
-	background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
-	height: 59px;
-	text-indent: -999em;
-	width: 352px;
-	margin:0 0 25px 0;
-	display: block;
+  background: url("../images/yc-logo.png") no-repeat scroll 0 0 transparent;
+  height: 59px;
+  text-indent: -999em;
+  width: 352px;
+  margin:0 0 25px 0;
+  display: block;
 }
 
 #mini-panel-youth_channel_landing_intro p {
-	margin-bottom:20px;
+  margin-bottom:20px;
 }
 
 #page-youth-channel #content-header {
-	position: absolute;
-	top: -491px;
-	left: 13px;
+  position: absolute;
+  top: -491px;
+  left: 13px;
 }
 
 /* Homepage body content */
 
 #page-youth-channel h1{
-	display: none;
+  display: none;
 }
 
 #main h3.title a,
 h3.title a {
-	color: #25292B;
-	font-family: arial;
-	font-size: 18px;
-	font-weight: bold;
-	line-height: 20px;
-	margin-bottom: 0;
-	text-decoration: none;
-	width: 260px;
+  color: #25292B;
+  font-family: arial;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 0;
+  text-decoration: none;
+  width: 260px;
 }
 h3.title a:hover{
-	color: #25292b;
+  color: #25292b;
 }
 
 .content .col h5, .content h5 {
@@ -157,69 +157,69 @@ h4 {
 #mini-panel-youth_channel_landing_intro .button,
 .section-youth-channel #main .button,
 .section-youth-channel #main input[type="submit"] {
-	background: #ef5711;
-	background: -moz-linear-gradient(top, #ef5711 0%, #ca4000 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef5711), color-stop(100%,#ca4000));
-	background: -webkit-linear-gradient(top, #ef5711 0%,#ca4000 100%);
-	background: -o-linear-gradient(top, #ef5711 0%,#ca4000 100%);
-	background: -ms-linear-gradient(top, #ef5711 0%,#ca4000 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef5711', endColorstr='#ca4000',GradientType=0 );
-	background: linear-gradient(top, #ef5711 0%,#ca4000 100%);
-	color: white;
+  background: #ef5711;
+  background: -moz-linear-gradient(top, #ef5711 0%, #ca4000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef5711), color-stop(100%,#ca4000));
+  background: -webkit-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+  background: -o-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+  background: -ms-linear-gradient(top, #ef5711 0%,#ca4000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef5711', endColorstr='#ca4000',GradientType=0 );
+  background: linear-gradient(top, #ef5711 0%,#ca4000 100%);
+  color: white;
 }
 #mini-panel-youth_channel_landing_intro .button:hover,
 #content .button:hover,
 #content input[type="submit"]:hover {
-	background: #ca4000;
-	background: -moz-linear-gradient(top, #ca4000 0%, #ef5711 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ca4000), color-stop(100%,#ef5711));
-	background: -webkit-linear-gradient(top, #ca4000 0%,#ef5711 100%);
-	background: -o-linear-gradient(top, #ca4000 0%,#ef5711 100%);
-	background: -ms-linear-gradient(top, #ca4000 0%,#ef5711 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ca4000', endColorstr='#ef5711',GradientType=0 );
-	background: linear-gradient(top, #ca4000 0%,#ef5711 100%);
+  background: #ca4000;
+  background: -moz-linear-gradient(top, #ca4000 0%, #ef5711 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ca4000), color-stop(100%,#ef5711));
+  background: -webkit-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+  background: -o-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+  background: -ms-linear-gradient(top, #ca4000 0%,#ef5711 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ca4000', endColorstr='#ef5711',GradientType=0 );
+  background: linear-gradient(top, #ca4000 0%,#ef5711 100%);
 }
 
 #mini-panel-youth_channel_landing_intro .button a,
 #content .button a {
-	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
-	color: white;
-	float: left;
-	font-size: 12px;
-	font-weight: normal;
-	margin-right: 9px;
-	padding: 1px 13px 0 10px;
-	text-decoration: none;
-	line-height: 24px;
+  background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
+  color: white;
+  float: left;
+  font-size: 12px;
+  font-weight: normal;
+  margin-right: 9px;
+  padding: 1px 13px 0 10px;
+  text-decoration: none;
+  line-height: 24px;
 }
 
 #content .button-big,
 #mini-panel-youth_channel_landing_intro .button-big{
-	float: none;
+  float: none;
 }
 #content .button-big a,
 #mini-panel-youth_channel_landing_intro .button-big a{
-	line-height: 50px;
-	padding: 1px 18px 0 22px;
-	text-shadow: 0 -1px 0 #666;
-	font-size: 14px;
-	background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
-	float: none;
-	display: block;
-	margin-right: 12px;
-	font-weight: bold;
-	color: #f3f7f9;
+  line-height: 50px;
+  padding: 1px 18px 0 22px;
+  text-shadow: 0 -1px 0 #666;
+  font-size: 14px;
+  background: url("../images/right-arrow2-sm.png") no-repeat scroll right center transparent;
+  float: none;
+  display: block;
+  margin-right: 12px;
+  font-weight: bold;
+  color: #f3f7f9;
 }
 
 #content .button.wide{
-	width: 280px;
+  width: 280px;
 }
 
 /* All Homepage */
 
 #content-top > div {
-	border-top: 1px solid #b2bbc0;
-	padding-bottom: 10px;
+  border-top: 1px solid #b2bbc0;
+  padding-bottom: 10px;
 }
 div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 	border-top: 0 none;
@@ -228,19 +228,19 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 /* Join Youth Channel */
 
 .view-content > div.item-list {
-	margin-bottom: 20px;
-	padding-top:10px;
+  margin-bottom: 20px;
+  padding-top:10px;
 }
 
 #block-views-youth-channel-join-homepage-block ul li {
-	clear: none;
-	float: left;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	width: 300px;
+  clear: none;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 300px;
 }
 #block-views-youth-channel-join-homepage-block ul li.views-row-even {
-	margin-right: 0px;
+  margin-right: 0px;
 }
 
 #block-views-youth-channel-join-homepage-block {
@@ -251,8 +251,8 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 #block-views-youth-channel-join-homepage-block,
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel,
 #block-views-yc-video-grid---homepage{
-	padding-top:30px;
-	float:left;
+  padding-top:30px;
+  float:left;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section .pane-title{
@@ -262,20 +262,20 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
     display: none;
 }
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section h4{
-	font-size: 16px;
-	font-weight: bold;
-	margin-bottom: 2px;
-	text-transform: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: none;
     color: #25292B;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section .item-list .views-row {
-	clear: left;
-	margin: 0 0 7px 0;
+  clear: left;
+  margin: 0 0 7px 0;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-our-services-section p{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .view-header{
@@ -285,98 +285,98 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3 a{
-	font-size: 16px;
+  font-size: 16px;
 }
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3 a:hover{
-	color: #0ca676;
+  color: #0ca676;
 }
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row h3{
-	font-family: Arial;
-	margin-bottom: 12px;
-	/*white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;*/
-	text-transform: none;
-	line-height: 0.9;
+  font-family: Arial;
+  margin-bottom: 12px;
+  /*white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;*/
+  text-transform: none;
+  line-height: 0.9;
 }
 #block-panels-mini-mini-panel-yc-landing-page-news-section .read-more{
-	float: none;
+  float: none;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .views-row{
-	margin-bottom: 25px;
-	position: relative;
+  margin-bottom: 25px;
+  position: relative;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .view-content {
-	position:relative;
+  position:relative;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .content {
-	margin-right:10px;
+  margin-right:10px;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .datetime-category {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-news-section .panel-col-last .views-row{
-	height: 185px;
+  height: 185px;
 }
 
 .pane-yc-news-with-image img{
-	margin: 3px 0 20px;
+  margin: 3px 0 20px;
 }
 
 #block-views-yc-video-grid---homepage {
-	width: 100%;
+  width: 100%;
 }
 
 #block-views-yc-video-grid---homepage td.col-1{
-	padding: 10px 28px 10px 0;
+  padding: 10px 28px 10px 0;
 }
 #block-views-yc-video-grid---homepage td.col-2{
-	padding: 10px 14px 10px 14px;
+  padding: 10px 14px 10px 14px;
 }
 #block-views-yc-video-grid---homepage td.col-3{
-	padding: 10px 0 10px 28px;
+  padding: 10px 0 10px 28px;
 }
 
 #block-views-yc-video-grid---homepage .view-header{
-	position: absolute;
-	top: 29px;
-	right: 0;
+  position: absolute;
+  top: 29px;
+  right: 0;
 }
 
 #main a.imagecache:hover,
 #main .views-field-field-video-embed a:hover{
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .thumb {
-	float: left;
-	margin: 2px 20px 20px 0;
+  float: left;
+  margin: 2px 20px 20px 0;
 }
 
 .view-yc-video-thumbnail-grid .views-field-title a{
-	color: #0ca676;
-	font-weight: normal;
+  color: #0ca676;
+  font-weight: normal;
 }
 
 .view-yc-video-thumbnail-grid .views-field-field-video-embed-1{
-	font-size: 10px;
-	color: #666;
+  font-size: 10px;
+  color: #666;
 }
 
 /* Sidebar */
 
 .sidebar-second .sidebar {
-	float: left;
-	padding-left: 45px;
-	padding-top: 0;
-	width: 220px;
+  float: left;
+  padding-left: 45px;
+  padding-top: 0;
+  width: 220px;
 }
 
 .sidebar-second #content-inner {
@@ -387,7 +387,7 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 }
 
 .sidebar-first #content-inner .content p {
-	width:500px;
+  width:500px;
 }
 
 .sidebar .views-row {
@@ -396,286 +396,286 @@ div#block-panels-mini-mini-panel-yc-landing-page-news-section {
 }
 
 #sidebar-second .top {
-	background:url('../images/orange-tail.png') no-repeat right center;
-	margin-bottom: 20px;
-	padding: 0 21px 0 0;
-	border-bottom:none;
-	height: 40px;
+  background:url('../images/orange-tail.png') no-repeat right center;
+  margin-bottom: 20px;
+  padding: 0 21px 0 0;
+  border-bottom:none;
+  height: 40px;
 }
 
 #sidebar-second .top h3 {
-	background: none repeat scroll 0 0 #CA4100;
-	color: white;
-	font-size: 17px;
-	font-weight: normal;
-	height: 32px;
-	line-height: 34px;
-	margin: 0 0 14px;
-	padding: 4px 8px;
-	text-shadow: 0 -1px 0px #666666;
-	filter: dropshadow(color=#666, offx=0, offy=-1);
-	white-space: nowrap;
+  background: none repeat scroll 0 0 #CA4100;
+  color: white;
+  font-size: 17px;
+  font-weight: normal;
+  height: 32px;
+  line-height: 34px;
+  margin: 0 0 14px;
+  padding: 4px 8px;
+  text-shadow: 0 -1px 0px #666666;
+  filter: dropshadow(color=#666, offx=0, offy=-1);
+  white-space: nowrap;
 }
 
 #sidebar-second .content h2{
-	display: none;
+  display: none;
 }
 
 #block-menu-youth-channel li,
 #block-menu-youth-channel li.leaf{
-	list-style-type: none;
-	list-style-image: none;
-	font-weight: bold;
-	margin-bottom: 14px;
+  list-style-type: none;
+  list-style-image: none;
+  font-weight: bold;
+  margin-bottom: 14px;
 }
 #block-menu-youth-channel li a{
-	color: #25292b;
-	background-color: transparent;
+  color: #25292b;
+  background-color: transparent;
 }
 #block-menu-youth-channel li a:hover{
-	color: #0ca676;
+  color: #0ca676;
 }
 #block-menu-youth-channel li.expanded ul{
-	display: none;
+  display: none;
 }
 #block-menu-youth-channel li.expanded.active-trail ul{
-	display: block;
+  display: block;
 }
 #block-menu-youth-channel li.expanded li{
-	margin: 3px 0 6px 3px;
+  margin: 3px 0 6px 3px;
 }
 #block-menu-youth-channel li.expanded li a{
-	color: #0ca676;
-	font-weight: normal;
-	margin-bottom: 0;
-	padding: 2px 3px;
+  color: #0ca676;
+  font-weight: normal;
+  margin-bottom: 0;
+  padding: 2px 3px;
 }
 #block-menu-youth-channel li.expanded li a.active,
 #block-menu-youth-channel li.expanded li a:hover{
-	color: #0ca676;
-	background-color: #d3ff7e;
+  color: #0ca676;
+  background-color: #d3ff7e;
 }
 
 #block-views-yc-news-page-categories-block .views-row a{
-	background-color: transparent;
-	color: #25292b;
+  background-color: transparent;
+  color: #25292b;
 }
 
 #block-views-yc-news-page-categories-block .views-row a:hover{
-	color: #0ca676;
+  color: #0ca676;
 }
 
 #block-mnnmisc-yc-news-archive li {
-	background-color: transparent;
-	color: #0CA676;
-	padding: 0 0 0 16px;
+  background-color: transparent;
+  color: #0CA676;
+  padding: 0 0 0 16px;
 }
 #block-mnnmisc-yc-news-archive li.collapsed {
-	background: transparent url(../images/yc-menu-collapsed.png) no-repeat left 5px;
-	list-style-image: none;
-	list-style-type: none;
+  background: transparent url(../images/yc-menu-collapsed.png) no-repeat left 5px;
+  list-style-image: none;
+  list-style-type: none;
 }
 #block-mnnmisc-yc-news-archive li.expanded {
-	background: transparent url(../images/yc-menu-expanded.png) no-repeat left 5px;
-	list-style-image: none;
-	list-style-type: none;
+  background: transparent url(../images/yc-menu-expanded.png) no-repeat left 5px;
+  list-style-image: none;
+  list-style-type: none;
 }
 
 #block-mnnmisc-yc-news-archive li li {
-	padding: 0 0 0 30px;
+  padding: 0 0 0 30px;
 }
 
 #block-mnnmisc-yc-news-archive li a{
-	background-color: transparent;
-	color: #25292b;
+  background-color: transparent;
+  color: #25292b;
 }
 
 #block-mnnmisc-yc-news-archive ul{
-	margin: 0;
+  margin: 0;
 }
 
 #block-panels-mini-mini-panel-yc-firehouse-sidebar .top h3{
-	line-height: 17px;
-	white-space: normal;
+  line-height: 17px;
+  white-space: normal;
 }
 
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar a{
-	background-color: transparent;
+  background-color: transparent;
 }
 #page-youth-channel-support-youth-channel div.sponsors img,
 #block-panels-mini-mini-panel-yc-twitter-feed-sidebar img{
-	box-shadow: 0px 0px 0px 0px #fff;
-	border: medium none;
+  box-shadow: 0px 0px 0px 0px #fff;
+  border: medium none;
 }
 
 #page-youth-channel-support-youth-channel div.sponsors a{
-	background-color: transparent;
+  background-color: transparent;
 }
 
 #mini-panel-youth_channel_stay_connected .content li{
-	background: transparent url(../images/connect-icons.png) no-repeat;
-	display: block;
-	height: 31px;
-	line-height: 31px;
+  background: transparent url(../images/connect-icons.png) no-repeat;
+  display: block;
+  height: 31px;
+  line-height: 31px;
 }
 #mini-panel-youth_channel_stay_connected .content li span,
 #mini-panel-youth_channel_stay_connected .content li a{
-	background-color: transparent;
-	line-height: 29px;
-	color: #25292b;
-	padding-left: 46px;
-	padding-top: 3px;
-	display: block;
+  background-color: transparent;
+  line-height: 29px;
+  color: #25292b;
+  padding-left: 46px;
+  padding-top: 3px;
+  display: block;
 }
 #mini-panel-youth_channel_stay_connected .content li a:hover{
-	color: #0ca676;
+  color: #0ca676;
 }
 #mini-panel-youth_channel_stay_connected .content li.phone{
-	background-position: 0 3px;
+  background-position: 0 3px;
 }
 #mini-panel-youth_channel_stay_connected .content li.email{
-	background-position: 0 -36px;
+  background-position: 0 -36px;
 }
 #mini-panel-youth_channel_stay_connected .content li.facebook{
-	background-position: 0 -74px;
+  background-position: 0 -74px;
 }
 #mini-panel-youth_channel_stay_connected .content li.twitter{
-	background-position: 0 -149px;
+  background-position: 0 -149px;
 }
 #mini-panel-youth_channel_stay_connected .content li.youtube{
-	background-position: 0 -112px;
+  background-position: 0 -112px;
 }
 #mini-panel-youth_channel_stay_connected .content li.vimeo{
-	background-position: 0 -187px;
+  background-position: 0 -187px;
 }
 #mini-panel-youth_channel_stay_connected .content li.blip{
-	background-position: 0 -221px;
+  background-position: 0 -221px;
 }
 .section-youth-channel #main h5.title a {
-	color:#25292b;
+  color:#25292b;
 }
 .section-youth-channel #main .view-yc-workshop-list h5.title a ,
 .section-youth-channel #main .view-yc-workshop-list h5.title a:hover{
-	color: #ca4100;
-	background-color: transparent;
+  color: #ca4100;
+  background-color: transparent;
 }
 
 .views-row h5.title {
-	color:#25292b;
-	margin-bottom:5px;
-	line-height: 1.08em;
+  color:#25292b;
+  margin-bottom:5px;
+  line-height: 1.08em;
 }
 
 .col-1, .col-2{
-	width:216px;
+  width:216px;
 }
 #block-views-youth-channel-join-sidebar-block li a,
 #block-views-youth-channel-our-services-block-sidebar li a{
-	background-color: transparent;
-	color: #0ca676;
-	margin: 0;
+  background-color: transparent;
+  color: #0ca676;
+  margin: 0;
 }
 #block-views-youth-channel-join-sidebar-block li a.active,
 #block-views-youth-channel-join-sidebar-block li a:hover,
 #block-views-youth-channel-our-services-block-sidebar li a.active,
 #block-views-youth-channel-our-services-block-sidebar li a:hover{
-	color: #25292b;
+  color: #25292b;
 }
 #block-views-youth-channel-join-sidebar-block li,
 #block-views-youth-channel-our-services-block-sidebar li{
-	border-bottom: 1px #b2bbc0 solid;
-	padding-bottom: 15px;
-	margin-bottom: 15px;
+  border-bottom: 1px #b2bbc0 solid;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 body.node-type-yc-join #title h1,
 body.node-type-yc-workshop #title h1,
 body.node-type-yc-service #title h1{
-	font-family: Arial, sans-serif;
-	font-size: 24px;
-	font-weight: bold;
-	margin-top: 0;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0;
 }
 
 #content-area .yc-join h2,
 #content-area .yc-service h2{
-	font-family: Arial, sans-serif;
-	font-size: 16px;
-	font-weight: bold;
-	margin: 30px 0 15px 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 30px 0 15px 0;
 }
 
 #content-area .yc-join ul.ordered,
 #content-area .yc-service ul.ordered{
-	list-style-image: none;
-	list-style-type: none;
-	margin-left: 0;
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
 }
 #content-area .yc-join ul.ordered li,
 #content-area .yc-service ul.ordered li{
-	clear: left;
-	height: 60px;
-	margin-bottom: 10px;
-	width: 100%;
-	font-size: 18px;
+  clear: left;
+  height: 60px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 18px;
 }
 #content-area .yc-join ul.ordered li span,
 #content-area .yc-service ul.ordered li span{
-	background-color: #d3ff7e;
-	border-radius: 45px 45px 45px 45px;
+  background-color: #d3ff7e;
+  border-radius: 45px 45px 45px 45px;
 -moz-border-radius: 45px 45px 45px 45px;
 -webkit-border-radius: 45px 45px 45px 45px;
-	color: #333;
-	float: left;
-	font-family: Arial, sans-serif;
-	font-size: 18px;
-	margin-bottom: 10px;
-	margin-right: 20px;
-	padding: 14px 18px;
+  color: #333;
+  float: left;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  padding: 14px 18px;
 }
 #content-area .yc-join ul.ordered li small,
 #content-area .yc-service ul.ordered li small{
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .highlight,
 .highlight a{
-	color: #0ca676;
+  color: #0ca676;
 }
 
 #content .view-yc-news-page-archive h2.title a,
 #content .view-yc-news-page h2.title a{
-	font-family: Arial, sans-serif;
-	color:#25292b;
-	font-weight: bold;
-	margin-bottom: 16px;
-	line-height: 26px;
+  font-family: Arial, sans-serif;
+  color:#25292b;
+  font-weight: bold;
+  margin-bottom: 16px;
+  line-height: 26px;
 }
 #content .view-yc-news-page-archive h2.title a:hover,
 #content .view-yc-news-page h2.title a:hover {
-	color:#0ca676;
+  color:#0ca676;
 }
 
 #content .view-yc-news-page-archive .body-content,
 #content .view-yc-news-page .body-content{
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 .view-yc-news-page .views-row{
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .view-yc-news-page .addthis_toolbox{
-	margin-top: 0;
+  margin-top: 0;
 }
 #main .addthis_toolbox a{
     background-color: transparent;
 }
 .view-yc-news-page .read-more{
-	float: none;
+  float: none;
 }
 .view-yc-news-page .addthis{
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 #yc-schedule{
@@ -689,56 +689,56 @@ body.node-type-yc-service #title h1{
 	border-radius: 5px 5px 0 0;
 }
 #schedule-header .nav{
-	background: #3ac297;
-	background: -moz-linear-gradient(top, #3ac297 0%, #0da676 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ac297), color-stop(100%,#0da676));
-	background: -webkit-linear-gradient(top, #3ac297 0%,#0da676 100%);
-	background: -o-linear-gradient(top, #3ac297 0%,#0da676 100%);
-	background: -ms-linear-gradient(top, #3ac297 0%,#0da676 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ac297', endColorstr='#0da676',GradientType=0 );
-	background: linear-gradient(top, #3ac297 0%,#0da676 100%);
+  background: #3ac297;
+  background: -moz-linear-gradient(top, #3ac297 0%, #0da676 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ac297), color-stop(100%,#0da676));
+  background: -webkit-linear-gradient(top, #3ac297 0%,#0da676 100%);
+  background: -o-linear-gradient(top, #3ac297 0%,#0da676 100%);
+  background: -ms-linear-gradient(top, #3ac297 0%,#0da676 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ac297', endColorstr='#0da676',GradientType=0 );
+  background: linear-gradient(top, #3ac297 0%,#0da676 100%);
 }
 
 #schedule-header .nav .schedule-date{
-	font-family: 'Bowlby One', arial, sans-serif;
+  font-family: 'Bowlby One', arial, sans-serif;
 }
 
 #yc-schedule > div > .title{
-	color: #fff;
-	background-color: #18624b;
-	text-transform: uppercase;
-	height: 38px;
-	font-size: 12px;
-	font-weight: bold;
-	padding-left: 10px;
-	line-height: 38px;
+  color: #fff;
+  background-color: #18624b;
+  text-transform: uppercase;
+  height: 38px;
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 10px;
+  line-height: 38px;
 }
 
 #yc-schedule .row{
-	position: relative;
-	height: 70px;
-	padding: 0;
-	background-color: #f1f1f1;
-	overflow: hidden;
-	border-bottom: 1px #cfcfcf solid;
+  position: relative;
+  height: 70px;
+  padding: 0;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  border-bottom: 1px #cfcfcf solid;
 }
 
 #yc-schedule .cell{
-	position: absolute;
-	top: 0;
+  position: absolute;
+  top: 0;
 }
 #yc-schedule .cell.day{
-	width: 89px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 14px;
-	left: 0;
-	line-height: 50px;
-	text-transform: uppercase;
+  width: 89px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  left: 0;
+  line-height: 50px;
+  text-transform: uppercase;
 }
 
 #yc-schedule .row-time .empty{
-	height: 45px;
+  height: 45px;
 }
 
 .schedule-grid.two-hours .row-time .cell-0{
@@ -842,84 +842,84 @@ body.node-type-yc-service #title h1{
 }
 
 #yc-schedule .cell .inner{
-	padding: 10px;
-	height: 50px;
+  padding: 10px;
+  height: 50px;
 }
 
 #yc-schedule .row-time{
-	height: 45px;
+  height: 45px;
 }
 #yc-schedule .row-time .cell{
-	background: #ee5b0e;
-	background: -moz-linear-gradient(top, #ee5b0e 0%, #c94202 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ee5b0e), color-stop(100%,#c94202));
-	background: -webkit-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
-	background: -o-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
-	background: -ms-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
-	background: linear-gradient(top, #ee5b0e 0%,#c94202 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee5b0e', endColorstr='#c94202',GradientType=0 );
-	color: #fff;
-	line-height: 25px;
-	font-weight: bold;
-	border-left: 1px #bd4304 solid;
-	text-align: center;
-	text-transform: uppercase;
+  background: #ee5b0e;
+  background: -moz-linear-gradient(top, #ee5b0e 0%, #c94202 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ee5b0e), color-stop(100%,#c94202));
+  background: -webkit-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+  background: -o-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+  background: -ms-linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+  background: linear-gradient(top, #ee5b0e 0%,#c94202 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee5b0e', endColorstr='#c94202',GradientType=0 );
+  color: #fff;
+  line-height: 25px;
+  font-weight: bold;
+  border-left: 1px #bd4304 solid;
+  text-align: center;
+  text-transform: uppercase;
 }
 #yc-schedule .row-time .cell .inner{
-	border-right: 1px #f47532 solid;
-	height: 25px;
+  border-right: 1px #f47532 solid;
+  height: 25px;
 }
 
 #yc-schedule .row-shows .cell{
-	height: 70px;
-	border-right: 1px #cfcfcf solid;
-	border-left: 1px #cfcfcf solid;
+  height: 70px;
+  border-right: 1px #cfcfcf solid;
+  border-left: 1px #cfcfcf solid;
 }
 #yc-schedule .row-shows .cell .inner{
-	border-top: 1px #fff solid;
-	border-right: 1px #fff solid;
+  border-top: 1px #fff solid;
+  border-right: 1px #fff solid;
 }
 
 #yc-schedule .row-shows a{
-	color: #25292b;
-	font-size: 14px;
+  color: #25292b;
+  font-size: 14px;
 }
 
 #yc-schedule .row-shows .category{
-	color: #666;
-	font-size: 10px;
-	text-transform: uppercase;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+  color: #666;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 #yc-schedule .row-shows .link-wrapper{
-	max-height: 35px;
-	text-overflow: ellipsis;
-	overflow: hidden;
+  max-height: 35px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 div#block-panels-mini-mini-panel-yc-schedule-intro{
-	border-top: 0 none;
-	border-radius:5px;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	-o-border-radius:5px;
-	background:#e3e8eb;
-	padding:16px 30px 16px 30px;
-	margin-bottom:30px;
+  border-top: 0 none;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  background:#e3e8eb;
+  padding:16px 30px 16px 30px;
+  margin-bottom:30px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first{
-	font-family: 'Droid Serif', arial, sans-serif;
-	padding-top: 10px;
+  font-family: 'Droid Serif', arial, sans-serif;
+  padding-top: 10px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first p{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-first p a{
-	color: #0ca676;
-	background-color: transparent;
+  color: #0ca676;
+  background-color: transparent;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .panel-col-last{
 	width: 270px;
@@ -937,17 +937,17 @@ div#block-panels-mini-mini-panel-yc-schedule-intro{
 	text-align: left;
 }
 #block-panels-mini-mini-panel-yc-schedule-intro .inside{
-	margin: 0;
+  margin: 0;
 }
 
 div#block-panels-mini-mini-panel-yc-schedule-buttons{
-	border-top: 0 none;
-	position: absolute;
-	top: -50px;
-	right: 0;
+  border-top: 0 none;
+  position: absolute;
+  top: -50px;
+  right: 0;
 }
 #block-panels-mini-mini-panel-yc-schedule-buttons .button{
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 .news-image {
@@ -963,18 +963,18 @@ div#block-panels-mini-mini-panel-yc-schedule-buttons{
 
 .node-type-yc-video #title,
 .node-type-yc-video #content-header{
-	display: none;
+  display: none;
 }
 
 .node-type-yc-video #main{
-	background: transparent url(../images/video-back-black.png) repeat-x;
-	padding-top: 0;
+  background: transparent url(../images/video-back-black.png) repeat-x;
+  padding-top: 0;
 }
 
 .node-type-yc-video #content-bottom{
-	border-top: 1px #b4c2c2 solid;
-	margin-top: 30px;
-	padding-top: 30px;
+  border-top: 1px #b4c2c2 solid;
+  margin-top: 30px;
+  padding-top: 30px;
 }
 
 .page-youth-channel-news .body-content p {
@@ -984,16 +984,16 @@ div#block-panels-mini-mini-panel-yc-schedule-buttons{
 }
 
 .views-view-grid {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .views-view-grid td {
-	height: 190px;
-	width: 192px;
+  height: 190px;
+  width: 192px;
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel h3.title{
-	font-size: 18px;
+  font-size: 18px;
 }
 
 span.inline-right {
@@ -1016,192 +1016,192 @@ span.inline-right {
 }
 
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel {
-	width: 620px;
+  width: 620px;
 }
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .copy-column{
-	width: 270px;
-	float: left;
+  width: 270px;
+  float: left;
 }
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors{
-	float: right;
-	width: 320px;
-	text-align: center;
+  float: right;
+  width: 320px;
+  text-align: center;
 }
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel span.inline-left{
-	display: inline;
-	float: none;
-	margin: 0 0 0 20px;
+  display: inline;
+  float: none;
+  margin: 0 0 0 20px;
 }
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors a{
-	background-color: transparent;
+  background-color: transparent;
 }
 #block-panels-mini-mini-panel-yc-landing-page-support-youth-channel .sponsors p{
-	margin-bottom: 10px;
-	font-size: 12px;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
 
 #page-youth-channel-our-services-resources #content-area .button{
-	clear: both;
+  clear: both;
   float: none;
   margin-bottom: 30px;
   width: 120px;
 }
 
 #block-views-upcoming-events-block-yc-content-center{
-	border-top: 1px #fff solid;
-	padding-top: 30px;
-	clear: both;
+  border-top: 1px #fff solid;
+  padding-top: 30px;
+  clear: both;
 }
 #block-views-upcoming-events-block-yc-content-center .views-row{
-	width: 290px;
-	float: left;
-	margin: 0 20px 0 0;
+  width: 290px;
+  float: left;
+  margin: 0 20px 0 0;
 }
 #block-views-upcoming-events-block-yc-content-center .views-row-last{
-	margin-right: 0;
+  margin-right: 0;
 }
 #block-views-upcoming-events-block-yc-content-center .month-date{
-	float:left;
-	text-align: center;
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, #ffffff 0%,#cccccc 100%); /* W3C */
-	width: 45px;
-	height: 50px;
-	margin: 4px 10px 10px 0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	border: 1px #999 solid;
+  float:left;
+  text-align: center;
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%,#cccccc 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, #ffffff 0%,#cccccc 100%); /* W3C */
+  width: 45px;
+  height: 50px;
+  margin: 4px 10px 10px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px #999 solid;
 }
 #block-views-upcoming-events-block-yc-content-center .month{
-	text-transform: uppercase;
-	padding-top: 12px;
-	font-size: 12px;
-	line-height: 10px;
+  text-transform: uppercase;
+  padding-top: 12px;
+  font-size: 12px;
+  line-height: 10px;
 }
 #block-views-upcoming-events-block-yc-content-center .date{
-	font-weight: bold;
-	font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 #block-views-upcoming-events-block-yc-content-center .view .title,
 #block-views-upcoming-events-block-yc-content-center .time-taxonomy{
-	width: 245px;
+  width: 245px;
 }
 #block-views-upcoming-events-block-yc-content-center .time,
 #block-views-upcoming-events-block-yc-content-center .taxonomy{
-	font-size: 9px;
-	color: #666;
-	display: inline;
-	text-transform: uppercase;
-	border-right: 0 none;
+  font-size: 9px;
+  color: #666;
+  display: inline;
+  text-transform: uppercase;
+  border-right: 0 none;
 }
 #block-views-upcoming-events-block-yc-content-center .view .title,
 #block-views-upcoming-events-block-yc-content-center .view .title a{
-	font-size: 18px;
-	font-weight: bold;
-	line-height: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 16px;
     color: #25292B;
 }
 #block-views-upcoming-events-block-yc-content-center .top{
-	float: left;
-	padding-right: 320px;
+  float: left;
+  padding-right: 320px;
 }
 #block-views-upcoming-events-block-yc-content-center .view-content{
-	float: left;
+  float: left;
 }
 #block-views-upcoming-events-block-yc-content-center .view-header{
-	position: absolute;
-	top: 29px;
-	right: 0;
+  position: absolute;
+  top: 29px;
+  right: 0;
 }
 
 #block-mnnshow-youth-channel-playing-now{
-	position: absolute;
-	top: -510px;
-	left: 230px;
+  position: absolute;
+  top: -510px;
+  left: 230px;
 }
 #block-mnnshow-youth-channel-playing-now .content{
-	background-color: #ebfec7;
-	padding: 10px 15px;
+  background-color: #ebfec7;
+  padding: 10px 15px;
 }
 
 #mini-panel-yc_newsletter_signup{
-	margin-top: 30px;
-	background-color: #0ca676;
-	color: #fff;
+  margin-top: 30px;
+  background-color: #0ca676;
+  color: #fff;
 }
 #mini-panel-yc_newsletter_signup .content h2{
-	display: block;
-	font-size: 14px;
-	font-family: Arial, sans-serif;
-	text-transform: none;
-	padding: 12px;
-	background: transparent url(../images/green-checker.png) repeat;
-	text-shadow: 0px -2px 1px #26705a;
-	filter: dropshadow(color=#26705a, offx=0, offy=-2);
+  display: block;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  text-transform: none;
+  padding: 12px;
+  background: transparent url(../images/green-checker.png) repeat;
+  text-shadow: 0px -2px 1px #26705a;
+  filter: dropshadow(color=#26705a, offx=0, offy=-2);
 }
 #mini-panel-yc_newsletter_signup form {
-	color: #fff;
-	padding: 12px;
-	text-shadow: 0px -1px 0px #26705a;
-	filter: dropshadow(color=#26705a, offx=0, offy=-1);
+  color: #fff;
+  padding: 12px;
+  text-shadow: 0px -1px 0px #26705a;
+  filter: dropshadow(color=#26705a, offx=0, offy=-1);
 }
 #mini-panel-yc_newsletter_signup p{
-	margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 #mini-panel-yc_newsletter_signup .mc-field-group {
-	margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 #mini-panel-yc_newsletter_signup .mc-field-group input{
-	width: 186px;
-	padding: 2px 4px;
-	color: #666;
+  width: 186px;
+  padding: 2px 4px;
+  color: #666;
 }
 #sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]{
-	color: #fff;
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 12px;
-	padding: 12px 10px;
-	float: none;
-	background: #505050;
-	background: -moz-linear-gradient(top,  #505050 0%, #383838 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#505050), color-stop(100%,#383838));
-	background: -webkit-linear-gradient(top,  #505050 0%,#383838 100%);
-	background: -o-linear-gradient(top,  #505050 0%,#383838 100%);
-	background: -ms-linear-gradient(top,  #505050 0%,#383838 100%);
-	background: linear-gradient(top,  #505050 0%,#383838 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505050', endColorstr='#383838',GradientType=0 );
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	height: inherit;
-	text-shadow: 0px -1px 0px #000;
-	filter: dropshadow(color=#000, offx=0, offy=-1);
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 12px 10px;
+  float: none;
+  background: #505050;
+  background: -moz-linear-gradient(top,  #505050 0%, #383838 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#505050), color-stop(100%,#383838));
+  background: -webkit-linear-gradient(top,  #505050 0%,#383838 100%);
+  background: -o-linear-gradient(top,  #505050 0%,#383838 100%);
+  background: -ms-linear-gradient(top,  #505050 0%,#383838 100%);
+  background: linear-gradient(top,  #505050 0%,#383838 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505050', endColorstr='#383838',GradientType=0 );
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  height: inherit;
+  text-shadow: 0px -1px 0px #000;
+  filter: dropshadow(color=#000, offx=0, offy=-1);
 }
 #sidebar-second #mini-panel-yc_newsletter_signup input[type="submit"]:hover{
-	background: #383838;
-	background: -moz-linear-gradient(top,  #383838 0%, #505050 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#505050));
-	background: -webkit-linear-gradient(top,  #383838 0%,#505050 100%);
-	background: -o-linear-gradient(top,  #383838 0%,#505050 100%);
-	background: -ms-linear-gradient(top,  #383838 0%,#505050 100%);
-	background: linear-gradient(top,  #383838 0%,#505050 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#505050',GradientType=0 );
+  background: #383838;
+  background: -moz-linear-gradient(top,  #383838 0%, #505050 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#505050));
+  background: -webkit-linear-gradient(top,  #383838 0%,#505050 100%);
+  background: -o-linear-gradient(top,  #383838 0%,#505050 100%);
+  background: -ms-linear-gradient(top,  #383838 0%,#505050 100%);
+  background: linear-gradient(top,  #383838 0%,#505050 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#505050',GradientType=0 );
 }
 
 .view-youth-channel-our-services h4,
 #mini-panel-youth_channel_broadcast h4{
-	margin-top: 0;
+  margin-top: 0;
 }
 
 #block-views-yc-workshop-list-block .views-field-title{
-	width: inherit;
+  width: inherit;
 }
 

@@ -1556,6 +1556,9 @@ article .image-wrapper .caption{
 article {
 	width:620px;
 }
+body.no-sidebars article {
+  width: auto;
+}
 
 article p, .node-type-news article p, .node-type-news article p:first-child,
 .node-type-cert-class article p:first-child {
@@ -4976,6 +4979,50 @@ div.firehouse-item .read-more a{
 #block-block-community-studio-dialogue-content-header{
   margin-top:20px;
 }
+
+#block-views-film-club-screenings-block {
+  border-top: 1px #b4c2c2 solid;
+  margin-top: 35px;
+  padding-top: 35px;
+}
+#block-views-film-club-screenings-block .views-row:before,
+#block-views-film-club-screenings-block .views-row:after {
+  content: "";
+  display: table;
+}
+#block-views-film-club-screenings-block .views-row:after {
+  clear: both;
+}
+#block-views-film-club-screenings-block .views-row {
+  zoom: 1;
+}
+#block-views-film-club-screenings-block .views-row .image {
+  float: left;
+
+}
+#block-views-film-club-screenings-block .views-row img {
+  float: none;
+  margin: 0;
+}
+#block-views-film-club-screenings-block .views-row .copy {
+  margin-left: 338px;
+}
+#block-views-film-club-screenings-block .views-row h3 {
+  margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .view-staff-and-board table{
   width: 100%;
