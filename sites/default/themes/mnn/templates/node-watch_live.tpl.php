@@ -1,4 +1,6 @@
 <?php
+module_load_include('inc', 'mnnshow', 'includes/mnnshow.common');
+
 $channel = node_load($node->field_channel[0]['nid']);
 
 $url = (!empty($_SERVER['HTTPS']))
@@ -19,7 +21,7 @@ $embed_code = htmlspecialchars($embed_code);
 	<header>
       <h1 class="title"><?php print $title; ?></h1>
   </header>
-  
+
     <div class="content">
 	    <?php
 	      $current_show = mnnshow_current_show_info($channel->field_number[0]['value']);
