@@ -109,7 +109,7 @@ Global Styles
 
 body {
 	background:white;
-	font-family:Helvetica, Arial, sans serif;
+	font-family:Helvetica, Arial, sans-serif;
 	color:#25292b;
 	line-height:18px;
 	font-size:14px;
@@ -5159,6 +5159,40 @@ div.firehouse-item .read-more a{
   color: #003B18;
 }
 
+.view-election-news {
+  border-bottom: 1px #b4c2c2 solid;
+}
+.view-election-news .pager {
+  padding-bottom: 20px;
+}
+.view-election-news .views-row {
+  display: inline-block;
+  width: 33.0%;
+  vertical-align: top;
+  padding: 10px 0 20px 0;
+}
+.view-election-news .views-row .election-news {
+  padding-right: 30px;
+}
+.view-election-news .views-row-3 .election-news,
+.view-election-news .views-row-6 .election-news,
+.view-election-news .views-row:nth-child(3n+3) .election-news {
+  padding-right: 0;
+}
+.view-election-news .views-row .date {
+  font-size: 10px;
+  color: #666;
+}
+.view-election-news .views-row .title {
+  font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 5px 0 10px 0;
+}
+.view-election-news .views-row .title a,
+.view-election-news .views-row .read-more a {
+  color: #005b25;
+  font-weight: bold;
+}
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }

@@ -32,6 +32,12 @@ function mnn_preprocess_page(&$vars, $hook) {
   if ( isset($_GET['iframe']) && $_GET['iframe'] == 1 ) {
     $vars['template_file'] = 'page-iframe';
   }
+
+  // List active contexts from "context" module.
+  $contexts = context_active_contexts();
+  foreach ($contexts as $context) {
+    $vars['body_classes'] .= ' context_' . $context->name;
+  }
 }
 
 function mnn_preprocess_node(&$vars, $hook) {
