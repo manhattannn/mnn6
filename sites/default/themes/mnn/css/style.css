@@ -5166,18 +5166,17 @@ div.firehouse-item .read-more a{
   padding-bottom: 20px;
 }
 .view-election-news .views-row {
-  display: inline-block;
-  width: 33.0%;
+  float: left;
+  width: 300px;
   vertical-align: top;
   padding: 10px 0 20px 0;
+  margin-left: 20px;
 }
-.view-election-news .views-row .election-news {
-  padding-right: 30px;
-}
-.view-election-news .views-row-3 .election-news,
-.view-election-news .views-row-6 .election-news,
-.view-election-news .views-row:nth-child(3n+3) .election-news {
-  padding-right: 0;
+.view-election-news .views-row-1,
+.view-election-news .views-row-4,
+.view-election-news .views-row:nth-child(3n+1) {
+  margin-left: 0;
+  clear: left;
 }
 .view-election-news .views-row .date {
   font-size: 10px;
@@ -5193,6 +5192,103 @@ div.firehouse-item .read-more a{
   color: #005b25;
   font-weight: bold;
 }
+
+.view-election-candidates {
+  border-bottom: 1px #b4c2c2 solid;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.view-election-candidates .views-row {
+  float: left;
+  border: 1px #b1babf solid;
+  vertical-align: top;
+  margin: 10px 0 20px 20px;
+  width: 298px;
+}
+.view-election-candidates .views-row-1,
+.view-election-candidates .views-row-4,
+.view-election-candidates .views-row:nth-child(3n+1) {
+  margin-left: 0;
+  clear: left;
+}
+.view-election-candidates .photo-video {
+  position: relative;
+  width: 298px;
+  height: 195px;
+}
+.view-election-candidates .video,
+.view-election-candidates .photo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 194px;
+  width: auto;
+  border-bottom: 1px #b1babf solid;
+}
+.view-election-candidates img {
+  border: 0;
+  -webkit-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+}
+.view-election-candidates .views-field-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  width: auto;
+  margin: 0;
+  padding: 15px 0;
+  border-bottom: 1px #b1babf solid;
+}
+.view-election-candidates .views-field-field-election-party-value {
+  text-align: center;
+  font-size: 14px;
+  padding: 15px 0;
+}
+.view-election-candidates .links {
+  text-align: center;
+}
+.view-election-candidates .website a {
+  color: #005b25;
+  margin-right: 10px;
+}
+.view-election-candidates .facebook a,
+.view-election-candidates .twitter a,
+.view-election-candidates .linkedin a {
+  text-indent: -9999px;
+  padding-right: 5px;
+  height: 15px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.view-election-candidates .facebook a {
+  background: transparent url(../images/election-facebook.png) no-repeat;
+  width: 8px;
+}
+.view-election-candidates .twitter a {
+  background: transparent url(../images/election-twitter.png) no-repeat;
+  width: 14px;
+}
+.view-election-candidates .linkedin a {
+  background: transparent url(../images/election-linkedin.png) no-repeat;
+  width: 15px;
+}
+
+.view-election-news .view-content:before,
+.view-election-news .view-content:after,
+.view-election-candidates .view-content:before,
+.view-election-candidates .view-content:after {
+    content: "";
+    display: table;
+}
+.view-election-news .view-content:after,
+.view-election-candidates .view-content:after {
+    clear: both;
+}
+.view-election-news .view-content,
+.view-election-candidates .view-content {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
