@@ -5289,6 +5289,53 @@ div.firehouse-item .read-more a{
     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
+.node.election-district {
+  margin-bottom: 30px;
+}
+.node.election-district .map-neighborhood {
+  width: 281px;
+  float: left;
+  padding-top: 2px;
+}
+.node.election-district .photo-video {
+  float: right;
+  position: relative;
+  overflow: hidden;
+  width: 640px;
+  height: 440px;
+}
+.node.election-district .photo-video .item {
+  position: absolute;
+  left: 640px;
+  top: 0;
+}
+.node.election-district .photo-video .item:first-child {
+  left: 0;
+}
+.node.election-district .photo-video img {
+  border: 0;
+  -webkit-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  margin: 0;
+}
+.node.election-district #indicators {
+  position: absolute;
+  left: 0;
+  top: 410px;
+  width: 640px;
+  height: 10px;
+  text-align: center;
+}
+.node.election-district #indicators span {
+  width: 10px;
+  height: 10px;
+  background: transparent url(../images/indicator-off.png) no-repeat;
+  margin: 0 2px;
+  display: inline-block;
+}
+.node.election-district #indicators span.current {
+  background: transparent url(../images/indicator-on.png) no-repeat;
+}
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }

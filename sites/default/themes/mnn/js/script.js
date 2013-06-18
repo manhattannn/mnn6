@@ -295,7 +295,107 @@ var openClose = (function(){
 	}
 })();
 
+/****************************************** electionSlideshow **********************************************/
+var electionSlideshow = (function() {
+	var slideSpeed = 1500;            // speed of transition from one slide to the next
+	var cycleTime = 5000;             // time between transition end and transition begin
+	var defaultDirection = 'left';
 
+	/************************* do not change anything below this line *************************/
+
+	var shouldRun = false;
+	var id = '';
+
+	function init(){
+		if ($('.node.election-district').length) {
+			id = '#' + $('.node.election-district').attr('id');
+			$(id + ' .item:first-child').addClass('current');
+			var count = $(id + ' .item').length;
+			if (count > 0) {
+				alterHtml(count);
+				setupEvents();
+				window.setTimeout('electionSlideshow.cycle()', cycleTime + slideSpeed);
+			}
+		}
+	}
+
+	function alterHtml(numItems) {
+		$('<div id="slideshow-buttons"/>').appendTo($(id + ' .photo-video'));
+		$('<a href="#" class="left"><span></span></a><a href="#" class="right"><span></span></a>').appendTo($('#slideshow-buttons'));
+		var indicators = new Array();
+		for (var i = 0; i < numItems; i++) {
+			indicators.push('<span></span>');
+		};
+		$(id + ' .photo-video').append('<div id="indicators">' + indicators.join('') + '</div>');
+		$('#indicators span:first-child').addClass('current');
+}
+
+	function setupEvents(){
+		$('#slideshow-buttons a.right').click(function(event) {
+			showItem('left');
+			shouldRun = false; // stop slideshow from running
+			event.preventDefault();
+		});
+		$('#slideshow-buttons a.left').click(function(event) {
+			showItem('right');
+			shouldRun = false; // stop slideshow from running
+			event.preventDefault();
+		});
+		$(id + ' .photo-video').click(function() {
+			shouldRun = false;
+		});
+	}
+
+	function showItem(direction) {
+		var outgoing = $(id + ' .item.current').removeClass('current');
+		if (direction == 'left') {
+			var incoming = outgoing.next(id + ' .item');
+			if (incoming.length <= 0) {
+				incoming = $(id + ' .item:first');
+			}
+		}
+		else {
+			var incoming = outgoing.prev(id + ' .item');
+			if (incoming.length <= 0) {
+				incoming = $(id + ' .item:last');
+			}
+		}
+		incoming.addClass('current');
+
+		var incomingIndex = $(id + ' .item').index($($(id + ' .item.current')));
+		$('#indicators span').removeClass('current');
+		$($('#indicators span').get(incomingIndex)).addClass('current');
+
+		var containerWidth = $(id + ' .photo-video').width() + 30; // 30  is a bit of spacing
+		if (direction == 'left') {
+			var left = '-' + containerWidth + 'px';
+			incoming.css('left', containerWidth + 'px');
+		}
+		else {
+			var left = containerWidth + 'px';
+			incoming.css('left', '-' + containerWidth + 'px');
+		}
+
+		outgoing.animate({
+			left: left
+		}, slideSpeed);
+		incoming.animate({
+			left: '0'
+		}, slideSpeed);
+	}
+
+	function cycle(){
+		if (shouldRun){
+			showItem(defaultDirection);
+			window.setTimeout('electionSlideshow.cycle()', cycleTime + slideSpeed);
+		}
+	}
+
+	return {
+		init: init,
+		cycle: cycle
+	}
+})();
 
 
 $(document).ready(function(){
@@ -305,4 +405,5 @@ $(document).ready(function(){
 	faq.init();
 	calendar.init();
 	openClose.init();
+	electionSlideshow.init();
 });
