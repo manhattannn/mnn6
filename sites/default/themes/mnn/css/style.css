@@ -5193,6 +5193,10 @@ div.firehouse-item .read-more a{
   font-weight: bold;
 }
 
+#block-views-election-candidates-block {
+  border-top: 1px #b4c2c2 solid;
+  padding-top: 30px;
+}
 .view-election-candidates {
   border-bottom: 1px #b4c2c2 solid;
   padding-bottom: 10px;
@@ -5336,6 +5340,131 @@ div.firehouse-item .read-more a{
 .node.election-district #indicators span.current {
   background: transparent url(../images/indicator-on.png) no-repeat;
 }
+.node.election-district .district-stats {
+  border-top: 1px #b1babf solid;
+  border-bottom: 1px #b1babf solid;
+  margin: 0 0 20px 0;
+  padding: 20px 0;
+}
+.node.election-district .district-stats li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 0 0 200px;
+  margin: 0;
+  font-size: 24px;
+}
+.node.election-district .district-stats li:first-child {
+  padding-left: 0;
+}
+.node.election-district .district-stats li label {
+  font-weight: bold;
+  font-size: 16px;
+}
+.node.election-district .district-charts .chart {
+  width: 460px;
+  height: 250px;
+}
+
+.node-type-election-district #page > header {
+  height: auto;
+}
+.node-type-election-district #sub-header {
+  background-color: #fff5a4;
+  margin-top: 25px;
+}
+#block-block-election-info-bar .info {
+  padding-left: 25px;
+  background: transparent url(../images/icon-calendar-black.png) no-repeat left center;
+  font-size: 16px;
+  float: left;
+}
+#block-block-election-info-bar .buttons {
+  float: right;
+}
+#block-block-election-info-bar .buttons a {
+  border:1px solid #919c9c;
+  color:#25292b;
+  font-family:arial;
+  font-size:13px;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  -o-border-radius:3px;
+  border: 1px solid #919C9C;
+      border-radius: 3px 3px 3px 3px;
+      color: #25292B;
+      font-family: arial;
+      font-size: 13px;
+  background:#e6e6e6;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #CBCBCB),
+        color-stop(1, #FFFFFF)
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        #CBCBCB 0%,
+        #FFFFFF 100%
+    );
+    display: inline-block;
+    padding-right: 8px;
+}
+#block-block-election-info-bar .buttons a span {
+background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px transparent;
+   height: 14px;
+   padding: 3px 13px 5px 7px;
+   display: inline-block;
+}
+
+.view-election-video-thumbnail-grid .view-content {
+  position: relative;
+}
+.view-election-video-thumbnail-grid .item-list {
+  position: relative;
+  overflow: hidden;
+  height: 230px;
+  margin: 0 36px;
+}
+.view-election-video-thumbnail-grid .item-list ul {
+  position: absolute;
+  left:0;
+  top: 0;
+  white-space: nowrap;
+}
+.view-election-video-thumbnail-grid .item-list li {
+  display: inline-block;
+  padding: 5px 8px 0 8px;
+  margin: 0;
+  vertical-align: top;
+}
+.view-election-video-thumbnail-grid .item-list .views-field-title {
+  white-space: normal;
+  width: 198px;
+}
+#video-carousel-buttons a.left {
+  background: transparent url(../images/left-arrow3.png) no-repeat;
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  top: 45px;
+}
+#video-carousel-buttons a.right {
+  background: transparent url(../images/right-arrow3.png) no-repeat;
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 45px;
+}
+
+
+
+
+
+
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }

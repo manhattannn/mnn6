@@ -33,6 +33,10 @@ function mnn_preprocess_page(&$vars, $hook) {
     $vars['template_file'] = 'page-iframe';
   }
 
+  if ($vars['node']->type != "") {
+    $vars['template_files'][] = "page-node-" . $vars['node']->type;
+  }
+
   // List active contexts from "context" module.
   $contexts = context_active_contexts();
   foreach ($contexts as $context) {

@@ -1,5 +1,5 @@
 <?php
-  drupal_add_js(drupal_get_path('theme', 'mnn') . '/js/highcharts.js');
+  // drupal_add_js('sites/all/libraries/highcharts/highcharts.js');
 
   foreach ($node->field_election_district_photos as $photo) {
     $media[] = '<div class="item">' . $photo['view'] . '</div>';
@@ -7,7 +7,7 @@
   foreach ($node->field_election_district_videos as $video) {
     $media[] = '<div class="item">' . $video['view'] . '</div>';
   }
-  dpm($node);
+
   // Chart data.
   $race_ethnicity_arr = explode(';', $node->field_election_race_ethnicity[0]['value']);
   $race_ethnicity_arr = array_filter($race_ethnicity_arr);
@@ -19,7 +19,7 @@
 
 <article class="election-district node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
 
-<div>
+<div class="clearfix">
   <div class="map-neighborhood">
     <div class="map">
       <?php print $node->field_election_map[0]['view']; ?>
@@ -35,7 +35,7 @@
 </div>
 
 <h3>District Stats</h3>
-<ul class="stats">
+<ul class="district-stats">
   <li>
     <label for="">District Population</label>
     <div class="stat"><?php print $node->field_election_district_populati[0]['view']; ?></div>
@@ -49,29 +49,43 @@
     <div class="stat"><?php print $node->field_election_unemployment_rate[0]['view']; ?></div>
   </li>
 </ul>
-<div class="charts">
-  <div id="race-ethnicity" style="width:50%"></div>
+<div class="district-charts">
+  <div id="race-ethnicity" class="chart"></div>
   <div id="housing"></div>
 </div>
 
 </article>
+
 <script>
-$(document).ready(function () {
+
+$jq(document).ready(function () {
 
   // Build the chart
-  $('#race-ethnicity').highcharts({
+  var chart = new Highcharts.Chart({
     chart: {
+      renderTo: 'race-ethnicity',
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false
     },
     title: {
       text: 'Race/Ethnicity',
-      align: 'left'
+      align: 'left',
+      style: {
+        fontWeight: 'bold',
+        fontSize: '16px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        color: '#25292b',
+        x: 0
+      }
     },
     tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-      valueDecimals: 2
+      headerFormat: '<strong>{point.key}</strong><br>',
+      valueDecimals: 1,
+      valueSuffix: '%',
+      positioner: function(labelWidth, labelHeight, point) {
+        return { x: point.plotX + 10, y: point.plotY - 20 }
+      }
     },
     plotOptions: {
       pie: {
@@ -115,47 +129,5 @@ $(document).ready(function () {
       // ]
     }]
   });
-  /*$('#housing').highcharts({
-    chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false
-    },
-    title: {
-      text: 'Housing'
-    },
-    tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-      percentageDecimals: 1
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: false
-        },
-        showInLegend: true
-      }
-    },
-    legend: {
-      align: 'right',
-      verticalAlign: 'center',
-      layout: 'vertical',
-      x: 0,
-      y: 50,
-      itemStyle: {
-        fontSize: '11px'
-      },
-      labelFormatter: function() {
-        return this.name + ' ' + this.y + '%';
-      }
-    },
-    series: [{
-      type: 'pie',
-      name: 'Housing',
-      data: [<?php print $race_ethnicity;?>]
-    }]
-  });*/
 });
 </script>
