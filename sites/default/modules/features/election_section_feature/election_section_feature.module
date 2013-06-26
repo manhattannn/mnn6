@@ -1,0 +1,3 @@
+<?php
+
+include_once('election_section_feature.features.inc');
