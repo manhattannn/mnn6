@@ -5,6 +5,11 @@
 	<title><?php print $head_title; ?></title>
 	<?php print $head; ?>
 	<?php print $styles; ?>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var $jq = jQuery.noConflict();
+  </script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
   <?php print $scripts; ?>
 	<!-- www.phpied.com/conditional-comments-block-downloads/ -->
 	<!--[if IE]><![endif]-->
