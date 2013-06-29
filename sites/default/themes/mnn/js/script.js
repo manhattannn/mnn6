@@ -405,8 +405,8 @@ var electionVideos = (function(){
   var elWidth = 0;
 
   function init(){
-    if ($('.view-election-video-thumbnail-grid').length) {
-      wrapper = '.view-election-video-thumbnail-grid .view-content';
+    if ($('.view-election-video-thumbnail-grid-carousel').length) {
+      wrapper = '.view-election-video-thumbnail-grid-carousel .view-content';
       $el = $(wrapper + ' ul:first');
       elWidth = $(wrapper + ' ul').outerWidth();
       itemWidth = elWidth / $el.children('li').length;
