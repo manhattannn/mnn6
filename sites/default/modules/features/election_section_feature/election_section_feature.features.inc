@@ -18,6 +18,20 @@ function election_section_feature_ctools_plugin_api() {
  */
 function election_section_feature_imagecache_default_presets() {
   $items = array(
+    'election-candidate-photo' => array(
+      'presetname' => 'election-candidate-photo',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '298',
+            'height' => '194',
+          ),
+        ),
+      ),
+    ),
     'election-main-photo' => array(
       'presetname' => 'election-main-photo',
       'actions' => array(
@@ -28,6 +42,20 @@ function election_section_feature_imagecache_default_presets() {
           'data' => array(
             'width' => '640',
             'height' => '390',
+          ),
+        ),
+      ),
+    ),
+    'election-video-thumb' => array(
+      'presetname' => 'election-video-thumb',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '190',
+            'height' => '110',
           ),
         ),
       ),
