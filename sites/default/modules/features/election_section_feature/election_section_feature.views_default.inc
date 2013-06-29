@@ -543,6 +543,237 @@ function election_section_feature_views_default_views() {
 
   $views[$view->name] = $view;
 
+  // Exported view: election_district_list
+  $view = new view;
+  $view->name = 'election_district_list';
+  $view->description = '';
+  $view->tag = '';
+  $view->base_table = 'node';
+  $view->core = 6;
+  $view->api_version = '2';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('fields', array(
+    'path' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'absolute' => 0,
+        'link_class' => '',
+        'alt' => '',
+        'rel' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide_alter_empty' => 1,
+      'absolute' => 1,
+      'exclude' => 1,
+      'id' => 'path',
+      'table' => 'node',
+      'field' => 'path',
+      'relationship' => 'none',
+    ),
+    'name' => array(
+      'label' => 'District #',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 1,
+        'path' => '[path]',
+        'absolute' => 0,
+        'link_class' => '',
+        'alt' => '',
+        'rel' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide_alter_empty' => 1,
+      'link_to_taxonomy' => 0,
+      'exclude' => 0,
+      'id' => 'name',
+      'table' => 'term_data',
+      'field' => 'name',
+      'relationship' => 'none',
+    ),
+    'field_election_neighborhoods_value' => array(
+      'label' => 'Neighborhoods',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'absolute' => 0,
+        'link_class' => '',
+        'alt' => '',
+        'rel' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide_alter_empty' => 1,
+      'link_to_node' => 0,
+      'label_type' => 'widget',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_election_neighborhoods_value',
+      'table' => 'node_data_field_election_neighborhoods',
+      'field' => 'field_election_neighborhoods_value',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'election_district' => 'election_district',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'tid' => array(
+      'operator' => 'or',
+      'value' => array(
+        146 => '146',
+        147 => '147',
+        148 => '148',
+        149 => '149',
+        150 => '150',
+        151 => '151',
+        152 => '152',
+        153 => '153',
+        154 => '154',
+        155 => '155',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'type' => 'select',
+      'limit' => TRUE,
+      'vid' => '13',
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'hierarchy' => 0,
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('cache', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('title', 'Manhattan City Council Races');
+  $handler->override_option('header', '<div id="geolocation">
+  <p id="statement">We have you located in <strong>Hamilton Heights</strong> with is located in <strong><a href="#">Community Board 9</a></strong>.</p>
+</div>
+');
+  $handler->override_option('header_format', '4');
+  $handler->override_option('header_empty', 0);
+  $handler->override_option('footer', '<div id="map_canvas"></div>');
+  $handler->override_option('footer_format', '4');
+  $handler->override_option('footer_empty', 0);
+  $handler->override_option('items_per_page', 0);
+  $handler->override_option('style_plugin', 'table');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'override' => 1,
+    'sticky' => 0,
+    'order' => 'asc',
+    'summary' => '',
+    'columns' => array(
+      'path' => 'path',
+      'name' => 'name',
+      'field_election_neighborhoods_value' => 'field_election_neighborhoods_value',
+    ),
+    'info' => array(
+      'path' => array(
+        'separator' => '',
+      ),
+      'name' => array(
+        'sortable' => 0,
+        'separator' => '',
+      ),
+      'field_election_neighborhoods_value' => array(
+        'sortable' => 0,
+        'separator' => '',
+      ),
+    ),
+    'default' => 'name',
+  ));
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
+
+  $views[$view->name] = $view;
+
   // Exported view: election_news
   $view = new view;
   $view->name = 'election_news';
@@ -841,15 +1072,16 @@ if ($node) {
     'type' => 'none',
   ));
   $handler->override_option('title', 'District News');
+  $handler->override_option('use_ajax', TRUE);
   $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', '1');
-  $handler = $view->new_display('block', 'Block: District', 'block_1');
-  $handler->override_option('block_description', 'Election News by Term');
+  $handler = $view->new_display('block', 'Block: by District', 'block_1');
+  $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('block', 'Block: All news', 'block_2');
   $handler->override_option('arguments', array());
   $handler->override_option('title', 'Manhattan Election News');
-  $handler->override_option('block_description', 'Election New all');
+  $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
 
   $views[$view->name] = $view;
@@ -1030,6 +1262,7 @@ if ($node) {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Manhattan Election Videos');
+  $handler->override_option('css_class', 'view-election-video-thumbnail-grid-carousel');
   $handler->override_option('header_format', '2');
   $handler->override_option('header_empty', 0);
   $handler->override_option('use_ajax', TRUE);
@@ -1172,6 +1405,20 @@ if ($node) {
     ),
   ));
   $handler->override_option('title', 'District Videos');
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
+  $handler = $view->new_display('block', 'Block : Paged Videos', 'block_3');
+  $handler->override_option('css_class', 'view-election-video-thumbnail-grid-paged');
+  $handler->override_option('items_per_page', 12);
+  $handler->override_option('use_pager', '1');
+  $handler->override_option('style_plugin', 'grid');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'columns' => '4',
+    'alignment' => 'horizontal',
+    'fill_single_line' => 1,
+    'summary' => '',
+  ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
 
