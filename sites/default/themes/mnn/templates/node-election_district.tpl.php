@@ -2,10 +2,14 @@
   // drupal_add_js('sites/all/libraries/highcharts/highcharts.js');
 
   foreach ($node->field_election_district_photos as $photo) {
-    $media[] = '<div class="item">' . $photo['view'] . '</div>';
+    if (isset($photo['fid'])) {
+      $media[] = '<div class="item">' . $photo['view'] . '</div>';
+    }
   }
   foreach ($node->field_election_district_videos as $video) {
-    $media[] = '<div class="item">' . $video['view'] . '</div>';
+    if (isset($video['value'])) {
+      $media[] = '<div class="item">' . $video['view'] . '</div>';
+    }
   }
 
   // Chart data.
