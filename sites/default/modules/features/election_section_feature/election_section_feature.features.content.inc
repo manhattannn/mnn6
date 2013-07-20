@@ -913,7 +913,7 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Housing',
+      'label' => 'Acreage',
       'weight' => '18',
       'description' => '',
       'type' => 'text_textarea',
@@ -1412,10 +1412,10 @@ constitution|Constitution',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Acreage');
   t('Candidates');
   t('District Population');
   t('Facebook');
-  t('Housing');
   t('LinkedIn');
   t('Map');
   t('Median Income');
