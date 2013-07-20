@@ -553,6 +553,23 @@ function election_section_feature_views_default_views() {
   $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('relationships', array(
+    'nodequeue_rel_queue_name' => array(
+      'label' => 'queue',
+      'required' => 1,
+      'limit' => 1,
+      'names' => array(
+        'election_districts' => 'election_districts',
+      ),
+      'id' => 'nodequeue_rel_queue_name',
+      'table' => 'node',
+      'field' => 'nodequeue_rel_queue_name',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
     'path' => array(
       'label' => '',
@@ -662,6 +679,18 @@ function election_section_feature_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('sorts', array(
+    'position' => array(
+      'order' => 'ASC',
+      'id' => 'position',
+      'table' => 'nodequeue_nodes',
+      'field' => 'position',
+      'relationship' => 'nodequeue_rel_queue_name',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
+  ));
   $handler->override_option('filters', array(
     'status' => array(
       'operator' => '=',
@@ -723,6 +752,23 @@ function election_section_feature_views_default_views() {
       'relationship' => 'none',
       'reduce_duplicates' => 0,
     ),
+    'in_queue' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'in_queue',
+      'table' => 'nodequeue_nodes',
+      'field' => 'in_queue',
+      'relationship' => 'nodequeue_rel_queue_name',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
@@ -732,7 +778,7 @@ function election_section_feature_views_default_views() {
   ));
   $handler->override_option('title', 'Manhattan City Council Races');
   $handler->override_option('header', '<div id="geolocation">
-  <p id="statement">We have you located in <strong>Hamilton Heights</strong> with is located in <strong><a href="#">Community Board 9</a></strong>.</p>
+  <p id="statement"></p>
 </div>
 ');
   $handler->override_option('header_format', '4');
