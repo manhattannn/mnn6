@@ -306,7 +306,7 @@ var electionSlideshow = (function() {
   var id = '';
 
   function init(){
-    if ($('.node.election-district').length) {
+    if ($('.node.election-district .photo-video .item').length > 1) {
       id = '#' + $('.node.election-district').attr('id');
       $(id + ' .item:first-child').addClass('current');
       var count = $(id + ' .item').length;

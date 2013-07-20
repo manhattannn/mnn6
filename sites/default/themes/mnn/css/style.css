@@ -5377,6 +5377,10 @@ div.firehouse-item .read-more a{
 .node.election-district .district-charts .chart {
   width: 460px;
   height: 250px;
+  float: left;
+}
+.node.election-district .district-charts #race-ethnicity {
+  margin-right: 20px;
 }
 
 #page-node-3679 #page > header,
@@ -5552,6 +5556,30 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   border-bottom: 1px #b4c2c2 solid;
   padding: 0;
 }
+
+.election-district #slideshow-buttons a {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  top: 403px;
+  z-index: 999;
+  background: transparent none;
+}
+.election-district #slideshow-buttons a span {
+  background: transparent url(../images/direction-nav.png) no-repeat;
+  height: 30px;
+  width: 30px;
+}
+.election-district #slideshow-buttons a.left span {
+  background-position-x: left;
+}
+.election-district #slideshow-buttons a.right span {
+  background-position-x: right;
+}
+.election-district #slideshow-buttons a:hover span {
+  background-position-y: bottom;
+}
+
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
