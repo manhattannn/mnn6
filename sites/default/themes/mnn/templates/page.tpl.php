@@ -75,6 +75,7 @@
 	<?php endif; ?>
 
 	<section id="main" class="clearfix">
+		<?php print $main_top; ?>
 		<div class="pinch">
 
 			<div id="content">
