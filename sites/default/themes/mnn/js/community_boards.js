@@ -1,33 +1,13 @@
-var map, community_boards, masks;
+var map, community_boards, masks, geocoder;
 
-function setCommunityBoard(i) {
-	$("#geolocation .viewcommunity a").attr('href', community_boards[i].url);
-	$("#geolocation #statement").html("We have you located in <span>" + community_boards[i].name + "</span> which is located in District " + community_boards[i].id + ".");
-	window.location = community_boards[i].url;
-}
 
 //function redirect(){
   //  window.location = community_boards[i].url;
 //}
 
-function guessPosition(position) {
-  var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- var image = 'images/icon_marker.png';
- var beachMarker = new google.maps.Marker({
-      position: location,
-      map: map,
-      icon: image
-  });
- for(var i=0;i < community_boards.length;i++) {
-    if(community_boards[i].polygon.containsLatLng(location)) {
-			setCommunityBoard(i);
-      return;
-    }
-  }
-  $("#geolocation #statement").html("Uh oh, it looks like you are not located in Manhattan. Select a neighborhood from the list below:");
-}
 
 function initializeMap() {
+  geocoder = new google.maps.Geocoder();
   var myLatLng = new google.maps.LatLng(40.78803,-73.97603);
   var myOptions = {
     zoom: 12,
@@ -42,12 +22,8 @@ function initializeMap() {
   map = new google.maps.Map(document.getElementById("map_canvas"),
       myOptions);
 
-  if (navigator.geolocation) {
-		$("#geolocation #statement").html("We are looking for your location. In the meantime, select a neighborhood from the list below:")
-    navigator.geolocation.getCurrentPosition(guessPosition);
-  } else {
-		$("#geolocation #statement").html("We are having trouble locating you, select a neighborhood from the list below:")
-  }
+
+
 
 	masks = [ { name: 'New Jersey',
 							coords: [ new google.maps.LatLng(40.708890000000004,-74.02932000000001),
@@ -94,6 +70,7 @@ function initializeMap() {
     { name: 'City Council District 1',
       id: 1,
 			strokeColor: '#005b25',
+			label: 'District 1',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-1',
       coords: [
@@ -144,6 +121,7 @@ function initializeMap() {
     { name: 'City Council District 2',
       id: 2,
 			strokeColor: '#005b25',
+			label: 'District 2',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-2',
       coords: [
@@ -190,6 +168,7 @@ function initializeMap() {
     { name: 'City Council District 3',
       id: 3,
 			strokeColor: '#005b25',
+			label: 'District 3',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-3',
       coords: [
@@ -248,6 +227,7 @@ function initializeMap() {
     { name: 'City Council District 4',
       id: 4,
 			strokeColor: '#005b25',
+			label: 'District 4',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-4',
       coords: [
@@ -300,6 +280,7 @@ function initializeMap() {
     { name: 'City Council District 5',
       id: 5,
 			strokeColor: '#005b25',
+			label: 'District 5',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-5',
       coords: [
@@ -349,6 +330,7 @@ function initializeMap() {
     { name: 'City Council District 6',
       id: 6,
 			strokeColor: '#005b25',
+			label: 'District 6',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-6',
       coords: [ 		new google.maps.LatLng(40.771143,-73.994551),
@@ -393,6 +375,7 @@ function initializeMap() {
     { name: 'City Council District 7'  ,
       id: 7,
 			strokeColor: '#005b25',
+			label: 'District 7',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-7',
       coords: [ 		new google.maps.LatLng(40.805799,-73.970733),
@@ -442,6 +425,7 @@ function initializeMap() {
     { name: 'City Council District 8',
       id: 8,
 			strokeColor: '#005b25',
+			label: 'District 8',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-8',
       coords: [
@@ -547,6 +531,7 @@ function initializeMap() {
 	new google.maps.LatLng(40.803447,-73.915458) ] },
     { name: 'City Council District 9',
       id: 9,
+			label: 'District 9',
 			strokeColor: '#005b25',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-9',
@@ -608,6 +593,7 @@ function initializeMap() {
 			new google.maps.LatLng(40.794253,-73.951035) ] },
     { name: 'City Council District 10',
       id: 10,
+			label: 'District 10',
 			strokeColor: '#005b25',
 			fillColor: '#d9d280',
 			url:'/manhattan-elections/city-council-district-10',
@@ -718,12 +704,12 @@ function initializeMap() {
 
 	function selectPolygon(event) {
 		resetCommunityBoardColors();
-		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '1' } );
+		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } ); 
     	setCommunityBoard(this.community_board_index);
 	}
 
 	function hoverPolygon(event) {
-		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '1' } );
+		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } ); 
 	}
 
 	function unhoverPolygon(event) {
@@ -737,3 +723,36 @@ function initializeMap() {
 	}
 
 }
+function codeAddress() {	
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+	 var position = results[0].geometry.location;
+	  guessPosition(position);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+function guessPosition(position){
+  //var image = 'images/icon_marker.png';
+  var beachMarker = new google.maps.Marker({
+      position: position,
+      map: map
+  });
+ for(var i=0;i < community_boards.length;i++) {
+    if(community_boards[i].polygon.containsLatLng(position)) {
+			setCommunityBoard(i);
+      return;
+    }
+  }
+}
+function setCommunityBoard(i) {
+	window.location = community_boards[i].url;
+}
+//google.maps.event.addDomListener(window, 'load', initialize);

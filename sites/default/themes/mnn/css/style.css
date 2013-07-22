@@ -5175,6 +5175,7 @@ div.firehouse-item .read-more a{
 
 .view-election-news {
   border-bottom: 1px #b4c2c2 solid;
+  margin-bottom: 30px;
 }
 .view-election-news .pager {
   padding-bottom: 20px;
@@ -5518,6 +5519,65 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   padding: 20px;
   font-size: 18px;
   margin-bottom: 20px;
+  font-weight: bold;
+}
+#block-views-election-district-list-block .view-header input[type="text"] {
+  margin-left: 20px;
+  font-size: 16px;
+  padding: 6px 7px;
+  width: 475px;
+}
+#block-views-election-district-list-block .view-header .button {
+  text-shadow:1px 1px 1px 1px #2b2b2b;
+  background-color:#373737;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, #373737),
+      color-stop(1, #515151)
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      #373737 0%,
+      #515151 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#515151',GradientType=0 ); /* ie */
+  background: -o-linear-gradient(top, #373737 0%,#515151 100%); /* opera */
+  color:white;
+  height: 35px;
+}
+#block-views-election-district-list-block .view-header .button input {
+  text-decoration:none;
+  float:left;
+  font-size:12px;
+  color:#b9de0f;
+  font-weight:normal;
+  float:left;
+  padding: 10px 31px 10px 29px;
+  margin-right: 16px;
+  background:url("../images/right-arrow-sm.png") no-repeat scroll right center;
+  border: 0;
+}
+#block-views-election-district-list-block .view-header .button:hover {
+  background-color:#515151;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, #515151),
+      color-stop(1, #373737)
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      #515151 0%,
+      #373737 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#515151',GradientType=0 ); /* ie */
+  background: -o-linear-gradient(top, #373737 0%,#515151 100%); /* opera */
+}
+#block-views-election-district-list-block .view-header .button:hover input {
+  color:white;
 }
 #block-views-election-district-list-block .view-content {
   width: 475px;
