@@ -12,21 +12,21 @@
     }
   }
 
-  // Chart data.
-  $race_ethnicity_arr = explode(';', $node->field_election_race_ethnicity[0]['value']);
-  $race_ethnicity_arr = array_filter($race_ethnicity_arr);
-  for ($i = 0; $i < count($race_ethnicity_arr); $i++) {
-    $race_ethnicity_arr[$i] = '[' . trim($race_ethnicity_arr[$i]) . ']';
+  // Pie chart data.
+  $pie_chart_arr = explode(';', $node->field_pie_chart_data[0]['value']);
+  $pie_chart_arr = array_filter($pie_chart_arr);
+  for ($i = 0; $i < count($pie_chart_arr); $i++) {
+    $pie_chart_arr[$i] = '[' . trim($pie_chart_arr[$i]) . ']';
   }
-  $race_ethnicity = implode(',', $race_ethnicity_arr);
+  $pie_chart = implode(',', $pie_chart_arr);
 
-  // Chart data.
-  $acreage_arr = explode(';', $node->field_election_housing[0]['value']);
-  $acreage_arr = array_filter($acreage_arr);
-  for ($i = 0; $i < count($acreage_arr); $i++) {
-    $acreage_arr[$i] = '[' . trim($acreage_arr[$i]) . ']';
+  // Bar chart data.
+  $bar_chart_arr = explode(';', $node->field_bar_chart_data[0]['value']);
+  $bar_chart_arr = array_filter($bar_chart_arr);
+  for ($i = 0; $i < count($bar_chart_arr); $i++) {
+    $bar_chart_labels[] = trim(explode(',', $bar_chart_arr[$i])[0]);
+    $bar_chart_data[] = trim(explode(',', $bar_chart_arr[$i])[1]);
   }
-  $acreage = implode(',', $acreage_arr);
 ?>
 
 <article class="election-district node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
@@ -62,8 +62,8 @@
   </li>
 </ul>
 <div class="district-charts">
-  <div id="race-ethnicity" class="chart"></div>
-  <div id="acreage" class="chart"></div>
+  <div id="pie-chart" class="chart"></div>
+  <div id="bar-chart" class="chart"></div>
 </div>
 
 </article>
@@ -72,16 +72,22 @@
 
 $jq(document).ready(function () {
 
-  // Build the chart
-  var chart1 = new Highcharts.Chart({
+  // Build the charts
+  var pieChart = new Highcharts.Chart({
     chart: {
-      renderTo: 'race-ethnicity',
+      renderTo: 'pie-chart',
       plotBackgroundColor: null,
       plotBorderWidth: null,
-      plotShadow: false
+      plotShadow: false,
+      spacingLeft: 0,
+      width: 420,
+      height: 260
+    },
+    credits: {
+      enabled: false
     },
     title: {
-      text: 'Race/Ethnicity',
+      text: "<?php print $node->field_pie_chart_title[0]['value'] ?>",
       align: 'left',
       style: {
         fontWeight: 'bold',
@@ -99,6 +105,14 @@ $jq(document).ready(function () {
         return { x: point.plotX + 10, y: point.plotY - 20 }
       }
     },
+    colors: [
+      '#17c3dc',
+      '#67b921',
+      '#fefc65',
+      '#ffaf04',
+      '#33be6c',
+      '#007efe'
+    ],
     plotOptions: {
       pie: {
         allowPointSelect: true,
@@ -124,19 +138,20 @@ $jq(document).ready(function () {
     },
     series: [{
       type: 'pie',
-      name: 'Race/Ethnicity',
-      data: [<?php print $race_ethnicity;?>]
+      name: "<?php print $node->field_pie_chart_title[0]['value'] ?>",
+      data: [<?php print $pie_chart;?>]
     }]
   });
   var chart2 = new Highcharts.Chart({
     chart: {
-      renderTo: 'acreage',
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false
+      renderTo: 'bar-chart',
+      type: 'column'
+    },
+    credits: {
+      enabled: false
     },
     title: {
-      text: 'District Acreage vs. Park Acreage',
+      text: "<?php print $node->field_bar_chart_title[0]['value'] ?>",
       align: 'left',
       style: {
         fontWeight: 'bold',
@@ -146,41 +161,77 @@ $jq(document).ready(function () {
         x: 0
       }
     },
+    xAxis: {
+      categories: [ <?php print implode(',', $bar_chart_labels); ?> ],
+      <?php if (count($bar_chart_labels) > 3) : ?>
+        labels: {
+          rotation: -45,
+          align: 'right',
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            color: '#25292b',
+          }
+        }
+      <?php else : ?>
+        labels: {
+          align: 'center',
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            color: '#25292b',
+          }
+        }
+      <?php endif; ?>
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "<?php print $node->field_bar_chart_yaxis_label[0]['value']; ?>",
+        style: {
+          fontWeight: 'normal',
+          fontSize: '13px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#25292b',
+        }
+      }
+    },
     tooltip: {
       headerFormat: '<strong>{point.key}</strong><br>',
-      valueDecimals: 1,
-      valueSuffix: '%',
-      positioner: function(labelWidth, labelHeight, point) {
-        return { x: point.plotX + 10, y: point.plotY - 20 }
-      }
+      valueDecimals: 1
     },
     plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: false
-        },
-        showInLegend: true
+      series: {
+        colorByPoint: true,
+        colors: [
+          '#005b25',
+          '#67b921'
+        ]
       }
     },
+    // colors: [
+    //   // '#005b25'
+    //   '#67b921'
+    // ],
     legend: {
-      align: 'right',
-      verticalAlign: 'center',
-      layout: 'vertical',
-      x: 0,
-      y: 50,
-      itemStyle: {
-        fontSize: '11px'
-      },
-      labelFormatter: function() {
-        return this.name + ' ' + this.y + '%';
-      }
+      enabled: false
     },
     series: [{
-      type: 'pie',
-      name: 'Acreage',
-      data: [<?php print $acreage;?>]
+      type: 'column',
+      name: "<?php print $node->field_bar_chart_yaxis_label[0]['value']; ?>",
+      data: [ <?php print implode(',', $bar_chart_data); ?> ],
+      dataLabels: {
+        enabled: true,
+        rotation: -90,
+        color: '#FFFFFF',
+        align: 'right',
+        x: 4,
+        y: 10,
+        style: {
+          fontSize: '13px',
+          fontFamily: 'Helvetica, Arial, sans-serif'
+        }
+      }
     }]
   });
 });
