@@ -524,6 +524,192 @@ constitution|Constitution',
     ),
   );
 
+  // Exported field: field_bar_chart_data
+  $fields['election_district-field_bar_chart_data'] = array(
+    'field_name' => 'field_bar_chart_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '5',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Data',
+      'weight' => '21',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_bar_chart_title
+  $fields['election_district-field_bar_chart_title'] = array(
+    'field_name' => 'field_bar_chart_title',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_title][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Title',
+      'weight' => '19',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_bar_chart_yaxis_label
+  $fields['election_district-field_bar_chart_yaxis_label'] = array(
+    'field_name' => 'field_bar_chart_yaxis_label',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_yaxis_label][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Y-axis Label',
+      'weight' => '20',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_election_candidates
   $fields['election_district-field_election_candidates'] = array(
     'field_name' => 'field_election_candidates',
@@ -913,8 +1099,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Acreage',
-      'weight' => '18',
+      'label' => 'Acreage (Deprecated)',
+      'weight' => '23',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -1195,8 +1381,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Race/Ethnicity',
-      'weight' => '17',
+      'label' => 'Race/Ethnicity (Deprecated)',
+      'weight' => '22',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -1259,6 +1445,130 @@ constitution|Constitution',
       'default_value_php' => NULL,
       'label' => 'Unemployment Rate',
       'weight' => '16',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_pie_chart_data
+  $fields['election_district-field_pie_chart_data'] = array(
+    'field_name' => 'field_pie_chart_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '5',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_pie_chart_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Pie Chart Data',
+      'weight' => '18',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_pie_chart_title
+  $fields['election_district-field_pie_chart_title'] = array(
+    'field_name' => 'field_pie_chart_title',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_pie_chart_title][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Pie Chart Title',
+      'weight' => '17',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -1412,7 +1722,10 @@ constitution|Constitution',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Acreage');
+  t('Acreage (Deprecated)');
+  t('Bar Chart Data');
+  t('Bar Chart Title');
+  t('Bar Chart Y-axis Label');
   t('Candidates');
   t('District Population');
   t('Facebook');
@@ -1424,8 +1737,10 @@ constitution|Constitution',
   t('Party');
   t('Photo');
   t('Photos');
+  t('Pie Chart Data');
+  t('Pie Chart Title');
   t('Publish Date');
-  t('Race/Ethnicity');
+  t('Race/Ethnicity (Deprecated)');
   t('Twitter');
   t('Unemployment Rate');
   t('Video');

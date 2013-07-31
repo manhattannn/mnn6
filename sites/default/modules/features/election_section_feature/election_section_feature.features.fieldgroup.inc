@@ -51,8 +51,13 @@ function election_section_feature_fieldgroup_default_groups() {
       '0' => 'field_election_district_populati',
       '1' => 'field_election_median_income',
       '2' => 'field_election_unemployment_rate',
-      '3' => 'field_election_race_ethnicity',
-      '4' => 'field_election_housing',
+      '3' => 'field_pie_chart_title',
+      '4' => 'field_pie_chart_data',
+      '5' => 'field_bar_chart_title',
+      '6' => 'field_bar_chart_yaxis_label',
+      '7' => 'field_bar_chart_data',
+      '8' => 'field_election_race_ethnicity',
+      '9' => 'field_election_housing',
     ),
   );
 
