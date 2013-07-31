@@ -797,105 +797,10 @@ constitution|Constitution',
       ),
       'default_value_php' => NULL,
       'label' => 'Candidates',
-      'weight' => '1',
+      'weight' => '2',
       'description' => '',
       'type' => 'nodereference_select',
       'module' => 'nodereference',
-    ),
-  );
-
-  // Exported field: field_election_district_photos
-  $fields['election_district-field_election_district_photos'] = array(
-    'field_name' => 'field_election_district_photos',
-    'type_name' => 'election_district',
-    'display_settings' => array(
-      'weight' => '-2',
-      'parent' => '',
-      'label' => array(
-        'format' => 'hidden',
-      ),
-      'teaser' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'election-main-photo_default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'filefield',
-    'required' => '0',
-    'multiple' => '1',
-    'module' => 'filefield',
-    'active' => '1',
-    'list_field' => '0',
-    'list_default' => 1,
-    'description_field' => '0',
-    'widget' => array(
-      'file_extensions' => 'png gif jpg jpeg',
-      'file_path' => 'election-district-photos',
-      'progress_indicator' => 'bar',
-      'max_filesize_per_file' => '',
-      'max_filesize_per_node' => '',
-      'max_resolution' => '0',
-      'min_resolution' => '0',
-      'alt' => '',
-      'custom_alt' => 0,
-      'title' => '',
-      'custom_title' => 0,
-      'title_type' => 'textfield',
-      'default_image' => NULL,
-      'use_default_image' => 0,
-      'insert' => 0,
-      'insert_absolute' => 0,
-      'insert_styles' => array(
-        'auto' => 0,
-        'link' => 0,
-        'icon_link' => 0,
-        'image' => 0,
-        'imagecache_certification-class-instructor' => 0,
-        'imagecache_certification-class-tracks' => 0,
-        'imagecache_community-studio-dialogue-landing' => 0,
-        'imagecache_firehouse-main' => 0,
-        'imagecache_homepage-news' => 0,
-        'imagecache_inline-image-content-width' => 0,
-        'imagecache_inline-image-half-content-width' => 0,
-        'imagecache_main-feature-slideshow' => 0,
-        'imagecache_news' => 0,
-        'imagecache_person-board-of-directors' => 0,
-        'imagecache_person-management' => 0,
-        'imagecache_person-upper-management' => 0,
-        'imagecache_yc-homepage-news' => 0,
-        'imagecache_yc-join-now' => 0,
-        'imagecache_yc-join-now-thumb' => 0,
-        'imagecache_yc-news' => 0,
-        'imagecache_yc-our-services' => 0,
-      ),
-      'insert_default' => 'auto',
-      'insert_class' => '',
-      'insert_width' => '',
-      'label' => 'Photos',
-      'weight' => '-1',
-      'description' => '',
-      'type' => 'imagefield_widget',
-      'module' => 'imagefield',
     ),
   );
 
@@ -998,8 +903,8 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'emvideo',
-    'required' => '0',
-    'multiple' => '1',
+    'required' => '1',
+    'multiple' => '2',
     'module' => 'emvideo',
     'active' => '1',
     'widget' => array(
@@ -1038,8 +943,8 @@ constitution|Constitution',
       ),
       'default_value_php' => NULL,
       'label' => 'Videos',
-      'weight' => 0,
-      'description' => '',
+      'weight' => '-1',
+      'description' => '1st video is the District Overview.<br/>2nd video is the District Debate.',
       'type' => 'emvideo_textfields',
       'module' => 'emvideo',
     ),
@@ -1575,6 +1480,172 @@ constitution|Constitution',
     ),
   );
 
+  // Exported field: field_video_district_debate
+  $fields['election_district-field_video_district_debate'] = array(
+    'field_name' => 'field_video_district_debate',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'emvideo',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'emvideo',
+    'active' => '1',
+    'widget' => array(
+      'video_width' => '640',
+      'video_height' => '390',
+      'video_autoplay' => 0,
+      'preview_width' => '640',
+      'preview_height' => '390',
+      'preview_autoplay' => 0,
+      'thumbnail_width' => '120',
+      'thumbnail_height' => '90',
+      'thumbnail_default_path' => '',
+      'thumbnail_link_title' => 'See video',
+      'meta_fields' => array(
+        'title' => 0,
+        'description' => 0,
+      ),
+      'providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'emthumb' => 0,
+      'emthumb_label' => 'Video: District Debate custom thumbnail',
+      'emthumb_description' => 'If you upload a custom thumbnail, then this will be displayed when the Video: District Debate thumbnail is called for, overriding any automatic thumbnails by custom providers.',
+      'emthumb_max_resolution' => '0',
+      'emimport_image_path' => '',
+      'emthumb_custom_alt' => 0,
+      'emthumb_custom_title' => 0,
+      'emthumb_store_local_thumbnail' => 1,
+      'emthumb_start_collapsed' => 0,
+      'default_value' => array(
+        '0' => array(
+          'embed' => '',
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Video: District Debate',
+      'weight' => '1',
+      'description' => '',
+      'type' => 'emvideo_textfields',
+      'module' => 'emvideo',
+    ),
+  );
+
+  // Exported field: field_video_district_overview
+  $fields['election_district-field_video_district_overview'] = array(
+    'field_name' => 'field_video_district_overview',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'emvideo',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'emvideo',
+    'active' => '1',
+    'widget' => array(
+      'video_width' => '640',
+      'video_height' => '390',
+      'video_autoplay' => 0,
+      'preview_width' => '640',
+      'preview_height' => '390',
+      'preview_autoplay' => 0,
+      'thumbnail_width' => '120',
+      'thumbnail_height' => '90',
+      'thumbnail_default_path' => '',
+      'thumbnail_link_title' => 'See video',
+      'meta_fields' => array(
+        'title' => 0,
+        'description' => 0,
+      ),
+      'providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'emthumb' => 0,
+      'emthumb_label' => 'Video: District Overview custom thumbnail',
+      'emthumb_description' => 'If you upload a custom thumbnail, then this will be displayed when the Video: District Overview thumbnail is called for, overriding any automatic thumbnails by custom providers.',
+      'emthumb_max_resolution' => '0',
+      'emimport_image_path' => '',
+      'emthumb_custom_alt' => 0,
+      'emthumb_custom_title' => 0,
+      'emthumb_store_local_thumbnail' => 1,
+      'emthumb_start_collapsed' => 0,
+      'default_value' => array(
+        '0' => array(
+          'embed' => '',
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Video: District Overview',
+      'weight' => 0,
+      'description' => '',
+      'type' => 'emvideo_textfields',
+      'module' => 'emvideo',
+    ),
+  );
+
   // Exported field: field_video
   $fields['election_video-field_video'] = array(
     'field_name' => 'field_video',
@@ -1736,7 +1807,6 @@ constitution|Constitution',
   t('Optional Video');
   t('Party');
   t('Photo');
-  t('Photos');
   t('Pie Chart Data');
   t('Pie Chart Title');
   t('Publish Date');
@@ -1744,6 +1814,8 @@ constitution|Constitution',
   t('Twitter');
   t('Unemployment Rate');
   t('Video');
+  t('Video: District Debate');
+  t('Video: District Overview');
   t('Videos');
   t('Website');
 
