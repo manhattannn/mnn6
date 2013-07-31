@@ -1,17 +1,4 @@
 <?php
-  // drupal_add_js('sites/all/libraries/highcharts/highcharts.js');
-
-  foreach ($node->field_election_district_photos as $photo) {
-    if (isset($photo['fid'])) {
-      $media[] = '<div class="item">' . $photo['view'] . '</div>';
-    }
-  }
-  foreach ($node->field_election_district_videos as $video) {
-    if (isset($video['value'])) {
-      $media[] = '<div class="item">' . $video['view'] . '</div>';
-    }
-  }
-
   // Pie chart data.
   $pie_chart_arr = explode(';', $node->field_pie_chart_data[0]['value']);
   $pie_chart_arr = array_filter($pie_chart_arr);
@@ -41,8 +28,13 @@
       <?php print $node->field_election_neighborhoods[0]['view']; ?>
     </div>
   </div>
-  <div class="photo-video">
-    <?php print implode('', $media); ?>
+  <div class="district-videos">
+    <div class="video video--district-overview">
+      <?php print $node->field_video_district_overview[0]['view']; ?>
+    </div>
+    <div class="video video--district-debate">
+      <?php print $node->field_video_district_debate[0]['view']; ?>
+    </div>
   </div>
 </div>
 
