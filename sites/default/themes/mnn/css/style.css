@@ -5521,6 +5521,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   font-size: 18px;
   margin-bottom: 20px;
   font-weight: bold;
+  position: relative;
 }
 #block-views-election-district-list-block #panel input[type="text"] {
   margin-left: 20px;
@@ -5585,6 +5586,11 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   color: #ff605f;
   font-size: 16px;
   text-align: right;
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 500px;
+  font-weight: normal;
 }
 #block-views-election-district-list-block .president-link {
   font-size: 17px;

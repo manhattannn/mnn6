@@ -46,7 +46,7 @@ function election_section_feature_fieldgroup_default_groups() {
         ),
       ),
     ),
-    'weight' => '2',
+    'weight' => '3',
     'fields' => array(
       '0' => 'field_election_district_populati',
       '1' => 'field_election_median_income',
