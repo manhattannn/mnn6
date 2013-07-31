@@ -1,4 +1,4 @@
-var map, community_boards, masks, geocoder;
+var map, community_boards, masks, geocoder, infoWindow;
 
 
 //function redirect(){
@@ -687,6 +687,7 @@ function initializeMap() {
      ]
 
   for(var i=0; i < community_boards.length; i++) {
+	var label = community_boards[i].label;
     community_boards[i].polygon = new google.maps.Polygon({
                                     paths: community_boards[i].coords,
                                     strokeColor: community_boards[i].strokeColor,
@@ -696,24 +697,70 @@ function initializeMap() {
                                     fillOpacity: 0.6,
                                     community_board_index: i
                                   });
-    google.maps.event.addListener( community_boards[i].polygon, 'click', selectPolygon),
-	google.maps.event.addListener( community_boards[i].polygon, 'mouseover', hoverPolygon),
-	google.maps.event.addListener( community_boards[i].polygon, 'mouseout', unhoverPolygon),
+	community_boards[i].marker = new MarkerWithLabel({
+									position: new google.maps.LatLng(0,0),
+									draggable: false,
+									raiseOnDrag: false,
+									map: map,
+									labelContent: label,
+									labelAnchor: new google.maps.Point(60, 40),
+									labelClass: "labels", // the CSS class for the label
+									labelStyle: {opacity: 1.0},
+									icon: "http://placehold.it/1x1",
+									visible: false
+								});
+    google.maps.event.addListener( community_boards[i].polygon, 'click', selectPolygon);
+	// google.maps.event.addListener( community_boards[i].polygon, 'mouseover', hoverPolygon);
+	google.maps.event.addListener( community_boards[i].polygon, 'mouseout', unhoverPolygon);
+	google.maps.event.addListener( community_boards[i].polygon, 'mousemove', movePolygon);
     community_boards[i].polygon.setMap(map);
   }
 
 	function selectPolygon(event) {
 		resetCommunityBoardColors();
-		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } ); 
+		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } );
     	setCommunityBoard(this.community_board_index);
 	}
 
 	function hoverPolygon(event) {
-		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } ); 
+		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } );
+	  		var index = this.community_board_index;
+			var marker = community_boards[index].marker;
+			marker.setPosition(event.latLng);
+	      	marker.setVisible(true);
 	}
 
+	function movePolygon(event) {
+		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.8' } );
+  	var index = this.community_board_index;
+		var marker = community_boards[index].marker;
+		var pos = event.latLng;
+		switch (this.map.zoom) {
+			case 12:
+				pos.jb += 0.004;
+				pos.kb += 0.0012;
+				break;
+			case 13:
+				pos.jb += 0.002;
+				pos.kb += 0.0006;
+				break;
+			case 14:
+				pos.jb += 0.001;
+				pos.kb += 0.0003;
+				break;
+			case 15:
+				pos.jb += 0.0005;
+				pos.kb += 0.00015;
+				break;
+		}
+		marker.setPosition(pos);
+  	marker.setVisible(true);
+	}
 	function unhoverPolygon(event) {
 		this.setOptions( { fillColor: '#d9d280', strokeColor: '#005b25', fillOpacity: '0.6' } );
+		var index = this.community_board_index;
+		var marker = community_boards[index].marker;
+		marker.setVisible(false);
 	}
 
 	function resetCommunityBoardColors() {
@@ -723,7 +770,7 @@ function initializeMap() {
 	}
 
 }
-function codeAddress() {	
+function codeAddress() {
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -740,7 +787,6 @@ function codeAddress() {
   });
 }
 function guessPosition(position){
-  //var image = 'images/icon_marker.png';
   var beachMarker = new google.maps.Marker({
       position: position,
       map: map
@@ -750,9 +796,11 @@ function guessPosition(position){
 			setCommunityBoard(i);
       return;
     }
+ 	if (i == 9 && !community_boards[i].polygon.containsLatLng(position)) {
+		$(".alert").html("Sorry this search only shows Manhattan City Council Districts. Please enter a Manhattan address.")
+	}
   }
 }
 function setCommunityBoard(i) {
 	window.location = community_boards[i].url;
 }
-//google.maps.event.addDomListener(window, 'load', initialize);

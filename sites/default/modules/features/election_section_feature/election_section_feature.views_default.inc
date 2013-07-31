@@ -777,10 +777,11 @@ function election_section_feature_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Manhattan City Council Races');
-  $handler->override_option('header', '<div id="geolocation">
-  <p id="statement"></p>
-</div>
-');
+  $handler->override_option('header', '<div id="panel">
+  <span>Find Your City Council District</span>
+  <input id="address" type="text" placeholder="Your Street Address">
+  <span class="button"><input type="button" value="Find" onclick="codeAddress()"></span>
+</div>');
   $handler->override_option('header_format', '4');
   $handler->override_option('header_empty', 0);
   $handler->override_option('footer', '<div id="map_canvas"></div>');

@@ -5316,28 +5316,29 @@ div.firehouse-item .read-more a{
   float: left;
   padding-top: 2px;
 }
-.node.election-district .photo-video {
+.node.election-district .district-videos {
   float: right;
   position: relative;
   overflow: hidden;
   width: 640px;
   height: 440px;
 }
-.node.election-district .photo-video .item {
+.node.election-district .district-videos .video {
   position: absolute;
   left: 640px;
   top: 0;
+  width: 640px;
 }
-.node.election-district .photo-video .item:first-child {
+.node.election-district .district-videos .video:first-child {
   left: 0;
 }
-.node.election-district .photo-video img {
+.node.election-district .district-videos img {
   border: 0;
   -webkit-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
   margin: 0;
 }
-.node.election-district #indicators {
+/*.node.election-district #indicators {
   position: absolute;
   left: 0;
   top: 410px;
@@ -5354,7 +5355,7 @@ div.firehouse-item .read-more a{
 }
 .node.election-district #indicators span.current {
   background: transparent url(../images/indicator-on.png) no-repeat;
-}
+}*/
 .node.election-district .district-stats {
   border-top: 1px #b1babf solid;
   border-bottom: 1px #b1babf solid;
@@ -5377,7 +5378,7 @@ div.firehouse-item .read-more a{
 }
 .node.election-district .district-charts .chart {
   width: 460px;
-  height: 250px;
+  height: 300px;
   float: left;
 }
 .node.election-district .district-charts #race-ethnicity {
@@ -5513,7 +5514,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   margin: 30px 0;
   padding-top: 30px;
 }
-#block-views-election-district-list-block .view-header {
+#block-views-election-district-list-block #panel {
   background-color: #e3e8eb;
   border-radius: 4px;
   padding: 20px;
@@ -5521,13 +5522,13 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   margin-bottom: 20px;
   font-weight: bold;
 }
-#block-views-election-district-list-block .view-header input[type="text"] {
+#block-views-election-district-list-block #panel input[type="text"] {
   margin-left: 20px;
   font-size: 16px;
   padding: 6px 7px;
   width: 475px;
 }
-#block-views-election-district-list-block .view-header .button {
+#block-views-election-district-list-block #panel .button {
   text-shadow:1px 1px 1px 1px #2b2b2b;
   background-color:#373737;
   background-image: -webkit-gradient(
@@ -5547,7 +5548,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   color:white;
   height: 35px;
 }
-#block-views-election-district-list-block .view-header .button input {
+#block-views-election-district-list-block #panel .button input {
   text-decoration:none;
   float:left;
   font-size:12px;
@@ -5559,7 +5560,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   background:url("../images/right-arrow-sm.png") no-repeat scroll right center;
   border: 0;
 }
-#block-views-election-district-list-block .view-header .button:hover {
+#block-views-election-district-list-block #panel .button:hover {
   background-color:#515151;
   background-image: -webkit-gradient(
       linear,
@@ -5576,21 +5577,47 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#515151',GradientType=0 ); /* ie */
   background: -o-linear-gradient(top, #373737 0%,#515151 100%); /* opera */
 }
-#block-views-election-district-list-block .view-header .button:hover input {
+#block-views-election-district-list-block #panel .button:hover input {
   color:white;
+}
+#block-views-election-district-list-block #panel .alert {
+  font-family: arial, sans-serif;
+  color: #ff605f;
+  font-size: 16px;
+  text-align: right;
+}
+#block-views-election-district-list-block .president-link {
+  font-size: 17px;
+  margin: 15px 0 35px 0;
+  float: left;
 }
 #block-views-election-district-list-block .view-content {
   width: 475px;
   margin-right: 30px;
   float: left;
+  clear: left;
 }
-#block-views-election-district-list-block .view-footer {
+/*#block-views-election-district-list-block .view-footer {
   float: right;
   border: 3px #b3bcc1 solid;
 }
+*/
 #block-views-election-district-list-block #map_canvas {
   height: 845px;
   width: 425px;
+  border: 3px #b3bcc1 solid;
+}
+#block-views-election-district-list-block #map_canvas .labels {
+  background: url("../images/tooltip-back.png") no-repeat scroll 0 0 transparent;
+  color: white;
+  font-family: "Arial",sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  height: 41px;
+  padding-top: 11px;
+  text-align: center;
+  white-space: nowrap;
+  width: 113px;
 }
 #block-views-election-district-list-block .view-content table {
   width: 100%;
@@ -5600,7 +5627,7 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   border-bottom: 1px #b4c2c2 solid;
 }
 #block-views-election-district-list-block .view-content td {
-  padding: 30px 20px 29px 0;
+  padding: 10px 20px 9px 0;
   font-size: 17px;
   background-color: transparent;
 }
@@ -5617,7 +5644,26 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   padding: 0;
 }
 
+.election-district #slideshow-buttons {
+  top: 400px;
+  width: 640px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  text-align: center;
+}
 .election-district #slideshow-buttons a {
+  position: relative;
+  display: inline;
+  border: 0;
+  width: auto;
+  height: auto;
+  top: auto;
+}
+.election-district #slideshow-buttons a.current {
+  color: #25292b;
+}
+/*.election-district #slideshow-buttons a {
   width: 30px;
   height: 30px;
   border: 0;
@@ -5638,8 +5684,20 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
 }
 .election-district #slideshow-buttons a:hover span {
   background-position-y: bottom;
-}
+}*/
 
+#block-block-elections-return-to-main-election-page {
+  position: absolute;
+  right: 0;
+  top: -64px;
+}
+#block-block-elections-return-to-main-election-page .button {
+  height: 40px;
+}
+#block-block-elections-return-to-main-election-page .button a {
+  padding: 12px 17px 10px 18px;
+  margin-right: 15px;
+}
 
 #block-views-community-studio-dialogues-block .views-row:before, #block-views-community-studio-dialogues-block .views-row:after,
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
