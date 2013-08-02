@@ -5497,6 +5497,11 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   width: 198px;
 }
 
+#block-block-election-resources {
+  padding-bottom: 30px;
+  border-bottom: 1px #b4c2c2 solid;
+  margin-bottom: 30px;
+}
 #block-block-election-resources .col {
   width: 296px;
   padding-right: 25px;
