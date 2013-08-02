@@ -11,8 +11,9 @@
   $bar_chart_arr = explode(';', $node->field_bar_chart_data[0]['value']);
   $bar_chart_arr = array_filter($bar_chart_arr);
   for ($i = 0; $i < count($bar_chart_arr); $i++) {
-    $bar_chart_labels[] = trim(explode(',', $bar_chart_arr[$i])[0]);
-    $bar_chart_data[] = trim(explode(',', $bar_chart_arr[$i])[1]);
+    $item = explode(',', $bar_chart_arr[$i]);
+    $bar_chart_labels[] = trim($item[0]);
+    $bar_chart_data[] = trim($item[1]);
   }
 ?>
 
