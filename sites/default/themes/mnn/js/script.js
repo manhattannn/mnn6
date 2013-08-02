@@ -486,7 +486,7 @@ var electionDistrictVideos = (function() {
 
   function alterHtml(numItems) {
     $('<div id="slideshow-buttons"/>').appendTo($(id + ' .district-videos'));
-    $('<a href="#" class="overview">District Overview</a> | <a href="#" class="debate">District Debate</a>').appendTo($('#slideshow-buttons'));
+    $('<a href="#" class="overview">Overview</a> | <a href="#" class="debate">Debate</a>').appendTo($('#slideshow-buttons'));
     $(id + ' .video:first-child').addClass('current');
     $('#slideshow-buttons a:first-child').addClass('current');
   }
