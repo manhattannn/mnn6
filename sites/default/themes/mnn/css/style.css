@@ -5597,22 +5597,26 @@ background: url("../images/right-arrow-sm.png") no-repeat scroll right 7px trans
   width: 500px;
   font-weight: normal;
 }
+#block-views-election-district-list-block .view-header {
+  position: relative;
+}
 #block-views-election-district-list-block .president-link {
   font-size: 17px;
-  margin: 15px 0 35px 0;
-  float: left;
+  position: absolute;
+  left: 0;
+  top: 100px;
 }
 #block-views-election-district-list-block .view-content {
   width: 475px;
   margin-right: 30px;
   float: left;
   clear: left;
+  padding-top: 60px;
 }
-/*#block-views-election-district-list-block .view-footer {
+#block-views-election-district-list-block .view-footer {
   float: right;
-  border: 3px #b3bcc1 solid;
 }
-*/
+
 #block-views-election-district-list-block #map_canvas {
   height: 845px;
   width: 425px;
