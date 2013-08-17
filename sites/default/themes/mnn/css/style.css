@@ -5308,9 +5308,9 @@ div.firehouse-item .read-more a{
     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
-.node.election-district {
+/*.node.election-district {
   margin-bottom: 30px;
-}
+}*/
 .node.election-district .map-neighborhood {
   width: 281px;
   float: left;
@@ -5356,10 +5356,10 @@ div.firehouse-item .read-more a{
 .node.election-district #indicators span.current {
   background: transparent url(../images/indicator-on.png) no-repeat;
 }*/
-.node.election-district .district-stats {
+.node.election-district .district-stats,
+.node.election-district .district-charts {
   border-top: 1px #b1babf solid;
-  border-bottom: 1px #b1babf solid;
-  margin: 0 0 20px 0;
+  margin: 0;
   padding: 20px 0;
 }
 .node.election-district .district-stats li {
