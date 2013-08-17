@@ -974,6 +974,24 @@ function election_section_feature_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('sorts', array(
+    'php' => array(
+      'order' => 'DESC',
+      'use_php_setup' => 0,
+      'php_setup' => '',
+      'php_sort' => 'if (strtotime($row1->field_publish_date_value) < strtotime($row2->field_publish_date_value)) { return -1; }
+elseif (strtotime($row1->field_publish_date_value) > strtotime($row2->field_publish_date_value)) { return 1; }
+else { return 0; }',
+      'sql_sort' => '',
+      'id' => 'php',
+      'table' => 'views',
+      'field' => 'php',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('arguments', array(
     'tid' => array(
       'default_action' => 'default',
