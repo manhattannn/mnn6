@@ -8,7 +8,7 @@ var scheduleNowPlaying = (function(){
 
     $.ajax({
       type: 'POST',
-      url: '//mnn_reporting.local/schedule/now_playing',
+      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/now_playing',
       dataType: 'json',
       success: function(data){
 

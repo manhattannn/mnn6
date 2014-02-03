@@ -85,6 +85,12 @@ function mnnshow_yc_dow() {
  */
 function mnnshow_yc_schedule() {
   jquery_ui_add('ui.datepicker');
+
+  $mnnshow_js_settings = array(
+    'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
+  );
+  drupal_add_js(array('mnnshow' => $mnnshow_js_settings), 'setting');
+
   drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow.js');
   $content = '<div id="yc-schedule">';
   $content .= '<header id="schedule-header"> <div class="inner"> <div class="nav clearfix"></div> </div> </header>';

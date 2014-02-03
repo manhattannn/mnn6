@@ -17,6 +17,12 @@ function mnnshow_init()
 {
    // Include js for watch now block on homepage.
    if (arg(0) == 'node' && arg(1) == NULL) {
+
+     $mnnshow_js_settings = array(
+       'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
+     );
+     drupal_add_js(array('mnnshow' => $mnnshow_js_settings), 'setting');
+
      drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow_homepage.js');
    }
 }
@@ -25,6 +31,13 @@ function mnnshow_init()
  * Implementation of hook_menu().
  */
 function mnnshow_menu() {
+  $items['admin/settings/mnnshow'] = array(
+    'title' => 'Mnnshow settings',
+    'description' => 'Configure settings for Mnnshow module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mnnshow_settings'),
+    'access arguments' => array('administer site configuration'),
+  );
   $items['shows/past-shows/category'] = array(
     'title' => 'Shows',
     'page callback' => 'mnnshow_show_list_past_by_category',
@@ -292,4 +305,20 @@ function mnnshow_current_show_info($channelNum){
       'url' => $row->public_url
     );
   }
+}
+
+/**
+ * Admin settings form.
+ */
+function mnnshow_settings() {
+  $form['mnnshow_reporting_server_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Url address of reporting server.'),
+    '#description' => t("Enter url in format '//server.com' ."),
+    '#maxlength' => 256,
+    '#required' => TRUE,
+    '#default_value' => variable_get('mnnshow_reporting_server_url', ''),
+  );
+
+  return system_settings_form($form);
 }
