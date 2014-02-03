@@ -126,70 +126,10 @@ function mnnshow_block_shows_filter(){
  * Watch Now block (horizontal bar).
  */
 function mnnshow_block_watch_now(){
-  $channel_info = mnnshow_get_channels();
-  $channels = array();
-
-  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
-  //$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
-  $query = 'SELECT s.project_id, s.title, a.channel ';
-  $query .= 'FROM {ac_report_project_cache} s ';
-  $query .= 'LEFT JOIN {ac_report_airing_cache} a ON s.project_id = a.project_id ';
-  $query .= 'WHERE (a.start_time <= "'.$now->format('Y-m-d G:i:s').'" AND DATE_ADD(a.end_time, INTERVAL 2 MINUTE) >= "'.$now->format('Y-m-d G:i:s').'") ';
-  $query .= 'ORDER BY a.channel ASC';
-
-  $result = db_query(db_rewrite_sql($query));
-  while ($data = db_fetch_object($result)) {
-    $show = array(
-      'id' => $data->project_id,
-      'title' => $data->title,
-      'url' => mnnshow_get_show_href($data->title, $data->project_id)
-    );
-    switch ($data->channel){
-      case 'Channel 1':
-        if (!isset($channels[1]))
-          $channels[1] = $show;
-        break;
-      case 'Channel 2':
-        if (!isset($channels[2]))
-          $channels[2] = $show;
-        break;
-      case 'Channel 3':
-        if (!isset($channels[3]))
-          $channels[3] = $show;
-        break;
-      case 'Channel 4':
-        if (!isset($channels[4]))
-          $channels[4] = $show;
-        break;
-    }
-  }
-
-  $content = "<div class='whats-on-now'>";
-  $content .= "<h3>What's on Now</h3>";
-  $content .= "<time>".$now->format('M j, Y g:i a')."</time>";
-  $content .= "<p class='view-sched'><a href='/schedule'>View Schedule</a></p>";
-  $content .= "</div>";
-
-  $content .= "<ul>";
-  for ($i = 1; $i <= 4; $i++){
-    $content .= '<li id="channel'.$i.'"><div class="channel-info">';
-    $content .= '<h4>'.$channel_info[$i]['name'].'</h4>';
-    $content .= '<h5><a href="/'.$channel_info[$i]['watchLiveUrl'].'">'.$channels[$i]['title'].'</h5>';
-    $content .= '<p class="watch-now-link"><a href="/'.$channel_info[$i]['watchLiveUrl'].'">Watch Now</a></p>';
-    $content .= "<div class='channel-about'>";
-    $content .= "<p class='channel-description'>".$channel_info[$i]['description']."</p>";
-    $content .= "<ul class='cable-channel-list'>";
-    foreach ($channel_info[$i]['tvChannels'] as $tvStation){
-      $content .= '<li>'.$tvStation['tvStationName'].'<span class="cable-number"">'.$tvStation['tvStationChannel'].'</span></li>';
-    }
-    $content .= "</ul>";
-    $content .= "</div>";
-    $content .= "</div>";
-    $content .= "</li>";
-  }
-  $content .= "</ul>";
-
-  return $content;
+  // Display loading html, the rest is loaded via ajax
+  // from reporting server and pushed to homepage.
+  // mnnshow_init has js inclusion.
+  return '<div id="block-mnnshow-2-whats-on-now" class="ajaxblocks-wrapper-8"></div>';
 }
 
 /**

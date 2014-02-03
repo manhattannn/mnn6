@@ -11,6 +11,17 @@ function mnnshow_help($path, $arg) {
 }
 
 /**
+ * Implementation of hook_init().
+ */
+function mnnshow_init()
+{
+   // Include js for watch now block on homepage.
+   if (arg(0) == 'node' && arg(1) == NULL) {
+     drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow_homepage.js');
+   }
+}
+
+/**
  * Implementation of hook_menu().
  */
 function mnnshow_menu() {
@@ -69,6 +80,12 @@ function mnnshow_menu() {
   );
   $items['schedule/header'] = array(
     'page callback' => 'mnnshow_schedule_table_header',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'mnnshow.schedule.inc',
+  );
+  $items['schedule/now_playing'] = array(
+    'page callback' => 'mnnshow_schedule_now_playing',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'mnnshow.schedule.inc',
