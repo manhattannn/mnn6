@@ -57,7 +57,7 @@ var schedule = (function(){
   function loadTableHeader(){
     $.ajax({
       type: 'POST',
-      url: '//mnn_reporting.local/schedule/header',
+      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/header',
       dataType: 'json',
       crossDomain : true,
       success: function(data){
@@ -86,7 +86,7 @@ var schedule = (function(){
 
     $.ajax({
       type: 'POST',
-      url: '//mnn_reporting.local/schedule/get',
+      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get',
       dataType: 'json',
       data: 'date=' + date,
       success: function(data){
@@ -195,7 +195,7 @@ var ycSchedule = (function(){
   function loadSchedule(date){
     $.ajax({
       type: 'POST',
-      url: 'http://mnn_reporting.local/youth-channel/schedule/get',
+      url: Drupal.settings.mnnshow.reportingUrl + '/youth-channel/schedule/get',
       dataType: 'json',
       data: 'date=' + date,
       success: function(data){
