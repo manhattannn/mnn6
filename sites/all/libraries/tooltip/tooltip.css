@@ -28,7 +28,7 @@ div#mcTooltip a { color:#36c; }
 /*Close button. Available when sticky or overlay has been set to true, or is on iPhone, iPad, Android, BlackBerry, or IEMobile devices. */
 div#mcttCloseButton 
 {
-    width:14px;height:14px;position:absolute;background-image:url(closeBtn.gif);cursor:pointer; overflow:hidden;
+    width:14px;height:14px;position:absolute;background-image:url('/sites/all/libraries/tooltip/closeBtn.gif');cursor:pointer; overflow:hidden;
     top:12px; right:12px; left:auto;
 }            
 
@@ -41,7 +41,7 @@ div#mcOverlay
 }
 
 /*Only available when calling by tooltip.ajax(...). It will be a spinning image indicating a request is in progress.*/
-div#tooltipAjaxSpin {margin:20px 50px; background:transparent url(loading.gif) no-repeat center center; width:50px; height:30px; font-size:0;}
+div#tooltipAjaxSpin {margin:20px 50px; background:transparent url('/sites/all/libraries/tooltip/loading.gif') no-repeat center center; width:50px; height:30px; font-size:0;}
 
 /*The settings below should remain unchanged*/
 div#mcTooltipWrapper {position:absolute;visibility:hidden;overflow:visible;z-index:9999999999;top:0px;}
