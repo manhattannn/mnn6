@@ -111,11 +111,18 @@ var schedule = (function(){
           var col = '<div class="col col-' + i + '">';
           var channel = data['ch' + i];
           for (var j = 0; j < channel.length; j++){
+
             var content = channel[j].title;
 
-            var onMouseOver = 'tooltip.pop(this, \'' + channel[j].description + '\', {position:0})';
+            if(!!(channel[j].description)){
+              var tooltip_text = channel[j].description.replace(/"|'/g, '&#34;');
+              var onMouseOver = 'tooltip.pop(this, \'' + tooltip_text + '\', {position:0})';
+              var link = '<p onmouseover="' + onMouseOver + '">'+content+'</p>';
+            }
+            else {
+              var link = '<p>'+content+'</p>';
+            }
 
-            var link = '<a href="#" onmouseover="' + onMouseOver + '">'+content+'</a>';
             var category = '<div class="category">'+channel[j].category+'</div>';
             channel[j].isCurrent == 'true' ? current = ' current' : current = '';
             channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
