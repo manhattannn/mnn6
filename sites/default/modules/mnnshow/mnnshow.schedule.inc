@@ -9,6 +9,8 @@ ctools_include('mnnshow.containers', 'mnnshow', '');
 function mnnshow_schedule(){
   jquery_ui_add('ui.datepicker');
 
+  mnnshow_include_tooltip();
+
   $mnnshow_js_settings = array(
     'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
   );
