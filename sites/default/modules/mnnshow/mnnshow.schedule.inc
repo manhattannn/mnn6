@@ -207,3 +207,16 @@ function mnnshow_schedule_now_playing(){
   ));
   exit();
 }
+
+/**
+ * Page callback.
+ */
+function mnnshow_schedule_get_channels() {
+  $channel_info = mnnshow_get_channels();
+
+  drupal_set_header('Content-Type: application/json');
+  drupal_json(array(
+    'channels'     => $channel_info
+  ));
+  exit();
+}

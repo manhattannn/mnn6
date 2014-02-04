@@ -103,6 +103,12 @@ function mnnshow_menu() {
     'type' => MENU_CALLBACK,
     'file' => 'mnnshow.schedule.inc',
   );
+  $items['schedule/channels/get'] = array(
+    'page callback' => 'mnnshow_schedule_get_channels',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'mnnshow.schedule.inc',
+  );
   $items['youth-channel/schedule'] = array(
     'title' => 'Youth Channel Schedule',
     'page callback' => 'mnnshow_yc_schedule',
