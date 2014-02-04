@@ -112,7 +112,10 @@ var schedule = (function(){
           var channel = data['ch' + i];
           for (var j = 0; j < channel.length; j++){
             var content = channel[j].title;
-            var link = '<a href="'+channel[j].link+'">'+content+'</a>';
+
+            var onMouseOver = 'tooltip.pop(this, \'' + channel[j].description + '\', {position:0})';
+
+            var link = '<a href="#" onmouseover="' + onMouseOver + '">'+content+'</a>';
             var category = '<div class="category">'+channel[j].category+'</div>';
             channel[j].isCurrent == 'true' ? current = ' current' : current = '';
             channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
