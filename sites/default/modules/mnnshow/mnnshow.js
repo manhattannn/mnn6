@@ -314,3 +314,17 @@ $(document).ready(function(){
     ycSchedule.init();
   }
 });
+
+/*global jQuery*/
+(function ($) {
+  $.ajaxSetup({
+    "beforeSend": function(xhr) {
+      // Works fine.
+      xhr.setRequestHeader("X-Requested-With", {
+        toString: function() {
+          return "";
+        }
+      });
+    }
+  });
+}(jQuery));
