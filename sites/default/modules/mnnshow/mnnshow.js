@@ -4,6 +4,7 @@ var schedule = (function(){
   var prevDate = '';
   var nextDate = '';
   var offset, table, headerHeight;
+  var isEventsSetup = false;
 
   function init(){
     generateHtml();
@@ -52,6 +53,8 @@ var schedule = (function(){
       buttonImageOnly: true,
       buttonImage: '/sites/default/themes/mnn/images/icon_calendar.png'
     });
+
+    isEventsSetup = true;
   }
 
   function loadTableHeader(){
@@ -133,7 +136,11 @@ var schedule = (function(){
         }
         $('#schedule #cols').html(cols);
         table = $('#schedule').offset().top + $('#schedule').outerHeight();
-        setupEvents();
+
+        if (!isEventsSetup)
+        {
+          setupEvents();
+        }
       }
     });
   }
