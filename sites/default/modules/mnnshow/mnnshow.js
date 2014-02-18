@@ -98,6 +98,7 @@ var schedule = (function(){
         $('#schedule-header .schedule-date .time').html(data.displayDate);
 
         var cols = '';
+        var toolTipTextHtml = '';
 
         var colTime = '<div class="col col-time">';
         var current, primetime;
@@ -114,26 +115,42 @@ var schedule = (function(){
           var channel = data['ch' + i];
           for (var j = 0; j < channel.length; j++){
 
-            var content = channel[j].title;
-
-            if(!!(channel[j].description)){
-              var tooltip_text = channel[j].description.replace(/"|'/g, '&#34;');
-              var onMouseOver = 'tooltip.pop(this, \'' + tooltip_text + '\', {position:0})';
-              var link = '<p onmouseover="' + onMouseOver + '">'+content+'</p>';
-            }
-            else {
-              var link = '<p>'+content+'</p>';
-            }
-
+            var link = '<p>' + channel[j].title + '</p>';
             var category = '<div class="category">'+channel[j].category+'</div>';
+
+            // Create tooltip text. Tooltip text consists
+            // of title, category and description.
+            var tooltipText = '<h1>' + channel[j].title.replace(/"/g, '&#34;').replace(/'/g, '&#39;') + '</h1>';
+            tooltipText += '<p>' + channel[j].category.replace(/"/g, '&#34;').replace(/'/g, '&#39;') + '</p>';
+            if(!!(channel[j].description)){
+              tooltipText += '<br/><p>' + channel[j].description.replace(/"/g, '&#34;').replace(/'/g, '&#39;') + '</p>';
+            }
+
+            // We are storing tooltip text in divs that are
+            // not displayed have display:none;. This is because
+            // setting the tooltip text directly via onmouseover=""
+            // causes problem with ' " symbols even
+            // with html versions of them &#34; and &#39;.
+            var objectId = 'tooltip-' + 'col-' + i + '-cell-' + j;
+            var onMouseOver = 'tooltip.pop(this, \'#' + objectId + '\', {position:0})';
+            toolTipTextHtml += '<div id="' + objectId + '">' + tooltipText + '</div>';
+
             channel[j].isCurrent == 'true' ? current = ' current' : current = '';
             channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
             var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
-            col += '<div class="'+ cls +'"><div class="cell-inner">'+link+category+'</div></div>';
+            col += '<div class="'+ cls +'" onmouseover="' + onMouseOver + '"><div class="cell-inner">'+link+category+'</div></div>';
           }
           col += '</div>';
           cols += col;
         }
+
+        // We are storing tooltip text in divs that are
+        // not displayed have display:none;. This is because
+        // setting the tooltip text directly via onmouseover=""
+        // causes problem with ' " symbols even
+        // with html versions of them &#34; and &#39;.
+        cols += '<div style="display:none;">' + toolTipTextHtml + '</div>';
+
         $('#schedule #cols').html(cols);
         table = $('#schedule').offset().top + $('#schedule').outerHeight();
 
