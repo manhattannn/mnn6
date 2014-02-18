@@ -7,7 +7,7 @@ var scheduleNowPlaying = (function(){
   function loadSchedule(){
 
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/now_playing',
       dataType: 'json',
       success: function(data){

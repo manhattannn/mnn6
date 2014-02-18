@@ -56,7 +56,7 @@ var schedule = (function(){
 
   function loadTableHeader(){
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/header',
       dataType: 'json',
       crossDomain : true,
@@ -85,10 +85,9 @@ var schedule = (function(){
   function loadSchedule(date){
 
     $.ajax({
-      type: 'POST',
-      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get',
+      type: 'GET',
+      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
       dataType: 'json',
-      data: 'date=' + date,
       success: function(data){
         schedDate = data.schedDate;
         prevDate = data.prevDate;
@@ -204,10 +203,9 @@ var ycSchedule = (function(){
 
   function loadSchedule(date){
     $.ajax({
-      type: 'POST',
-      url: Drupal.settings.mnnshow.reportingUrl + '/youth-channel/schedule/get',
+      type: 'GET',
+      url: Drupal.settings.mnnshow.reportingUrl + '/youth-channel/schedule/get' + '?date=' + date,
       dataType: 'json',
-      data: 'date=' + date,
       success: function(data){
         schedDate = data.schedDate;
         prevDate = data.prevDate;
