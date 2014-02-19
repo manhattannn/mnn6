@@ -3528,7 +3528,10 @@ jQuery.extend({
 					jQuery.lastModified[s.url] || "Thu, 01 Jan 1970 00:00:00 GMT" );
 
 			// Set header so the called script knows that it's an XMLHttpRequest
-			xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+      // (rough) backport from jquery 1.5? and higher:
+      // Removed this part for MNN so that a separate options request
+      // isn't sent because of CORS and custom headers.
+      //xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
 			// Set the Accepts header for the server, depending on the dataType
 			xhr.setRequestHeader("Accept", s.dataType && s.accepts[ s.dataType ] ?
