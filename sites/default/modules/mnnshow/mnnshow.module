@@ -333,7 +333,7 @@ function mnnshow_settings() {
  * Custom function to include tooltip js library.
  */
 function mnnshow_include_tooltip() {
-  $tooltip_path = $_SERVER['DOCUMENT_ROOT'] . '/sites/all/libraries/tooltip';
+  $tooltip_path = 'sites/all/libraries/tooltip';
 
   drupal_add_js($tooltip_path . "/tooltip.js");
   drupal_add_css($tooltip_path . "/tooltip.css");
