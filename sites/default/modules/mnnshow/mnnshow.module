@@ -40,42 +40,37 @@ function mnnshow_menu() {
   );
   $items['shows/past-shows/category'] = array(
     'title' => 'Shows',
-    'page callback' => 'mnnshow_show_list_past_by_category',
-    'page arguments' => array(3),
+    'page callback' => 'mnnshow_show_redirect_to_schedule_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows/past-shows'] = array(
     'title' => 'Shows',
-    'page callback' => 'mnnshow_show_list_past_by_alpha',
-    'page arguments' => array(2),
+    'page callback' => 'mnnshow_show_redirect_to_schedule_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows/category'] = array(
     'title' => 'Shows',
-    'page callback' => 'mnnshow_show_list_current_by_category',
-    'page arguments' => array(2),
+    'page callback' => 'mnnshow_show_redirect_to_schedule_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.shows.inc',
   );
   $items['shows'] = array(
     'title' => 'Shows',
-    'page callback' => 'mnnshow_show_list_current_by_alpha',
-    'page arguments' => array(1),
+    'page callback' => 'mnnshow_show_redirect_to_schedule_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.shows.inc',
   );
   $items['show-info/%'] = array(
     'title' => 'Show Info',
-    'page callback' => 'mnnshow_show_info',
-    'page arguments' => array(1),
+    'page callback' => 'mnnshow_show_redirect_to_schedule_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.shows.inc',
   );
   $items['schedule'] = array(
@@ -85,41 +80,11 @@ function mnnshow_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'mnnshow.schedule.inc',
   );
-  $items['schedule/get'] = array(
-    'page callback' => 'mnnshow_schedule_get',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'mnnshow.schedule.inc',
-  );
-  $items['schedule/header'] = array(
-    'page callback' => 'mnnshow_schedule_table_header',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'mnnshow.schedule.inc',
-  );
-  $items['schedule/now_playing'] = array(
-    'page callback' => 'mnnshow_schedule_now_playing',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'mnnshow.schedule.inc',
-  );
-  $items['schedule/channels/get'] = array(
-    'page callback' => 'mnnshow_schedule_get_channels',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'mnnshow.schedule.inc',
-  );
   $items['youth-channel/schedule'] = array(
     'title' => 'Youth Channel Schedule',
     'page callback' => 'mnnshow_yc_schedule',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'mnnshow.ycschedule.inc',
-  );
-  $items['youth-channel/schedule/get'] = array(
-    'page callback' => 'mnnshow_yc_schedule_get',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
     'file' => 'mnnshow.ycschedule.inc',
   );
   // $items['youth-channel/schedule/header'] = array(
@@ -140,12 +105,6 @@ function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
 
   switch ($op) {
     case 'list':
-      $blocks[0]['info'] = t('Show Producer Info');
-      $blocks[0]['cache'] = BLOCK_NO_CACHE;
-
-      $blocks[1]['info'] = t('Shows Filters Heading');
-      $blocks[1]['cache'] = BLOCK_NO_CACHE;
-
       $blocks[2]['info'] = t('Watch Now');
       $blocks[2]['cache'] = BLOCK_NO_CACHE;
 
@@ -167,14 +126,7 @@ function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
       return $blocks;
 
     case 'view':
-      if ($delta == 0) {
-        $block['subject'] = t('About the Producer');
-        $block['content'] = mnnshow_block_publisher_info();
-      }
-      elseif ($delta == 1){
-        $block['content'] = mnnshow_block_shows_filter();
-      }
-      elseif ($delta == 2){
+      if ($delta == 2){
         $block['content'] = mnnshow_block_watch_now();
       }
       elseif ($delta == 3){
@@ -200,84 +152,6 @@ function mnnshow_block($op = 'list', $delta = 0, $edit = array()) {
 
 }
 
-/**
- * Implementation of hook_update_index().
- */
-function mnnshow_update_index() {
-  // We define these variables as global so our shutdown function can
-  // access them.
-  global $mnnshow_last_change, $mnnshow_last_id;
-
-  // If PHP times out while indexing, run a function to save
-  // information about how far we got so we can continue at next cron run.
-  register_shutdown_function('mnnshow_update_shutdown');
-  $mnnshow_last_id = variable_get('mnnshow_cron_last_id', 0);
-  $mnnshow_last_change = variable_get('mnnshow_cron_last_change', 0);
-
-  $query = 'SELECT s.project_id, s.title, s.narrative AS description, UNIX_TIMESTAMP(s.changed) AS changed, p.display_name ';
-  $query .= 'FROM {ac_report_project_cache} s ';
-  $query .= 'LEFT JOIN {ac_report_producer_cache} p ';
-  $query .= 'ON s.exec_producer_id = p.producer_id ';
-  $query .= 'WHERE (s.project_id > %d) OR (s.changed > %d) ';
-  $query .= 'ORDER BY s.changed ASC';
-  $result = db_query($query, $mnnshow_last_id, $mnnshow_last_change);
-
-  // Feed the external information to the search indexer.
-  while ($data = db_fetch_object($result)) {
-    $mnnshow_last_change = $data->changed;
-    $mnnshow_last_id = $data->project_id;
-    $text = '<h1>' . check_plain($data->title) . '</h1><h4>' . $data->display_name . '</h4>' . $data->description;
-    search_index($data->project_id, 'mnnshow', $text);
-  }
-}
-
-/**
- * Implementation of hook_search().
- */
-function mnnshow_search($op = 'search', $keys = NULL) {
-  switch ($op) {
-    case 'name':
-      return t('Shows'); // Used on search tab.
-    case 'reset':
-      variable_del('mnnshow_cron_last_id');
-      variable_del('mnnshow_cron_last_change');
-      return;
-    case 'search':
-      // Search the index for the keywords that were entered.
-      $hits = do_search($keys, 'mnnshow');
-      $results = array();
-      // We now have the IDs of the results. Pull each result
-      // from the legacy database.
-      foreach ($hits as $item) {
-        $query = 'SELECT s.project_id, s.title, s.narrative AS description, UNIX_TIMESTAMP(s.changed) AS changed, p.display_name ';
-        $query .= 'FROM {ac_report_project_cache} s ';
-        $query .= 'LEFT JOIN {ac_report_producer_cache} p ';
-        $query .= 'ON s.exec_producer_id = p.producer_id ';
-        $query .= 'WHERE s.project_id = %d';
-        $show = db_fetch_object(db_query($query, $item->sid));
-        $results[] = array(
-          'link' => url(mnnshow_get_show_href($show->title, $item->sid), array('absolute' => 'true')),
-          'type' => t('Show'),
-          'title' => $show->title,
-          'date' => $show->changed,
-          'score' => $item->score,
-          'snippet' => search_excerpt($keys, $show->description));
-      }
-      return $results;
-  }
-}
-
-/**
- * Search shutdown function to make sure we remember the last element processed.
- */
-function mnnshow_update_shutdown() {
-  global $mnnshow_last_change, $mnnshow_last_id;
-  if ($mnnshow_last_change && $mnnshow_last_id) {
-    variable_set('mnnshow_cron_last_id', $mnnshow_last_id);
-    variable_set('mnnshow_cron_last_change', $mnnshow_last_change);
-  }
-}
-
 /******************************************************************************
  * Other Public Functions
  *****************************************************************************/
@@ -288,29 +162,8 @@ function mnnshow_update_shutdown() {
  * @return array
  */
 function mnnshow_current_show_info($channelNum){
-  if (!is_numeric($channelNum)) {
-    return null;
-  }
-
-  $now = new DateTime(NULL, new DateTimeZone('America/New_York'));
-  //$now = new DateTime('2011-05-15 19:25', new DateTimeZone('America/New_York'));
-  $query = 'SELECT s.project_id, s.title, s.narrative AS description, s.topic, s.project_status, s.public_url, a.channel ';
-  $query .= 'FROM {ac_report_project_cache} s ';
-  $query .= 'LEFT JOIN {ac_report_airing_cache} a ON s.project_id = a.project_id ';
-  $query .= 'WHERE a.start_time <= "'.$now->format('Y-m-d G:i:s').'" ';
-  $query .= 'AND a.end_time >= "'.$now->format('Y-m-d G:i:s').'" ';
-  $query .= 'AND a.channel ="Channel '.$channelNum.'" ';
-
-  $result = db_query($query);
-    //$count = 0;
-  while ($row = db_fetch_object($result)) {
-    return array(
-      'title' => $row->title,
-      'category' => $row->topic,
-      'description' => $row->description,
-      'url' => $row->public_url
-    );
-  }
+  //TODO Add ajax retrrieving and rendering of data.
+  return null;
 }
 
 /**
