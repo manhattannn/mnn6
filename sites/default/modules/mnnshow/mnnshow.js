@@ -87,6 +87,11 @@ var schedule = (function(){
 
   function loadSchedule(date){
 
+    if (!date) {
+      var d = new Date();
+      date = d.mmddyyyyMnn();
+    }
+
     $.ajax({
       type: 'GET',
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
@@ -226,6 +231,12 @@ var ycSchedule = (function(){
   }
 
   function loadSchedule(date){
+
+    if (!date) {
+      var d = new Date();
+      date = d.mmddyyyyMnn();
+    }
+
     $.ajax({
       type: 'GET',
       url: Drupal.settings.mnnshow.reportingUrl + '/youth-channel/schedule/get' + '?date=' + date,
@@ -314,3 +325,14 @@ $(document).ready(function(){
     ycSchedule.init();
   }
 });
+
+// Enhance Date object's prototype to add
+// function to display todays date formatted.
+(function ($) {
+  Date.prototype.mmddyyyyMnn = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = this.getDate().toString();
+    return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy; // padding
+  };
+}(jQuery));
