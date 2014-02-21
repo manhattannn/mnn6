@@ -7,10 +7,34 @@ ctools_include('mnnshow.ycschedule', 'mnnshow', '');
  * Watch Now block (horizontal bar).
  */
 function mnnshow_block_watch_now(){
-  // Display loading html, the rest is loaded via ajax
-  // from reporting server and pushed to homepage.
-  // mnnshow_init has js inclusion.
-  return '<div id="block-mnnshow-2-whats-on-now" class="ajaxblocks-wrapper-8"></div>';
+  $channel_info = mnnshow_get_channels();
+
+  $content = "<div class='whats-on-now'>";
+  $content .= "<h3>What's on Now</h3>";
+  $content .= "<time>Retrieving data ...</time>";
+  $content .= "<p class='view-sched'><a href='/schedule'>View Schedule</a></p>";
+  $content .= "</div>";
+
+  $content .= "<ul>";
+  for ($i = 1; $i <= 4; $i++){
+    $content .= '<li id="channel'.$i.'"><div class="channel-info">';
+    $content .= '<h4>'.$channel_info[$i]['name'].'</h4>';
+    $content .= '<h5><a href="/'.$channel_info[$i]['watchLiveUrl'].'"></h5>';
+    $content .= '<p class="watch-now-link"><a href="/'.$channel_info[$i]['watchLiveUrl'].'">Watch Now</a></p>';
+    $content .= "<div class='channel-about'>";
+    $content .= "<p class='channel-description'>".$channel_info[$i]['description']."</p>";
+    $content .= "<ul class='cable-channel-list'>";
+    foreach ($channel_info[$i]['tvChannels'] as $tvStation){
+      $content .= '<li>'.$tvStation['tvStationName'].'<span class="cable-number"">'.$tvStation['tvStationChannel'].'</span></li>';
+    }
+    $content .= "</ul>";
+    $content .= "</div>";
+    $content .= "</div>";
+    $content .= "</li>";
+  }
+  $content .= "</ul>";
+
+  return $content;
 }
 
 /**
