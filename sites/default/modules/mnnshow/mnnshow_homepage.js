@@ -1,61 +1,73 @@
 var scheduleNowPlaying = (function(){
 
   function init(){
-    loadSchedule();
+
+    actualisePlayingNowList();
+
+    setTimeout(function() {
+      actualisePlayingNowList();
+    }, 30000);
   }
 
-  function loadSchedule(){
+  function actualisePlayingNowList() {
+    var d = new Date();
+    date = d.mmddyyyyMnn();
 
     $.ajax({
       type: 'GET',
-      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/now_playing',
+      url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
       dataType: 'json',
       success: function(data){
 
-        var htmlContent = '',
-            i = 0,
-            actualTime = data.actual_time;
-            channel_info = data.channel_info,
-            channels = data.channels;
+        var actualDateObj      = new Date(),
+            actualTimeMinutes  = actualDateObj.getHours() * 60 + actualDateObj.getMinutes(),
+            nowPlayingPrograms = new Array();
 
-        htmlContent = "<div class='whats-on-now'>" +
-                        "<h3>What's on Now</h3>" +
-                        "<time>" + actualTime + "</time>" +
-                        "<p class='view-sched'><a href='/schedule'>View Schedule</a></p>" +
-                      "</div>";
+        for (var i = 1; i <= 4; i++ ) {
+          var channel = data['ch' + i],
+              nowPlayingProgramFound = false,
+              programCounter = 0;
 
-        htmlContent += "<ul>";
+          while (!nowPlayingProgramFound && programCounter < channel.length) {
 
-        for (i = 1; i <= 4; i++){
-          // Not all data are set! We need to provide
-          // empty values for the ones that are not
-          // to prevent JS from crashing.
-          channel_info[i] = channel_info[i] || {name:'', description:'', watchLiveUrl:'', tvChannels:Array()};
-          channels[i] = channels[i] || {id:'', title:'', url:''};
+            var actualProgramStartTime = channel[programCounter].start.split("-"),
+                actualProgramEndTime   = 0;
 
-          htmlContent += '<li id="channel' + i + '"><div class="channel-info">' +
-                           '<h4>' + channel_info[i].name + '</h4>' +
-                           '<h5><a href="/' + channel_info[i].watchLiveUrl + '">' + channels[i].title + '</h5>' +
-                           '<p class="watch-now-link"><a href="/' + channel_info[i].watchLiveUrl + '">Watch Now</a></p>' +
-                           "<div class='channel-about'>" +
-                             "<p class='channel-description'>" + channel_info[i].description + "</p>" +
-                             "<ul class='cable-channel-list'>";
+            actualProgramStartTime = parseInt(actualProgramStartTime[0]) * 60 + parseInt(actualProgramStartTime[1]);
+            actualProgramEndTime = actualProgramStartTime + parseInt(channel[programCounter].duration);
 
-          $.each(channel_info[i].tvChannels, function(index, tvStation) {
-            htmlContent +=    '<li>' + tvStation.tvStationName +
-                                '<span class="cable-number"">' + tvStation.tvStationChannel + '</span>' +
-                              '</li>';
-          });
+            // Check if program being checked is the one
+            // that is live on TV.
+            if (actualProgramStartTime < actualTimeMinutes && actualTimeMinutes < actualProgramEndTime) {
+              nowPlayingPrograms[i] = channel[programCounter].title;
+              nowPlayingProgramFound = true;
+            }
+            // If currently checked program from schedule has startTime > actual time
+            // this means schedule don't have info about actual program so we display '';
+            else if (actualProgramStartTime > actualTimeMinutes) {
+              nowPlayingPrograms[i] = '';
+              nowPlayingProgramFound = true;
+            }
 
-          htmlContent +=     "</ul>" +
-                           "</div>" +
-                         "</div>" + "</li>";
-
+            // Increase conter to move to next program in schedule.
+            programCounter++;
+          }
         }
 
-        htmlContent += "</ul>";
+        // Update actual time.
+        var timeElement = $('div.block-watch_now div.whats-on-now time');
+        if (timeElement.lenght) {
+          timeElement.html(actualDateObj.getTimeNowMnnFrontPageFormat());
+        }
 
-        $('#block-mnnshow-2-whats-on-now').parent().html(htmlContent);
+        // Update html of the frontEnd block.
+        for (var i = 1; i <= 4; i++ ) {
+          // Get h5 element that holds program title.
+          var titleElement = $('div.block-watch_now ul li#channel' + i + ' div.channel-info h5 a');
+          if (titleElement.length) {
+            titleElement.html(nowPlayingPrograms[i]);
+          }
+        }
       }
     });
   }
@@ -78,3 +90,35 @@ $(document).ready(function(){
     scheduleNowPlaying.init();
   }
 });
+
+// Enhance Date object's prototype to add
+// function to display todays date formatted.
+(function ($) {
+  Date.prototype.mmddyyyyMnn = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = this.getDate().toString();
+    return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy; // padding
+  };
+
+  Date.prototype.getTimeNowMnnFrontPageFormat = function() {
+
+    var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    var yyyy  = this.getFullYear().toString(),
+        month = month_names_short[this.getMonth()],
+        d     = this.getDate().toString(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+
+    return month + ' ' + d + ', ' + yyyy + ' ' + strTime;
+  };
+
+}(jQuery));
