@@ -4,7 +4,7 @@ var scheduleNowPlaying = (function(){
 
     actualisePlayingNowList();
 
-    setTimeout(function() {
+    setInterval(function() {
       actualisePlayingNowList();
     }, 30000);
   }
