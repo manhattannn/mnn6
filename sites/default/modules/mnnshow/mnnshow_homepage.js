@@ -55,15 +55,15 @@ var scheduleNowPlaying = (function(){
         }
 
         // Update actual time.
-        var timeElement = $('div.block-watch_now div.whats-on-now time');
-        if (timeElement.lenght) {
+        var timeElement = $('div#block-mnnshow-watch-now div.whats-on-now time');
+        if (timeElement.length) {
           timeElement.html(actualDateObj.getTimeNowMnnFrontPageFormat());
         }
 
         // Update html of the frontEnd block.
         for (var i = 1; i <= 4; i++ ) {
           // Get h5 element that holds program title.
-          var titleElement = $('div.block-watch_now ul li#channel' + i + ' div.channel-info h5 a');
+          var titleElement = $('div#block-mnnshow-watch-now ul li#channel' + i + ' div.channel-info h5 a');
           if (titleElement.length) {
             titleElement.html(nowPlayingPrograms[i]);
           }
@@ -86,7 +86,7 @@ Object.size = function(obj) {
 };
 
 $(document).ready(function(){
-  if ($('#block-mnnshow-2-whats-on-now').length){
+  if ($('#block-mnnshow-watch-now').length){
     scheduleNowPlaying.init();
   }
 });
@@ -108,8 +108,8 @@ $(document).ready(function(){
     var yyyy  = this.getFullYear().toString(),
         month = month_names_short[this.getMonth()],
         d     = this.getDate().toString(),
-        hours = date.getHours(),
-        minutes = date.getMinutes(),
+        hours = this.getHours(),
+        minutes = this.getMinutes(),
         ampm = hours >= 12 ? 'pm' : 'am';
 
     hours = hours % 12;
