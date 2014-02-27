@@ -79,7 +79,7 @@ var schedule = (function(){
         }
 
         $('#schedule-header .channels').html(cols);
-        $('#schedule-header').height($('#schedule-header .nav').outerHeight() + $('#schedule-header .channels').outerHeight()); // fix the height
+        $('#schedule-header').height(91);
         headerHeight = $('#schedule-header').outerHeight();
       }
     });
