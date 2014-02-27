@@ -38,13 +38,13 @@ var scheduleNowPlaying = (function(){
 
             // Check if program being checked is the one
             // that is live on TV.
-            if (actualProgramStartTime < actualTimeMinutes && actualTimeMinutes < actualProgramEndTime) {
+            if (actualProgramStartTime <= actualTimeMinutes && actualTimeMinutes < actualProgramEndTime) {
               nowPlayingPrograms[i] = channel[programCounter].title;
               nowPlayingProgramFound = true;
             }
             // If currently checked program from schedule has startTime > actual time
             // this means schedule don't have info about actual program so we display '';
-            else if (actualProgramStartTime > actualTimeMinutes) {
+            else if (actualProgramStartTime >= actualTimeMinutes) {
               nowPlayingPrograms[i] = '';
               nowPlayingProgramFound = true;
             }
