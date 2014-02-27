@@ -109,7 +109,7 @@ var schedule = (function(){
         var current, primetime;
         for (var i = 0; i < 48; i++){
           data.time[i].isCurrent == 'true' ? current = ' current' : current = '';
-          data.time[i].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+          data.time[i].isPrimetime == 'true' && current == '' ? primetime = ' primetime' : primetime = '';
           colTime += '<div class="cell cell-'+i+' t'+data.time[i].duration+' s'+data.time[i].start+current+primetime+'"><div class="cell-inner">'+ data.time[i].display + '</div></div>';
         }
         colTime += '</div>';
@@ -141,7 +141,7 @@ var schedule = (function(){
             toolTipTextHtml += '<div id="' + objectId + '">' + tooltipText + '</div>';
 
             channel[j].isCurrent == 'true' ? current = ' current' : current = '';
-            channel[j].isPrimetime == 'true' ? primetime = ' primetime' : primetime = '';
+            channel[j].isPrimetime == 'true' && current == '' ? primetime = ' primetime' : primetime = '';
             var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
             col += '<div class="'+ cls +'" onmouseover="' + onMouseOver + '"><div class="cell-inner">'+link+category+'</div></div>';
           }
