@@ -20,8 +20,15 @@ var scheduleNowPlaying = (function(){
       success: function(data){
 
         var actualDateObj      = new Date(),
-            actualTimeMinutes  = actualDateObj.getHours() * 60 + actualDateObj.getMinutes(),
+            actualTimeMinutes,
             nowPlayingPrograms = new Array();
+
+        // Create neutral time for timezone=0.
+        var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
+        // Set the timezone to newYork -5 hours.
+        actualDateObj = new Date(utc + (3600000*-5));
+
+        actualTimeMinutes = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
 
         for (var i = 1; i <= 4; i++ ) {
           var channel = data['ch' + i],
