@@ -113,7 +113,7 @@ var schedule = (function(){
         var colTime = '<div class="col col-time">';
         var current, primetime;
         for (var i = 0; i < 48; i++){
-          checkIfProgramIsNowPlayed(data.time[i]) ? current = ' current' : current = '';
+          checkIfProgramIsNowPlayed(data.time[i], date) ? current = ' current' : current = '';
           data.time[i].isPrimetime == 'true' && current == '' ? primetime = ' primetime' : primetime = '';
           colTime += '<div class="cell cell-'+i+' t'+data.time[i].duration+' s'+data.time[i].start+current+primetime+'"><div class="cell-inner">'+ data.time[i].display + '</div></div>';
         }
@@ -145,31 +145,13 @@ var schedule = (function(){
             var onMouseOver = 'tooltip.pop(this, \'#' + objectId + '\', {position:0})';
             toolTipTextHtml += '<div id="' + objectId + '">' + tooltipText + '</div>';
 
-            checkIfProgramIsNowPlayed(channel[j]) ? current = ' current' : current = '';
-            (channel[j].isPrimetime == 'true' && !checkIfProgramIsNowPlayed(channel[j])) ? primetime = ' primetime' : primetime = '';
+            checkIfProgramIsNowPlayed(channel[j], date) ? current = ' current' : current = '';
+            (channel[j].isPrimetime == 'true' && current == '') ? primetime = ' primetime' : primetime = '';
             var cls = 'cell cell-' + j + ' t' + channel[j].duration + ' s' + channel[j].start + current + primetime;
             col += '<div class="'+ cls +'" onmouseover="' + onMouseOver + '"><div class="cell-inner">'+link+category+'</div></div>';
           }
           col += '</div>';
           cols += col;
-        }
-
-        function checkIfProgramIsNowPlayed(program) {
-          var actualDateObj      = new Date(),
-              actualTimeMinutes,
-              actualProgramStartTime = program.start.split("-"),
-              actualProgramEndTime;
-
-          // Create neutral time for timezone=0.
-          var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
-          // Set the timezone to newYork -5 hours.
-          actualDateObj = new Date(utc + (3600000*-5));
-          actualTimeMinutes  = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
-
-          actualProgramStartTime = parseInt(actualProgramStartTime[0]) * 60 + parseInt(actualProgramStartTime[1]);
-          actualProgramEndTime = actualProgramStartTime + parseInt(program.duration);
-
-          return (actualProgramStartTime <= actualTimeMinutes && actualTimeMinutes < actualProgramEndTime);
         }
 
         // We are storing tooltip text in divs that are
@@ -188,6 +170,30 @@ var schedule = (function(){
         }
       }
     });
+  }
+
+  function checkIfProgramIsNowPlayed(program, date) {
+    var actualDateObj = new Date(),
+        actualTimeMinutes,
+        actualProgramStartTime = program.start.split("-"),
+        actualProgramEndTime,
+        utc;
+
+    // Create neutral time for timezone=0.
+    utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
+    // Set the timezone to newYork -5 hours.
+    actualDateObj = new Date(utc + (3600000*-5));
+    actualTimeMinutes  = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
+
+    // We only want to highlight programs from today as now playing.
+    if (date != actualDateObj.mmddyyyyMnn()) {
+      return false;
+    }
+
+    actualProgramStartTime = parseInt(actualProgramStartTime[0]) * 60 + parseInt(actualProgramStartTime[1]);
+    actualProgramEndTime = actualProgramStartTime + parseInt(program.duration);
+
+    return (actualProgramStartTime <= actualTimeMinutes && actualTimeMinutes < actualProgramEndTime);
   }
 
   return {
