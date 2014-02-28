@@ -1,5 +1,7 @@
 var scheduleNowPlaying = (function(){
 
+  var cachedProgramsData;
+
   function init(){
 
     actualisePlayingNowList();
@@ -10,73 +12,91 @@ var scheduleNowPlaying = (function(){
   }
 
   function actualisePlayingNowList() {
-    var d = new Date();
-    date = d.mmddyyyyMnn();
+    var d = getNewYorkTimezoneActualDateObject(),
+        date = d.mmddyyyyMnn();
+
+    if (typeof(cachedProgramsData) != 'undefined' && cachedProgramsData.date == date) {
+      actualisePlayingNowContent(cachedProgramsData.data);
+      return;
+    }
 
     $.ajax({
       type: 'GET',
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
       dataType: 'json',
       success: function(data){
+        cachedProgramsData = {
+          date: date,
+          data: data
+        };
 
-        var actualDateObj      = new Date(),
-            actualTimeMinutes,
-            nowPlayingPrograms = new Array();
-
-        // Create neutral time for timezone=0.
-        var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
-        // Set the timezone to newYork -5 hours.
-        actualDateObj = new Date(utc + (3600000*-5));
-
-        actualTimeMinutes = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
-
-        for (var i = 1; i <= 4; i++ ) {
-          var channel = data['ch' + i],
-              nowPlayingProgramFound = false,
-              programCounter = 0;
-
-          while (!nowPlayingProgramFound && programCounter < channel.length) {
-
-            var actualProgramStartTime = channel[programCounter].start.split("-"),
-                actualProgramEndTime   = 0;
-
-            actualProgramStartTime = parseInt(actualProgramStartTime[0]) * 60 + parseInt(actualProgramStartTime[1]);
-            actualProgramEndTime = actualProgramStartTime + parseInt(channel[programCounter].duration);
-
-            // Check if program being checked is the one
-            // that is live on TV.
-            if (actualProgramStartTime <= actualTimeMinutes && actualTimeMinutes < actualProgramEndTime) {
-              nowPlayingPrograms[i] = channel[programCounter].title;
-              nowPlayingProgramFound = true;
-            }
-            // If currently checked program from schedule has startTime > actual time
-            // this means schedule don't have info about actual program so we display '';
-            else if (actualProgramStartTime >= actualTimeMinutes) {
-              nowPlayingPrograms[i] = '';
-              nowPlayingProgramFound = true;
-            }
-
-            // Increase conter to move to next program in schedule.
-            programCounter++;
-          }
-        }
-
-        // Update actual time.
-        var timeElement = $('div#block-mnnshow-watch-now div.whats-on-now time');
-        if (timeElement.length) {
-          timeElement.html(actualDateObj.getTimeNowMnnFrontPageFormat());
-        }
-
-        // Update html of the frontEnd block.
-        for (var i = 1; i <= 4; i++ ) {
-          // Get h5 element that holds program title.
-          var titleElement = $('div#block-mnnshow-watch-now ul li#channel' + i + ' div.channel-info h5 a');
-          if (titleElement.length) {
-            titleElement.html(nowPlayingPrograms[i]);
-          }
-        }
+        actualisePlayingNowContent(data);
       }
     });
+  }
+
+  function actualisePlayingNowContent(data) {
+    var actualDateObj      = getNewYorkTimezoneActualDateObject(),
+      actualTimeMinutes,
+      nowPlayingPrograms = new Array();
+
+    actualTimeMinutes = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
+
+    for (var i = 1; i <= 4; i++ ) {
+      var channel = data['ch' + i],
+        nowPlayingProgramFound = false,
+        programCounter = 0;
+
+      while (!nowPlayingProgramFound && programCounter < channel.length) {
+
+        var actualProgramStartTime = channel[programCounter].start.split("-"),
+          actualProgramEndTime   = 0;
+
+        actualProgramStartTime = parseInt(actualProgramStartTime[0]) * 60 + parseInt(actualProgramStartTime[1]);
+        actualProgramEndTime = actualProgramStartTime + parseInt(channel[programCounter].duration);
+
+        // Check if program being checked is the one
+        // that is live on TV.
+        if (actualProgramStartTime <= actualTimeMinutes && actualTimeMinutes < actualProgramEndTime) {
+          nowPlayingPrograms[i] = channel[programCounter].title;
+          nowPlayingProgramFound = true;
+        }
+        // If currently checked program from schedule has startTime > actual time
+        // this means schedule don't have info about actual program so we display '';
+        else if (actualProgramStartTime >= actualTimeMinutes) {
+          nowPlayingPrograms[i] = '';
+          nowPlayingProgramFound = true;
+        }
+
+        // Increase conter to move to next program in schedule.
+        programCounter++;
+      }
+    }
+
+    // Update actual time.
+    var timeElement = $('div#block-mnnshow-watch-now div.whats-on-now time');
+    if (timeElement.length) {
+      timeElement.html(actualDateObj.getTimeNowMnnFrontPageFormat());
+    }
+
+    // Update html of the frontEnd block.
+    for (var i = 1; i <= 4; i++ ) {
+      // Get h5 element that holds program title.
+      var titleElement = $('div#block-mnnshow-watch-now ul li#channel' + i + ' div.channel-info h5 a');
+      if (titleElement.length) {
+        titleElement.html(nowPlayingPrograms[i]);
+      }
+    }
+  }
+
+  function getNewYorkTimezoneActualDateObject() {
+    var actualDateObj      = new Date()
+    // Create neutral time for timezone=0.
+    var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
+    // Set the timezone to newYork -5 hours.
+    actualDateObj = new Date(utc + (3600000*-5));
+
+    return actualDateObj;
   }
 
   return {
