@@ -15,9 +15,15 @@ function mnnshow_help($path, $arg) {
  */
 function mnnshow_init()
 {
-   // Include js for watch now block on homepage.
-   if (arg(0) == 'node' && arg(1) == NULL) {
+    $playNowBannerUrls = array(
+      '/',
+      '/live/1-community-channel',
+      '/live/2-lifestyle-channel',
+      '/live/3-spirit-channel',
+      '/live/4-culture-channel',
+    );
 
+    if (in_array(request_uri(), $playNowBannerUrls)) {
      $mnnshow_js_settings = array(
        'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
      );
