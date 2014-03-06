@@ -15,12 +15,12 @@ function mnnshow_help($path, $arg) {
  */
 function mnnshow_init()
 {
-  // Add js for playing now block.
   $mnnshow_js_settings = array(
     'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
   );
   drupal_add_js(array('mnnshow' => $mnnshow_js_settings), 'setting');
 
+  // Add js for playing now block.
   drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow_homepage.js');
 }
 
