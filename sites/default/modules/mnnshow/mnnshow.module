@@ -15,22 +15,13 @@ function mnnshow_help($path, $arg) {
  */
 function mnnshow_init()
 {
-    $playNowBannerUrls = array(
-      '/',
-      '/live/1-community-channel',
-      '/live/2-lifestyle-channel',
-      '/live/3-spirit-channel',
-      '/live/4-culture-channel',
-    );
+  // Add js for playing now block.
+  $mnnshow_js_settings = array(
+    'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
+  );
+  drupal_add_js(array('mnnshow' => $mnnshow_js_settings), 'setting');
 
-    if (in_array(request_uri(), $playNowBannerUrls)) {
-     $mnnshow_js_settings = array(
-       'reportingUrl' => variable_get('mnnshow_reporting_server_url', ''),
-     );
-     drupal_add_js(array('mnnshow' => $mnnshow_js_settings), 'setting');
-
-     drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow_homepage.js');
-   }
+  drupal_add_js(drupal_get_path('module', 'mnnshow').'/mnnshow_homepage.js');
 }
 
 /**
