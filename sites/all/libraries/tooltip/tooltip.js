@@ -14,7 +14,7 @@ var tooltipOptions=
     calloutPosition: 0.3,
     sticky: false,
     overlay: false,
-    license: "64628"
+    license: "240n9"
 };
 
 /* JavaScript Tooltip v2013.7.8. Copyright www.menucool.com */
