@@ -2,6 +2,8 @@ var scheduleNowPlaying = (function(){
 
   var cachedProgramsData;
 
+  var utc_timezone_offset = 0;
+
   function init(){
 
     actualisePlayingNowList();
@@ -13,7 +15,11 @@ var scheduleNowPlaying = (function(){
 
   function actualisePlayingNowList() {
     var d = getNewYorkTimezoneActualDateObject(),
-        date = d.mmddyyyyMnn();
+      date = d.mmddyyyyMnn();
+
+    if (utc_timezone_offset == 0 ) {
+      date = Drupal.settings.mnnshow.actualDate;
+    }
 
     if (typeof(cachedProgramsData) != 'undefined' && cachedProgramsData.date == date) {
       actualisePlayingNowContent(cachedProgramsData.data);
@@ -25,6 +31,9 @@ var scheduleNowPlaying = (function(){
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
       dataType: 'json',
       success: function(data){
+
+        utc_timezone_offset = data.utc_timezone_offset;
+
         cachedProgramsData = {
           date: date,
           data: data
@@ -93,8 +102,9 @@ var scheduleNowPlaying = (function(){
     var actualDateObj      = new Date()
     // Create neutral time for timezone=0.
     var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
-    // Set the timezone to newYork -5 hours.
-    actualDateObj = new Date(utc + (3600000*-5));
+    // Set the timezone to newYork UTC + utc_timezone_offset hours.
+    utc_timezone_offset = (utc_timezone_offset == 0 ? -5 : utc_timezone_offset);
+    actualDateObj = new Date(utc + (3600000 * utc_timezone_offset));
 
     return actualDateObj;
   }
@@ -133,11 +143,11 @@ $(document).ready(function(){
     var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     var yyyy  = this.getFullYear().toString(),
-        month = month_names_short[this.getMonth()],
-        d     = this.getDate().toString(),
-        hours = this.getHours(),
-        minutes = this.getMinutes(),
-        ampm = hours >= 12 ? 'pm' : 'am';
+      month = month_names_short[this.getMonth()],
+      d     = this.getDate().toString(),
+      hours = this.getHours(),
+      minutes = this.getMinutes(),
+      ampm = hours >= 12 ? 'pm' : 'am';
 
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'

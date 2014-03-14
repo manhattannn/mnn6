@@ -5,12 +5,12 @@ var schedule = (function(){
   var nextDate = '';
   var offset, table, headerHeight;
   var isEventsSetup = false;
+  var utc_timezone_offset = 0;
 
   function init(){
     generateHtml();
     offset = $('#schedule-header').offset().top;
     loadTableHeader();
-    //loadSchedule('2011-05-15');
     loadSchedule(schedDate);
   }
 
@@ -90,11 +90,16 @@ var schedule = (function(){
     var actualDateObj = new Date();
     // Create neutral time for timezone=0.
     var utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
-    // Set the timezone to newYork -5 hours.
-    actualDateObj = new Date(utc + (3600000*-5));
+    // Set the timezone to newYork UTC + utc_timezone_offset hours.
+    utc_timezone_offset = (utc_timezone_offset == 0 ? -5 : utc_timezone_offset);
+    actualDateObj = new Date(utc + (3600000 * utc_timezone_offset));
 
     if (!date) {
       date = actualDateObj.mmddyyyyMnn();
+
+      if (utc_timezone_offset == 0 ) {
+        date = Drupal.settings.mnnshow.actualDate;
+      }
     }
 
     $.ajax({
@@ -102,6 +107,8 @@ var schedule = (function(){
       url: Drupal.settings.mnnshow.reportingUrl + '/schedule/get' + '?date=' + date,
       dataType: 'json',
       success: function(data){
+
+        utc_timezone_offset = data.utc_timezone_offset;
         schedDate = data.schedDate;
         prevDate = data.prevDate;
         nextDate = data.nextDate;
@@ -174,15 +181,17 @@ var schedule = (function(){
 
   function checkIfProgramIsNowPlayed(program, date) {
     var actualDateObj = new Date(),
-        actualTimeMinutes,
-        actualProgramStartTime = program.start.split("-"),
-        actualProgramEndTime,
-        utc;
+      actualTimeMinutes,
+      actualProgramStartTime = program.start.split("-"),
+      actualProgramEndTime,
+      utc;
 
     // Create neutral time for timezone=0.
     utc = actualDateObj.getTime() + (actualDateObj.getTimezoneOffset() * 60000);
-    // Set the timezone to newYork -5 hours.
-    actualDateObj = new Date(utc + (3600000*-5));
+    // Set the timezone to newYork UTC + utc_timezone_offset hours.
+    utc_timezone_offset = (utc_timezone_offset == 0 ? -5 : utc_timezone_offset);
+    actualDateObj = new Date(utc + (3600000 * utc_timezone_offset));
+
     actualTimeMinutes  = actualDateObj.getHours() * 60 + actualDateObj.getMinutes()
 
     // We only want to highlight programs from today as now playing.
@@ -264,6 +273,10 @@ var ycSchedule = (function(){
     if (!date) {
       var d = new Date();
       date = d.mmddyyyyMnn();
+
+      if (utc_timezone_offset == 0 ) {
+        date = Drupal.settings.mnnshow.actualDate;
+      }
     }
 
     $.ajax({
@@ -339,11 +352,11 @@ var ycSchedule = (function(){
 })();
 
 Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
+  var size = 0, key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) size++;
+  }
+  return size;
 };
 
 $(document).ready(function(){
