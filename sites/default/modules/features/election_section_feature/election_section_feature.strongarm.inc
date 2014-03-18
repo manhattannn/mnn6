@@ -408,16 +408,16 @@ function election_section_feature_strongarm() {
   $strongarm->name = 'content_extra_weights_election_district';
   $strongarm->value = array(
     'title' => '-5',
-    'revision_information' => '5',
-    'author' => '6',
-    'options' => '7',
-    'comment_settings' => '11',
-    'menu' => '3',
+    'revision_information' => '9',
+    'author' => '10',
+    'options' => '11',
+    'comment_settings' => '15',
+    'menu' => '7',
     'taxonomy' => '-3',
-    'path' => '10',
-    'custom_breadcrumbs' => '8',
-    'path_redirect' => '9',
-    'workflow' => '4',
+    'path' => '14',
+    'custom_breadcrumbs' => '12',
+    'path_redirect' => '13',
+    'workflow' => '8',
   );
   $export['content_extra_weights_election_district'] = $strongarm;
 

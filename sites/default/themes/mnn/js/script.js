@@ -295,18 +295,20 @@ var openClose = (function(){
 })();
 
 /****************************************** electionSlideshow **********************************************/
+// original *slideshow* version
+/*
 var electionSlideshow = (function() {
   var slideSpeed = 1500;            // speed of transition from one slide to the next
   var cycleTime = 5000;             // time between transition end and transition begin
   var defaultDirection = 'left';
 
-  /************************* do not change anything below this line *************************/
+  ///////////////////////////// do not change anything below this line /////////////////////////////
 
   var shouldRun = false;
   var id = '';
 
   function init(){
-    if ($('.node.election-district').length) {
+    if ($('.node.election-district .photo-video .item').length > 1) {
       id = '#' + $('.node.election-district').attr('id');
       $(id + ' .item:first-child').addClass('current');
       var count = $(id + ' .item').length;
@@ -395,6 +397,7 @@ var electionSlideshow = (function() {
     cycle: cycle
   }
 })();
+*/
 
 /******************************************* electionVideos ************************************************/
 var electionVideos = (function(){
@@ -405,8 +408,8 @@ var electionVideos = (function(){
   var elWidth = 0;
 
   function init(){
-    if ($('.view-election-video-thumbnail-grid').length) {
-      wrapper = '.view-election-video-thumbnail-grid .view-content';
+    if ($('.view-election-video-thumbnail-grid-carousel').length) {
+      wrapper = '.view-election-video-thumbnail-grid-carousel .view-content';
       $el = $(wrapper + ' ul:first');
       elWidth = $(wrapper + ' ul').outerWidth();
       itemWidth = elWidth / $el.children('li').length;
@@ -462,6 +465,66 @@ var electionVideos = (function(){
   }
 })();
 
+/**************************************** electionDistrictVideos *******************************************/
+var electionDistrictVideos = (function() {
+  var slideSpeed = 500;            // speed of transition from one slide to the next
+
+  //////////////////////////// do not change anything below this line //////////////////////////////
+
+  var id = '';
+
+  function init(){
+    if ($('.node.election-district .district-videos .video').length > 1) {
+      id = '#' + $('.node.election-district').attr('id');
+      var count = $(id + ' .video').length;
+      if (count > 0) {
+        alterHtml(count);
+        setupEvents();
+      }
+    }
+  }
+
+  function alterHtml(numItems) {
+    $('<div id="slideshow-buttons"/>').appendTo($(id + ' .district-videos'));
+    $('<a href="#" class="overview">Overview</a> | <a href="#" class="debate">Debate</a>').appendTo($('#slideshow-buttons'));
+    $(id + ' .video:first-child').addClass('current');
+    $('#slideshow-buttons a:first-child').addClass('current');
+  }
+
+  function setupEvents(){
+    $('#slideshow-buttons a.overview').click(function(event) {
+      event.preventDefault();
+      if (!$(this).hasClass('current')) {
+        $(id + ' .video--district-overview').animate({
+          left: 0
+        }, slideSpeed);
+        $(id + ' .video--district-debate').animate({
+          left: 640
+        }, slideSpeed);
+        $('#slideshow-buttons a').removeClass('current');
+        $(this).addClass('current');
+      }
+    });
+    $('#slideshow-buttons a.debate').click(function(event) {
+      event.preventDefault();
+      if (!$(this).hasClass('current')) {
+        $(id + ' .video--district-overview').animate({
+          left: -640
+        }, slideSpeed);
+        $(id + ' .video--district-debate').animate({
+          left: 0
+        }, slideSpeed);
+        $('#slideshow-buttons a').removeClass('current');
+        $(this).addClass('current');
+      }
+    });
+  }
+
+  return {
+    init: init
+  }
+})();
+
 
 
 $(document).ready(function(){
@@ -471,6 +534,7 @@ $(document).ready(function(){
   faq.init();
   calendar.init();
   openClose.init();
-  electionSlideshow.init();
+  // electionSlideshow.init();
+  electionDistrictVideos.init();
   electionVideos.init();
 });

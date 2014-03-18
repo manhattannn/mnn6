@@ -524,6 +524,192 @@ constitution|Constitution',
     ),
   );
 
+  // Exported field: field_bar_chart_data
+  $fields['election_district-field_bar_chart_data'] = array(
+    'field_name' => 'field_bar_chart_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '5',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Data',
+      'weight' => '40',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_bar_chart_title
+  $fields['election_district-field_bar_chart_title'] = array(
+    'field_name' => 'field_bar_chart_title',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_title][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Title',
+      'weight' => '38',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_bar_chart_yaxis_label
+  $fields['election_district-field_bar_chart_yaxis_label'] = array(
+    'field_name' => 'field_bar_chart_yaxis_label',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_bar_chart_yaxis_label][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Bar Chart Y-axis Label',
+      'weight' => '39',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_election_candidates
   $fields['election_district-field_election_candidates'] = array(
     'field_name' => 'field_election_candidates',
@@ -611,105 +797,10 @@ constitution|Constitution',
       ),
       'default_value_php' => NULL,
       'label' => 'Candidates',
-      'weight' => '1',
+      'weight' => '2',
       'description' => '',
       'type' => 'nodereference_select',
       'module' => 'nodereference',
-    ),
-  );
-
-  // Exported field: field_election_district_photos
-  $fields['election_district-field_election_district_photos'] = array(
-    'field_name' => 'field_election_district_photos',
-    'type_name' => 'election_district',
-    'display_settings' => array(
-      'weight' => '-2',
-      'parent' => '',
-      'label' => array(
-        'format' => 'hidden',
-      ),
-      'teaser' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'election-main-photo_default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'filefield',
-    'required' => '0',
-    'multiple' => '1',
-    'module' => 'filefield',
-    'active' => '1',
-    'list_field' => '0',
-    'list_default' => 1,
-    'description_field' => '0',
-    'widget' => array(
-      'file_extensions' => 'png gif jpg jpeg',
-      'file_path' => 'election-district-photos',
-      'progress_indicator' => 'bar',
-      'max_filesize_per_file' => '',
-      'max_filesize_per_node' => '',
-      'max_resolution' => '0',
-      'min_resolution' => '0',
-      'alt' => '',
-      'custom_alt' => 0,
-      'title' => '',
-      'custom_title' => 0,
-      'title_type' => 'textfield',
-      'default_image' => NULL,
-      'use_default_image' => 0,
-      'insert' => 0,
-      'insert_absolute' => 0,
-      'insert_styles' => array(
-        'auto' => 0,
-        'link' => 0,
-        'icon_link' => 0,
-        'image' => 0,
-        'imagecache_certification-class-instructor' => 0,
-        'imagecache_certification-class-tracks' => 0,
-        'imagecache_community-studio-dialogue-landing' => 0,
-        'imagecache_firehouse-main' => 0,
-        'imagecache_homepage-news' => 0,
-        'imagecache_inline-image-content-width' => 0,
-        'imagecache_inline-image-half-content-width' => 0,
-        'imagecache_main-feature-slideshow' => 0,
-        'imagecache_news' => 0,
-        'imagecache_person-board-of-directors' => 0,
-        'imagecache_person-management' => 0,
-        'imagecache_person-upper-management' => 0,
-        'imagecache_yc-homepage-news' => 0,
-        'imagecache_yc-join-now' => 0,
-        'imagecache_yc-join-now-thumb' => 0,
-        'imagecache_yc-news' => 0,
-        'imagecache_yc-our-services' => 0,
-      ),
-      'insert_default' => 'auto',
-      'insert_class' => '',
-      'insert_width' => '',
-      'label' => 'Photos',
-      'weight' => '-1',
-      'description' => '',
-      'type' => 'imagefield_widget',
-      'module' => 'imagefield',
     ),
   );
 
@@ -749,7 +840,7 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'text',
-    'required' => '1',
+    'required' => '0',
     'multiple' => '0',
     'module' => 'text',
     'active' => '1',
@@ -767,8 +858,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'District Population',
-      'weight' => '14',
+      'label' => 'District Population (Deprecated)',
+      'weight' => '25',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -812,8 +903,8 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'emvideo',
-    'required' => '0',
-    'multiple' => '1',
+    'required' => '1',
+    'multiple' => '2',
     'module' => 'emvideo',
     'active' => '1',
     'widget' => array(
@@ -852,8 +943,8 @@ constitution|Constitution',
       ),
       'default_value_php' => NULL,
       'label' => 'Videos',
-      'weight' => 0,
-      'description' => '',
+      'weight' => '-1',
+      'description' => '1st video is the District Overview.<br/>2nd video is the District Debate.',
       'type' => 'emvideo_textfields',
       'module' => 'emvideo',
     ),
@@ -895,7 +986,7 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'text',
-    'required' => '1',
+    'required' => '0',
     'multiple' => '0',
     'module' => 'text',
     'active' => '1',
@@ -913,8 +1004,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Housing',
-      'weight' => '18',
+      'label' => 'Acreage (Deprecated)',
+      'weight' => '29',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -1052,7 +1143,7 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'text',
-    'required' => '1',
+    'required' => '0',
     'multiple' => '0',
     'module' => 'text',
     'active' => '1',
@@ -1070,8 +1161,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Median Income',
-      'weight' => '15',
+      'label' => 'Median Income (Deprecated)',
+      'weight' => '26',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -1177,7 +1268,7 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'text',
-    'required' => '1',
+    'required' => '0',
     'multiple' => '0',
     'module' => 'text',
     'active' => '1',
@@ -1195,8 +1286,8 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Race/Ethnicity',
-      'weight' => '17',
+      'label' => 'Race/Ethnicity (Deprecated)',
+      'weight' => '28',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -1239,7 +1330,7 @@ constitution|Constitution',
     ),
     'widget_active' => '1',
     'type' => 'text',
-    'required' => '1',
+    'required' => '0',
     'multiple' => '0',
     'module' => 'text',
     'active' => '1',
@@ -1257,11 +1348,983 @@ constitution|Constitution',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Unemployment Rate',
-      'weight' => '16',
+      'label' => 'Unemployment Rate (Deprecated)',
+      'weight' => '27',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_pie_chart_data
+  $fields['election_district-field_pie_chart_data'] = array(
+    'field_name' => 'field_pie_chart_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => '5',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_pie_chart_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Pie Chart Data',
+      'weight' => '36',
+      'description' => '',
+      'type' => 'text_textarea',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_pie_chart_title
+  $fields['election_district-field_pie_chart_title'] = array(
+    'field_name' => 'field_pie_chart_title',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_pie_chart_title][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Pie Chart Title',
+      'weight' => '35',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_show_bar_chart
+  $fields['election_district-field_show_bar_chart'] = array(
+    'field_name' => 'field_show_bar_chart',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '0|No
+1|Show Pie Chart?',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => NULL,
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Show Bar Chart',
+      'weight' => '37',
+      'description' => '',
+      'type' => 'optionwidgets_onoff',
+      'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_show_pie_chart
+  $fields['election_district-field_show_pie_chart'] = array(
+    'field_name' => 'field_show_pie_chart',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '0|No
+1|Show Pie Chart?',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => NULL,
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Show Pie Chart',
+      'weight' => '34',
+      'description' => '',
+      'type' => 'optionwidgets_onoff',
+      'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_show_stat_1
+  $fields['election_district-field_show_stat_1'] = array(
+    'field_name' => 'field_show_stat_1',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '0|No
+1|Show Stat 1?',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => 'No',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Show Stat 1',
+      'weight' => '16',
+      'description' => '',
+      'type' => 'optionwidgets_onoff',
+      'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_show_stat_2
+  $fields['election_district-field_show_stat_2'] = array(
+    'field_name' => 'field_show_stat_2',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '0|No
+1|Show Stat 2?',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => 'No',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Show Stat 2',
+      'weight' => '19',
+      'description' => '',
+      'type' => 'optionwidgets_onoff',
+      'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_show_stat_3
+  $fields['election_district-field_show_stat_3'] = array(
+    'field_name' => 'field_show_stat_3',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'number_integer',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'number',
+    'active' => '1',
+    'prefix' => '',
+    'suffix' => '',
+    'min' => '',
+    'max' => '',
+    'allowed_values' => '0|No
+1|Show Stat 3?',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => 'No',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Show Stat 3',
+      'weight' => '22',
+      'description' => '',
+      'type' => 'optionwidgets_onoff',
+      'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_stat_1_data
+  $fields['election_district-field_stat_1_data'] = array(
+    'field_name' => 'field_stat_1_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_1_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 1 Data',
+      'weight' => '18',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stat_1_label
+  $fields['election_district-field_stat_1_label'] = array(
+    'field_name' => 'field_stat_1_label',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_1_label][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 1 Label',
+      'weight' => '17',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stat_2_data
+  $fields['election_district-field_stat_2_data'] = array(
+    'field_name' => 'field_stat_2_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_2_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 2 Data',
+      'weight' => '21',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stat_2_label
+  $fields['election_district-field_stat_2_label'] = array(
+    'field_name' => 'field_stat_2_label',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_2_label][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 2 Label',
+      'weight' => '20',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stat_3_data
+  $fields['election_district-field_stat_3_data'] = array(
+    'field_name' => 'field_stat_3_data',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_3_data][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 3 Data',
+      'weight' => '24',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stat_3_label
+  $fields['election_district-field_stat_3_label'] = array(
+    'field_name' => 'field_stat_3_label',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stat_3_label][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Stat 3 Label',
+      'weight' => '23',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_video_district_debate
+  $fields['election_district-field_video_district_debate'] = array(
+    'field_name' => 'field_video_district_debate',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'emvideo',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'emvideo',
+    'active' => '1',
+    'widget' => array(
+      'video_width' => '640',
+      'video_height' => '390',
+      'video_autoplay' => 0,
+      'preview_width' => '640',
+      'preview_height' => '390',
+      'preview_autoplay' => 0,
+      'thumbnail_width' => '120',
+      'thumbnail_height' => '90',
+      'thumbnail_default_path' => '',
+      'thumbnail_link_title' => 'See video',
+      'meta_fields' => array(
+        'title' => 0,
+        'description' => 0,
+      ),
+      'providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'emthumb' => 0,
+      'emthumb_label' => 'Video: District Debate custom thumbnail',
+      'emthumb_description' => 'If you upload a custom thumbnail, then this will be displayed when the Video: District Debate thumbnail is called for, overriding any automatic thumbnails by custom providers.',
+      'emthumb_max_resolution' => '0',
+      'emimport_image_path' => '',
+      'emthumb_custom_alt' => 0,
+      'emthumb_custom_title' => 0,
+      'emthumb_store_local_thumbnail' => 1,
+      'emthumb_start_collapsed' => 0,
+      'default_value' => array(
+        '0' => array(
+          'embed' => '',
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Video: District Debate',
+      'weight' => '1',
+      'description' => '',
+      'type' => 'emvideo_textfields',
+      'module' => 'emvideo',
+    ),
+  );
+
+  // Exported field: field_video_district_overview
+  $fields['election_district-field_video_district_overview'] = array(
+    'field_name' => 'field_video_district_overview',
+    'type_name' => 'election_district',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'emvideo',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'emvideo',
+    'active' => '1',
+    'widget' => array(
+      'video_width' => '640',
+      'video_height' => '390',
+      'video_autoplay' => 0,
+      'preview_width' => '640',
+      'preview_height' => '390',
+      'preview_autoplay' => 0,
+      'thumbnail_width' => '120',
+      'thumbnail_height' => '90',
+      'thumbnail_default_path' => '',
+      'thumbnail_link_title' => 'See video',
+      'meta_fields' => array(
+        'title' => 0,
+        'description' => 0,
+      ),
+      'providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'emthumb' => 0,
+      'emthumb_label' => 'Video: District Overview custom thumbnail',
+      'emthumb_description' => 'If you upload a custom thumbnail, then this will be displayed when the Video: District Overview thumbnail is called for, overriding any automatic thumbnails by custom providers.',
+      'emthumb_max_resolution' => '0',
+      'emimport_image_path' => '',
+      'emthumb_custom_alt' => 0,
+      'emthumb_custom_title' => 0,
+      'emthumb_store_local_thumbnail' => 1,
+      'emthumb_start_collapsed' => 0,
+      'default_value' => array(
+        '0' => array(
+          'embed' => '',
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Video: District Overview',
+      'weight' => 0,
+      'description' => '',
+      'type' => 'emvideo_textfields',
+      'module' => 'emvideo',
     ),
   );
 
@@ -1412,23 +2475,40 @@ constitution|Constitution',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Acreage (Deprecated)');
+  t('Bar Chart Data');
+  t('Bar Chart Title');
+  t('Bar Chart Y-axis Label');
   t('Candidates');
-  t('District Population');
+  t('District Population (Deprecated)');
   t('Facebook');
-  t('Housing');
   t('LinkedIn');
   t('Map');
-  t('Median Income');
+  t('Median Income (Deprecated)');
   t('Neighborhoods');
   t('Optional Video');
   t('Party');
   t('Photo');
-  t('Photos');
+  t('Pie Chart Data');
+  t('Pie Chart Title');
   t('Publish Date');
-  t('Race/Ethnicity');
+  t('Race/Ethnicity (Deprecated)');
+  t('Show Bar Chart');
+  t('Show Pie Chart');
+  t('Show Stat 1');
+  t('Show Stat 2');
+  t('Show Stat 3');
+  t('Stat 1 Data');
+  t('Stat 1 Label');
+  t('Stat 2 Data');
+  t('Stat 2 Label');
+  t('Stat 3 Data');
+  t('Stat 3 Label');
   t('Twitter');
-  t('Unemployment Rate');
+  t('Unemployment Rate (Deprecated)');
   t('Video');
+  t('Video: District Debate');
+  t('Video: District Overview');
   t('Videos');
   t('Website');
 
